@@ -1,0 +1,281 @@
+<main id="register">
+  <div class="page-heading text-center">
+    <div class="container">
+      <h2>PERSONAL DETAILS OF THE APPLICANT</h2>
+    </div>
+  </div>
+  <div class="container success">
+    <h4 class="sub-title">(To be filled by the Applicant/ Parent)</h4>
+    <form class="contact" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-sm-12">
+          <label class="req uppercase">Student Aadhaar Number </label>
+          <input type="text" formControlName="adharNumber" placeholder="enter Aadhaar Number" />
+          <app-control-messages [touched]="touched" [control]="f.adharNumber"></app-control-messages>
+        </div>
+        <div class="col-sm-12">
+          <label class="req uppercase">Full Name </label>
+          <div class="row">
+            <div class="col-lg-4">
+              <input type="text" formControlName="firstName" placeholder="enter first name" />
+              <app-control-messages [touched]="touched" [control]="f.firstName"></app-control-messages>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" formControlName="middleName" placeholder="enter middle name" />
+              <app-control-messages [touched]="touched" [control]="f.middleName"></app-control-messages>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" formControlName="lastName" placeholder="enter last name" />
+              <app-control-messages [touched]="touched" [control]="f.lastName"></app-control-messages>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+          <label class="req uppercase">Email </label>
+          <div class="row">
+            <div class="col-lg-12">
+              <input type="text" formControlName="email" placeholder="enter first name" />
+              <app-control-messages [touched]="touched" [control]="f.email"></app-control-messages>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="req uppercase">Date of Birth </label>
+          <input type="date" formControlName="dob" placeholder="dd/mm/yyyy"
+            (change)="calculateAge($event.target.value)" />
+          <app-control-messages [touched]="touched" [control]="f.dob"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="req uppercase">Age as on {{ date | date: "yyyy-MM-dd" }}</label>
+          <input type="number" formControlName="ageByRegisteringDate" placeholder="" readonly />
+          <app-control-messages [touched]="touched" [control]="f.ageByRegisteringDate"></app-control-messages>
+        </div>
+
+        <div class="col-sm-6 offset-3">
+          <label class="req uppercase">Gender</label>
+          <app-control-messages [touched]="touched" [control]="f.gender"></app-control-messages>
+          <div class="col-sm-4">
+            <p class="radio">
+              <input type="radio" value="male" formControlName="gender" id="" /><span>Male</span>
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <p class="radio">
+              <input type="radio" value="female" formControlName="gender" id="" />
+              <span>Female</span>
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <p class="radio">
+              <input type="radio" value="other" formControlName="gender" id="" />
+              <span>Other</span>
+            </p>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="parent-div">
+          <div class="col-sm-12 offset-3">
+            <label class="req uppercase">Mother's Name </label>
+            <div class="col-lg-4">
+              <input type="text" formControlName="mothersFirstName" placeholder="enter first name" />
+              <app-control-messages [touched]="touched" [control]="f.mothersFirstName"></app-control-messages>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" formControlName="mothersMiddleName" placeholder="enter middle name" />
+              <app-control-messages [touched]="touched" [control]="f.mothersMiddleName"></app-control-messages>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" formControlName="mothersLastName" placeholder="enter last name" />
+              <app-control-messages [touched]="touched" [control]="f.mothersLastName"></app-control-messages>
+            </div>
+          </div>
+          <div class="col-sm-6 offset-3">
+            <label class="req uppercase">Mother's Occupation </label>
+            <input type="text" formControlName="mothersOccupation" placeholder="enter mother's occupation" />
+            <app-control-messages [touched]="touched" [control]="f.mothersOccupation"></app-control-messages>
+          </div>
+          <div class="col-sm-6 offset-3">
+            <label class="req uppercase">Mother's Email Id </label>
+            <input type="text" formControlName="mothersEmail" placeholder="enter mother's email address" />
+            <app-control-messages [touched]="touched" [control]="f.mothersEmail"></app-control-messages>
+          </div>
+          <div class="col-sm-6 offset-3">
+            <label class="req uppercase">Mother's Phone Number </label>
+            <div class="input-group">
+              <span class="input-group-addon">+91</span>
+              <input type="text" formControlName="mothersPhoneNumber" placeholder="Mobile number" />
+              <app-control-messages [touched]="touched" [control]="f.mothersPhoneNumber"></app-control-messages>
+            </div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="parent-div">
+          <div class="col-sm-12 offset-3">
+            <label class="req uppercase">father's Name </label>
+            <div class="col-lg-4">
+              <input type="text" formControlName="fathersFirstName" placeholder="enter first name" />
+              <app-control-messages [touched]="touched" [control]="f.fathersFirstName"></app-control-messages>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" formControlName="fathersMiddleName" placeholder="enter middle name" />
+              <app-control-messages [touched]="touched" [control]="f.fathersMiddleName"></app-control-messages>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" formControlName="fathersLastName" placeholder="enter last name" />
+              <app-control-messages [touched]="touched" [control]="f.fathersLastName"></app-control-messages>
+            </div>
+          </div>
+          <div class="col-sm-6 offset-3">
+            <label class="req uppercase">father's Occupation </label>
+            <input type="text" formControlName="fathersOccupation" placeholder="enter father's name" />
+            <app-control-messages [touched]="touched" [control]="f.fathersOccupation"></app-control-messages>
+          </div>
+          <div class="col-sm-6 offset-3">
+            <label class="req uppercase">father's Email Id </label>
+            <input type="text" formControlName="fathersEmail" placeholder="enter father's name" />
+            <app-control-messages [touched]="touched" [control]="f.fathersEmail"></app-control-messages>
+          </div>
+          <div class="col-sm-6 offset-3">
+            <label class="req uppercase">father's Phone Number </label>
+            <div class="input-group">
+              <span class="input-group-addon">+91</span>
+              <input type="text" formControlName="fathersPhoneNumber" placeholder="Mobile number" />
+              <app-control-messages [touched]="touched" [control]="f.fathersPhoneNumber"></app-control-messages>
+            </div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="parent-div">
+          <div class="col-sm-12 offset-3">
+            <label class="req uppercase">Gaurdian's Name </label>
+            <div class="col-lg-4">
+              <input type="text" formControlName="gaurdiansFirstName" placeholder="enter first name" />
+              <app-control-messages [touched]="touched" [control]="f.gaurdiansFirstName"></app-control-messages>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" formControlName="gaurdiansMiddleName" placeholder="enter middle name" />
+              <app-control-messages [touched]="touched" [control]="f.gaurdiansMiddleName"></app-control-messages>
+            </div>
+            <div class="col-lg-4">
+              <input type="text" formControlName="gaurdiansLastName" placeholder="enter last name" />
+              <app-control-messages [touched]="touched" [control]="f.gaurdiansLastName"></app-control-messages>
+            </div>
+          </div>
+
+          <div class="col-sm-12 offset-3">
+            <label class="req uppercase">Gaurdian's Address </label>
+            <input type="text" formControlName="gaurdiansAddress" placeholder="enter Gaurdian's Address" />
+            <app-control-messages [touched]="touched" [control]="f.gaurdiansAddress"></app-control-messages>
+          </div>
+          <div class="col-sm-6 offset-3">
+            <label class="req uppercase">Gaurdian's Email Id </label>
+            <input type="text" formControlName="gaurdiansEmail" placeholder="enter Gaurdian's Email Id" />
+            <app-control-messages [touched]="touched" [control]="f.gaurdiansEmail"></app-control-messages>
+          </div>
+          <div class="col-sm-6 offset-3">
+            <label class="req uppercase">Gaurdian's Phone Number </label>
+            <div class="input-group">
+              <span class="input-group-addon">+91</span>
+              <input type="text" formControlName="gaurdiansPhoneNumber" placeholder="Mobile number" />
+              <app-control-messages [touched]="touched" [control]="f.gaurdiansPhoneNumber"></app-control-messages>
+            </div>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="col-sm-6">
+          <label class="uppercase">Differently abled? (Y/N) </label>
+          <div class="col-sm-6">
+            <p class="checkbox">
+              <input type="checkbox" formControlName="isDifferentlyAbled" /><span>Yes</span>
+            </p>
+          </div>
+          <div class="col-sm-6" *ngIf="f.isDifferentlyAbled.value">
+            <label class="uppercase">Upload certificate </label>
+            <input type="file" (change)="uploadFile($event)" />
+            <input type="hidden" formControlName="disabilityCertificateFile" />
+           
+            <!-- {{f.disabilityCertificateFile |json }} -->
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-sm-6">
+          <label class="req uppercase">Religion </label>
+          <input type="text" formControlName="religion" placeholder="subject" />
+          <app-control-messages [touched]="touched" [control]="f.religion"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="req uppercase">Caste </label>
+          <input type="text" formControlName="cast" placeholder="subject" />
+          <app-control-messages [touched]="touched" [control]="f.cast"></app-control-messages>
+        </div>
+        <div class="col-sm-12">
+          <label class="req uppercase">Visible Marks on the Body </label>
+          <input type="text" formControlName="visibleMark1" placeholder="1)" />
+          <app-control-messages [touched]="touched" [control]="f.visibleMark1"></app-control-messages>
+          <input type="text" formControlName="visibleMark2" placeholder="2)" />
+          <app-control-messages [touched]="touched" [control]="f.visibleMark2"></app-control-messages>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="uppercase">Are you a Citizen of India? </label>
+          <div class="col-sm-6">
+            <p class="checkbox">
+              <input type="radio" value="true" formControlName="isIndian" /><span>Yes</span>
+            </p>
+          </div>
+          <div class="col-sm-6">
+            <p class="checkbox">
+              <input type="radio" value="false" formControlName="isIndian" /><span>No</span>
+            </p>
+          </div>
+          <app-control-messages [touched]="touched" [control]="f.name"></app-control-messages>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="uppercase">Resident/ NRI </label>
+          <div class="col-sm-6">
+            <p class="checkbox">
+              <input type="checkbox" formControlName="isNRI" /><span>Yes</span>
+            </p>
+          </div>
+          <div class="col-sm-6" *ngIf="f.isNRI.value">
+            <label class="uppercase">Nationality of the Applicant </label>
+            <input type="text" formControlName="forginNationality" id="" />
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+        <div class="col-sm-6">
+          <label class="uppercase">Application Filled by Father or Mother ?
+          </label>
+          <div class="col-sm-6">
+            <p class="checkbox">
+              <input type="checkbox" formControlName="isFilledByFather" /><span>Yes</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="row clearfix">
+        <div class="col-sm-12">
+          <div class="pull-right">
+            <button id="submit-btn" (click)="submit()"  class="btn btn-info mt-3">
+              Save and Continue
+            </button>
+          </div>
+        </div>
+      </div>
+      <pre>{{f.disabilityCertificateFile.validator}}</pre>
+    </form>
+  </div>
+</main>

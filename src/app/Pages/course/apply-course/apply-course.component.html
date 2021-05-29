@@ -1,0 +1,1047 @@
+<main>
+  <div class="page-heading text-center">
+    <div class="container">
+      <h2 class="uppercase">Application Form</h2>
+    </div>
+  </div>
+  <!-- <pre>{{removedFields |json}}</pre> -->
+  <div class="container index-3-categories">
+    <div class="row contact">
+
+      <!-- <pre>{{eduAndEntrnceRemovedFields|json}}</pre> -->
+      <!-- <pre>{{form.value|json}}</pre> -->
+
+      <div class="col-md-1"></div>
+      <div class="col-md-10 col-sm-10">
+        <form class="contact" [formGroup]="form" (submit)="onSubmit()">
+          <div class="applicationForm">
+            <h5>PERSONAL DETAILS OF THE APPLICANT </h5>
+            <div class="row">
+              <div formGroupName="personalInfo">
+
+                <div class="col-lg-12 col-xs-12">
+
+                  <div id="courseName" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Course Name</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="courseName" />
+                    </div>
+                  </div>
+
+                  <div id="stream" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Course Stream</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="stream" />
+                    </div>
+                  </div>
+
+                  <div id="isHosteler" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Hostler or Day scholar</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="isHosteler" />
+                    </div>
+                  </div>
+
+                  <div id="adharNumber" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Student Aadhaar Number</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="adharNumber" />
+                    </div>
+                  </div>
+
+                  <div id="fullName" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Full Name</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="fullName" />
+                    </div>
+                  </div>
+
+                  <div id="dob" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Date Of Birth</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="date" formControlName="dob" />
+                    </div>
+                  </div>
+
+                  <div id="age" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Age</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="age" />
+                    </div>
+                  </div>
+
+                  <div id="gender" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Gender</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="gender" />
+                    </div>
+                  </div>
+
+                  <div id="mothersName" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Mother's Name </p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="mothersName" />
+                    </div>
+                  </div>
+
+                  <div id="mothersOccupation" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Mother's Occupation</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="mothersOccupation" />
+                    </div>
+                  </div>
+
+                  <div id="mothersEmail" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Mother's Email ID</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="mothersEmail" />
+                    </div>
+                  </div>
+
+                  <div id="mothersPhoneNumber" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Mother's Phone No</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="mothersPhoneNumber" />
+                    </div>
+                  </div>
+
+                  <div id="fathersName" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Father's Name </p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="fathersName" />
+                    </div>
+                  </div>
+
+                  <div id="fathersOccupation" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Father's Occupation</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="fathersOccupation" />
+                    </div>
+                  </div>
+
+                  <div id="fathersEmail" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Father's Email ID</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="fathersEmail" />
+                    </div>
+                  </div>
+
+                  <div id="fathersPhoneNumber" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Father's Phone No</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="fathersPhoneNumber" />
+                    </div>
+                  </div>
+
+                  <div id="guardiansName" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Gaurdian's Name </p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="guardiansName" />
+                    </div>
+                  </div>
+
+                  <div id="gaurdiansAddress" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Gaurdian's Address</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="gaurdiansAddress" />
+                    </div>
+                  </div>
+
+                  <div id="gaurdiansEmail" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Gaurdian's Email ID</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="gaurdiansEmail" />
+                    </div>
+                  </div>
+
+                  <div id="gaurdiansPhoneNumber" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Gaurdian's Phone No</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="gaurdiansPhoneNumber" />
+                    </div>
+                  </div>
+
+                  <div id="isDifferentlyAbled" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Differently abled? (Y/N)</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="isDifferentlyAbled" />
+                    </div>
+                  </div>
+
+                  <div id="differentlyAbledCertFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Differently abled Certificate</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="differentlyAbledCertFile" />
+                    </div>
+                  </div>
+
+                  <div id="religion" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Religion</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="religion" />
+                    </div>
+                  </div>
+
+                  <div id="cast" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Caste</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="cast" />
+                    </div>
+                  </div>
+
+                  <div id="visibleMark1" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Visible Marks on the Body 1</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="visibleMark1" />
+                    </div>
+                  </div>
+
+                  <div id="visibleMark2" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Visible Marks on the Body 2</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="visibleMark2" />
+                    </div>
+                  </div>
+
+                  <div id="isIndian" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Are you a Citizen of India?</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="isIndian" />
+                    </div>
+                  </div>
+
+                  <div id="isNRI" class="applicationFormItem">
+                    <div class="labels">
+                      <p>NRI</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="isNRI" />
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="col-lg-12">
+                  <div formGroupName="additionalFields">
+                    <div *ngFor="let item of additionalField.personalInfo; let i=index" class="applicationFormItem">
+                      <div class="labels">
+                        <p>{{item.fieldText}}</p>
+                      </div>
+                      <div class="checkBox">
+                        <input type="text" formControlName="{{item.fieldName}}" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+            <div class="clearfix"></div>
+
+            <h5>PERMANENT ADDRESS</h5>
+            <div class="row">
+              <div formGroupName="permanentAddress">
+                <div class="col-lg-12 col-xs-12">
+
+                  <div id="permanentAddressLine1" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Address Line 1</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="permanentAddressLine1" />
+                    </div>
+                  </div>
+
+                  <div id="permanentAddressLine2" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Addres Line 2</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="permanentAddressLine2" />
+                    </div>
+                  </div>
+
+                  <div id="permanentAddressLine3" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Address Line 3</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="permanentAddressLine3" />
+                    </div>
+                  </div>
+
+                  <div id="permanentCountry" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Country </p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="permanentCountry" />
+                    </div>
+                  </div>
+
+                  <div id="permanentState" class="applicationFormItem">
+                    <div class="labels">
+                      <p>State</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="permanentState" />
+                    </div>
+                  </div>
+
+                  <div id="permanentDistrict" class="applicationFormItem">
+                    <div class="labels">
+                      <p>District</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="permanentDistrict" />
+                    </div>
+                  </div>
+
+                  <div id="permanentPin" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Pin</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="permanentPin" />
+                    </div>
+                  </div>
+
+                  <div id="permanentTelephoneSTDCode" class="applicationFormItem">
+                    <div class="labels">
+                      <p>STD code</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="permanentTelephoneSTDCode" />
+                    </div>
+                  </div>
+
+                  <div id="permanentTelephone" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Land phone number</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="permanentTelephone" />
+                    </div>
+                  </div>
+
+                  <div id="permanentMobile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Mobile</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="permanentMobile" />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+            <div class="clearfix"></div>
+
+            <h5>COMMUNICATION ADDRESS</h5>
+            <div class="row">
+              <div formGroupName="communicationAddress">
+                <div class="col-lg-12 col-xs-12">
+
+                  <div id="communicationAddressLine1" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Address Line 1</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="communicationAddressLine1" />
+                    </div>
+                  </div>
+
+                  <div id="communicationAddressLine2" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Addres Line 2</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="communicationAddressLine2" />
+                    </div>
+                  </div>
+
+                  <div id="communicationAddressLine3" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Address Line 3</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="communicationAddressLine3" />
+                    </div>
+                  </div>
+
+                  <div id="communicationCountry" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Country </p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="communicationCountry" />
+                    </div>
+                  </div>
+
+                  <div id="communicationState" class="applicationFormItem">
+                    <div class="labels">
+                      <p>State</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="communicationState" />
+                    </div>
+                  </div>
+
+                  <div id="communicationDistrict" class="applicationFormItem">
+                    <div class="labels">
+                      <p>District</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="communicationDistrict" />
+                    </div>
+                  </div>
+
+                  <div id="communicationPin" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Pin</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="communicationPin" />
+                    </div>
+                  </div>
+
+                  <div id="communicationTelephoneSTDCode" class="applicationFormItem">
+                    <div class="labels">
+                      <p>STD code</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="communicationTelephoneSTDCode" />
+                    </div>
+                  </div>
+
+                  <div id="communicationTelephone" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Land phone number</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="communicationTelephone" />
+                    </div>
+                  </div>
+
+                  <div id="communicationMobile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Mobile</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="communicationMobile" />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <h5>EDUCATION</h5>
+            <div class="row">
+              <div class="col-lg-12 col-xs-12">
+
+                <div formArrayName="education">
+                  <div *ngFor="let item of educations.controls; let i=index" class="additionalForm">
+                    <div [formGroupName]="i">
+
+                      <div id="{{'accademicLevelId-ed'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>Education Level</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="accademicLevelId" />
+                        </div>
+                      </div>
+
+                      <div id="{{'schoolName-ed'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>School/College/Institution Name</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="schoolName" />
+                        </div>
+                      </div>
+
+                      <div id="{{'specialization-ed'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>Degree/ Specialization</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="specialization" />
+                        </div>
+                      </div>
+
+                      <div id="{{'yearOfStudy-ed'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>Year of Study</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="yearOfStudy" />
+                        </div>
+                      </div>
+
+                      <div id="{{'startDate-ed'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>Start date</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="startDate" />
+                        </div>
+                      </div>
+
+                      <div id="{{'endDate-ed'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>End date</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="endDate" />
+                        </div>
+                      </div>
+
+                      <div id="{{'certificateFile-ed'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>Certificate (Image)</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="certificateFile" />
+                        </div>
+                      </div>
+
+                      <div id="{{'qualificationStatus-ed'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>Qualification Status(Passed/Failed)</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="qualificationStatus" />
+                        </div>
+                      </div>
+
+                      <div id="{{'cgpa-ed'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>CGPA</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="cgpa" />
+                        </div>
+                      </div>
+
+                      <div formGroupName="additionalFields">
+                        <div *ngFor="let item of additionalField.education; let i=index" class="applicationFormItem">
+                          <div class="labels">
+                            <p>{{item.fieldText}}</p>
+                          </div>
+                          <div class="checkBox">
+                            <input type="text" formControlName="{{item.fieldName}}" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+
+            </div>
+
+
+
+            <div class="clearfix"></div>
+
+            <h5>ENTRANCE EXAMS</h5>
+            <div class="row">
+              <div class="col-lg-12 col-xs-12">
+
+                <div formArrayName="entrance">
+                  <div *ngFor="let item of entranceExams.controls; let i=index" class="additionalForm">
+                    <div [formGroupName]="i">
+
+                      <div id="{{'qualifiedEntrance-en'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>Qualified Entrance</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="qualifiedEntrance" />
+                        </div>
+                      </div>
+
+                      <div id="{{'rollNumber-en'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>Roll Number</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="rollNumber" />
+                        </div>
+                      </div>
+
+                      <div id="{{'yearOfQualification-en'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>Year of Qualification</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="yearOfQualification" />
+                        </div>
+                      </div>
+
+                      <div id="{{'validUpto-en'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>Valid Upto</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="validUpto" />
+                        </div>
+                      </div>
+
+                      <div id="{{'cgpa-en'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>CGPA</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="cgpa" />
+                        </div>
+                      </div>
+
+                      <div id="{{'rank-en'+i}}" class="applicationFormItem">
+                        <div class="labels">
+                          <p>Rank</p>
+                        </div>
+                        <div class="checkBox">
+                          <input type="text" formControlName="rank" />
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+
+            </div>
+
+
+            <div class="clearfix"></div>
+
+            <h5 class="uppercase">certificates</h5>
+            <div class="row">
+              <div formGroupName="certificates">
+                <div class="col-lg-12 col-xs-12">
+
+                  <div id="adharCardFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Aadhar Certificate</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="adharCardFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="adharCardFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="adharCardFile-img" alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="birthCertificateFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Birth Certificate</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="birthCertificateFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="birthCertificateFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="birthCertificateFile-img" alt="No image">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="communityCertificateFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Community Certificate</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="communityCertificateFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="communityCertificateFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="communityCertificateFile-img"
+                            alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="differentlyAbledCertificateFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Differently abled</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="differentlyAbledCertificateFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="differentlyAbledCertificateFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="differentlyAbledCertificateFile-img"
+                            alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="characterCertificateFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Character Certificate</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="characterCertificateFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="characterCertificateFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="characterCertificateFile-img"
+                            alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="conductCertificateFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Conduct Certificate</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="conductCertificateFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="conductCertificateFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="conductCertificateFile-img"
+                            alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="entranceExamFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Entrance Exam</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="entranceExamFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="entranceExamFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="entranceExamFile-img" alt="No image">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="sslcFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>SSLC</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="sslcFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="sslcFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="sslcFile-img" alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="plusTwoCertificateFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>PLUS 2</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="plusTwoCertificateFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="plusTwoCertificateFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="plusTwoCertificateFile-img"
+                            alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="experienceCertificateFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Experience certificate</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="experienceCertificateFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="experienceCertificateFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="experienceCertificateFile-img"
+                            alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="incomeCertificateFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Income Certificate</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="incomeCertificateFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="incomeCertificateFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="incomeCertificateFile-img" alt="No image">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="migrationCertificateFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Migration Certificate</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="migrationCertificateFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="migrationCertificateFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="migrationCertificateFile-img"
+                            alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="nativityCertificateFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Nativity Certificate</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="nativityCertificateFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="nativityCertificateFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="nativityCertificateFile-img"
+                            alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="panCardFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>PAN Card</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="panCardFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="panCardFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="panCardFile-img" alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="passportSizePhotoFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Passport size Photo</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="passportSizePhotoFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="passportSizePhotoFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="passportSizePhotoFile-img" alt="No image">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="scolarshipFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Scholarship</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="scolarshipFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="scolarshipFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="scolarshipFile-img" alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="signatureFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Signature</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="signatureFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="signatureFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="signatureFile-img" alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="tcFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Transfer Certificate(TC)</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="tcFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="tcFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="tcFile-img" alt="No image"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="thumbImpressionFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Thumb Impression</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="thumbImpressionFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="thumbImpressionFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="thumbImpressionFile-img" alt="No image">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="drivingLicenseFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Driving Licence</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="drivingLicenseFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="drivingLicenseFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="drivingLicenseFile-img" alt="No image">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="fathersSignatureFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Father's Signature</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="fathersSignatureFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="fathersSignatureFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="fathersSignatureFile-img" alt="No image">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="mothersSignatureFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Mother's Signature</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="mothersSignatureFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="mothersSignatureFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="mothersSignatureFile-img" alt="No image">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="guardiansSignatureFile" class="applicationFormItem">
+                    <div class="labels">
+                      <p>Guardian's Signature</p>
+                    </div>
+                    <div class="checkBox">
+                      <input type="text" formControlName="guardiansSignatureFile" />
+                      <div class="row">
+                        <div class="col-lg-6"><input type="file" name="guardiansSignatureFile"></div>
+                        <div class="col-lg-6"><img src="" class="certImg" id="guardiansSignatureFile-img"
+                            alt="No image">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="col-lg-12">
+                  <div formGroupName="additionalFields">
+                    <div *ngFor="let item of additionalField.certificates; let i=index" class="applicationFormItem">
+                      <div class="labels">
+                        <p>{{item.fieldText}}</p>
+                      </div>
+                      <div class="checkBox">
+                        <div class="clearfix"></div>
+                        <div class="row">
+                          <div class="col-lg-6"> <input type="file" formControlName="{{item.fieldName}}" /></div>
+                          <div class="col-lg-6"><img src="" class="certImg" id="{{item.fieldName}}-img" alt="No image">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="clearfix"></div>
+
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <button id="submit-btn" type="submit" class="btn btn-success pull-right">Submit application</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</main>

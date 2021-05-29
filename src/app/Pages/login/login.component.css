@@ -1,0 +1,17 @@
+.sub-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  color: #202020;
+  font-weight: 600;
+  margin-top: 50px;
+}
+.border {
+  border: solid 1px #f8ad25;
+  border-radius: 15px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.contact {
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
