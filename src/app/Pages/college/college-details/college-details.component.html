@@ -1,0 +1,224 @@
+<main id="course-single">
+
+    <div class="page-heading text-center">
+        <div class="container">
+            <h2 class="uppercase">Institute Details</h2>
+
+        </div>
+    </div>
+
+    <!-- <pre>{{instituteInfo|json}}</pre> -->
+    <!-- <pre>{{gallery|json}}</pre> -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="{{baseApiUrl}}{{gallery ? gallery[0].galleryFile:''}}" alt="Course"
+                    class="resp-img course-preview">
+                <h3>{{instituteInfo?.name}}</h3>
+                <p class="class-details uppercase">
+                    <span class="lessons"><i
+                            class="zmdi zmdi-assignment"></i>{{instituteInfo?.InstituteType.title}}</span>
+                    <span class="duration"><i class="zmdi zmdi-time"></i>{{instituteInfo?.code}}</span>
+                    <span class="views"><i class="zmdi zmdi-eye"></i>HOSTEL:
+                        {{instituteInfo?.haveBoysHostel||instituteInfo?.haveGirlsHostel?"YES":"NO"}}</span>
+                    <span class="views"><i class="zmdi zmdi-download"></i><a
+                            href="{{baseApiUrl}}{{highlights?.brochuresFile}}">Download Brochure</a></span>
+
+
+                </p>
+                <div class="row">
+                    <div class="col-md-12 order  pros">
+                        <div class="col-md-6">
+                            <h4>CONTACT ADDRESS</h4>
+                            <div class="text-center">
+                                <p>{{instituteInfo?.addressLine1}},{{instituteInfo?.addressLine2}},{{instituteInfo?.addressLine3}}
+
+                                </p>
+                                <p class="order-or"><span><i class="zmdi zmdi-phone"></i></span></p>
+
+                                <p>{{instituteInfo?.telephone1}}</p>
+                                <p>{{instituteInfo?.telephone2}}</p>
+                                <p class="order-or"><span><i class="zmdi zmdi-smartphone-android"></i></span></p>
+                                <p></p>
+                                <p>{{instituteInfo?.officialMobile}}</p>
+
+
+                                <p class="order-or"><span><i class="zmdi zmdi-email"></i></span></p>
+                                <p></p>
+                                <p>{{instituteInfo?.email}}</p>
+                                <p></p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <h4>CORPORATE OFFICE</h4>
+                            <div class="text-center">
+                                <p>Nila Gardens, Pampady, Thiruvilwamala, Thrissur, Kerala, India – 680 588</p>
+                                <p class="order-or"><span><i class="zmdi zmdi-phone"></i></span></p>
+
+                                <p>04884-284000 (100 lines)</p>
+                                <p>04884-282070</p>
+                                <p class="order-or"><span><i class="zmdi zmdi-smartphone-android"></i></span></p>
+                                <p>+91 9656000005</p>
+                                <p>+91 7902660777</p>
+
+
+                                <p class="order-or"><span><i class="zmdi zmdi-email"></i></span></p>
+                                <p>Office@ncerc.ac.in</p>
+                                <p>admissions@ncerc.ac.in</p>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="ratings col-md-12">
+                        <div class="col-sm-4">
+                            <h4>REGISTRATION DETAILS</h4>
+                            <p>License Authority : {{instituteInfo?.LicenceIssueAuthority.title}} </p>
+                            <p>Name of Panchatyath/Munciplaity : {{instituteInfo?.nameofTown}} </p>
+                            <p> Licnese No :{{instituteInfo?.licenseNumber}} </p>
+                            <p>Licnese Issued Date : {{instituteInfo?.licenseIssuedDate | date}}</p>
+                            <p>Licnese Expiary Date : {{instituteInfo?.licenseRenewalDate | date}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <h4> LOCATION DETAILS</h4>
+                            <p>Counrty: {{instituteInfo?.country}}</p>
+                            <p>State : {{instituteInfo?.state}}</p>
+                            <p>District:{{instituteInfo?.district}}</p>
+                            <p>Block : {{instituteInfo?.nameofTown}}</p>
+
+                        </div>
+                        <div class="col-sm-4">
+
+
+                            <p>Village/Munciplaity </p>
+                            <p>Town : {{instituteInfo?.town}}</p>
+                            <p>Pin : {{instituteInfo?.pin}}</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 20px;">
+                    <div class="ratings col-md-12">
+                        <div class="col-sm-4">
+                            <h4>BOARD OF COUNCIL AWARDED</h4>
+                            <p>Unit Of : {{boardOfCouncilInfo?.unitOfLabel}}</p>
+                            <p>Recognized : {{boardOfCouncilInfo?.recongnizedByLabel}}</p>
+                            <p>Affliated To: {{boardOfCouncilInfo?.affiliatedToLabel}}</p>
+                            <p>Recognized By : {{boardOfCouncilInfo?.recongnizedByLabel}}</p>
+                        </div>
+                        <div class="col-sm-4">
+
+                            <p>Registered To: {{boardOfCouncilInfo?.registeredToLabel}}</p>
+                            <p>Approved By: {{boardOfCouncilInfo?.approvedByLabel}}</p>
+                            <p>Accredation By: {{boardOfCouncilInfo?.accreditedByLabel}}</p>
+                            <p>Certified By: {{boardOfCouncilInfo?.certifiedByLabel}}</p>
+
+                        </div>
+                        <div class="col-sm-4">
+
+
+                            <p>Member Of :{{boardOfCouncilInfo?.memberOfLabel}}</p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 style="margin-bottom: 50px;">Courses Offered</h3>
+
+
+                            <div *ngFor="let item of coursesOffered"
+                                class="col-md-4 probootstrap-animate fadeInUp probootstrap-animated">
+                                <div class="probootstrap-featured-news-box">
+                                    <div class="probootstrap-text">
+                                        <h3>{{item.AccademicLevel_Course.title}}</h3>
+                                        <span class="probootstrap-date"><i class="icon-calendar"></i>
+                                            {{item.CourseStream.title}} - {{item.CourseStream_Specialization.title}}
+                                        </span>
+
+                                        <a class="probootstrap-location courseBtn"
+                                            routerLink="/student/course/apply/{{item.id}}">APPLY</a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 gallery">
+                            <h3 style="margin-bottom: 50px;">Gallery</h3>
+                            <div class="col-sm-4" *ngFor="let item of gallery">
+                                <img src="{{baseApiUrl}}{{item.galleryFile}}" style="max-width: 375px;"
+                                    data-darkbox="{{baseApiUrl}}{{item.galleryFile}}" data-darkbox-group="one"
+                                    data-darkbox-description="<b>{{item.galleryLabel}}</b><br>Lorem ipsum dolor sit amet">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                    <div class="ratings col-md-12">
+                        <div class="col-sm-6">
+                            <h4>VIRTUAL VIDEO TOUR</h4>
+                            <button class="search-teachers btnBottom">Campus Overview</button>
+                            <button class="search-teachers btnBottom">Class Room Tour</button>
+                            <button class="search-teachers btnBottom">Lab Tour</button>
+                            <button class="search-teachers btnBottom">Librabry</button>
+                            <button class="search-teachers btnBottom">Recreational Area</button>
+                            <button class="search-teachers btnBottom">Hostel Tour</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4>SOCIAL MEDIA </h4>
+                            <ul class="social" style="margin-top: 26px;">
+                                <li *ngIf="socialLinks?.facebook"><a target="_blank" href="{{socialLinks.facebook}}"><i class="zmdi zmdi-facebook"></i></a></li>
+                                <li *ngIf="socialLinks?.twitter">
+                                    <a target="_blank" href="{{socialLinks.twitter}}"><i class="zmdi zmdi-twitter"></i></a>
+                                </li>
+                                <li *ngIf="socialLinks?.linkedIn">
+                                    <a target="_blank" href="{{socialLinks.linkedIn}}"><i class="zmdi zmdi-linkedin"></i></a>
+                                </li>
+                                <li *ngIf="socialLinks?.youtube">
+                                    <a target="_blank" href="{{socialLinks.youtube}}"><i class="zmdi zmdi-youtube"></i></a>
+                                </li>
+                                <li *ngIf="socialLinks?.instagram">
+                                    <a target="_blank" href="{{socialLinks.instagram}}"><i class="zmdi zmdi-instagram"></i></a>
+                                </li>
+                                <li *ngIf="socialLinks?.website">
+                                    <a target="_blank" href="{{socialLinks.website}}"><i class="zmdi zmdi-globe"></i></a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</main>

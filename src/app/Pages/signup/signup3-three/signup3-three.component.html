@@ -1,0 +1,148 @@
+<main id="register">
+  <div class="page-heading text-center">
+    <div class="container">
+      <h2>ADDRESS</h2>
+    </div>
+  </div>
+  <div class="container success">
+    <h4 class="sub-title uppercase">PERMANENT ADDRESS OF THE STUDENT</h4>
+    <form class="contact" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-sm-12">
+          <label class="req uppercase">Address Line 1</label>
+          <input type="text" formControlName="permanentAddressLine1" placeholder="Address Line 2" required />
+          <app-control-messages [touched]="touched" [control]="f.permanentAddressLine1"></app-control-messages>
+        </div>
+        <div class="col-sm-12">
+          <label class="req uppercase">Address Line 2</label>
+          <input type="text" formControlName="permanentAddressLine2" placeholder="Address Line 2" required />
+          <app-control-messages [touched]="touched" [control]="f.permanentAddressLine2"></app-control-messages>
+        </div>
+        <div class="col-sm-12">
+          <label class="req uppercase">Address Line 3</label>
+          <input type="text" formControlName="permanentAddressLine3" placeholder="Address Line 3" required />
+          <app-control-messages [touched]="touched" [control]="f.permanentAddressLine3"></app-control-messages>
+        </div>
+        <div class="col-sm-4">
+          <label class="req uppercase">Country</label>
+          <input type="text" formControlName="permanentCountry" placeholder="Country" required />
+          <app-control-messages [touched]="touched" [control]="f.permanentCountry"></app-control-messages>
+        </div>
+        <div class="col-sm-4">
+          <label class="req uppercase">State</label>
+          <input type="text" formControlName="permanentState" placeholder="Country" required />
+          <app-control-messages [touched]="touched" [control]="f.permanentState"></app-control-messages>
+        </div>
+        <div class="col-sm-4">
+          <label class="req uppercase">District</label>
+          <input type="text" formControlName="permanentDistrict" placeholder="Country" required />
+          <app-control-messages [touched]="touched" [control]="f.permanentDistrict"></app-control-messages>
+        </div>
+
+        <div class="col-sm-4">
+          <label class="req uppercase">Pin</label>
+          <input type="text" formControlName="permanentPin" placeholder="Country" required />
+          <app-control-messages [touched]="touched" [control]="f.permanentPin"></app-control-messages>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="req uppercase">Telephone Number</label>
+          <div class="col-sm-4">
+            <input type="text" formControlName="permanentTelephoneSTDCode" placeholder="STD code" required />
+            <app-control-messages [touched]="touched" [control]="f.permanentTelephoneSTDCode"></app-control-messages>
+          </div>
+          <div class="col-sm-8">
+            <input type="text" formControlName="permanentTelephone" placeholder="Telephone number" required />
+            <app-control-messages [touched]="touched" [control]="f.permanentTelephone"></app-control-messages>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <label class="req uppercase">Mobile Number</label>
+          <!-- <div class="col-sm-3">
+            <input type="text" formControlName="name" placeholder="country code" required />
+            <app-control-messages [touched]="touched" [control]="f.name"></app-control-messages>
+          </div> -->
+          <div class="col-sm-12">
+            <input type="text" formControlName="permanentMobile" placeholder="mobile number" required />
+            <app-control-messages [touched]="touched" [control]="f.permanentMobile"></app-control-messages>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="sub-title uppercase">COMMUNICATION ADDRESS</h4>
+
+        <div class="col-sm-12">
+          <label class="req uppercase">Address Line 1</label>
+          <input type="text" formControlName="communicationAddressLine1" placeholder="Address Line 2" required />
+          <app-control-messages [touched]="touched" [control]="f.communicationAddressLine1"></app-control-messages>
+        </div>
+        <div class="col-sm-12">
+          <label class="req uppercase">Address Line 2</label>
+          <input type="text" formControlName="communicationAddressLine2" placeholder="Address Line 2" required />
+          <app-control-messages [touched]="touched" [control]="f.communicationAddressLine2"></app-control-messages>
+        </div>
+        <div class="col-sm-12">
+          <label class="req uppercase">Address Line 3</label>
+          <input type="text" formControlName="communicationAddressLine3" placeholder="Address Line 3" required />
+          <app-control-messages [touched]="touched" [control]="f.communicationAddressLine3"></app-control-messages>
+        </div>
+        <div class="col-sm-4">
+          <label class="req uppercase">Country</label>
+          <input type="text" formControlName="communicationCountry" placeholder="Country" required />
+          <app-control-messages [touched]="touched" [control]="f.communicationCountry"></app-control-messages>
+        </div>
+        <div class="col-sm-4">
+          <label class="req uppercase">State</label>
+          <input type="text" formControlName="communicationState" placeholder="Country" required />
+          <app-control-messages [touched]="touched" [control]="f.communicationState"></app-control-messages>
+        </div>
+        <div class="col-sm-4">
+          <label class="req uppercase">District</label>
+          <input type="text" formControlName="communicationDistrict" placeholder="Country" required />
+          <app-control-messages [touched]="touched" [control]="f.communicationDistrict"></app-control-messages>
+        </div>
+
+        <div class="col-sm-4">
+          <label class="req uppercase">Pin</label>
+          <input type="text" formControlName="communicationPin" placeholder="Country" required />
+          <app-control-messages [touched]="touched" [control]="f.communicationPin"></app-control-messages>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-sm-6">
+          <label class="req uppercase">Telephone Number</label>
+          <div class="col-sm-4">
+            <input type="text" formControlName="communicationTelephoneSTDCode" placeholder="STD code" required />
+            <app-control-messages [touched]="touched" [control]="f.communicationTelephoneSTDCode">
+            </app-control-messages>
+          </div>
+          <div class="col-sm-8">
+            <input type="text" formControlName="communicationTelephone" placeholder="Telephone number" required />
+            <app-control-messages [touched]="touched" [control]="f.communicationTelephone"></app-control-messages>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <label class="req uppercase">Mobile Number</label>
+          <!-- <div class="col-sm-3">
+            <input type="text" formControlName="name" placeholder="country code" required />
+            <app-control-messages [touched]="touched" [control]="f.name"></app-control-messages>
+          </div> -->
+          <div class="col-sm-12">
+            <input type="text" formControlName="communicationMobile" placeholder="mobile number" required />
+            <app-control-messages [touched]="touched" [control]="f.communicationMobile"></app-control-messages>
+          </div>
+        </div>
+      </div>
+
+      <div class="row clearfix">
+        <div class="col-sm-12">
+          <div class="pull-right">
+            <button id="submit-btn" class="btn btn-info nbtn">
+              Save and Continue
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- <pre>{{form.value|json}}</pre> -->
+    </form>
+  </div>
+</main>

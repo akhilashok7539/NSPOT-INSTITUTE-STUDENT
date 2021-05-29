@@ -1,0 +1,43 @@
+.btnBottom
+{
+margin-bottom: 5px;
+}
+.gallery img{
+	margin-bottom: 10px;
+}
+.probootstrap-animate {
+   margin-bottom: 15px;
+}
+.courseBtn
+{
+	border: 1px solid #000;
+    width: 100px;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 8px;
+    cursor: pointer;
+
+}
+.probootstrap-date, .probootstrap-location {
+    display: block;
+    color: #666;
+}
+.probootstrap-featured-news-box .probootstrap-text {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    padding: 20px;
+    -webkit-box-shadow: 0 2px 10px 0 rgb(0 0 0 / 5%);
+    box-shadow: 0 2px 10px 0 rgb(0 0 0 / 5%);
+    margin-left: 10px;
+    margin-right: 10px;
+    top: -30px;
+    -webkit-transition: .3s all;
+    transition: .3s all;
+    border-bottom: 3px solid #12c8fc;
+}
+
+.probootstrap-featured-news-box h3 {
+ /* padding:20px 10px 10px 10px; */
+ margin :0 !important
+}

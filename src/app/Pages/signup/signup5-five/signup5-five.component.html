@@ -1,0 +1,186 @@
+<main id="register">
+  <div class="page-heading text-center">
+    <div class="container">
+      <h2 class="uppercase">CERTIFICATES</h2>
+    </div>
+  </div>
+  <div class="container success">
+    <!-- <h4 class="sub-title uppercase">VIRTUAL VIDEO TOUR</h4> -->
+    <form class="contact" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-sm-6">
+          <label class="uppercase">Aadhar Certificate </label>
+          <input type="file" formControlName="adharCardFile" (change)="onchangeFile('adharCardFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.adharCardFile"></app-control-messages>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="uppercase">Birth Certificate </label>
+          <input type="file" formControlName="birthCertificateFile"
+            (change)="onchangeFile('birthCertificateFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.birthCertificateFile"></app-control-messages>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="uppercase">Community Certificate </label>
+          <input type="file" formControlName="communityCertificateFile"
+            (change)="onchangeFile('communityCertificateFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.communityCertificateFile"></app-control-messages>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="uppercase">Differently abled </label>
+          <input type="file" formControlName="differentlyAbledCertificateFile"
+            (change)="onchangeFile('differentlyAbledCertificateFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.differentlyAbledCertificateFile">
+          </app-control-messages>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="uppercase">Character Certificate </label>
+          <input type="file" formControlName="characterCertificateFile"
+            (change)="onchangeFile('characterCertificateFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.characterCertificateFile"></app-control-messages>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="uppercase">Conduct Certificate </label>
+          <input type="file" formControlName="conductCertificateFile"
+            (change)="onchangeFile('conductCertificateFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.conductCertificateFile"></app-control-messages>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="uppercase">Entrance Exam </label>
+          <input type="file" formControlName="entranceExamFile" (change)="onchangeFile('entranceExamFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.entranceExamFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">SSLC Certificate </label>
+          <input type="file" formControlName="sslcFile" (change)="onchangeFile('sslcFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.sslcFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">PLUS 2 Certificate </label>
+          <input type="file" formControlName="plusTwoCertificateFile"
+            (change)="onchangeFile('plusTwoCertificateFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.plusTwoCertificateFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">Experience certificate </label>
+          <input type="file" formControlName="experienceCertificateFile"
+            (change)="onchangeFile('experienceCertificateFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.experienceCertificateFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">Income Certificate </label>
+          <input type="file" formControlName="incomeCertificateFile"
+            (change)="onchangeFile('incomeCertificateFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.incomeCertificateFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">Migration Certificate </label>
+          <input type="file" formControlName="migrationCertificateFile"
+            (change)="onchangeFile('migrationCertificateFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.migrationCertificateFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">Nativity Certificate </label>
+          <input type="file" formControlName="nativityCertificateFile"
+            (change)="onchangeFile('nativityCertificateFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.nativityCertificateFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">PAN Card </label>
+          <input type="file" formControlName="panCardFile" (change)="onchangeFile('panCardFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.panCardFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">Passport size Photo </label>
+          <input type="file" formControlName="passportSizePhotoFile"
+            (change)="onchangeFile('passportSizePhotoFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.passportSizePhotoFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">Scholarship </label>
+          <input type="file" formControlName="scolarshipFile" (change)="onchangeFile('scolarshipFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.scolarshipFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">Signature </label>
+          <input type="file" formControlName="signatureFile" (change)="onchangeFile('signatureFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.signatureFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">TC </label>
+          <input type="file" formControlName="tcFile" (change)="onchangeFile('tcFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.tcFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">Thumb Impression </label>
+          <input type="file" formControlName="thumbImpressionFile"
+            (change)="onchangeFile('thumbImpressionFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.thumbImpressionFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="uppercase">Driving License </label>
+          <input type="file" formControlName="drivingLicenseFile"
+            (change)="onchangeFile('drivingLicenseFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.drivingLicenseFile"></app-control-messages>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="uppercase">Father's Signature </label>
+          <input type="file" formControlName="fathersSignatureFile"
+            (change)="onchangeFile('fathersSignatureFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.fathersSignatureFile"></app-control-messages>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="uppercase">Mother's Signature</label>
+          <input type="file" formControlName="mothersSignatureFile"
+            (change)="onchangeFile('mothersSignatureFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.mothersSignatureFile"></app-control-messages>
+        </div>
+
+        <div class="col-sm-6">
+          <label class="uppercase">Guardian's Signature </label>
+          <input type="file" formControlName="guardiansSignatureFile"
+            (change)="onchangeFile('guardiansSignatureFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.guardiansSignatureFile"></app-control-messages>
+        </div>
+      </div>
+      <div class="row">
+        <div class="clearfix"></div>
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6">
+          <p class="checkbox">
+            <input type="checkbox" formControlName="declaration" /><span>I here by
+              declare that all the information provided above are
+              true</span>
+          </p>
+          <app-control-messages [touched]="touched" [control]="f.declaration"></app-control-messages>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6">
+          <p class="checkbox">
+            <input type="checkbox" formControlName="accept" /><span>Accept
+              Terms and Conditions</span>
+          </p>
+          <app-control-messages [touched]="touched" [control]="f.accept"></app-control-messages>
+        </div>
+      </div>
+
+      <div class="row clearfix">
+        <div class="col-sm-12">
+          <div class="pull-right">
+            <button id="submit-btn" class="btn btn-info nbtn">
+              Save and Continue
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>

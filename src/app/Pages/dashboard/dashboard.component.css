@@ -1,0 +1,11 @@
+.tutorial ul li {
+  list-style-type: circle;
+}
+.tutorial ul li i {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.list-with-icon{
+  padding: 20px 10px 20px 10px;
+}
