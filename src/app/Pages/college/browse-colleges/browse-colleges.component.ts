@@ -51,13 +51,13 @@ export class BrowseCollegesComponent implements OnInit {
     this.loadData();
 
     this.form = this.formBuilder.group({
-      accademicLevelId: [''],
-      accademicLevelCourseId: [''],
+      CourseCategoryId: [''],
+      CourseSubCategoryId: [''],
       // courseTypeId: [''],
-      courseStreamId: [''],
-      courseStreamSpecializationId: [''],
-      courseStreamSpecializationId1: [''],
-      courseStreamSpecializationId2: [''],
+      CourseSubCategory2Id: [''],
+      CourseSubCategory3Id: [''],
+      CourseSubCategory4Id: [''],
+      CourseSubCategory5Id: [''],
     });
 
   }
@@ -82,7 +82,7 @@ export class BrowseCollegesComponent implements OnInit {
   }
 
   loadAccademicLevelCourses(event): void {
-    this.form.controls.accademicLevelCourseId.setValue("");
+    
     const academicLevelId = event.target.value;
     this.apiService.doGetRequest(`course-categories/subcategory/` + academicLevelId).subscribe((returnData: any) => {
       this.accademicLevelsCourses = returnData.data;
