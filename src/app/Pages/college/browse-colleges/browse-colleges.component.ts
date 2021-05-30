@@ -35,7 +35,8 @@ export class BrowseCollegesComponent implements OnInit {
   courseTypes;
   universityTypes;
   courses
-
+  courseStreamsSpecializations3;
+  courseStreamsSpecializations4;
   baseApiUrl = environment.baseApiUrl;
 
   ngOnInit(): void {
@@ -55,12 +56,14 @@ export class BrowseCollegesComponent implements OnInit {
       // courseTypeId: [''],
       courseStreamId: [''],
       courseStreamSpecializationId: [''],
+      courseStreamSpecializationId1: [''],
+      courseStreamSpecializationId2: [''],
     });
 
   }
 
   loadData(): void {
-    this.apiService.doGetRequest(endPoints.Get_academicLevels).subscribe((returnData: any) => {
+    this.apiService.doGetRequest(`/course-categories`).subscribe((returnData: any) => {
       this.accademicLevels = returnData.data;
       console.log("accademic levels ", this.accademicLevels);
     });
@@ -81,7 +84,7 @@ export class BrowseCollegesComponent implements OnInit {
   loadAccademicLevelCourses(event): void {
     this.form.controls.accademicLevelCourseId.setValue("");
     const academicLevelId = event.target.value;
-    this.apiService.doGetRequest(endPoints.Get_academicLevel_Courses + academicLevelId).subscribe((returnData: any) => {
+    this.apiService.doGetRequest(`course-categories/subcategory/` + academicLevelId).subscribe((returnData: any) => {
       this.accademicLevelsCourses = returnData.data;
       console.log(this.accademicLevelsCourses);
     });
@@ -95,7 +98,35 @@ export class BrowseCollegesComponent implements OnInit {
       console.log(this.courseStreamsSpecializations);
     });
   }
-
+  loadAccademicLevelCoursessubcat(event):void
+  {
+    const subcategoryId = event.target.value;
+    this.apiService.doGetRequest(`course-categories/subcategory2/` + subcategoryId).subscribe((returnData: any) => {
+      this.courseStreams = returnData.data;
+      console.log(this.accademicLevelsCourses);
+    });
+  }
+  loadAccademicLevelCoursessubcat1(event):void{
+    const subcategoryId = event.target.value;
+    this.apiService.doGetRequest(`course-categories/subcategory3/` + subcategoryId).subscribe((returnData: any) => {
+      this.courseStreamsSpecializations = returnData.data;
+      console.log(this.accademicLevelsCourses);
+    });
+  }
+  loadAccademicLevelCoursessubcat2(event):void{
+    const subcategoryId = event.target.value;
+    this.apiService.doGetRequest(`course-categories/subcategory4/` + subcategoryId).subscribe((returnData: any) => {
+      this.courseStreamsSpecializations3 = returnData.data;
+      console.log(this.accademicLevelsCourses);
+    });
+  }
+  loadAccademicLevelCoursessubcat3(event):void{
+    const subcategoryId = event.target.value;
+    this.apiService.doGetRequest(`course-categories/subcategory5/` + subcategoryId).subscribe((returnData: any) => {
+      this.courseStreamsSpecializations4 = returnData.data;
+      console.log(this.accademicLevelsCourses);
+    });
+  }
   onSubmit() {
     this.touched = true;
     console.log(document.getElementsByClassName('ng-invalid'))

@@ -21,7 +21,7 @@
 
             <!-- Courses -->
             <div class="col-md-2 col-sm-6 col-xs-12">
-                <select formControlName="accademicLevelCourseId">
+                <select formControlName="accademicLevelCourseId" (change)="loadAccademicLevelCoursessubcat($event)">
                     <option value="">Choose Course</option>
                     <option *ngFor="let item of accademicLevelsCourses" value="{{item.id}}">{{item.title}}</option>
                 </select>
@@ -30,7 +30,7 @@
 
             <!-- Course streams -->
             <div class="col-md-2 col-sm-6 col-xs-12">
-                <select formControlName="courseStreamId" (change)="loadCourseStreamSpecializations($event)">
+                <select formControlName="courseStreamId" (change)="loadAccademicLevelCoursessubcat1($event)">
                     <option value="">Choose Course</option>
                     <option *ngFor="let item of courseStreams" value="{{item.id}}">{{item.title}}</option>
                 </select>
@@ -39,7 +39,7 @@
 
             <!-- Course stream specializations -->
             <div class="col-md-2 col-sm-6 col-xs-12">
-                <select formControlName="courseStreamSpecializationId">
+                <select formControlName="courseStreamSpecializationId" (change)="loadAccademicLevelCoursessubcat2($event)">
                     <option value="">Choose Course</option>
                     <option *ngFor="let item of courseStreamsSpecializations" value="{{item.id}}">{{item.title}}
                     </option>
@@ -47,12 +47,30 @@
                 <app-control-messages [touched]="touched" [control]="f.courseStreamSpecializationId">
                 </app-control-messages>
             </div>
-
+            <div class="col-md-2 col-sm-6 col-xs-12">
+                <select formControlName="courseStreamSpecializationId1" (change)="loadAccademicLevelCoursessubcat3($event)">
+                    <option value="">Choose Course</option>
+                    <option *ngFor="let item of courseStreamsSpecializations3" value="{{item.id}}">{{item.title}}
+                    </option>
+                </select>
+                <app-control-messages [touched]="touched" [control]="f.courseStreamSpecializationId1">
+                </app-control-messages>
+            </div>
+            <div class="col-md-2 col-sm-6 col-xs-12" style="">
+                <select formControlName="courseStreamSpecializationId2">
+                    <option value="">Choose Course</option>
+                    <option *ngFor="let item of courseStreamsSpecializations4" value="{{item.id}}">{{item.title}}
+                    </option>
+                </select>
+                <app-control-messages [touched]="touched" [control]="f.courseStreamSpecializationId2">
+                </app-control-messages>
+            </div>
             <!-- <div class="col-sm-6 col-xs-12 text-keywords">
                 <input class="keywords" name="keywords" type="text" placeholder="keywords">
             </div> -->
 
-            <div class="col-sm-6 col-xs-12 search-button">
+            <div class="col-sm-6 col-xs-12 search-button" style="    margin: 0 auto;
+            margin-top: 26px;">
                 <button type="submit" class="search-teachers">SEARCH</button>
             </div>
         </div>
