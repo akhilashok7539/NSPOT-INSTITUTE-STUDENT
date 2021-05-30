@@ -70,10 +70,10 @@
             </div>
         
 
-            <!-- <div class="col-sm-6 col-xs-12 search-button" style="    margin: 0 auto;
+            <div class="col-sm-6 col-xs-12 search-button" style="    margin: 0 auto;
             margin-top: 26px;">
                 <button type="submit" class="search-teachers">SEARCH</button>
-            </div> -->
+            </div>
         </div>
 
     </form>
@@ -83,7 +83,8 @@
             <div class="alert alert-warning" *ngIf="courses?.length<=0">No Institutes found</div>
         </div>
 
-        <div class="col-md-4" *ngFor="let item of courses; let i=index">
+        <div class="col-md-4" *ngFor="let item of courses; let i=index" style="
+        margin-bottom: 16px;">
             <div class="tutorial">
                 <img src="assets/images/college1.png" class="tile-card-img" alt="Nspot college">
                 <div class="tutorial-details">
