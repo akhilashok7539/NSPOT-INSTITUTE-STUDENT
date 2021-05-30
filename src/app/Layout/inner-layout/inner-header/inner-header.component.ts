@@ -20,12 +20,12 @@ export class InnerHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     const that = this;
-    this.checkForNotification()
-    setInterval(function () {
-      that.checkForNotification();
+    // this.checkForNotification()
+    // setInterval(function () {
+    //   that.checkForNotification();
 
-    }, 10000)
-    // window.scrollTo(0, 0)
+    // }, 10000)
+  
   }
 
   checkForNotification() {

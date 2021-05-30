@@ -38,6 +38,8 @@ export class CollegeDetailsComponent implements OnInit {
     this.apiService.doGetRequest(endPoints.GetInstituteInfo + this.instituteId + "?filter[include]=LicenceIssueAuthority").subscribe((returnData: any) => {
       console.log("Institute Info",returnData)
       this.instituteInfo = returnData.data;
+      console.log(this.instituteInfo);
+      
     }, error => {
       console.error(error);
       this.toastr.error('Failed to fetch institute details')
