@@ -127,6 +127,15 @@ export class BrowseCollegesComponent implements OnInit {
       console.log(this.accademicLevelsCourses);
     });
   }
+  removeEmptyStringsData(obj) {
+    const dataObj = { ...obj };
+    Object.entries(dataObj).forEach(([key, val]) => val === "" && delete dataObj[key] && dataObj[key] !== []);
+    let urlParams = new URLSearchParams();
+    for (let key of Object.keys(dataObj)) {
+      urlParams.set(key, dataObj[key])
+    }
+    return urlParams;
+  }
   onSubmit() {
     this.touched = true;
     console.log(document.getElementsByClassName('ng-invalid'))
@@ -135,7 +144,18 @@ export class BrowseCollegesComponent implements OnInit {
     }
 
     const formData = this.form.value;
-
+    console.log(formData);
+    for (var key in formData) {
+      if (formData[key] === "") {
+        delete formData[key];
+      } else {
+        // formData[Map[key]] = formData[key];
+        // delete formData[key];
+      }
+    }
+    
+    console.log(formData);
+    
     this.apiService.doPostRequest(
       endPoints.Get_course_filter, formData
     ).subscribe((returnData: any) => {
