@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <img src="{{baseApiUrl}}{{gallery ? gallery[0].galleryFile:''}}" alt="Course"
+                <img src="{{baseApiUrl}}{{gallery ? gallery[0].galleryFile:''}}" 
                     class="resp-img course-preview">
                 <h3>{{instituteInfo?.name}}</h3>
                 <p class="class-details uppercase">
@@ -144,17 +144,17 @@
                                 class="col-md-4 probootstrap-animate fadeInUp probootstrap-animated">
                                 <div class="probootstrap-featured-news-box">
                                     <div class="probootstrap-text">
-                                        <!-- <h3>{{item.AccademicLevel_Course.title}}</h3>
-                                        <span class="probootstrap-date"><i class="icon-calendar"></i>
-                                            {{item.CourseStream.title}} - {{item.CourseStream_Specialization.title}}
+                                        <h3 *ngIf="item.CourseCategory !=null">{{item.CourseCategory.title}}</h3>
+                                        <!-- <span class="probootstrap-date"><i class="icon-calendar"></i>
+                                            {{item.InstituteCourses.Course_Sub_Categories4.title}} - {{item.InstituteCourses.Course_Sub_Categories5.title}}
                                         </span> -->
-
+                                        <p>Course Code :{{item.courseCode}}</p>
                                         <a class="probootstrap-location courseBtn"
                                             routerLink="/student/course/apply/{{item.id}}">APPLY</a>
                                     </div>
                                 </div>
-                            </div>
 
+                            </div>
 
                         </div>
                     </div>

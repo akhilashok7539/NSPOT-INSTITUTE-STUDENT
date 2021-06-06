@@ -86,6 +86,11 @@
             <p> {{item.Institute_Course.CourseStream.title}} -
               {{item.Institute_Course.CourseStream_Specialization.title}} </p>
             <p>Status : {{getStatusText(item.applicationStatus)}}</p>
+            <p *ngIf="item.remarks !=null">Remarks:{{item.remarks}}</p>
+            <p *ngIf="item.dateOfInterview !=null">Date of Interview:{{item.dateOfInterview}}</p>
+            <p *ngIf="item.dateOfReporting !=null">Date of Reporting:{{item.dateOfReporting}}</p>
+            <p *ngIf="item.interviewLink !=null">Interview Link: <a href="{{item.interviewLink}}" target="_blank">{{item.interviewLink}}</a> </p>
+            <button class="btn btn-success" *ngIf="getStatusText(item.applicationStatus) ==='Payment Awaiting'">Pay Fees</button>
           </div>
         </div>
 
@@ -102,9 +107,15 @@
           </div>
           <div class="col-xs-9">
             <h4>{{item.Institute_Course.AccademicLevel_Course.title}} </h4>
-            <p> {{item.Institute_Course.CourseStream.title}} -
-              {{item.Institute_Course.CourseStream_Specialization.title}} </p>
-            <p>Status : {{getStatusText(item.applicationStatus)}}</p>
+            <!-- <p> {{item.Institute_Course.CourseStream.title}} -
+              {{item.Institute_Course.CourseStream_Specialization.title}} </p> -->
+            <p>Status : {{getStatusText(remarks.applicationStatus)}}</p>
+
+            <p *ngIf="item.Institute_Course.remarks !=null">Remarks:{{item.Institute_Course.remarks}}</p>
+            <p *ngIf="item.Institute_Course.dateOfInterview !=null">Date of Interview:{{item.Institute_Course.dateOfInterview}}</p>
+            <p *ngIf="item.Institute_Course.dateOfReporting !=null">Date of Reporting:{{item.Institute_Course.dateOfReporting}}</p>
+            <p *ngIf="item.Institute_Course.interviewLink !=null">Interview Link: <a href="{{item.Institute_Course.interviewLink}}" target="_blank">{{item.Institute_Course.interviewLink}}</a> </p>
+
           </div>
           <div class="col-lg-12">
             <a routerLink="/student/course/checkout/" +{{item.id}}>

@@ -22,7 +22,7 @@ export class CourseCheckoutComponent implements OnInit {
   courseId
   applicationId;
   applicationDetails;
-  studentId = this.authService.userProfile.userType_modelId;
+  studentId = this.authService.userProfile.userType;
 
   createdOrder
   canPay: boolean;

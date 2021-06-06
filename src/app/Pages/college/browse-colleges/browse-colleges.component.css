@@ -5,3 +5,24 @@
   margin-left: 10px;
   border: none;
 }
+
+
+@media screen and (max-width: 992px) {
+  .search-btn-system-view{
+    display: none;
+  }
+.page-heading h2{
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    color: #202020;
+    line-height: 56px;
+    margin-top: 1px;
+    letter-spacing: 4px;
+  }
+
+}
+@media screen and (min-width: 1000px){
+  .search-teachers{
+    display: none;
+  }
+}

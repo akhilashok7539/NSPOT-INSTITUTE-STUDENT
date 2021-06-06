@@ -21,6 +21,7 @@ margin-bottom: 5px;
 .probootstrap-date, .probootstrap-location {
     display: block;
     color: #666;
+    margin-top: 19px;
 }
 .probootstrap-featured-news-box .probootstrap-text {
     position: relative;

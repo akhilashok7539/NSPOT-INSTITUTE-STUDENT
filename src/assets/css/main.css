@@ -273,7 +273,7 @@ nav > ul > li:hover .submenu {
 }
 
 .submenu a:hover {
-  color: #18c967;
+  color: #1702d1;
   left: 14px;
   transition: all 0.2s ease;
 }
@@ -354,7 +354,7 @@ nav > ul > li:hover .submenu {
 }
 
 .register {
-  background-color: #18c967;
+  background-color: #1702d1;
   padding: 9px 10px;
 }
 
@@ -413,7 +413,7 @@ nav > ul > li:hover .submenu {
 .cart .cart-container .cart-item .quantity {
   font-family: "Work Sans", sans-serif;
   font-weight: 500;
-  color: #18c967;
+  color: #1702d1;
   font-size: 14px;
   line-height: 1;
   position: absolute;
@@ -501,7 +501,7 @@ nav > ul > li:hover .submenu {
 }
 
 .search a:hover {
-  color: #18c967;
+  color: #1702d1;
   transition: color 0.3s;
 }
 
@@ -558,7 +558,7 @@ nav > ul > li:hover .submenu {
 }
 
 .lang:hover .selected::before {
-  color: #18c967;
+  color: #1702d1;
 }
 
 .lang li:not(.selected) {
@@ -712,7 +712,7 @@ header .scrolldown:hover > span {
 .feature .readmore {
   font-family: "Montserrat", sans-serif;
   font-size: 11px;
-  color: #18c967;
+  color: #1702d1;
   letter-spacing: 1px;
   margin-top: 25px;
   display: inline-block;
@@ -898,7 +898,7 @@ h3 + p {
 }
 
 .step:hover a {
-  background-color: #18c967;
+  background-color: #1702d1;
   border-color: #68da9b;
   box-shadow: 0 0 0 6px #b7edcf;
   transform: rotate(360deg);
@@ -906,7 +906,7 @@ h3 + p {
 }
 
 .horizontal-divider .divider {
-  border-bottom: solid 1px #18c967;
+  border-bottom: solid 1px #1702d1;
   position: absolute;
   width: 500%;
   top: 32px;
@@ -1043,7 +1043,7 @@ h3 + p {
 }
 
 .popular .tutorial .tutorial-details .greybutton:hover {
-  background-color: #18c967;
+  background-color: #1702d1;
   transition: background-color 0.3s ease;
 }
 
@@ -1093,7 +1093,7 @@ h3 + p {
 }
 
 .testimonials .slick-arrow:hover {
-  background-color: #18c967;
+  background-color: #1702d1;
   transform: rotate(360deg);
   transition: all 0.3s ease;
 }
@@ -1363,7 +1363,7 @@ h3 + p {
 }
 
 .ready .whitebutton:hover {
-  background-color: #18c967;
+  background-color: #1702d1;
   transition: background-color 0.3s ease;
 }
 
@@ -1497,7 +1497,7 @@ h3 + p {
 }
 
 .pricings .mostpopular .price {
-  color: #18c967;
+  color: #1702d1;
 }
 
 .pricings .crew {
@@ -1543,8 +1543,8 @@ h3 + p {
   position: absolute;
   z-index: 100;
   opacity: 0;
-  border-color: #18c967;
-  background-color: #18c967;
+  border-color: #1702d1;
+  background-color: #1702d1;
   transition: opacity 0.5s ease;
   color: #fff;
 }
@@ -1558,7 +1558,7 @@ h3 + p {
   top: 11px;
   line-height: 32px;
   width: 99px;
-  background-color: #18c967;
+  background-color: #1702d1;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   display: none;
@@ -1653,7 +1653,7 @@ h3 + p {
 
 .ui-selectmenu-button.ui-button:hover .ui-icon,
 .ui-selectmenu-button.ui-button:focus .ui-icon {
-  background-color: #18c967;
+  background-color: #1702d1;
   background-image: url("../images/dropdown-hover.png");
   transition: all 0.3s ease;
 }
@@ -1701,7 +1701,7 @@ h3 + p {
 }
 
 .paginations a:hover {
-  background-color: #18c967;
+  background-color: #1702d1;
   color: #fff;
   transition: all 0.3s ease;
   text-decoration: none;
@@ -1944,7 +1944,7 @@ aside.categories ul li a:hover,
 #blog-1 .categories ul li a:hover,
 #blog-2 .categories ul li a:hover {
   text-decoration: none;
-  color: #18c967;
+  color: #1702d1;
   transition: all 0.3s ease;
 }
 
@@ -1977,7 +1977,7 @@ aside.categories ul li:not(:last-child),
   position: absolute;
   right: 0;
   top: 10px;
-  background-color: #18c967;
+  background-color: #1702d1;
   color: #fff;
   font-family: "Raleway", sans-serif;
   font-weight: 300;
@@ -2229,7 +2229,7 @@ aside.categories ul li:not(:last-child),
 }
 
 .option-items li:hover::before {
-  color: #18c967;
+  color: #1702d1;
 }
 
 .option-items li a {
@@ -2736,7 +2736,7 @@ aside.categories ul li:not(:last-child),
 
 #blog-1 .author > a,
 #blog-2 .author > a {
-  color: #18c967;
+  color: #1702d1;
 }
 
 #blog-1 .author > span,
@@ -3083,7 +3083,7 @@ footer .information li a {
 footer .information li a::after {
   display: block;
   content: "";
-  background-color: #18c967;
+  background-color: #1702d1;
   width: 0;
   height: 2px;
   transition: width 0.3s ease;
@@ -3091,7 +3091,7 @@ footer .information li a::after {
 }
 
 footer .information li:hover a {
-  color: #18c967;
+  color: #1702d1;
   transition: color 0.3s ease;
 }
 
