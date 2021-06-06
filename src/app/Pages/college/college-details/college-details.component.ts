@@ -72,8 +72,7 @@ export class CollegeDetailsComponent implements OnInit {
 
     // fetching coureses offered by the college
     this.apiService.doGetRequest(
-      endPoints.Get_course + "?filter[where][instituteId]=" + this.instituteId
-      + "&filter[include]=AccademicLevel_Course&filter[include]=CourseStream&filter[include]=CourseStream_Specialization"
+    `/institute/courses/` + this.instituteId
 
 
     ).subscribe((returnData: any) => {

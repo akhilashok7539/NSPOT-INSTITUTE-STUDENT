@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
     private toastr: ToastrService
   ) { }
 
-  studentId = this.authService.userProfile.userType_modelId;
+  studentId = this.authService.userProfile.userType;
   username = this.authService.userProfile.username;
   studentDetails;
   educations;

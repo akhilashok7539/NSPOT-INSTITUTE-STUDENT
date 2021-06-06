@@ -39,7 +39,7 @@ export class ApplyCourseComponent implements OnInit {
     entrance: []
   }
 
-  studentId = this.authService.userProfile.userType_modelId;
+  studentId = this.authService.userProfile.userType;
   courseId;
 
   constructor(

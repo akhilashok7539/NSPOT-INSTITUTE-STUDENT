@@ -25,7 +25,7 @@ export class BrowseCollegesComponent implements OnInit {
 
   form: FormGroup;
   touched = false;
-  studentId = this.authService.userProfile.userType_modelId;
+  studentId = this.authService.userProfile.userType;
   username = this.authService.userProfile.username;
   studentDetails;
   accademicLevels;
