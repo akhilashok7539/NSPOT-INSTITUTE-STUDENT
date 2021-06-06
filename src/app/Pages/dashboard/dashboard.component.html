@@ -75,13 +75,13 @@
         </div>
       </div>
       <!-- <pre>{{allApplications|json}}</pre> -->
-      <div class="col-sm-12">
+      <div class="col-sm-12" >
         <h4 class="uppercase mb-3">Applied Courses</h4>
-        <div *ngFor="let item of allApplications; let i=index" class="col-xs-12 col-sm-6 list-with-icon">
+        <div *ngFor="let item of allApplications; let i=index" class="col-xs-12 col-sm-6 list-with-icon" style="margin-left: 0px; margin-right: 20px;">
           <div class="col-xs-3">
             <img src="../../../../assets/images/exam-icon.png" class="icon-3" alt="">
           </div>
-          <div class="col-xs-9">
+          <div class="col-xs-9" >
             <h4>{{item.Institute_Course.AccademicLevel_Course.title}} </h4>
             <p> {{item.Institute_Course.CourseStream.title}} -
               {{item.Institute_Course.CourseStream_Specialization.title}} </p>
