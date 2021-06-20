@@ -29,28 +29,26 @@ export class AttendTestComponent implements OnInit {
   submitButtonHide = false;
   verifyButtonHide = true;
   apptitudetestId;
+  durationdetails:any=[];
+  testduration:number;
+  testname;
   constructor(private toaster: ToastrService, private authService: AuthService,
     private activaterouter:ActivatedRoute,private apiservice:ApiService,
     private router: Router, private fb: FormBuilder) {
-      sessionStorage.removeItem("submittedanserss");
+        sessionStorage.removeItem("submittedanserss");
         this.activaterouter.paramMap.subscribe(params =>{
           console.log(params["params"].id);
           this.apptitudetestId = params["params"].id;
 
-          this.apiservice.doGetRequest(`institute/aptitude-tests/questionsDuration/`+this.apptitudetestId).subscribe(
-            data =>{
-
-            },
-            error =>{
-
-            }
-          )
+          
         })
      }
 
   ngOnInit(): void {
     this.date = new Date().toISOString();
-    this.timer(1);
+    
+    this.getapptudetestduration();
+    // this.timer(60);
     this.form = this.fb.group({
       orders: ['', Validators.required]
     });
@@ -65,7 +63,20 @@ export class AttendTestComponent implements OnInit {
     // console.log(event,i);
 
   }
+  getapptudetestduration()
+  {
+    this.apiservice.doGetRequest(`institute/aptitude-tests/questionsDuration/`+this.apptitudetestId).subscribe(
+      data =>{
+        this.durationdetails = data['data']; 
+        this.testduration =this.durationdetails[0]['durationInMinuts'];
+        console.log(this.testduration);
+        this.timer(this.testduration);
+      },
+      error =>{
 
+      }
+    )
+  }
   getapptitudequestions()
   {
     this.apiservice.doGetRequest(`institute/aptitude-tests/`+this.apptitudetestId+`/questions`).subscribe(
@@ -92,6 +103,7 @@ export class AttendTestComponent implements OnInit {
   }
   timer(minute) {
     // let minute = 1;
+    console.log(minute);
     let seconds: number = minute * 60;
     let textSec: any = "0";
     let statSec: number = 60;
