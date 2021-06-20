@@ -15,7 +15,7 @@ declare var Razorpay: any;
 })
 
 export class CourseCheckoutComponent implements OnInit {
-
+  options:any;
   courseFeeDetails;
   studentDetails
   totalFees;
@@ -28,6 +28,7 @@ export class CourseCheckoutComponent implements OnInit {
   canPay: boolean;
   cantPayReason = "";
   didPay: boolean;
+  rzp1: any;
 
   constructor(
     private router: Router,
@@ -176,6 +177,39 @@ export class CourseCheckoutComponent implements OnInit {
       alert("Order failed")
     })
   }
-
+  pay()
+  {
+    let totalfeeAmount = this.totalFees;
+   var options = {
+      "key": "rzp_test_g8vPt9nJiYuDMj",
+      "description": "Course fee for: " + this.courseFeeDetails.Institute_Course.AccademicLevel_Course.title,
+      "amount":parseInt(totalfeeAmount),
+      "name": "NSPOT",
+      "prefill": {
+        "name": this.studentDetails.firstName + " " + this.studentDetails.middleName + " " + this.studentDetails.lastName,
+        "email": this.studentDetails.email,
+        "contact": ""
+      },
+      "notes": {
+        "address": "NSPOT CONSULTANCY SERVICES PRIVATE LIMITED 39/2475-B1, Suite#118 LR Towers, SJRRA 104, S Janatha Rd, Palarivattom, Kochi, Kerala 682025"
+      },
+       "currency": "INR",
+     
+   };
+   console.log(options);
+   
+    this.rzp1 = new window.Razorpay(options);
+  this.rzp1.open();
+  this.rzp1.on('payment.failed', function (response){
+      console.log(response);
+      
+           
+    });
+    this.rzp1.on('payment.success', function (response){
+      console.log(response);
+      
+           
+    });
+  }
 
 }

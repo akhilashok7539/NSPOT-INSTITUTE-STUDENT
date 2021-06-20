@@ -6,20 +6,22 @@ import { AuthService } from '../../services/auth.service';
 import { endPoints } from '../../config/endPoints';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
-
+declare var  Razorpay:any;
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  rzp1:any;
+  
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private apiService: ApiService,
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    
   ) { }
 
   studentId = this.authService.userProfile.userType;
@@ -35,7 +37,11 @@ export class DashboardComponent implements OnInit {
   resubmitApplications = new Array();
 
   baseApiUrl = environment.baseApiUrl;
-
+  options = {
+    "key": "rzp_test_g8vPt9nJiYuDMj",
+    "amount": "2000",
+    "name": "Akhil",
+ };
   ngOnInit(): void {
     // fetching student details
     this.apiService.doGetRequest(endPoints.student + this.studentId).subscribe((returnData: any) => {
@@ -94,13 +100,13 @@ export class DashboardComponent implements OnInit {
       console.error(error);
       this.toastr.error('Failed to fetch application details')
     });
-
+    
   }
 
   getStatusText(status) {
     switch (status) {
       case 'pre-application-applied':
-        return "Applied"
+        return "Course-Applied"
         break;
 
       case 'pre-application-approved':
@@ -124,5 +130,58 @@ export class DashboardComponent implements OnInit {
         break;
     }
   }
-
+  pay(){
+  //   var options = {
+  //     "key": "rzp_test_g8vPt9nJiYuDMj", 
+  //     "amount": "50000",
+  //     "currency": "INR",
+  //     "name": "Acme Corp",
+  //     "description": "Test Transaction",
+  //     "image": "https://example.com/your_logo",
+  //     "order_id": "WCVcYAWsnAKjtWGLwqp3lCiu", 
+  //     "handler": function (response){
+  //         alert(response.razorpay_payment_id);
+  //         alert(response.razorpay_order_id);
+  //         alert(response.razorpay_signature)
+  //     },
+  //     "prefill": {
+  //         "name": "Gaurav Kumar",
+  //         "email": "gaurav.kumar@example.com",
+  //         "contact": "9999999999"
+  //     },
+  //     "notes": {
+  //         "address": "Razorpay Corporate Office"
+  //     },
+  //     "theme": {
+  //         "color": "#3399cc"
+  //     }
+  // };
+  // var rzp1 = new Razorpay(options);
+  // rzp1.open();
+  // rzp1.on('payment.failed', function (response){
+  //   console.log(response);
+    
+  //         alert(response.error.code);
+  //         alert(response.error.description);
+  //         alert(response.error.source);
+  //         alert(response.error.step);
+  //         alert(response.error.reason);
+  //         alert(response.error.metadata.order_id);
+  //         alert(response.error.metadata.payment_id);
+  // });
+  
+  this.rzp1 = new window.Razorpay(this.options);
+  this.rzp1.open();
+  this.rzp1.on('payment.failed', function (response){
+      console.log(response);
+      
+           
+    });
+    this.rzp1.on('payment.success', function (response){
+      console.log(response);
+      
+           
+    });
+  }
+ 
 }

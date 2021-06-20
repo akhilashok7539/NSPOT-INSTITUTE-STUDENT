@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +31,9 @@ import { CourseDetailsComponent } from './Pages/course/course-details/course-det
 import { ApplyCourseComponent } from './Pages/course/apply-course/apply-course.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CourseCheckoutComponent } from './Pages/course/course-checkout/course-checkout.component';
+import { AttendTestComponent } from './Pages/attend-test/attend-test.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import {LoaderInterceptor} from './services/loadingInterceptor';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,7 @@ import { CourseCheckoutComponent } from './Pages/course/course-checkout/course-c
     CourseDetailsComponent,
     ApplyCourseComponent,
     CourseCheckoutComponent,
+    AttendTestComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,9 +70,13 @@ import { CourseCheckoutComponent } from './Pages/course/course-checkout/course-c
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
+    NgxSpinnerModule,
+
     NgbModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

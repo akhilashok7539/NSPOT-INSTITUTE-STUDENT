@@ -85,12 +85,30 @@
             <h4>{{item.Institute_Course.AccademicLevel_Course.title}} </h4>
             <p> {{item.Institute_Course.CourseStream.title}} -
               {{item.Institute_Course.CourseStream_Specialization.title}} </p>
-            <p>Status : {{getStatusText(item.applicationStatus)}}</p>
+            <p style="    color: green;
+            font-weight: bold;">Status : {{getStatusText(item.applicationStatus)}}</p>
             <p *ngIf="item.remarks !=null">Remarks:{{item.remarks}}</p>
-            <p *ngIf="item.dateOfInterview !=null">Date of Interview:{{item.dateOfInterview}}</p>
-            <p *ngIf="item.dateOfReporting !=null">Date of Reporting:{{item.dateOfReporting}}</p>
+            <p *ngIf="item.dateOfInterview !=null">Date of Interview:{{item.dateOfInterview | date:'dd MMM y'}}</p>
+            <p *ngIf="item.dateOfReporting !=null">Date of Reporting:{{item.dateOfReporting | date:'dd MMM y'}}</p>
             <p *ngIf="item.interviewLink !=null">Interview Link: <a href="{{item.interviewLink}}" target="_blank">{{item.interviewLink}}</a> </p>
-            <button class="btn btn-success" *ngIf="getStatusText(item.applicationStatus) ==='Payment Awaiting'">Pay Fees</button>
+            <!-- <button class="btn btn-success" *ngIf="getStatusText(item.applicationStatus) ==='Payment Awaiting'" (click)="pay()" >Pay Fees</button> -->
+           
+            <div class="col-lg-12" *ngIf="getStatusText(item.applicationStatus) ==='Payment Awaiting'">
+             <a ><button lass="btn btn-success greybutton pull-right" style="border: none;
+              padding-top: 6px;
+              padding-bottom: 6px;
+              float: right;
+              margin-top: 17px;
+              background: lightseagreen;
+              color: white;
+              width: 32%;
+              margin-left: 5px;
+              border-radius: 6px;" routerLink="/student/attend-test/{{item.aptitudeTestId}}">Attend Test</button></a> 
+              <a routerLink="/student/course/checkout/{{item.id}}">
+                <button class="btn btn-success greybutton pull-right" style="border: none;
+                padding-top: 6px;
+                padding-bottom: 6px;">Pay Now</button></a>
+            </div>
           </div>
         </div>
 
@@ -109,17 +127,19 @@
             <h4>{{item.Institute_Course.AccademicLevel_Course.title}} </h4>
             <!-- <p> {{item.Institute_Course.CourseStream.title}} -
               {{item.Institute_Course.CourseStream_Specialization.title}} </p> -->
-            <p>Status : {{getStatusText(remarks.applicationStatus)}}</p>
+            <p>Status : {{getStatusText(item.applicationStatus)}}</p>
 
             <p *ngIf="item.Institute_Course.remarks !=null">Remarks:{{item.Institute_Course.remarks}}</p>
-            <p *ngIf="item.Institute_Course.dateOfInterview !=null">Date of Interview:{{item.Institute_Course.dateOfInterview}}</p>
-            <p *ngIf="item.Institute_Course.dateOfReporting !=null">Date of Reporting:{{item.Institute_Course.dateOfReporting}}</p>
+            <p *ngIf="item.Institute_Course.dateOfInterview !=null">Date of Interview:{{item.Institute_Course.dateOfInterview | date:'dd MMM y'}}</p>
+            <p *ngIf="item.Institute_Course.dateOfReporting !=null">Date of Reporting:{{item.Institute_Course.dateOfReporting | date:'dd MMM y'}}</p>
             <p *ngIf="item.Institute_Course.interviewLink !=null">Interview Link: <a href="{{item.Institute_Course.interviewLink}}" target="_blank">{{item.Institute_Course.interviewLink}}</a> </p>
 
           </div>
           <div class="col-lg-12">
-            <a routerLink="/student/course/checkout/" +{{item.id}}>
-              <button class="btn btn-success greybutton pull-right">Pay Now</button></a>
+            <a routerLink="/student/course/checkout/{{item.id}}">
+              <button class="btn btn-success greybutton pull-right" style="border: none;
+              padding-top: 6px;
+              padding-bottom: 6px;">Pay Now</button></a>
           </div>
         </div>
         <div *ngIf="acceptedPreApplications.length==0" class="col-xs-12 col-sm-6 list-with-icon text-center p-3">
