@@ -1,0 +1,17 @@
+h3{
+  text-align: center;
+}
+.card
+{
+  margin-bottom: 20px;
+}
+.btn-success
+{
+  float: right;
+  width: 33%;
+}
+.btn-danger
+{
+  float: right;
+  width: 33%;
+}

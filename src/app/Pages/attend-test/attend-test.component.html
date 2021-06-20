@@ -1,0 +1,64 @@
+<div class="page-heading text-center">
+  <div class="container">
+    <div class="pull-right">
+    </div>
+    <h2 class="uppercase">Attend Apptitude tests</h2>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+
+      <h3> {{date | date:'dd MMM y'}}</h3>
+    </div>
+    <div class="col-sm-4">
+      <h3>EXAM NAME</h3>
+    </div>
+    <div class="col-sm-4">
+
+      <h3>Time Left {{display}}</h3>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="form">
+
+        <div class="card" *ngFor="let questions of questionsarray">
+          <div class="card-header">
+            <h6>{{arrayindex+1}}) {{questions.question}}?</h6>
+          </div>
+        
+          <div *ngFor="let q of questions.Aptitude_Question_Options;let i=index" style="    margin-top: 19px;">
+           
+            <input formControlName="orders" [ngClass]="{ 'is-invalid': submitted && f.orders.errors }"  type="radio"   value="{{q.id}}" (change)="checkedvalue($event,'questions')" >
+            &nbsp; <label >{{q.option}}</label>
+
+            <div *ngIf="submitted && f.orders.errors" class="invalid-feedback">
+              <div *ngIf="f.orders.errors.required">Choose any option</div>
+          </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-sm-6">
+              
+            </div> 
+            <div class="col-sm-6">
+          <button class="btn btn-success" [disabled]="form.invalid"  *ngIf="submitButtonHide == false" (click)="submit()">Next</button>
+
+          <button class="btn btn-danger"  (click)="verify()"   *ngIf="verifyButtonHide == false">Verify</button>
+              
+            </div>
+          </div>
+          <div class="card-footer text-muted" style="margin-top: 15px;">
+            <p>Total Number of questions {{arrayindex+1}} / {{questionaraylength}}</p>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

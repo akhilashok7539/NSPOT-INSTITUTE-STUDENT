@@ -12,7 +12,7 @@ export const environment = {
   institutePortalUrl: '',
   studentPortalUrl: '',
 
-  RAZORPAY_KEY_ID: "rzp_test_tmR2af2TNK0qLo",
+  RAZORPAY_KEY_ID: "rzp_test_g8vPt9nJiYuDMj",
 };
 
 /*
