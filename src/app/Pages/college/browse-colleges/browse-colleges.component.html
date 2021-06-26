@@ -5,8 +5,32 @@
         <h2 class="uppercase">Browse Colleges and courses</h2>
     </div>
 </div>
+<div class="row">
+    <!-- <div class="container">
+        <div class="col-sm-6"> -->
+    <div class="card" style="    padding: 7px;
+            width: 30%;border-radius: 57px;
+            margin: 0 auto;
+            margin-top: 19px;">
 
-<div class="container popular">
+        <div class="row">
+            <div class="col-sm-6">
+                <button class="btn btn-dark" [ngClass]="{'selected':active_index === 1}" (click)='Onselected(1)'
+                    style="width: 100%;">Search By Location</button>
+            </div>
+            <div class="col-sm-6">
+                <button class="btn btn-dark" [ngClass]="{'selected':active_index === 2}" (click)='Onselected(2)'
+                    style="width: 100%;">Others</button>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- </div>
+        
+    </div> -->
+</div>
+<div class="container popular" *ngIf="active_index === 1">
     <form [formGroup]="form" (submit)="onSubmit()" class="contact">
         <div class="row toolbar">
 
@@ -64,11 +88,11 @@
                 </select>
                 <app-control-messages [touched]="touched" [control]="f.CourseSubCategory5Id">
                 </app-control-messages>
-                <button type="submit" class="search-btn-system-view"  style="    position: absolute;">
-                <img src="./assets/images/search.png" alt="">
+                <button type="submit" class="search-btn-system-view" style="    position: absolute;">
+                    <img src="./assets/images/search.png" alt="">
                 </button>
             </div>
-        
+
 
             <div class="col-sm-6 col-xs-12 search-button" style="    margin: 0 auto;
             margin-top: 26px;">
@@ -144,4 +168,34 @@
             </div> -->
         </div>
     </div>
+</div>
+<div class="container popular" *ngIf="active_index === 2">
+    <form class="contact">
+    <div class="row toolbar">
+
+        <!-- Accademic level -->
+        <div class="col-md-5">
+            <select >
+                <option value="">Choose State</option>
+              
+            </select>
+        
+        </div>
+        <div class="col-md-5">
+            <select >
+                <option value="">Choose District</option>
+              
+            </select>
+        
+        </div>
+        <div class="col-sm-2 search-button" >
+            <button type="submit" class="search-btn-system-view" style="     width: 116%;
+            border-radius: 10px; color: white;  position: absolute;">
+                <img src="./assets/images/search.png" alt="">
+                Search Course
+            </button>
+        </div>
+    </div>
+    </form>
+
 </div>

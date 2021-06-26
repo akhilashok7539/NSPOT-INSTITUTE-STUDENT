@@ -14,7 +14,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./browse-colleges.component.css']
 })
 export class BrowseCollegesComponent implements OnInit {
-
+  active_index = 1;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -174,4 +174,8 @@ export class BrowseCollegesComponent implements OnInit {
   }
 
   get f() { return this.form.controls; }
+  Onselected(s)
+  {
+    this.active_index =s;
+  }
 }

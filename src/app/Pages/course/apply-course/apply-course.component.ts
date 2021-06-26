@@ -227,35 +227,35 @@ export class ApplyCourseComponent implements OnInit {
   }
 
   loadStudentDetails() {
-    // fetching user details
-    this.apiService.doGetRequest(endPoints.student + this.studentId).subscribe((returnData: any) => {
-      // console.log(returnData)
-      const groupPersonalInfo = this.form.controls['personalInfo'] as FormGroup;
-      const groupPermanentAddr = this.form.controls['permanentAddress'] as FormGroup;
-      const groupCommunicationAddr = this.form.controls['communicationAddress'] as FormGroup;
-      this.studentDetails = returnData.data
-      groupPersonalInfo.controls.fullName.setValue(this.studentDetails.firstName + " " + this.studentDetails.middleName + " " + this.studentDetails.lastName)
-      groupPersonalInfo.controls.mothersName.setValue(this.studentDetails.mothersFirstName + " " + this.studentDetails.mothersMiddleName + " " + this.studentDetails.mothersLastName)
-      groupPersonalInfo.controls.fathersName.setValue(this.studentDetails.fathersFirstName + " " + this.studentDetails.fathersMiddleName + " " + this.studentDetails.fathersLastName)
-      groupPersonalInfo.controls.guardiansName.setValue(this.studentDetails.guardiansFirstName + " " + this.studentDetails.guardiansMiddleName + " " + this.studentDetails.guardiansLastName)
-      for (let key in returnData.data) {
-        let value = returnData.data[key];
-        if (returnData.data[key] === true) {
-          value = "Yes"
-        }
-        else if (returnData.data[key] === false) {
-          value = "No"
-        }
-        if (groupPersonalInfo.controls[key])
-          groupPersonalInfo.controls[key].setValue(value)
-        if (groupPermanentAddr.controls[key])
-          groupPermanentAddr.controls[key].setValue(value)
-        if (groupCommunicationAddr.controls[key])
-          groupCommunicationAddr.controls[key].setValue(value)
-      }
-    }, error => {
-      console.error(error);
-    });
+  
+    // this.apiService.doGetRequest(endPoints.student + this.studentId).subscribe((returnData: any) => {
+      
+    //   const groupPersonalInfo = this.form.controls['personalInfo'] as FormGroup;
+    //   const groupPermanentAddr = this.form.controls['permanentAddress'] as FormGroup;
+    //   const groupCommunicationAddr = this.form.controls['communicationAddress'] as FormGroup;
+    //   this.studentDetails = returnData.data
+    //   groupPersonalInfo.controls.fullName.setValue(this.studentDetails.firstName + " " + this.studentDetails.middleName + " " + this.studentDetails.lastName)
+    //   groupPersonalInfo.controls.mothersName.setValue(this.studentDetails.mothersFirstName + " " + this.studentDetails.mothersMiddleName + " " + this.studentDetails.mothersLastName)
+    //   groupPersonalInfo.controls.fathersName.setValue(this.studentDetails.fathersFirstName + " " + this.studentDetails.fathersMiddleName + " " + this.studentDetails.fathersLastName)
+    //   groupPersonalInfo.controls.guardiansName.setValue(this.studentDetails.guardiansFirstName + " " + this.studentDetails.guardiansMiddleName + " " + this.studentDetails.guardiansLastName)
+    //   for (let key in returnData.data) {
+    //     let value = returnData.data[key];
+    //     if (returnData.data[key] === true) {
+    //       value = "Yes"
+    //     }
+    //     else if (returnData.data[key] === false) {
+    //       value = "No"
+    //     }
+    //     if (groupPersonalInfo.controls[key])
+    //       groupPersonalInfo.controls[key].setValue(value)
+    //     if (groupPermanentAddr.controls[key])
+    //       groupPermanentAddr.controls[key].setValue(value)
+    //     if (groupCommunicationAddr.controls[key])
+    //       groupCommunicationAddr.controls[key].setValue(value)
+    //   }
+    // }, error => {
+    //   console.error(error);
+    // });
 
     // Get education details
     this.apiService.doGetRequest(endPoints.Get_studentEducations + this.studentId).subscribe((returnData: any) => {
