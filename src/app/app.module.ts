@@ -34,6 +34,7 @@ import { CourseCheckoutComponent } from './Pages/course/course-checkout/course-c
 import { AttendTestComponent } from './Pages/attend-test/attend-test.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {LoaderInterceptor} from './services/loadingInterceptor';
+import { PaymentHistoryComponent } from './Pages/payment-history/payment-history.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import {LoaderInterceptor} from './services/loadingInterceptor';
     ApplyCourseComponent,
     CourseCheckoutComponent,
     AttendTestComponent,
+    PaymentHistoryComponent,
   ],
   imports: [
     BrowserModule,

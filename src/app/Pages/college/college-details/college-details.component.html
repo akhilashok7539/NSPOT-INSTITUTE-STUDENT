@@ -144,13 +144,13 @@
                                 class="col-md-4 probootstrap-animate fadeInUp probootstrap-animated">
                                 <div class="probootstrap-featured-news-box">
                                     <div class="probootstrap-text">
-                                        <h3 *ngIf="item.CourseCategory !=null">{{item.CourseCategory.title}}</h3>
+                                        <h3 *ngIf="item.CourseName !=null">{{item.CourseName}}</h3>
                                         <!-- <span class="probootstrap-date"><i class="icon-calendar"></i>
                                             {{item.InstituteCourses.Course_Sub_Categories4.title}} - {{item.InstituteCourses.Course_Sub_Categories5.title}}
                                         </span> -->
-                                        <p>Course Code :{{item.courseCode}}</p>
+                                        <p>Course Code :{{item.item.courseCode}}</p>
                                         <a class="probootstrap-location courseBtn"
-                                            routerLink="/student/course/apply/{{item.id}}">APPLY</a>
+                                            routerLink="/student/course/apply/{{item.item.id}}">APPLY</a>
                                     </div>
                                 </div>
 

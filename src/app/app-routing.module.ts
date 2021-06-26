@@ -19,6 +19,7 @@ import { CourseDetailsComponent } from './Pages/course/course-details/course-det
 import { ApplyCourseComponent } from './Pages/course/apply-course/apply-course.component';
 import { CourseCheckoutComponent } from './Pages/course/course-checkout/course-checkout.component';
 import { AttendTestComponent } from './Pages/attend-test/attend-test.component';
+import { PaymentHistoryComponent } from './Pages/payment-history/payment-history.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,8 @@ const routes: Routes = [
       { path: 'course-details/:courseId', component: CourseDetailsComponent },
       { path: 'contact-us', component: ContactUsComponent },
       { path: 'attend-test/:id', component: AttendTestComponent },
+      { path: 'payment-history', component: PaymentHistoryComponent },
+
       {
         path: 'course',
         children: [

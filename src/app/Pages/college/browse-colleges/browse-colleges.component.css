@@ -26,3 +26,23 @@
     display: none;
   }
 }
+.selected{
+  background-color: #f8ad25;
+  outline: none;
+}
+.btn-dark .selected::before{
+  width: 100%;
+  background: white !important;
+  color: black;
+  /* box-shadow: 0 0 12px 2px rgb(0 0 0 / 13%); */
+  border: none;
+  outline: none;
+}
+.btn-dark:hover{
+  color: white;
+}
+.btn-dark{
+  outline: none;
+  border: none;
+  border-radius: 57px;
+}
