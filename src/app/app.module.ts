@@ -35,6 +35,7 @@ import { AttendTestComponent } from './Pages/attend-test/attend-test.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {LoaderInterceptor} from './services/loadingInterceptor';
 import { PaymentHistoryComponent } from './Pages/payment-history/payment-history.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,8 @@ import { PaymentHistoryComponent } from './Pages/payment-history/payment-history
     NgbModule
   ],
   providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
+
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
