@@ -2,7 +2,7 @@
   <div class="container teacher-page mb-4">
     <div class="row">
       <div class="col-sm-3 text-center" *ngIf="certificates&&certificates.length>0">
-        <img src="{{baseApiUrl}}{{certificates[0]?.passportSizePhotoFile}}" alt="Avatar" class="teacher-avatar">
+        <img src="{{baseApiUrl}}{{certificates[0]?.passportSizePhotoFile}}" alt="Avatar" class="teacher-avatar" (error) ="onImgError($event)">
 
       </div>
       <div class="col-sm-9">
@@ -37,8 +37,223 @@
       </div>
     </div>
   </div>
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-sm-12">
+      <div class="card media">
+        <a class="btn btn btn-info" [class.phase-active]="activeButton === 1" (click)="showPhase(1)"
+          style="margin-bottom: 5px;width: max-content;margin-left: 8px;">Education</a>
 
-  <div class="container mb-5">
+        <a class="btn btn btn-info" [class.phase-active]="activeButton === 2" (click)="showPhase(2)"
+          style="margin-bottom: 5px;width: max-content;margin-left: 8px;">Entrance Exams</a>
+
+        <a class="btn btn btn-info" [class.phase-active]="activeButton === 3" (click)="showPhase(3)"
+          style=" margin-bottom: 5px;width: max-content;margin-left: 8px;">Applied Courses</a>
+
+        <a class="btn btn btn-info" [class.phase-active]="activeButton === 4" (click)="showPhase(4)"
+          style=" margin-bottom: 5px;width: max-content;margin-left: 8px;">Approved Pre-Applciations Courses</a>
+        <a class="btn btn btn-info" [class.phase-active]="activeButton === 5" (click)="showPhase(5)"
+          style="margin-bottom: 5px;width: max-content;margin-left: 8px;">Accepted Applciations </a>
+
+        <a class="btn btn btn-info" [class.phase-active]="activeButton === 6" (click)="showPhase(6)"
+          style="margin-bottom: 5px;width: max-content;margin-left: 8px;">Rejected Applications</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div *ngIf="activeButton === 1">
+
+    <div class="container mb-5">
+
+      <div class="row">
+  
+        <div class="col-sm-12">
+          <button class="btn btn-dark" style="    float: right;
+          margin-right: 89px;
+          margin-top: 11px;"> Add New</button>
+          <div *ngFor="let item of educations; let i=index" class="col-xs-12 col-sm-6 list-with-icon">
+            <div class="col-xs-3">
+              <img src="../../../../assets/images/institute-icon.svg" class="icon-3" alt="">
+            </div>
+            <div class="col-xs-9">
+              <h4>{{item.schoolName}} </h4>
+              <p>{{item.specialization}} </p>
+              <p><span>{{item.startDate | date}}</span> - <span>{{item.endDate|date}}</span></p>
+            </div>
+          </div>
+          <div *ngIf="educations?.length==0" class="col-xs-12 col-sm-6 list-with-icon text-center p-3">
+            <p>No Entrance Exam Added</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="activeButton === 2">
+    <div class="container mb-5">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <button class="btn btn-dark" style="    float: right;
+          margin-right: 89px;
+          margin-top: 11px;"> Add New</button>
+          <div *ngFor="let item of entranceExams; let i=index" class="col-xs-12 col-sm-6 list-with-icon">
+            <div class="col-xs-3">
+              <img src="../../../../assets/images/exam-icon.png" class="icon-3" alt="">
+            </div>
+            <div class="col-xs-9">
+              <h4>{{item.qualifiedEntrance}} </h4>
+              <p>{{item.yearOfQualification}} </p>
+            </div>
+           
+          </div>
+          <div *ngIf="entranceExams?.length==0" class="col-xs-12 col-sm-6 list-with-icon text-center p-3">
+            <p>No Entrance Exam Added</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="activeButton === 3">
+    <div class="container mb-5">
+
+      <div class="row">
+        <div class="col-sm-6" *ngFor="let item of allApplications; let i=index" >
+          <div class=" list-with-icon" 
+            style="margin-left: 0px; margin-right: 20px;
+            height: 100%;
+        ">
+            <div class="col-xs-3">
+              <img src="../../../../assets/images/exam-icon.png" class="icon-3" alt="">
+            </div>
+            <div class="col-xs-9">
+              <h4>{{item.Institute_Course.AccademicLevel_Course.title}} </h4>
+              <p> {{item.Institute_Course.CourseStream.title}} -
+                {{item.Institute_Course.CourseStream_Specialization.title}} </p>
+              <p style="    color: green;
+            font-weight: bold;">Status : {{getStatusText(item.applicationStatus)}}</p>
+              <p *ngIf="item.remarks !=null">Remarks:{{item.remarks}}</p>
+              <p *ngIf="item.dateOfInterview !=null">Date of Interview:{{item.dateOfInterview | date:'dd MMM y'}}</p>
+              <p *ngIf="item.dateOfReporting !=null">Date of Reporting:{{item.dateOfReporting | date:'dd MMM y'}}</p>
+              <p *ngIf="item.interviewLink !=null">Interview Link: <a href="{{item.interviewLink}}"
+                  target="_blank">{{item.interviewLink}}</a> </p>
+              <!-- <button class="btn btn-success" *ngIf="getStatusText(item.applicationStatus) ==='Payment Awaiting'" (click)="pay()" >Pay Fees</button> -->
+
+              <div class="col-lg-12" *ngIf="getStatusText(item.applicationStatus) ==='Payment Awaiting'">
+                <a><button lass="btn btn-success greybutton pull-right" style="border: none;
+              padding-top: 6px;
+              padding-bottom: 6px;
+              float: right;
+              margin-top: 17px;
+              background: lightseagreen;
+              color: white;
+              width: 32%;
+              margin-left: 5px;
+              border-radius: 6px;" routerLink="/student/attend-test/{{item.aptitudeTestId}}">Attend Test</button></a>
+                <a routerLink="/student/course/checkout/{{item.id}}">
+                  <button class="btn btn-success greybutton pull-right" style="border: none;
+                padding-top: 6px;
+                padding-bottom: 6px;">Pay Now</button></a>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="allApplications.length==0" class="col-xs-12 col-sm-6 list-with-icon text-center p-3">
+            <p> -- Empty -- </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="activeButton === 4">
+    <div class="container mb-5">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div *ngFor="let item of acceptedPreApplications; let i=index" class="col-xs-12 col-sm-6 list-with-icon">
+            <div class="col-xs-3">
+              <img src="../../../../assets/images/exam-icon.png" class="icon-3" alt="">
+            </div>
+            <div class="col-xs-9">
+              <h4>{{item.Institute_Course.AccademicLevel_Course.title}} </h4>
+              <!-- <p> {{item.Institute_Course.CourseStream.title}} -
+          {{item.Institute_Course.CourseStream_Specialization.title}} </p> -->
+              <p>Status : {{getStatusText(item.applicationStatus)}}</p>
+
+              <p *ngIf="item.Institute_Course.remarks !=null">Remarks:{{item.Institute_Course.remarks}}</p>
+              <p *ngIf="item.Institute_Course.dateOfInterview !=null">Date of
+                Interview:{{item.Institute_Course.dateOfInterview | date:'dd MMM y'}}</p>
+              <p *ngIf="item.Institute_Course.dateOfReporting !=null">Date of
+                Reporting:{{item.Institute_Course.dateOfReporting | date:'dd MMM y'}}</p>
+              <p *ngIf="item.Institute_Course.interviewLink !=null">Interview Link: <a
+                  href="{{item.Institute_Course.interviewLink}}"
+                  target="_blank">{{item.Institute_Course.interviewLink}}</a>
+              </p>
+
+            </div>
+            <div class="col-lg-12">
+              <a routerLink="/student/course/checkout/{{item.id}}">
+                <button class="btn btn-success greybutton pull-right" style="border: none;
+          padding-top: 6px;
+          padding-bottom: 6px;">Pay Now</button></a>
+            </div>
+          </div>
+          <div *ngIf="acceptedPreApplications.length==0" class="col-xs-12 col-sm-6 list-with-icon text-center p-3">
+            <p> -- Empty -- </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="activeButton === 5">
+    <div class="container mb-5">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div *ngFor="let item of acceptedApplications; let i=index" class="col-xs-12 col-sm-6 list-with-icon">
+            <div class="col-xs-3">
+              <img src="../../../../assets/images/exam-icon.png" class="icon-3" alt="">
+            </div>
+            <div class="col-xs-9">
+              <h4>{{item.Institute_Course.AccademicLevel_Course.title}} </h4>
+              <p> {{item.Institute_Course.CourseStream.title}} -
+                {{item.Institute_Course.CourseStream_Specialization.title}} </p>
+              <p>Status : {{getStatusText(item.applicationStatus)}}</p>
+            </div>
+
+          </div>
+          <div *ngIf="acceptedApplications.length==0" class="col-xs-12 col-sm-6 list-with-icon text-center p-3">
+            <p> -- Empty -- </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="activeButton === 6">
+    <div class="container mb-5">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div *ngFor="let item of rejectedApplications; let i=index" class="col-xs-12 col-sm-6 list-with-icon">
+            <div class="col-xs-3">
+              <img src="../../../../assets/images/exam-icon.png" class="icon-3" alt="">
+            </div>
+            <div class="col-xs-9">
+              <h4>{{item.Institute_Course.AccademicLevel_Course.title}} </h4>
+              <p> {{item.Institute_Course.CourseStream.title}} -
+                {{item.Institute_Course.CourseStream_Specialization.title}} </p>
+              <p>Status : {{getStatusText(item.applicationStatus)}}</p>
+            </div>
+          </div>
+          <div *ngIf="rejectedApplications.length==0" class="col-xs-12 col-sm-6 list-with-icon text-center p-3">
+            <p> -- Empty -- </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="container mb-5">
 
     <div class="row">
       <div class="col-sm-12">
@@ -74,14 +289,15 @@
           <p>No Entrance Exam Added</p>
         </div>
       </div>
-      <!-- <pre>{{allApplications|json}}</pre> -->
-      <div class="col-sm-12" >
+    
+      <div class="col-sm-12">
         <h4 class="uppercase mb-3">Applied Courses</h4>
-        <div *ngFor="let item of allApplications; let i=index" class="col-xs-12 col-sm-6 list-with-icon" style="margin-left: 0px; margin-right: 20px;">
+        <div *ngFor="let item of allApplications; let i=index" class="col-xs-12 col-sm-6 list-with-icon"
+          style="margin-left: 0px; margin-right: 20px;">
           <div class="col-xs-3">
             <img src="../../../../assets/images/exam-icon.png" class="icon-3" alt="">
           </div>
-          <div class="col-xs-9" >
+          <div class="col-xs-9">
             <h4>{{item.Institute_Course.AccademicLevel_Course.title}} </h4>
             <p> {{item.Institute_Course.CourseStream.title}} -
               {{item.Institute_Course.CourseStream_Specialization.title}} </p>
@@ -90,11 +306,11 @@
             <p *ngIf="item.remarks !=null">Remarks:{{item.remarks}}</p>
             <p *ngIf="item.dateOfInterview !=null">Date of Interview:{{item.dateOfInterview | date:'dd MMM y'}}</p>
             <p *ngIf="item.dateOfReporting !=null">Date of Reporting:{{item.dateOfReporting | date:'dd MMM y'}}</p>
-            <p *ngIf="item.interviewLink !=null">Interview Link: <a href="{{item.interviewLink}}" target="_blank">{{item.interviewLink}}</a> </p>
-            <!-- <button class="btn btn-success" *ngIf="getStatusText(item.applicationStatus) ==='Payment Awaiting'" (click)="pay()" >Pay Fees</button> -->
-           
+            <p *ngIf="item.interviewLink !=null">Interview Link: <a href="{{item.interviewLink}}"
+                target="_blank">{{item.interviewLink}}</a> </p>
+
             <div class="col-lg-12" *ngIf="getStatusText(item.applicationStatus) ==='Payment Awaiting'">
-             <a ><button lass="btn btn-success greybutton pull-right" style="border: none;
+              <a><button lass="btn btn-success greybutton pull-right" style="border: none;
               padding-top: 6px;
               padding-bottom: 6px;
               float: right;
@@ -103,7 +319,7 @@
               color: white;
               width: 32%;
               margin-left: 5px;
-              border-radius: 6px;" routerLink="/student/attend-test/{{item.aptitudeTestId}}">Attend Test</button></a> 
+              border-radius: 6px;" routerLink="/student/attend-test/{{item.aptitudeTestId}}">Attend Test</button></a>
               <a routerLink="/student/course/checkout/{{item.id}}">
                 <button class="btn btn-success greybutton pull-right" style="border: none;
                 padding-top: 6px;
@@ -125,14 +341,17 @@
           </div>
           <div class="col-xs-9">
             <h4>{{item.Institute_Course.AccademicLevel_Course.title}} </h4>
-            <!-- <p> {{item.Institute_Course.CourseStream.title}} -
-              {{item.Institute_Course.CourseStream_Specialization.title}} </p> -->
+          
             <p>Status : {{getStatusText(item.applicationStatus)}}</p>
 
             <p *ngIf="item.Institute_Course.remarks !=null">Remarks:{{item.Institute_Course.remarks}}</p>
-            <p *ngIf="item.Institute_Course.dateOfInterview !=null">Date of Interview:{{item.Institute_Course.dateOfInterview | date:'dd MMM y'}}</p>
-            <p *ngIf="item.Institute_Course.dateOfReporting !=null">Date of Reporting:{{item.Institute_Course.dateOfReporting | date:'dd MMM y'}}</p>
-            <p *ngIf="item.Institute_Course.interviewLink !=null">Interview Link: <a href="{{item.Institute_Course.interviewLink}}" target="_blank">{{item.Institute_Course.interviewLink}}</a> </p>
+            <p *ngIf="item.Institute_Course.dateOfInterview !=null">Date of
+              Interview:{{item.Institute_Course.dateOfInterview | date:'dd MMM y'}}</p>
+            <p *ngIf="item.Institute_Course.dateOfReporting !=null">Date of
+              Reporting:{{item.Institute_Course.dateOfReporting | date:'dd MMM y'}}</p>
+            <p *ngIf="item.Institute_Course.interviewLink !=null">Interview Link: <a
+                href="{{item.Institute_Course.interviewLink}}"
+                target="_blank">{{item.Institute_Course.interviewLink}}</a> </p>
 
           </div>
           <div class="col-lg-12">
@@ -184,5 +403,10 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+
+
+
+
+
 </main>

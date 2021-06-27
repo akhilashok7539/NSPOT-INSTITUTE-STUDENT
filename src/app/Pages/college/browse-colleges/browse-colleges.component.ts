@@ -15,6 +15,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class BrowseCollegesComponent implements OnInit {
   active_index = 1;
+  paginationCount= 1;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -59,7 +60,8 @@ export class BrowseCollegesComponent implements OnInit {
       CourseSubCategory4Id: [''],
       CourseSubCategory5Id: [''],
     });
-
+   
+    
   }
 
   loadData(): void {
