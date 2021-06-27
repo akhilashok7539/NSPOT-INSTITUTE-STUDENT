@@ -14,7 +14,7 @@ declare var  Razorpay:any;
 })
 export class DashboardComponent implements OnInit {
   rzp1:any;
-  
+  activeButton = 1;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -183,5 +183,10 @@ export class DashboardComponent implements OnInit {
            
     });
   }
- 
+  onImgError(event) { 
+    event.target.src = 'https://stockpictures.io/wp-content/uploads/2020/01/image-not-found-big-768x432.png';
+}
+  showPhase(event){
+    this.activeButton = event;
+  }
 }
