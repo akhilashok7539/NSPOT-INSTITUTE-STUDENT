@@ -1,45 +1,10 @@
 <main>
-  <div class="container teacher-page mb-4">
-    <div class="row">
-      <div class="col-sm-3 text-center" *ngIf="certificates&&certificates.length>0">
-        <img src="{{baseApiUrl}}{{certificates[0]?.passportSizePhotoFile}}" alt="Avatar" class="teacher-avatar" (error) ="onImgError($event)">
-
-      </div>
-      <div class="col-sm-9">
-        <h5>{{studentDetails?.firstName}} {{studentDetails?.middleName}} {{studentDetails?.lastName}} </h5>
-        <p>TSID : {{username}} | Email : {{studentDetails?.email}}</p>
-        <!-- <p>{{studentDetails.email}} | {{studentDetails.communicationMobile}}</p> -->
-        <p class="class-details">
-          <!-- <span class="lessons"><i class="zmdi zmdi-assignment"></i>{{educations.length}} EDUCATIONS</span>
-          <span class="views"><i class="zmdi zmdi-eye"></i>{{certificates.length-2}} CERTIFICATES</span>
-          <span class="rating"><i class="zmdi zmdi-star"></i>AVERAGE RATES : 4,8</span> -->
-        </p>
-        <p class="abs">
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-          ut labore et dolore
-          magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-          Stet clita kasd
-          gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-          consetetur sadipscing
-          elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-          voluptua. At vero eos
-          et accusam et justo duo dolores et ea rebum.
-        </p>
-        <p class="abs">
-          Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-          dolor sit amet,
-          consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna
-          aliquyam erat, sed diam
-          voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-          sea takimata sanctus
-          est Lorem ipsum dolor sit amet.
-        </p>
-      </div>
-    </div>
-  </div>
   <div class="row" style="margin-top: 20px;">
     <div class="col-sm-12">
       <div class="card media">
+        <a class="btn btn btn-info" [class.phase-active]="activeButton === 7" (click)="showPhase(7)"
+          style="margin-bottom: 5px;width: max-content;margin-left: 8px;">Profile</a>
+
         <a class="btn btn btn-info" [class.phase-active]="activeButton === 1" (click)="showPhase(1)"
           style="margin-bottom: 5px;width: max-content;margin-left: 8px;">Education</a>
 
@@ -61,13 +26,113 @@
     </div>
 
   </div>
+  <div class="container teacher-page mb-4">
+    <div class="row">
+      <div class="col-sm-12 text-center profilePicDiv" *ngIf="certificates&&certificates.length>0">
+        <input type="file" style="visibility: hidden;" id="profPicUploader" (change)="onProfileChange($event,instituteInfo?.id)">
+
+        <img src="{{baseApiUrl}}{{certificates[0]?.passportSizePhotoFile}}" alt="Avatar" class="teacher-avatar"
+          (error)="onImgError($event)">
+          <label for="profPicUploader" class="profilePicBtn">
+            <i class="zmdi zmdi-edit zmdi-hc-2x"></i>
+          </label>
+  
+          <h5>{{studentDetails?.firstName}} {{studentDetails?.middleName}} {{studentDetails?.lastName}} </h5>
+          <p>TSID : {{username}} | Email : {{studentDetails?.email}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="activeButton === 7">
+    <div class="container">
+      <div class="card">
+        <h6>Contact Details</h6>
+        <hr>
+        <div class="row">
+      
+        <div class="col-sm-6">
+          <p>
+            DOB & Age : {{studentDetails?.dob | date:'MMM d, y'}} | {{studentDetails?.ageByRegisteringDate}}
+  
+          </p>
+          <p>
+            Father Name : {{studentDetails?.fathersFirstName}} | {{studentDetails?.fathersPhoneNumber}}
+          </p>
+          <p>
+            Mother Name : {{studentDetails?.mothersFirstName}} | {{studentDetails?.mothersPhoneNumber}}
+          </p>
+          <p>
+            Father Occupation : {{studentDetails?.fathersOccupation}} 
+          </p>
+          <p>
+            Mother Occupation : {{studentDetails?.mothersOccupation}} 
+          </p>
+          <p>
+            Religion : {{studentDetails?.religion}} 
+          </p>
+          <p>
+            Caste : {{studentDetails?.cast}} 
+          </p>
+        </div>
+        <div class="col-sm-6">
+        <p>Communication Address Line 1 : {{studentDetails?.communicationAddressLine1}}</p>
+        <p>Communication Address Line 2 : {{studentDetails?.communicationAddressLine2}}</p>
+        <p>Communication Address Line 3 : {{studentDetails?.communicationAddressLine3}}</p>
+        <p>Communication Country : {{studentDetails?.communicationCountry}}</p>
+        <p>Communication District : {{studentDetails?.communicationDistrict}}</p>
+        
+        
+        <p>Visible Mark 1 : {{studentDetails?.visibleMark1}}</p>
+        <p>Visible Mark 2 : {{studentDetails?.visibleMark2}}</p>
+        
+        </div>
+    
+      </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- <div class="container teacher-page mb-4">
+    <div class="row">
+      <div class="col-sm-3 text-center" *ngIf="certificates&&certificates.length>0">
+        <img src="{{baseApiUrl}}{{certificates[0]?.passportSizePhotoFile}}" alt="Avatar" class="teacher-avatar"
+          (error)="onImgError($event)">
+
+      </div>
+      <div class="col-sm-9">
+        <h5>{{studentDetails?.firstName}} {{studentDetails?.middleName}} {{studentDetails?.lastName}} </h5>
+        <p>TSID : {{username}} | Email : {{studentDetails?.email}}</p>
+        <p class="class-details">
+      
+        </p>
+        <p>
+          DOB & Age : {{studentDetails?.dob | date:'MMM d, y'}} | {{studentDetails?.ageByRegisteringDate}}
+
+        </p>
+
+        <p>
+          Father Name : {{studentDetails?.fathersFirstName}} | {{studentDetails?.fathersPhoneNumber}}
+        </p>
+        <p>
+          Mother Name : {{studentDetails?.mothersFirstName}} | {{studentDetails?.mothersPhoneNumber}}
+        </p>
+        <p>
+          Father Name :{{studentDetails?.fathersFirstName}}
+        </p>
+        <h6>Address</h6>
+        <p>{{studentDetails?.permanentAddressLine1}},{{studentDetails?.permanentAddressLine2}},{{studentDetails?.permanentAddressLine3}},{{studentDetails?.permanentDistrict}}</p>
+  
+      
+      </div>
+    </div>
+  </div> -->
+
 
   <div *ngIf="activeButton === 1">
 
     <div class="container mb-5">
 
       <div class="row">
-  
+
         <div class="col-sm-12">
           <button class="btn btn-dark" style="    float: right;
           margin-right: 89px;
@@ -105,7 +170,7 @@
               <h4>{{item.qualifiedEntrance}} </h4>
               <p>{{item.yearOfQualification}} </p>
             </div>
-           
+
           </div>
           <div *ngIf="entranceExams?.length==0" class="col-xs-12 col-sm-6 list-with-icon text-center p-3">
             <p>No Entrance Exam Added</p>
@@ -118,9 +183,8 @@
     <div class="container mb-5">
 
       <div class="row">
-        <div class="col-sm-6" *ngFor="let item of allApplications; let i=index" >
-          <div class=" list-with-icon" 
-            style="margin-left: 0px; margin-right: 20px;
+        <div class="col-sm-6" *ngFor="let item of allApplications; let i=index">
+          <div class=" list-with-icon" style="margin-left: 0px; margin-right: 20px;
             height: 100%;
         ">
             <div class="col-xs-3">
