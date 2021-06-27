@@ -45,3 +45,52 @@
   padding: 7px;
   border-radius: 101px;
 }
+p{
+  color: #746c6c;
+  line-height: 45px;
+}
+h6{
+  margin-top: 17px;
+  margin-bottom: 9px;
+  text-align: center;
+}
+h5{
+  margin-top: 17px;
+  font-weight: bold;
+}
+.profilePicDiv img{
+  box-shadow: 0 0 10px 2px rgb(0 0 0 / 13%);
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin:20px 0 20px 55px;
+}
+.profilePicBtn{
+  position: absolute;
+  bottom: 10%;
+  left: 241px;
+  background-color: #1A4D59;
+  border-color: #1A4D59;
+  color: #EFF5F9;
+  padding:5px 10px 5px 10px;
+  border-radius: 50px;
+  border: 1px;
+}
+
+
+.profilePicBtn:hover i {
+  display:none
+}
+
+.profilePicBtn:hover:before {
+  content:"Change";
+}
+
+.profilePicBtn:hover {
+  border-radius: 25px;
+  width:100px;
+  cursor: pointer;
+  transition: 0.2s;
+  padding:9px 10px 9px 25px;
+}

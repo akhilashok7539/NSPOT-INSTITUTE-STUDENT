@@ -180,4 +180,20 @@ export class BrowseCollegesComponent implements OnInit {
   {
     this.active_index =s;
   }
+  next()
+  {
+    this.paginationCount++;
+    
+  }
+  prev()
+  {
+
+    if(this.paginationCount ===1)
+    {
+
+    }
+    else{
+      this.paginationCount--;
+    }
+  }
 }

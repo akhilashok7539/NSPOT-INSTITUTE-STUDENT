@@ -164,11 +164,11 @@
         align-items: center;
     ">
             <div class="pagination">
-                <a>&laquo;</a>
+                <a (click)="prev()">&laquo;</a>
              
                 <a class="active">{{paginationCount}}</a>
 
-                <a >&raquo;</a>
+                <a (click)="next()">&raquo;</a>
             </div>
         </div>
 

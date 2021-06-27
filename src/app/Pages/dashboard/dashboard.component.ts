@@ -14,7 +14,7 @@ declare var  Razorpay:any;
 })
 export class DashboardComponent implements OnInit {
   rzp1:any;
-  activeButton = 1;
+  activeButton = 7;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
