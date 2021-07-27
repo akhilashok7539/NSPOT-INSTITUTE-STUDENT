@@ -192,7 +192,8 @@
                    <p><i class="zmdi zmdi-money"></i>  {{item?.courseFee?.otherFee}}</p>
                     </div>
                     <div class="col-sm-6">
-                        <img src="./assets/images/college1.png" alt="" style="width: 70px;
+                        <!-- src="./assets/images/college1.png"  -->
+                        <img src="{{item.item?.Institute?.profilePicFile?baseApiUrl+item.item?.Institute?.profilePicFile:'./assets/images/inst.png'}}" alt="" style="width: 70px;
                         float: right;">
                     </div>
 

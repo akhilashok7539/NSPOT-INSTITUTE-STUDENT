@@ -39,7 +39,9 @@ export class BrowseCollegesComponent implements OnInit {
   courses
   courseStreamsSpecializations3;
   courseStreamsSpecializations4;
+  // baseApiUrl = environment.baseApiUrl;
   baseApiUrl = environment.baseApiUrl;
+
   districtList;
   stateList;
   ngOnInit(): void {
