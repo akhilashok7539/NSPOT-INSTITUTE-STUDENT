@@ -30,7 +30,7 @@ export class CollegeDetailsComponent implements OnInit {
   socialLinks;
   coursesOffered;
   gallery;
-
+  instIdForCourse;
   baseApiUrl = environment.baseApiUrl;
 
   ngOnInit(): void {
@@ -39,7 +39,8 @@ export class CollegeDetailsComponent implements OnInit {
       console.log("Institute Info",returnData)
       this.instituteInfo = returnData.data;
       console.log(this.instituteInfo);
-      
+      this.instIdForCourse = this.instituteInfo.id;
+      this.loadGalleryandCourse(this.instIdForCourse)
     }, error => {
       console.error(error);
       this.toastr.error('Failed to fetch institute details')
@@ -70,26 +71,36 @@ export class CollegeDetailsComponent implements OnInit {
       this.toastr.error('Failed to fetch institute details')
     });
 
-    // fetching coureses offered by the college
-    this.apiService.doGetRequest(
-    `/institute/courses/` + this.instituteId
-
-
-    ).subscribe((returnData: any) => {
-      this.coursesOffered = returnData.data;
-      console.log("courses", this.coursesOffered)
-    }, error => {
-      console.error(error);
-      this.toastr.error('Failed to fetch institute details')
-    });
-
-    // fetching gallery
-    this.apiService.doGetRequest(endPoints.Get_gallery + this.instituteId).subscribe((returnData: any) => {
-      this.gallery = returnData.data;
-    }, error => {
-      console.error(error);
-      this.toastr.error('Failed to fetch institute details')
-    });
+    
   }
 
+
+  loadGalleryandCourse(instIdForCourse)
+  {
+// fetching coureses offered by the college
+    // const instidforcourse = this.instituteInfo['id'];
+    this.apiService.doGetRequest(
+      `/institute/courses/` + instIdForCourse).subscribe((returnData: any) => {
+        this.coursesOffered = returnData.data;
+        console.log("courses", this.coursesOffered)
+      }, error => {
+        console.error(error);
+        this.toastr.error('Failed to fetch institute details')
+      });
+  
+      // fetching gallery
+      this.apiService.doGetRequest(endPoints.Get_gallery + instIdForCourse).subscribe((returnData: any) => {
+        this.gallery = returnData.data;
+      }, error => {
+        console.error(error);
+        this.toastr.error('Failed to fetch institute details')
+      });
+  }
+
+  applycourse(item)
+  {
+    sessionStorage.setItem("coursename",JSON.stringify(item))
+    this.router.navigate(['/student/course/apply/'+item.item.id])
+
+  }
 }

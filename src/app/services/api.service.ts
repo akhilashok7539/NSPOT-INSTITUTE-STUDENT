@@ -57,7 +57,13 @@ export class ApiService {
       catchError(this.handleError)
     );
   }
-
+public doDeleteRequest(url: any)
+{
+  this.setHttpOptions()
+  return this.http.delete<any>(this.SERVER_URL + url, this.httpOptions).pipe(
+    catchError(this.handleError)
+  );
+}
   // general post service
   public doPostRequest(url: any, data: any) {
     this.setHttpOptions()

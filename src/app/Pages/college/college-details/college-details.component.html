@@ -18,7 +18,7 @@
                 <h3>{{instituteInfo?.name}}</h3>
                 <p class="class-details uppercase">
                     <span class="lessons"><i
-                            class="zmdi zmdi-assignment"></i>{{instituteInfo?.InstituteType.title}}</span>
+                            class="zmdi zmdi-assignment"></i>{{instituteInfo?.name}}</span>
                     <span class="duration"><i class="zmdi zmdi-time"></i>{{instituteInfo?.code}}</span>
                     <span class="views"><i class="zmdi zmdi-eye"></i>HOSTEL:
                         {{instituteInfo?.haveBoysHostel||instituteInfo?.haveGirlsHostel?"YES":"NO"}}</span>
@@ -81,7 +81,7 @@
                     <div class="ratings col-md-12">
                         <div class="col-sm-4">
                             <h4>REGISTRATION DETAILS</h4>
-                            <p>License Authority : {{instituteInfo?.LicenceIssueAuthority.title}} </p>
+                            <p>License Authority : {{instituteInfo?.licenseAuthorityName}} </p>
                             <p>Name of Panchatyath/Munciplaity : {{instituteInfo?.nameofTown}} </p>
                             <p> Licnese No :{{instituteInfo?.licenseNumber}} </p>
                             <p>Licnese Issued Date : {{instituteInfo?.licenseIssuedDate | date}}</p>
@@ -150,7 +150,7 @@
                                         </span> -->
                                         <p>Course Code :{{item.item.courseCode}}</p>
                                         <a class="probootstrap-location courseBtn"
-                                            routerLink="/student/course/apply/{{item.item.id}}">APPLY</a>
+                                           (click)="applycourse(item)">APPLY</a>
                                     </div>
                                 </div>
 
@@ -164,7 +164,7 @@
                         <div class="col-md-12 gallery">
                             <h3 style="margin-bottom: 50px;">Gallery</h3>
                             <div class="col-sm-4" *ngFor="let item of gallery">
-                                <img src="{{baseApiUrl}}{{item.galleryFile}}" style="max-width: 375px;"
+                                <img *ngIf="item.galleryFile" src="{{baseApiUrl}}{{item.galleryFile}}" style="max-width: 375px;"
                                     data-darkbox="{{baseApiUrl}}{{item.galleryFile}}" data-darkbox-group="one"
                                     data-darkbox-description="<b>{{item.galleryLabel}}</b><br>Lorem ipsum dolor sit amet">
 

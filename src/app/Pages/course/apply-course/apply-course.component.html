@@ -13,7 +13,7 @@
 
       <div class="col-md-1"></div>
       <div class="col-md-10 col-sm-10">
-        <form class="contact" [formGroup]="form" (submit)="onSubmit()">
+        <form class="contact" [formGroup]="form" >
           <div class="applicationForm">
             <h5>PERSONAL DETAILS OF THE APPLICANT </h5>
             <div class="row">
@@ -26,7 +26,8 @@
                       <p>Course Name</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="courseName" />
+                      <input type="text" formControlName="courseName"  />
+                      <!-- <div>Name </div>   -->
                     </div>
                   </div>
 
@@ -498,6 +499,24 @@
             <div class="clearfix"></div>
 
             <h5>EDUCATION</h5>
+            <div class="row" *ngIf="educationListarray.length != 0">
+              <div class="col-lg-12 col-xs-12">
+                <div class="card" *ngFor="let list of educationListarray;let i=index;">
+                  <p style="    position: absolute;
+                  margin-left: 93%;" (click)=delete(i)>X</p>
+                  <div class="labels">
+                    <p>Education Level : {{list.accademicLevelId}}</p>
+                    <p>School/College/Institution Name : {{list.schoolName}}</p>
+                    <p>Degree/ Specialization : {{list.specialization}}</p>
+                    <p>Year of Study : {{list.yearOfStudy}}</p>
+                    <p>Start Date : {{list.startDate | date: 'dd/MM/yyyy'}}</p>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
             <div class="row">
               <div class="col-lg-12 col-xs-12">
 
@@ -561,7 +580,7 @@
 
                       <div id="{{'certificateFile-ed'+i}}" class="applicationFormItem">
                         <div class="labels">
-                          <p>Certificate (Image)</p>
+                          <p>Certificate (Image) Link</p>
                         </div>
                         <div class="checkBox">
                           <input type="text" formControlName="certificateFile" />
@@ -597,7 +616,14 @@
                         </div>
                       </div>
                       <div class="clearfix"></div>
-
+                      <button (click)="addnewEducation()" style="float: right;
+                      padding: 8px;
+                      margin-bottom: 7px;
+                      margin-top: 11px;
+                      background: #f8ad25;
+                      border: none;
+                      color: white;
+                      font-weight: bold;">Add New Educations</button>
                     </div>
 
                   </div>
@@ -612,6 +638,26 @@
             <div class="clearfix"></div>
 
             <h5>ENTRANCE EXAMS</h5>
+            <div class="row" *ngIf="entraceListArray.length != 0">
+              <div class="col-lg-12 col-xs-12">
+                <div class="card" *ngFor="let list of entraceListArray;let i=index;">
+                  <p style="    position: absolute;
+                  margin-left: 93%;" (click)=deleteentraceListArray(i)>X</p>
+                  <div class="labels">
+                    <p>Qualified Entrance : {{list.qualifiedEntrance}}</p>
+                    <p>Roll Number : {{list.rollNumber}}</p>
+                    <p>Year of Qualification : {{list.yearOfQualification}}</p>
+                    <p>Valid Upto : {{list.validUpto}}</p>
+                    <p>CGPA : {{list.cgpa }}</p>
+                    <p>Rank : {{list.rank }}</p>
+
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
             <div class="row">
               <div class="col-lg-12 col-xs-12">
 
@@ -672,7 +718,14 @@
                           <input type="text" formControlName="rank" />
                         </div>
                       </div>
-
+                      <button (click)="addnewEntrance()" style="float: right;
+                      padding: 8px;
+                      margin-bottom: 7px;
+                      margin-top: 11px;
+                      background: #f8ad25;
+                      border: none;
+                      color: white;
+                      font-weight: bold;">Add New Entrance</button>
                     </div>
                   </div>
                 </div>
@@ -694,10 +747,11 @@
                       <p>Aadhar Certificate</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="adharCardFile" />
+                      <!-- <input type="text" formControlName="adharCardFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="adharCardFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="adharCardFile-img" alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="adharCardFile" formControlName="adharCardFile"
+                            (change)="updatefile($event,'adharCardFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="adharCardFile-img" alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -707,11 +761,13 @@
                       <p>Birth Certificate</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="birthCertificateFile" />
+                      <!-- <input type="text"  /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="birthCertificateFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="birthCertificateFile-img" alt="No image">
+                        <div class="col-lg-6"><input type="file" name="birthCertificateFile"
+                            formControlName="birthCertificateFile" (change)="updatefile($event,'birthCertificateFile')">
                         </div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="birthCertificateFile-img" alt="No image">
+                      </div> -->
                       </div>
                     </div>
                   </div>
@@ -721,11 +777,14 @@
                       <p>Community Certificate</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="communityCertificateFile" />
+                      <!-- <input type="text"  /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="communityCertificateFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="communityCertificateFile-img"
-                            alt="No image"></div>
+                        <div class="col-lg-6">
+                          <input type="file" name="communityCertificateFile" formControlName="communityCertificateFile"
+                            (change)="updatefile($event,'communityCertificateFile')">
+                        </div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="communityCertificateFile-img"
+                            alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -735,11 +794,13 @@
                       <p>Differently abled</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="differentlyAbledCertificateFile" />
+                      <!-- <input type="text"  /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="differentlyAbledCertificateFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="differentlyAbledCertificateFile-img"
-                            alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="differentlyAbledCertificateFile"
+                            formControlName="differentlyAbledCertificateFile"
+                            (change)="updatefile($event,'differentlyAbledCertificateFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="differentlyAbledCertificateFile-img"
+                            alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -749,11 +810,13 @@
                       <p>Character Certificate</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="characterCertificateFile" />
+                      <!-- <input type="text" formControlName="characterCertificateFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="characterCertificateFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="characterCertificateFile-img"
-                            alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="characterCertificateFile"
+                            formControlName="characterCertificateFile"
+                            (change)="updatefile($event,'characterCertificateFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="characterCertificateFile-img"
+                            alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -763,11 +826,13 @@
                       <p>Conduct Certificate</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="conductCertificateFile" />
+                      <!-- <input type="text" formControlName="conductCertificateFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="conductCertificateFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="conductCertificateFile-img"
-                            alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="conductCertificateFile"
+                            formControlName="conductCertificateFile"
+                            (change)="updatefile($event,'conductCertificateFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="conductCertificateFile-img"
+                            alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -777,11 +842,13 @@
                       <p>Entrance Exam</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="entranceExamFile" />
+                      <!-- <input type="text" formControlName="entranceExamFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="entranceExamFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="entranceExamFile-img" alt="No image">
-                        </div>
+                        <div class="col-lg-6"><input type="file" name="entranceExamFile"
+                          formControlName="entranceExamFile"
+                            (change)="updatefile($event,'entranceExamFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="entranceExamFile-img" alt="No image">
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -791,10 +858,11 @@
                       <p>SSLC</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="sslcFile" />
+                      <!-- <input type="text" formControlName="sslcFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="sslcFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="sslcFile-img" alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="sslcFile" formControlName="sslcFile"
+                          (change)="updatefile($event,'sslcFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="sslcFile-img" alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -804,11 +872,12 @@
                       <p>PLUS 2</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="plusTwoCertificateFile" />
+                      <!-- <input type="text" formControlName="plusTwoCertificateFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="plusTwoCertificateFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="plusTwoCertificateFile-img"
-                            alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="plusTwoCertificateFile" formControlName="plusTwoCertificateFile"
+                          (change)="updatefile($event,'plusTwoCertificateFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="plusTwoCertificateFile-img"
+                            alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -818,11 +887,12 @@
                       <p>Experience certificate</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="experienceCertificateFile" />
+                      <!-- <input type="text" formControlName="experienceCertificateFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="experienceCertificateFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="experienceCertificateFile-img"
-                            alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="experienceCertificateFile" formControlName="experienceCertificateFile"
+                          (change)="updatefile($event,'experienceCertificateFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="experienceCertificateFile-img"
+                            alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -832,11 +902,12 @@
                       <p>Income Certificate</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="incomeCertificateFile" />
+                      <!-- <input type="text" formControlName="incomeCertificateFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="incomeCertificateFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="incomeCertificateFile-img" alt="No image">
-                        </div>
+                        <div class="col-lg-6"><input type="file" name="incomeCertificateFile" formControlName="incomeCertificateFile"
+                          (change)="updatefile($event,'incomeCertificateFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="incomeCertificateFile-img" alt="No image">
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -846,11 +917,12 @@
                       <p>Migration Certificate</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="migrationCertificateFile" />
+                      <!-- <input type="text" formControlName="migrationCertificateFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="migrationCertificateFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="migrationCertificateFile-img"
-                            alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="migrationCertificateFile" formControlName="migrationCertificateFile"
+                          (change)="updatefile($event,'migrationCertificateFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="migrationCertificateFile-img"
+                            alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -860,11 +932,12 @@
                       <p>Nativity Certificate</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="nativityCertificateFile" />
+                      <!-- <input type="text" formControlName="nativityCertificateFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="nativityCertificateFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="nativityCertificateFile-img"
-                            alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="nativityCertificateFile" formControlName="nativityCertificateFile"
+                          (change)="updatefile($event,'nativityCertificateFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="nativityCertificateFile-img"
+                            alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -874,10 +947,11 @@
                       <p>PAN Card</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="panCardFile" />
+                      <!-- <input type="text" formControlName="panCardFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="panCardFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="panCardFile-img" alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="panCardFile" formControlName="panCardFile"
+                          (change)="updatefile($event,'panCardFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="panCardFile-img" alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -887,11 +961,12 @@
                       <p>Passport size Photo</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="passportSizePhotoFile" />
+                      <!-- <input type="text" formControlName="passportSizePhotoFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="passportSizePhotoFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="passportSizePhotoFile-img" alt="No image">
-                        </div>
+                        <div class="col-lg-6"><input type="file" name="passportSizePhotoFile" formControlName="passportSizePhotoFile"
+                          (change)="updatefile($event,'passportSizePhotoFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="passportSizePhotoFile-img" alt="No image">
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -901,10 +976,11 @@
                       <p>Scholarship</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="scolarshipFile" />
+                      <!-- <input type="text" formControlName="scolarshipFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="scolarshipFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="scolarshipFile-img" alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="scolarshipFile" formControlName="scolarshipFile"
+                          (change)="updatefile($event,'scolarshipFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="scolarshipFile-img" alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -914,10 +990,11 @@
                       <p>Signature</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="signatureFile" />
+                      <!-- <input type="text" formControlName="signatureFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="signatureFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="signatureFile-img" alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="signatureFile" formControlName="signatureFile"
+                          (change)="updatefile($event,'signatureFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="signatureFile-img" alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -927,10 +1004,11 @@
                       <p>Transfer Certificate(TC)</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="tcFile" />
+                      <!-- <input type="text" formControlName="tcFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="tcFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="tcFile-img" alt="No image"></div>
+                        <div class="col-lg-6"><input type="file" name="tcFile" formControlName="tcFile"
+                          (change)="updatefile($event,'tcFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="tcFile-img" alt="No image"></div> -->
                       </div>
                     </div>
                   </div>
@@ -940,11 +1018,12 @@
                       <p>Thumb Impression</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="thumbImpressionFile" />
+                      <!-- <input type="text" formControlName="thumbImpressionFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="thumbImpressionFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="thumbImpressionFile-img" alt="No image">
-                        </div>
+                        <div class="col-lg-6"><input type="file" name="thumbImpressionFile" formControlName="thumbImpressionFile"
+                          (change)="updatefile($event,'thumbImpressionFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="thumbImpressionFile-img" alt="No image">
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -954,11 +1033,12 @@
                       <p>Driving Licence</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="drivingLicenseFile" />
+                      <!-- <input type="text" formControlName="drivingLicenseFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="drivingLicenseFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="drivingLicenseFile-img" alt="No image">
-                        </div>
+                        <div class="col-lg-6"><input type="file" name="drivingLicenseFile" formControlName="drivingLicenseFile"
+                          (change)="updatefile($event,'drivingLicenseFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="drivingLicenseFile-img" alt="No image">
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -968,11 +1048,12 @@
                       <p>Father's Signature</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="fathersSignatureFile" />
+                      <!-- <input type="text" formControlName="fathersSignatureFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="fathersSignatureFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="fathersSignatureFile-img" alt="No image">
-                        </div>
+                        <div class="col-lg-6"><input type="file" name="fathersSignatureFile" formControlName="fathersSignatureFile"
+                          (change)="updatefile($event,'fathersSignatureFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="fathersSignatureFile-img" alt="No image">
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -982,11 +1063,12 @@
                       <p>Mother's Signature</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="mothersSignatureFile" />
+                      <!-- <input type="text" formControlName="mothersSignatureFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="mothersSignatureFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="mothersSignatureFile-img" alt="No image">
-                        </div>
+                        <div class="col-lg-6"><input type="file" name="mothersSignatureFile" formControlName="mothersSignatureFile"
+                          (change)="updatefile($event,'mothersSignatureFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="mothersSignatureFile-img" alt="No image">
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -996,12 +1078,13 @@
                       <p>Guardian's Signature</p>
                     </div>
                     <div class="checkBox">
-                      <input type="text" formControlName="guardiansSignatureFile" />
+                      <!-- <input type="text" formControlName="guardiansSignatureFile" /> -->
                       <div class="row">
-                        <div class="col-lg-6"><input type="file" name="guardiansSignatureFile"></div>
-                        <div class="col-lg-6"><img src="" class="certImg" id="guardiansSignatureFile-img"
+                        <div class="col-lg-6"><input type="file" name="guardiansSignatureFile" formControlName="guardiansSignatureFile"
+                          (change)="updatefile($event,'guardiansSignatureFile')"></div>
+                        <!-- <div class="col-lg-6"><img src="" class="certImg" id="guardiansSignatureFile-img"
                             alt="No image">
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>
@@ -1018,8 +1101,8 @@
                         <div class="clearfix"></div>
                         <div class="row">
                           <div class="col-lg-6"> <input type="file" formControlName="{{item.fieldName}}" /></div>
-                          <div class="col-lg-6"><img src="" class="certImg" id="{{item.fieldName}}-img" alt="No image">
-                          </div>
+                          <!-- <div class="col-lg-6"><img src="" class="certImg" id="{{item.fieldName}}-img" alt="No image">
+                          </div>  -->
                         </div>
                       </div>
                     </div>
@@ -1035,7 +1118,7 @@
 
           <div class="row">
             <div class="col-xs-12">
-              <button id="submit-btn" type="submit" class="btn btn-success pull-right">Submit application</button>
+              <button id="submit-btn" type="submit" class="btn btn-success pull-right" (click)="onSubmit()">Submit application</button>
             </div>
           </div>
         </form>
