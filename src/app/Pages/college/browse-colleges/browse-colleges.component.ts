@@ -15,7 +15,8 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class BrowseCollegesComponent implements OnInit {
   active_index = 1;
-  paginationCount= 1;
+  paginationCount = 1;
+  district = "";
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -23,10 +24,10 @@ export class BrowseCollegesComponent implements OnInit {
     private authService: AuthService,
     private toastr: ToastrService
   ) { }
-
+  stateId;
   form: FormGroup;
   touched = false;
-  studentId = this.authService.userProfile.userType;
+  studentId = this.authService.userProfile.userId;
   username = this.authService.userProfile.username;
   studentDetails;
   accademicLevels;
@@ -39,7 +40,8 @@ export class BrowseCollegesComponent implements OnInit {
   courseStreamsSpecializations3;
   courseStreamsSpecializations4;
   baseApiUrl = environment.baseApiUrl;
-
+  districtList;
+  stateList;
   ngOnInit(): void {
     // fetching student details
     this.apiService.doGetRequest(endPoints.student + this.studentId).subscribe((returnData: any) => {
@@ -60,8 +62,8 @@ export class BrowseCollegesComponent implements OnInit {
       CourseSubCategory4Id: [''],
       CourseSubCategory5Id: [''],
     });
-   
-    
+
+
   }
 
   loadData(): void {
@@ -81,10 +83,14 @@ export class BrowseCollegesComponent implements OnInit {
       this.courseStreams = returnData.data;
       console.log("courseStreams ", this.courseStreams);
     });
+    this.apiService.doGetRequest(`state/`).subscribe((returnData: any) => {
+      this.stateList = returnData.data;
+      console.log(this.stateList);
+    });
   }
 
   loadAccademicLevelCourses(event): void {
-    
+
     const academicLevelId = event.target.value;
     this.apiService.doGetRequest(`course-categories/subcategory/` + academicLevelId).subscribe((returnData: any) => {
       this.accademicLevelsCourses = returnData.data;
@@ -100,29 +106,28 @@ export class BrowseCollegesComponent implements OnInit {
       console.log(this.courseStreamsSpecializations);
     });
   }
-  loadAccademicLevelCoursessubcat(event):void
-  {
+  loadAccademicLevelCoursessubcat(event): void {
     const subcategoryId = event.target.value;
     this.apiService.doGetRequest(`course-categories/subcategory2/` + subcategoryId).subscribe((returnData: any) => {
       this.courseStreams = returnData.data;
       console.log(this.accademicLevelsCourses);
     });
   }
-  loadAccademicLevelCoursessubcat1(event):void{
+  loadAccademicLevelCoursessubcat1(event): void {
     const subcategoryId = event.target.value;
     this.apiService.doGetRequest(`course-categories/subcategory3/` + subcategoryId).subscribe((returnData: any) => {
       this.courseStreamsSpecializations = returnData.data;
       console.log(this.accademicLevelsCourses);
     });
   }
-  loadAccademicLevelCoursessubcat2(event):void{
+  loadAccademicLevelCoursessubcat2(event): void {
     const subcategoryId = event.target.value;
     this.apiService.doGetRequest(`course-categories/subcategory4/` + subcategoryId).subscribe((returnData: any) => {
       this.courseStreamsSpecializations3 = returnData.data;
       console.log(this.accademicLevelsCourses);
     });
   }
-  loadAccademicLevelCoursessubcat3(event):void{
+  loadAccademicLevelCoursessubcat3(event): void {
     const subcategoryId = event.target.value;
     this.apiService.doGetRequest(`course-categories/subcategory5/` + subcategoryId).subscribe((returnData: any) => {
       this.courseStreamsSpecializations4 = returnData.data;
@@ -155,14 +160,14 @@ export class BrowseCollegesComponent implements OnInit {
         // delete formData[key];
       }
     }
-    
+
     console.log(formData);
-    
+
     this.apiService.doPostRequest(
       endPoints.Get_course_filter, formData
     ).subscribe((returnData: any) => {
       if (returnData.status == true) {
-        this.courses = returnData.data
+        this.courses = returnData.result
         console.log(returnData)
       }
       else {
@@ -176,24 +181,68 @@ export class BrowseCollegesComponent implements OnInit {
   }
 
   get f() { return this.form.controls; }
-  Onselected(s)
-  {
-    this.active_index =s;
+  Onselected(s) {
+    this.active_index = s;
+    this.courses = [];
   }
-  next()
-  {
+  next() {
     this.paginationCount++;
-    
-  }
-  prev()
-  {
 
-    if(this.paginationCount ===1)
-    {
+  }
+  prev() {
+
+    if (this.paginationCount === 1) {
 
     }
-    else{
+    else {
       this.paginationCount--;
     }
+  }
+  loaddistricts(event) {
+    this.stateId = event.target.value;
+    console.log(event.target.value);
+    this.apiService.doGetRequest(`district/` + event.target.value).subscribe((returnData: any) => {
+      this.districtList = returnData.data;
+      console.log(this.districtList);
+    });
+
+  }
+  searchByLocation() {
+    let req = {
+      "stateId": this.stateId,
+      "districtId": this.district
+    }
+    this.apiService.doPostRequest(
+      `institute/course/filter/location`, req
+    ).subscribe((returnData: any) => {
+      if (returnData.status == true) {
+        this.courses = returnData.result
+        console.log(this.courses)
+      }
+      else {
+        this.toastr.error('Something went wrong!');
+      }
+    },
+      error => {
+        console.error(error);
+        this.toastr.error('Something went wrong!');
+      });
+  }
+  addtocompare(item)
+  {
+    console.log(item);
+    let req = {
+      "courseName":item.CourseName,
+      "studentId":this.studentId,
+      "instituteCourseId":item.item.id,
+      "instituteId":item.item.Institute.id
+    }
+    console.log(req);
+    this.apiService.doPostRequest(`CourseCompare/create`,req).subscribe(
+      data =>{
+        console.log(data);
+        this.toastr.success("Course add to compare section")
+      }
+    )
   }
 }

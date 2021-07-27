@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 
 // import { ApplicationFormService } from '../../../services/application-form.service'
 import { AuthService } from 'src/app/services/auth.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-apply-course',
   templateUrl: './apply-course.component.html',
@@ -19,6 +20,7 @@ export class ApplyCourseComponent implements OnInit {
   // additionalEducation: FormGroup;
   // additionalExam: FormGroup;
   // additionalCertificate: FormGroup;
+  multerForm = new FormData();
 
   studentDetails
   courseDetails
@@ -40,8 +42,12 @@ export class ApplyCourseComponent implements OnInit {
   }
 
   studentId = this.authService.userProfile.userType;
+  stuendtUserId = this.authService.userProfile.userId
   courseId;
-
+  educationListarray:any =[];
+  entraceListArray:any=[];
+  addclick = false;
+  addEntranceClick= false;
   constructor(
     // private applicationFormService: ApplicationFormService,
     private router: Router,
@@ -161,19 +167,24 @@ export class ApplyCourseComponent implements OnInit {
     await this.loadAdditionalField();
     await this.loadRemovedFields()
     await this.loadStudentDetails();
-
+    // this.form.value['personalInfo'].courseName = "mtech";
+    // console.log(this.form.value['personalInfo'].courseName);
+    
   }
 
   loadRemovedFields() {
     // fetching removed fields
     return new Promise(resolve => {
       this.apiService.doGetRequest(endPoints.Get_removedField + this.courseDetails.instituteId).subscribe((returnData: any) => {
-
+        console.log(returnData);
+        
         returnData.data.map(element => {
+          console.log(element.formSection);
+          
           if (element.formSection != "entrance" && element.formSection != "education") {
-            const group = this.form.controls[element.formSection] as FormGroup;
-            (document.querySelector('#' + element.fieldName) as HTMLInputElement).remove();
-            group.removeControl(element.fieldName);
+            // const group = this.form.controls[element.formSection] as FormGroup;
+            // (document.querySelector('#' + element.fieldName) as HTMLInputElement).remove();
+            // group.removeControl(element.fieldName);
           }
           else {
             if (element.formSection == "education")
@@ -260,7 +271,8 @@ export class ApplyCourseComponent implements OnInit {
     // Get education details
     this.apiService.doGetRequest(endPoints.Get_studentEducations + this.studentId).subscribe((returnData: any) => {
       this.educationDetails = returnData.data
-
+      console.log("EDUCATION DETAILS FROM BACKEND",this.educationDetails);
+      // this.educationDetails = [];
       // iterating through all added educations
       this.educationDetails.map((element, i) => {
         const group = this.formBuilder.group({
@@ -336,7 +348,8 @@ export class ApplyCourseComponent implements OnInit {
     // Get entrance exam details
     this.apiService.doGetRequest(endPoints.Get_studentEntranceExams + this.studentId).subscribe((returnData: any) => {
       this.educationDetails = returnData.data
-
+      console.log("ENTRANCE DETIALS FROM BACKEDN:",this.educationDetails);
+      
       this.educationDetails.map((element, i) => {
         const group = this.formBuilder.group({
           qualifiedEntrance: [true],
@@ -385,7 +398,7 @@ export class ApplyCourseComponent implements OnInit {
     this.apiService.doGetRequest(endPoints.Get_studentCertificates + this.studentId).subscribe((returnData: any) => {
       const group = this.form.controls['certificates'] as FormGroup;
       this.certificateDetails = returnData.data[0]
-
+      this.certificateDetails = [];
       for (let key in this.certificateDetails) {
         let value = this.certificateDetails[key];
         if (group.controls[key]) {
@@ -406,6 +419,8 @@ export class ApplyCourseComponent implements OnInit {
       this.apiService.doGetRequest(endPoints.Get_course + this.courseId).subscribe((returnData: any) => {
         // console.log(returnData)
         this.courseDetails = returnData.data
+        // console.log("course details"+JSON.stringify(this.courseDetails));
+        
         resolve(true);
       }, error => {
         console.error(error);
@@ -423,16 +438,35 @@ export class ApplyCourseComponent implements OnInit {
     if (this.form.invalid) {
       return;
     } else {
-      (document.querySelector('#submit-btn') as HTMLInputElement).setAttribute('disabled', '');
+      // (document.querySelector('#submit-btn') as HTMLInputElement).setAttribute('disabled', '');
     }
     const formData = this.form.value;
+    if(this.addclick === true)
+    {
+      formData.education = this.educationListarray;
+
+    }
+    if(this.addEntranceClick === true)
+    {
+      formData.entrance = this.entraceListArray;
+
+    }
+    console.log(formData);
+    console.log(this.multerForm);
+    
+    // this.form.removeControl('certificates');
+   console.log(this.form.get('certificates').value);
+     
+
     this.apiService.doPostRequest(endPoints.Submit_applicationForm, formData).subscribe((returnData: any) => {
       if (returnData.status == true) {
-        this.toastr.success('Application Submitted Successfully');
-        console.log(returnData)
-        this.router.navigate([`/student/profile`]);
+        // let applciaitonId = returnData['data'].id;
+        // this.multerForm.append("formId",applciaitonId);
+        // this.getfilesUpdate();
+      
       }
       else {
+        // this.multerForm.delete("formId");
         this.toastr.error('Form submission failed.');
       }
     },
@@ -444,12 +478,60 @@ export class ApplyCourseComponent implements OnInit {
       });
 
   }
+  addnewEducation()
+  {
+    this.addclick = true;
+    console.log(this.form.get('education').value);
+    
+    this.educationListarray.push(this.form.get('education').value[0])
+    console.log(this.educationListarray);
+    this.form.get('education').reset();
+  }
+  addnewEntrance()
+  {
+    this.addEntranceClick = true;
+    this.entraceListArray.push(this.form.get('entrance').value[0])
+    console.log(this.entraceListArray);
+    this.form.get('entrance').reset();
 
+  }
+  delete(i)
+  {
+    this.educationListarray.splice(i)
+  }
+  deleteentraceListArray(i)
+  {
+    this.entraceListArray.splice(i)
+
+  }
   get f() { return this.form.controls; }
   get educations() {
     return this.form.get('education') as FormArray
   }
   get entranceExams() {
     return this.form.get('entrance') as FormArray
+  }
+  updatefile(event,formcontrol)
+  {
+    console.log(event);
+    
+    const file=  event.target.files[0];
+    // console.log(file.name);
+    
+    this.multerForm.append(formcontrol, file.name);
+    
+  
+    
+  }
+  getfilesUpdate()
+  {
+    this.apiService.doPostRequest_upload(`applicationForm/submit/formfiles`,this.multerForm).subscribe(
+      data =>{
+        this.toastr.success('Application Submitted Successfully');
+        console.log(data)
+        this.router.navigate([`/student/profile`]);
+      }
+      
+    )
   }
 }

@@ -1,0 +1,166 @@
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- ***************** instite 1 ************  -->
+
+
+
+
+      <div class="col-lg-4" *ngFor="let comparelist of comparelist;let i = index;">
+
+        <div class="page-heading text-center">
+          <h2 class="uppercase">Course {{i+1}}</h2>
+          <p style="margin-top: -27px;
+          padding-bottom: 14px;">{{comparelist.item.courseName}}</p>
+          <button style="background: none;
+          border: none;
+          float: right;
+          margin-top: -76px;
+          margin-right: 9px;" (click)="remove(comparelist.item)"><img
+              src="https://img.icons8.com/material-outlined/24/000000/trash--v1.png" />
+          </button>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+
+           
+            <h6>Institue Name : {{comparelist.item.Institute.name}}</h6>
+            <h6>University Name : {{comparelist.instituteCourse.universityName}}</h6>
+
+            <h6>Location Details : {{comparelist.item.Institute.addressLine1}} ,
+              {{comparelist.item.Institute.addressLine2}},
+              {{comparelist.item.Institute.addressLine3}}</h6>
+            <h6>Food Avilablity : <span *ngIf="comparelist.item.Institute.foodAvailableAtHostel === true"> Yes</span>
+              <span *ngIf="comparelist.item.Institute.foodAvailableAtHostel === false"> No</span>
+            </h6>
+            <h6>Boys Hostel Avilablity : <span *ngIf="comparelist.item.Institute.haveBoysHostel === true"> Yes</span>
+              <span *ngIf="comparelist.item.Institute.haveBoysHostel === false"> No</span>
+            </h6>
+            <h6>Girls Hostel Avilablity : <span *ngIf="comparelist.item.Institute.haveGirlsHostel === true"> Yes</span>
+              <span *ngIf="comparelist.item.Institute.haveGirlsHostel === false"> No</span>
+            </h6>
+            <h6>Hostel Annuval Fee : {{comparelist.item.Institute.hostalAnnualFee}}</h6>
+            <h6>Year of Establishment : {{comparelist.item.Institute.year_of_establishment}}</h6>
+          </div>
+            <hr>
+            <div class="card">
+
+            <h6>Course Fee : {{comparelist.courseFee.otherFee}}</h6>
+            <h6>Scholarship Available :
+              <span *ngIf="comparelist.courseFee.hasScolarship === true"> Yes</span>
+              <span *ngIf="comparelist.courseFee.hasScolarship === false"></span>
+            </h6>
+            <h6>NSPOT Service Charges : {{comparelist.courseFee.nspotServiceCharge}}</h6>
+            <h6>NSPOT Tax Charges : {{comparelist.courseFee.nspotTax}}</h6>
+
+            <h6>Payment Tenture : {{getpaymentTenture(comparelist.courseFee.paymentTenureId).title}}</h6>
+            </div>
+            <hr>
+            <div class="card">
+
+            <h6>Addmission Start Date : {{comparelist.instituteCourse.admissionStartDate | date:'MMM d, y'}}</h6>
+            <h6>Addmission End Date : {{comparelist.instituteCourse.admissionCloseDate | date:'MMM d, y'}}</h6>
+            <h6>Class Start Date : {{comparelist.instituteCourse.classStartDate | date:'MMM d, y'}}</h6>
+
+            <h6>Apptitue Test : <span *ngIf="comparelist.instituteCourse.aptituteTestRequired === true"> Yes</span>
+              <span *ngIf="comparelist.instituteCourse.aptituteTestRequired === false"> No
+              </span>
+            </h6>
+            <h6>Available Seats : {{comparelist.instituteCourse.availableSeats}}</h6>
+            </div>
+            <hr>
+            <div class="card">
+
+            <h6>Eligiblity :{{comparelist.instituteCourse.eligibiliyInString}}</h6>
+            <h6>Exam Conducted :{{comparelist.instituteCourse.examConducted}}</h6>
+            <h6>Placement Assistance : <span *ngIf="comparelist.instituteCourse.hasPlacementAssistant === true">
+                Yes</span>
+              <span *ngIf="comparelist.instituteCourse.hasPlacementAssistant === false"> No
+              </span>
+            </h6>
+            <h6>Job Areas :{{comparelist.instituteCourse.jobAreas}}</h6>
+            <h6>Job Positions :{{comparelist.instituteCourse.jobPositions}}</h6>
+            <h6>Male Allowed : <span *ngIf="comparelist.instituteCourse.maleAllowed === true">
+              Yes</span>
+            <span *ngIf="comparelist.instituteCourse.maleAllowed === false"> No
+            </span>
+            </h6>
+            <h6>Female Allowed : <span *ngIf="comparelist.instituteCourse.femaleAllowed === true">
+              Yes</span>
+            <span *ngIf="comparelist.instituteCourse.femaleAllowed === false"> No
+            </span>
+            </h6>
+            <h6>Other Allowed : <span *ngIf="comparelist.instituteCourse.otherGenderAllowed === true">
+              Yes</span>
+            <span *ngIf="comparelist.instituteCourse.otherGenderAllowed === false"> No
+            </span>
+            </h6>
+            <h6>Online and Regular Class : <span *ngIf="comparelist.instituteCourse.regularAndonlineClass === true">
+              Yes</span>
+            <span *ngIf="comparelist.instituteCourse.regularAndonlineClass === false"> No
+            </span>
+            </h6>
+
+            <h6>Regular Only : <span *ngIf="comparelist.instituteCourse.regularClassOnly === true">
+              Yes</span>
+            <span *ngIf="comparelist.instituteCourse.regularClassOnly === false"> No
+            </span>
+            </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4" *ngIf="comparelist?.length != 3" routerLink="/student/explore-courses">
+        <div class="card" *ngIf="comparelist?.length !=0" style="border:5px dotted #f8ad25;;margin-top: 0px;justify-content: center;
+        text-align: center; height: 100%;    box-shadow: 0 0 0px 0px rgb(0 0 0 / 13%);">
+
+          <p>Add New Course to compare</p>
+          <button style="    width: 141px;
+          border: none;
+          margin: 0 auto;
+          margin-top: 14px;" routerLink="/student/explore-courses">Find Courses</button>
+        </div>
+      </div>
+
+      <!-- ********* instite 2-->
+      <!-- <div class="col-lg-4">
+        <div class="page-heading text-center">
+          <h2 class="uppercase">Courses 2</h2>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <h6>Institue Name</h6>
+            <h6>Location Details</h6>
+            <h6>Course Name</h6>
+
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="col-lg-4">
+        <div class="page-heading text-center">
+          <h2 class="uppercase">Courses 3</h2>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <h6>Institue Name</h6>
+            <h6>Location Details</h6>
+            <h6>Course Name</h6>
+
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <div class="container popular">
+    <div class="row tutorials">
+      <div class="col-lg-12 text-center">
+        <div class="alert alert-warning" *ngIf="comparelist?.length<=0" style="    width: 50%;
+            margin: 0 auto;
+            margin-bottom: 13px;">No Data found for compare</div>
+      </div>
+    </div>
+  </div>
+
+</main>

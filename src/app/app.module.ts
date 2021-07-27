@@ -36,7 +36,9 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import {LoaderInterceptor} from './services/loadingInterceptor';
 import { PaymentHistoryComponent } from './Pages/payment-history/payment-history.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-
+import { CoursesCompareComponent } from './Pages/courses-compare/courses-compare.component';
+ import {ResponseService} from './services/response.service';
+import { ViewReceiptComponent } from './Pages/view-receipt/view-receipt.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +66,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     CourseCheckoutComponent,
     AttendTestComponent,
     PaymentHistoryComponent,
+    CoursesCompareComponent,
+    ViewReceiptComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +83,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},
+    { provide: HTTP_INTERCEPTORS, useClass: ResponseService, multi :true},
 
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
   ],
