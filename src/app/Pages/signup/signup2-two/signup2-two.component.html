@@ -54,7 +54,7 @@
           <app-control-messages [touched]="touched" [control]="f.ageByRegisteringDate"></app-control-messages>
         </div>
 
-        <div class="col-sm-6 offset-3">
+        <div class="col-sm-6 ">
           <label class="req uppercase">Gender</label>
           <app-control-messages [touched]="touched" [control]="f.gender"></app-control-messages>
           <div class="col-sm-4">
@@ -77,7 +77,7 @@
         </div>
         <div class="clearfix"></div>
         <div class="parent-div">
-          <div class="col-sm-12 offset-3">
+          <div class="col-sm-12 ">
             <label class="req uppercase">Mother's Name </label>
             <div class="col-lg-4">
               <input type="text" formControlName="mothersFirstName" placeholder="enter first name" />
@@ -92,17 +92,17 @@
               <app-control-messages [touched]="touched" [control]="f.mothersLastName"></app-control-messages>
             </div>
           </div>
-          <div class="col-sm-6 offset-3">
+          <div class="col-sm-6 ">
             <label class="req uppercase">Mother's Occupation </label>
             <input type="text" formControlName="mothersOccupation" placeholder="enter mother's occupation" />
             <app-control-messages [touched]="touched" [control]="f.mothersOccupation"></app-control-messages>
           </div>
-          <div class="col-sm-6 offset-3">
+          <div class="col-sm-6 ">
             <label class="req uppercase">Mother's Email Id </label>
             <input type="text" formControlName="mothersEmail" placeholder="enter mother's email address" />
             <app-control-messages [touched]="touched" [control]="f.mothersEmail"></app-control-messages>
           </div>
-          <div class="col-sm-6 offset-3">
+          <div class="col-sm-6 ">
             <label class="req uppercase">Mother's Phone Number </label>
             <div class="input-group">
               <span class="input-group-addon">+91</span>
@@ -114,7 +114,7 @@
 
         <div class="clearfix"></div>
         <div class="parent-div">
-          <div class="col-sm-12 offset-3">
+          <div class="col-sm-12 ">
             <label class="req uppercase">father's Name </label>
             <div class="col-lg-4">
               <input type="text" formControlName="fathersFirstName" placeholder="enter first name" />
@@ -129,17 +129,17 @@
               <app-control-messages [touched]="touched" [control]="f.fathersLastName"></app-control-messages>
             </div>
           </div>
-          <div class="col-sm-6 offset-3">
+          <div class="col-sm-6 ">
             <label class="req uppercase">father's Occupation </label>
             <input type="text" formControlName="fathersOccupation" placeholder="enter father's name" />
             <app-control-messages [touched]="touched" [control]="f.fathersOccupation"></app-control-messages>
           </div>
-          <div class="col-sm-6 offset-3">
+          <div class="col-sm-6 ">
             <label class="req uppercase">father's Email Id </label>
             <input type="text" formControlName="fathersEmail" placeholder="enter father's name" />
             <app-control-messages [touched]="touched" [control]="f.fathersEmail"></app-control-messages>
           </div>
-          <div class="col-sm-6 offset-3">
+          <div class="col-sm-6 ">
             <label class="req uppercase">father's Phone Number </label>
             <div class="input-group">
               <span class="input-group-addon">+91</span>
@@ -152,7 +152,7 @@
         <div class="clearfix"></div>
 
         <div class="parent-div">
-          <div class="col-sm-12 offset-3">
+          <div class="col-sm-12 ">
             <label class="req uppercase">Gaurdian's Name </label>
             <div class="col-lg-4">
               <input type="text" formControlName="gaurdiansFirstName" placeholder="enter first name" />
@@ -168,17 +168,17 @@
             </div>
           </div>
 
-          <div class="col-sm-12 offset-3">
+          <div class="col-sm-12 ">
             <label class="req uppercase">Gaurdian's Address </label>
             <input type="text" formControlName="gaurdiansAddress" placeholder="enter Gaurdian's Address" />
             <app-control-messages [touched]="touched" [control]="f.gaurdiansAddress"></app-control-messages>
           </div>
-          <div class="col-sm-6 offset-3">
+          <div class="col-sm-6 ">
             <label class="req uppercase">Gaurdian's Email Id </label>
             <input type="text" formControlName="gaurdiansEmail" placeholder="enter Gaurdian's Email Id" />
             <app-control-messages [touched]="touched" [control]="f.gaurdiansEmail"></app-control-messages>
           </div>
-          <div class="col-sm-6 offset-3">
+          <div class="col-sm-6 ">
             <label class="req uppercase">Gaurdian's Phone Number </label>
             <div class="input-group">
               <span class="input-group-addon">+91</span>
@@ -216,13 +216,15 @@
           <input type="text" formControlName="cast" placeholder="subject" />
           <app-control-messages [touched]="touched" [control]="f.cast"></app-control-messages>
         </div>
-        <div class="col-sm-12">
+        <!-- <div class="col-sm-12">
           <label class="req uppercase">Visible Marks on the Body </label>
           <input type="text" formControlName="visibleMark1" placeholder="1)" />
           <app-control-messages [touched]="touched" [control]="f.visibleMark1"></app-control-messages>
           <input type="text" formControlName="visibleMark2" placeholder="2)" />
           <app-control-messages [touched]="touched" [control]="f.visibleMark2"></app-control-messages>
-        </div>
+        </div> -->
+        <div class="col-sm-6">
+          </div>
 
         <div class="col-sm-6">
           <label class="uppercase">Are you a Citizen of India? </label>
@@ -253,8 +255,8 @@
         </div>
 
         <div class="clearfix"></div>
-        <div class="col-sm-6">
-          <label class="uppercase">Application Filled by Father or Mother ?
+        <div class="col-sm-4">
+          <label class="uppercase">Application Filled by Parents?
           </label>
           <div class="col-sm-6">
             <p class="checkbox">
@@ -262,7 +264,24 @@
             </p>
           </div>
         </div>
-
+        <div class="col-sm-4">
+          <label class="uppercase">Application Filled by Guardian?
+          </label>
+          <div class="col-sm-6">
+            <p class="checkbox">
+              <input type="checkbox"  /><span>Yes</span>
+            </p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <label class="uppercase">Application Filled by Myself?
+          </label>
+          <div class="col-sm-6">
+            <p class="checkbox">
+              <input type="checkbox"  /><span>Yes</span>
+            </p>
+          </div>
+        </div>
         <div class="clearfix"></div>
       </div>
 
