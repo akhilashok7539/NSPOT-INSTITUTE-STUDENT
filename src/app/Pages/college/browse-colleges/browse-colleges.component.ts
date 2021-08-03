@@ -14,7 +14,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
   styleUrls: ['./browse-colleges.component.css']
 })
 export class BrowseCollegesComponent implements OnInit {
-  active_index = 1;
+  active_index = 2;
   paginationCount = 1;
   district = "";
   constructor(
