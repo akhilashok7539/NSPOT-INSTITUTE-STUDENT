@@ -3,7 +3,7 @@
     <div class="page-heading text-center">
         <div class="container">
             <h2 class="uppercase">Institute Details</h2>
-
+            <!-- <button  [value]="currentUrl" >Copy this</button> -->
         </div>
     </div>
 
@@ -13,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <img src="{{baseApiUrl}}{{gallery ? gallery[0].galleryFile:''}}" 
+                <img src="{{baseApiUrl}}{{gallery ? gallery[0]?.galleryFile:''}}" 
                     class="resp-img course-preview">
                 <h3>{{instituteInfo?.name}}</h3>
                 <p class="class-details uppercase">
@@ -25,7 +25,10 @@
                     <span class="views"><i class="zmdi zmdi-download"></i><a
                             href="{{baseApiUrl}}{{highlights?.brochuresFile}}">Download Brochure</a></span>
 
-
+                    <button (click)="copyMessage(currentUrl)" style="    background: none;
+                    border: none;
+                    color: orange;text-transform: uppercase;
+                    font-weight: bold;">Share Course</button>
                 </p>
                 <div class="row">
                     <div class="col-md-12 order  pros">

@@ -16,7 +16,10 @@
  font-size: 25px;
  color: #FFF;
 }
-
+.row
+{
+  flex-direction: column;
+}
 .applicationFormItem{
  margin: 10px 0 30px 0;
  text-align: left;

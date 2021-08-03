@@ -1,0 +1,350 @@
+<div class="col-sm-12" >
+
+  <div id="{{'adharCardFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Aadhar Certificate</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="adharCardFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="adharCardFile" formControlName="adharCardFile"
+            (change)="updatefile($event,'adharCardFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="adharCardFile-img" alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'birthCertificateFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Birth Certificate</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text"  /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="birthCertificateFile"
+            formControlName="birthCertificateFile" (change)="updatefile($event,'birthCertificateFile')">
+        </div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="birthCertificateFile-img" alt="No image">
+      </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'communityCertificateFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Community Certificate</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text"  /> -->
+      <div class="row">
+        <div class="col-lg-6">
+          <input type="file" name="communityCertificateFile" formControlName="communityCertificateFile"
+            (change)="updatefile($event,'communityCertificateFile')">
+        </div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="communityCertificateFile-img"
+            alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'differentlyAbledCertificateFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Differently abled</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text"  /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="differentlyAbledCertificateFile"
+            formControlName="differentlyAbledCertificateFile"
+            (change)="updatefile($event,'differentlyAbledCertificateFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="differentlyAbledCertificateFile-img"
+            alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'characterCertificateFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Character Certificate</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="characterCertificateFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="characterCertificateFile"
+            formControlName="characterCertificateFile"
+            (change)="updatefile($event,'characterCertificateFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="characterCertificateFile-img"
+            alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'conductCertificateFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Conduct Certificate</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="conductCertificateFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="conductCertificateFile"
+            formControlName="conductCertificateFile"
+            (change)="updatefile($event,'conductCertificateFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="conductCertificateFile-img"
+            alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'entranceExamFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Entrance Exam</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="entranceExamFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="entranceExamFile"
+          formControlName="entranceExamFile"
+            (change)="updatefile($event,'entranceExamFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="entranceExamFile-img" alt="No image">
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'sslcFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>SSLC</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="sslcFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="sslcFile" formControlName="sslcFile"
+          (change)="updatefile($event,'sslcFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="sslcFile-img" alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'plusTwoCertificateFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>PLUS 2</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="plusTwoCertificateFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="plusTwoCertificateFile" formControlName="plusTwoCertificateFile"
+          (change)="updatefile($event,'plusTwoCertificateFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="plusTwoCertificateFile-img"
+            alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'experienceCertificateFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Experience certificate</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="experienceCertificateFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="experienceCertificateFile" formControlName="experienceCertificateFile"
+          (change)="updatefile($event,'experienceCertificateFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="experienceCertificateFile-img"
+            alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'incomeCertificateFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Income Certificate</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="incomeCertificateFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="incomeCertificateFile" formControlName="incomeCertificateFile"
+          (change)="updatefile($event,'incomeCertificateFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="incomeCertificateFile-img" alt="No image">
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'migrationCertificateFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Migration Certificate</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="migrationCertificateFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="migrationCertificateFile" formControlName="migrationCertificateFile"
+          (change)="updatefile($event,'migrationCertificateFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="migrationCertificateFile-img"
+            alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'nativityCertificateFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Nativity Certificate</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="nativityCertificateFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="nativityCertificateFile" formControlName="nativityCertificateFile"
+          (change)="updatefile($event,'nativityCertificateFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="nativityCertificateFile-img"
+            alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'panCardFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>PAN Card</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="panCardFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="panCardFile" formControlName="panCardFile"
+          (change)="updatefile($event,'panCardFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="panCardFile-img" alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'passportSizePhotoFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Passport size Photo</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="passportSizePhotoFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="passportSizePhotoFile" formControlName="passportSizePhotoFile"
+          (change)="updatefile($event,'passportSizePhotoFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="passportSizePhotoFile-img" alt="No image">
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'scolarshipFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Scholarship</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="scolarshipFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="scolarshipFile" formControlName="scolarshipFile"
+          (change)="updatefile($event,'scolarshipFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="scolarshipFile-img" alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'signatureFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Signature</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="signatureFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="signatureFile" formControlName="signatureFile"
+          (change)="updatefile($event,'signatureFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="signatureFile-img" alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'tcFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Transfer Certificate(TC)</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="tcFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="tcFile" formControlName="tcFile"
+          (change)="updatefile($event,'tcFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="tcFile-img" alt="No image"></div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'thumbImpressionFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Thumb Impression</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="thumbImpressionFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="thumbImpressionFile" formControlName="thumbImpressionFile"
+          (change)="updatefile($event,'thumbImpressionFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="thumbImpressionFile-img" alt="No image">
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'drivingLicenseFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Driving Licence</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="drivingLicenseFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="drivingLicenseFile" formControlName="drivingLicenseFile"
+          (change)="updatefile($event,'drivingLicenseFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="drivingLicenseFile-img" alt="No image">
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'fathersSignatureFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Father's Signature</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="fathersSignatureFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="fathersSignatureFile" formControlName="fathersSignatureFile"
+          (change)="updatefile($event,'fathersSignatureFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="fathersSignatureFile-img" alt="No image">
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'mothersSignatureFile-cer'+i}}" class="applicationFormItem">
+    <div class="labels">
+      <p>Mother's Signature</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="mothersSignatureFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="mothersSignatureFile" formControlName="mothersSignatureFile"
+          (change)="updatefile($event,'mothersSignatureFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="mothersSignatureFile-img" alt="No image">
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <div id="{{'guardiansSignatureFile-cer'+i}}" class="applicationFormItem" >
+    <div class="labels">
+      <p>Guardian's Signature</p>
+    </div>
+    <div class="checkBox">
+      <!-- <input type="text" formControlName="guardiansSignatureFile" /> -->
+      <div class="row">
+        <div class="col-lg-6"><input type="file" name="guardiansSignatureFile" formControlName="guardiansSignatureFile"
+          (change)="updatefile($event,'guardiansSignatureFile')"></div>
+        <!-- <div class="col-lg-6"><img src="" class="certImg" id="guardiansSignatureFile-img"
+            alt="No image">
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+</div>
