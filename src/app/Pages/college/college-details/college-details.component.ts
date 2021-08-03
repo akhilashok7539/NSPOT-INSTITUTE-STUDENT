@@ -32,7 +32,7 @@ export class CollegeDetailsComponent implements OnInit {
   gallery;
   instIdForCourse;
   baseApiUrl = environment.baseApiUrl;
-
+  currentUrl;
   ngOnInit(): void {
     // fetching institute details
     this.apiService.doGetRequest(endPoints.GetInstituteInfo + this.instituteId + "?filter[include]=LicenceIssueAuthority").subscribe((returnData: any) => {
@@ -45,6 +45,8 @@ export class CollegeDetailsComponent implements OnInit {
       console.error(error);
       this.toastr.error('Failed to fetch institute details')
     });
+    this.currentUrl=window.location.origin + this.router.url;
+   
 
     // fetching boardof council details
     this.apiService.doGetRequest(endPoints.Get_boardOfCouncil + this.instituteId).subscribe((returnData: any) => {
@@ -102,5 +104,19 @@ export class CollegeDetailsComponent implements OnInit {
     sessionStorage.setItem("coursename",JSON.stringify(item))
     this.router.navigate(['/student/course/apply/'+item.item.id])
 
+  }
+  copyMessage(val: string){
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+    this.toastr.success("Link Copied")
   }
 }

@@ -20,7 +20,7 @@
             </div>
             <div class="col-sm-6">
                 <button class="btn btn-dark" [ngClass]="{'selected':active_index === 2}" (click)='Onselected(2)'
-                    style="width: 100%;">Others</button>
+                    style="width: 100%;">Advanced Search</button>
 
             </div>
 
@@ -32,7 +32,27 @@
 </div>
 <div class="container popular" *ngIf="active_index === 2">
     <form [formGroup]="form" (submit)="onSubmit()" class="contact">
+        <div class="row" style="display: flex;
+        justify-content: center;
+        margin-top: 48px;">
+            <!-- STATE -->
+            <div class="col-sm-2">
+                <select (change)="loaddistricts($event)" formControlName="stateId">
+                    <option value="">Choose State</option>
+                    <option *ngFor="let item of stateList" value="{{item.id}}">{{item.state}}</option>
+                </select>
+            </div>
+
+            <!-- district -->
+            <div class="col-sm-2">
+                <select [(ngModel)]="district" [ngModelOptions]="{standalone: true}" formControlName="districtId">
+                    <option value="" selected disabled>Choose District</option>
+                    <option *ngFor="let item of districtList" value="{{item.id}}">{{item.district}}</option>
+                </select>
+            </div>
+        </div>
         <div class="row toolbar">
+
 
             <!-- Accademic level -->
             <div class="col-md-2 col-sm-6 col-xs-12">
@@ -88,21 +108,29 @@
                 </select>
                 <app-control-messages [touched]="touched" [control]="f.CourseSubCategory5Id">
                 </app-control-messages>
-                <button type="submit" class="search-btn-system-view" style="    position: absolute;">
+                <!-- <button type="submit" class="search-btn-system-view" style="    position: absolute;">
                     <img src="./assets/images/search.png" alt="">
+                </button> -->
+            </div>
+
+
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12" style="    margin-left: 31%;">
+                <button type="submit" class="search-btn-system-view" style=" border-radius: 10px;    color: white;
+                margin-top: 13px;
+                width: 33%;   ">
+                    <img src="./assets/images/search.png" alt="">SEARCH COURSES
                 </button>
             </div>
-
-
-            <div class="col-sm-6 col-xs-12 search-button" style="    margin: 0 auto;
-            margin-top: 26px;">
+            <!-- <div class="col-sm-6 search-button" >
                 <button type="submit" class="search-teachers">SEARCH</button>
-            </div>
+            </div> -->
         </div>
-
     </form>
 
-    
+
     <!-- <div class="row"  *ngIf="courses.length != 0">
         <div class="col-sm-12" style="    display: flex;
         justify-content: center;
@@ -141,7 +169,7 @@
 
             <!-- Accademic level -->
             <div class="col-md-5">
-                <select  (change)="loaddistricts($event)">
+                <select (change)="loaddistricts($event)">
                     <option value="">Choose State</option>
                     <option *ngFor="let item of stateList" value="{{item.id}}">{{item.state}}</option>
                 </select>
@@ -149,7 +177,7 @@
             </div>
             <div class="col-md-5">
                 <select [(ngModel)]="district" [ngModelOptions]="{standalone: true}">
-                    <option value="" selected disabled >Choose District</option>
+                    <option value="" selected disabled>Choose District</option>
                     <option *ngFor="let item of districtList" value="{{item.id}}">{{item.district}}</option>
                 </select>
 
@@ -165,54 +193,85 @@
     </form>
 
 </div>
-<div class="container popular" >
-<div class="row tutorials">
-    <div class="col-lg-12 text-center">
-        <div class="alert alert-warning" *ngIf="courses?.length<=0" style="    width: 50%;
+<div class="container popular">
+    <div class="row tutorials">
+        <div class="col-lg-12 text-center">
+            <div class="alert alert-warning" *ngIf="courses?.length<=0" style="    width: 50%;
         margin: 0 auto;
         margin-bottom: 13px;">No Institutes found</div>
-    </div>
+        </div>
 
-    <div class="col-md-4" *ngFor="let item of courses; let i=index" style="
+        <div class="col-md-6" *ngFor="let item of courses; let i=index" style="
     margin-bottom: 16px;">
-        <div class="tutorial">
-            <!-- <img src="assets/images/college1.png" class="tile-card-img" alt="Nspot college"> -->
-            <div class="tutorial-details">
-                <img src="https://img.icons8.com/color/48/000000/instagram-verification-badge.png" style="
+            <div class="tutorial">
+                <!-- <img src="assets/images/college1.png" class="tile-card-img" alt="Nspot college"> -->
+                <div class="tutorial-details">
+                    <img src="https://img.icons8.com/color/48/000000/instagram-verification-badge.png" style="
                 float: right;
                 width: 26px; " />
 
-                <h6>{{item.CourseName}}</h6>
-                <p><span class="lessons"><i class="zmdi zmdi-assignment"></i>Institute Details</span></p>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <p class="abs">{{item.item.Institute.name}}</p>
-                        <!-- <p>Address Details : {{item.item.Institute.addressLine1}},{{item.item.Institute.addressLine2}}</p> -->
-                        <p><i class="zmdi zmdi-map" style="color: grey;"></i>{{item.item.District.district}}</p>
-                   <p><i class="zmdi zmdi-money"></i>  {{item?.courseFee?.otherFee}}</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <!-- src="./assets/images/college1.png"  -->
-                        <img src="{{item.item?.Institute?.profilePicFile?baseApiUrl+item.item?.Institute?.profilePicFile:'./assets/images/inst.png'}}" alt="" style="width: 70px;
+                    <h6>{{item.CourseName}}</h6>
+                    <p><span class="lessons"><i class="zmdi zmdi-assignment"></i>Institute Details</span></p>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="abs">{{item.item.Institute.name}}</p>
+                            <!-- <p>Address Details : {{item.item.Institute.addressLine1}},{{item.item.Institute.addressLine2}}</p> -->
+                            <p><i class="zmdi zmdi-map" style="color: grey;"></i>{{item.item.District.district}}</p>
+                            <p><i class="zmdi zmdi-money"></i>Total Fee :Rs. {{item?.courseFee?.otherFee}}/-</p>
+                            <p><i class="zmdi zmdi-money"></i>Spot Fee :Rs. {{item?.courseFee?.spotfee}}/-</p>
+                           
+
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- src="./assets/images/college1.png"  -->
+                            <img src="{{item.item?.Institute?.profilePicFile?baseApiUrl+item.item?.Institute?.profilePicFile:'./assets/images/inst.png'}}"
+                                alt="" style="width: 70px;
                         float: right;">
+                        </div>
+                        <div class="col-sm-12">
+                            <button class="accordion" (click)="toggleAccordian($event, i)"> View college Facilities
+                            </button>
+                            <div class="panel" hide="!item.isActive">
+                                <p *ngIf="item?.item.hasPlacementAssistant === true">Placement Assistant : Yes </p>
+                                <p *ngIf="item?.item.hasPlacementAssistant === false">Placement Assistant : No </p>
+
+                                <p *ngIf="item?.item.onlineClassAvailability === true">Online Class Availability : Yes </p>
+                                <p *ngIf="item?.item.onlineClassAvailability === false">Online Class Availability : No </p>
+                                
+                                <p>Eligibility : {{item?.item.eligibiliyInString}}</p>
+                                
+                                <p>Exam Conducted : {{item?.item.examConducted}}</p>
+
+                                <p *ngIf="item?.item.haveBoysHostel === true">Boys Hostel : Yes </p>
+                                <p *ngIf="item?.item.haveBoysHostel === false">Boys Hostel : No </p>
+
+                                <p *ngIf="item?.item.haveGirlsHostel === true">Girls Hostel : Yes </p>
+                                <p *ngIf="item?.item.haveGirlsHostel === false">Girls Hostel : No </p>
+                            </div>
+                        </div>
+
                     </div>
 
-                </div>
-                
-                <div class="row" style="display: flex;justify-content: space-around;">
-                    <a routerLink="/student/institute-details/{{item.item.Institute.userId}}" class="greybutton">View More</a>
-                    <a  style="background: #cfcfcf !important;" class="greybutton" (click)="addtocompare(item)">Add to compare</a>
-                
-                </div>
+                    <div class="row" style="display: flex;justify-content: space-around;">
+                        <a routerLink="/student/institute-details/{{item.item.Institute.userId}}" class="greybutton"
+                            style="    width: 67%;
+                            border: 1px solid #f8ad25;
+                            color: #f8ad25;
+                            background: none !important;">View More</a>
+                        <a style="background: #f8ad25 !important;" class="greybutton" (click)="addtocompare(item)">Add
+                            to compare</a>
 
 
-                
-           
+                    </div>
+
+
+
+
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- 
+        <!-- 
     <div class="col-md-4">
         <div class="tutorial">
             <img src="assets/images/college2.png" class="tile-card-img" alt="Nspot college">
@@ -243,4 +302,5 @@
 
 
 
-</div></div>
+    </div>
+</div>

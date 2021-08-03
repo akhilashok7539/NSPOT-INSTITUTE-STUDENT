@@ -63,9 +63,11 @@ export class BrowseCollegesComponent implements OnInit {
       CourseSubCategory3Id: [''],
       CourseSubCategory4Id: [''],
       CourseSubCategory5Id: [''],
+      districtId: [''],
+      stateId: ['']
     });
 
-
+    console.log(window.location.origin + this.router.url);
   }
 
   loadData(): void {
@@ -247,4 +249,19 @@ export class BrowseCollegesComponent implements OnInit {
       }
     )
   }
+  toggleAccordian(event, index) {
+    var element = event.target;
+    element.classList.toggle("active");
+    if(this.courses[index].isActive) {
+      this.courses[index].isActive = false;
+    } else {
+      this.courses[index].isActive = true;
+    }      
+    var panel = element.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+}
 }
