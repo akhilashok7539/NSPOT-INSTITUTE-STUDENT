@@ -302,7 +302,7 @@ nav > ul > li:hover .submenu {
 }
 
 .page header {
-  background-color: #f8ad25;
+  background-color: #1b335f;
 }
 
 #topbar > .pull-right {
@@ -455,7 +455,7 @@ nav > ul > li:hover .submenu {
 }
 
 .cart .cart-controls .viewcart {
-  background-color: #f8ad25;
+  background-color: #1b335f;
   line-height: 33px;
 }
 
@@ -1868,7 +1868,7 @@ h3 + p {
 }
 
 .grid-opts li a.active {
-  background-color: #f8ad25;
+  background-color: #1b335f;
   color: #fff;
   border-color: #f8ad25;
 }
@@ -2971,7 +2971,7 @@ h4 + .recent-post {
 /*Footer $footer*/
 
 footer {
-  background-color: #f8ad25;
+  background-color: #1b335f;
 }
 
 footer .logo {
@@ -3503,7 +3503,7 @@ a:hover {
   text-transform: capitalize;
 }
 .nbtn {
-  /* background-color: #f8ad25; */
+  /* background-color: #1b335f; */
   margin-top: 20px;
 }
 
