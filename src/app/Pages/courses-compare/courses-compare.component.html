@@ -19,6 +19,11 @@
           margin-right: 9px;" (click)="remove(comparelist.item)"><img
               src="https://img.icons8.com/material-outlined/24/000000/trash--v1.png" />
           </button>
+
+          <!-- <p *ngIf="i===0">Admission starts with in {{addmisionstartdateCount1}} days</p>
+          <p *ngIf="i===1">Admission starts with in {{addmisionstartdateCount2}}days</p>
+          <p *ngIf="i===2">Admission starts with in {{addmisionstartdateCount3}} days</p> -->
+
         </div>
         <div class="row">
           <div class="col-sm-12">
@@ -26,14 +31,14 @@
 
            
             <h6>Institue Name : {{comparelist.item.Institute.name}}</h6>
-            <h6>University Name : {{comparelist.instituteCourse.universityName}}</h6>
+            <h6>University/Board Name : {{comparelist.instituteCourse.universityName}}</h6>
 
             <h6>Location Details : {{comparelist.item.Institute.addressLine1}} ,
               {{comparelist.item.Institute.addressLine2}},
               {{comparelist.item.Institute.addressLine3}}</h6>
-            <h6>Food Avilablity : <span *ngIf="comparelist.item.Institute.foodAvailableAtHostel === true"> Yes</span>
-              <span *ngIf="comparelist.item.Institute.foodAvailableAtHostel === false"> No</span>
-            </h6>
+            <h6>Year of Establishment : {{comparelist.item.Institute.year_of_establishment}}</h6>
+
+         
             <h6>Boys Hostel Avilablity : <span *ngIf="comparelist.item.Institute.haveBoysHostel === true"> Yes</span>
               <span *ngIf="comparelist.item.Institute.haveBoysHostel === false"> No</span>
             </h6>
@@ -41,20 +46,28 @@
               <span *ngIf="comparelist.item.Institute.haveGirlsHostel === false"> No</span>
             </h6>
             <h6>Hostel Annuval Fee : {{comparelist.item.Institute.hostalAnnualFee}}</h6>
-            <h6>Year of Establishment : {{comparelist.item.Institute.year_of_establishment}}</h6>
+            <!-- <h6>Food Avilablity : <span *ngIf="comparelist.item.Institute.foodAvailableAtHostel === true"> Yes</span>
+              <span *ngIf="comparelist.item.Institute.foodAvailableAtHostel === false"> No</span>
+            </h6> -->
+            <h6>Board of Councils : 
+            </h6>
           </div>
             <hr>
             <div class="card">
 
-            <h6>Course Fee : {{comparelist.courseFee.otherFee}}</h6>
+            <h6>Course Name : {{comparelist.item.courseName}}</h6>
+            <h6>Course Duration : {{comparelist.item.courseDuration}}</h6>
+            <h6>Full Course Fee : {{comparelist.courseFee.otherFee}}</h6>
             <h6>Scholarship Available :
               <span *ngIf="comparelist.courseFee.hasScolarship === true"> Yes</span>
               <span *ngIf="comparelist.courseFee.hasScolarship === false"></span>
             </h6>
-            <h6>NSPOT Service Charges : {{comparelist.courseFee.nspotServiceCharge}}</h6>
-            <h6>NSPOT Tax Charges : {{comparelist.courseFee.nspotTax}}</h6>
-
             <h6>Payment Tenture : {{getpaymentTenture(comparelist.courseFee.paymentTenureId).title}}</h6>
+            <h6>Spot Fee : {{comparelist.courseFee.otherFee}}</h6>
+
+            <!-- <h6>NSPOT Service Charges : {{comparelist.courseFee.nspotServiceCharge}}</h6>
+            <h6>NSPOT Tax Charges : {{comparelist.courseFee.nspotTax}}</h6> -->
+
             </div>
             <hr>
             <div class="card">
@@ -81,6 +94,9 @@
             </h6>
             <h6>Job Areas :{{comparelist.instituteCourse.jobAreas}}</h6>
             <h6>Job Positions :{{comparelist.instituteCourse.jobPositions}}</h6>
+            <h6>Salary Range :{{comparelist.instituteCourse.salaryRange}}</h6>
+
+            
             <h6>Male Allowed : <span *ngIf="comparelist.instituteCourse.maleAllowed === true">
               Yes</span>
             <span *ngIf="comparelist.instituteCourse.maleAllowed === false"> No
