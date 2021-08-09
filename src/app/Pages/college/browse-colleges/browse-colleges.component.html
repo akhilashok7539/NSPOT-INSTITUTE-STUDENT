@@ -244,20 +244,24 @@
 
                                 <p *ngIf="item?.item.haveGirlsHostel === true">Girls Hostel : Yes </p>
                                 <p *ngIf="item?.item.haveGirlsHostel === false">Girls Hostel : No </p>
+                                  <!-- <a style="background: #f8ad25 !important;" class="greybutton" (click)="apply(item)">
+                                Apply</a> -->
                             </div>
                         </div>
 
                     </div>
 
-                    <div class="row" style="display: flex;justify-content: space-around;">
+                    <div class="row" style="display: flex;justify-content: space-between;">
                         <a routerLink="/student/institute-details/{{item.item.Institute.userId}}" class="greybutton"
-                            style="    width: 67%;
+                            style="  width: 65%; 
                             border: 1px solid #f8ad25;
                             color: #f8ad25;
                             background: none !important;">View More</a>
+                             <!-- <a style="background: #f8ad25 !important;" class="greybutton" (click)="apply(item)">
+                                Apply</a> -->
                         <a style="background: #f8ad25 !important;" class="greybutton" (click)="addtocompare(item)">Add
                             to compare</a>
-
+                           
 
                     </div>
 
