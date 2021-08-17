@@ -241,19 +241,43 @@
           <app-control-messages [touched]="touched" [control]="f.name"></app-control-messages>
         </div>
 
+
         <div class="col-sm-6">
-          <label class="uppercase">Resident/ NRI </label>
+          <label class="uppercase">NRI </label>
           <div class="col-sm-6">
             <p class="checkbox">
-              <input type="checkbox" formControlName="isNRI" /><span>Yes</span>
+              <input type="radio" value="true" formControlName="isNRI" /><span>Yes</span>
             </p>
           </div>
-          <div class="col-sm-6" *ngIf="f.isNRI.value">
+          <div class="col-sm-6">
+            <p class="checkbox">
+              <input type="radio" value="false" formControlName="isNRI" /><span>No</span>
+            </p>
+          </div>
+          <app-control-messages [touched]="touched" [control]="f.isNRI"></app-control-messages>
+        </div>
+
+        <!-- <div class="col-sm-6">
+          
+            <label class="uppercase">NRI </label>
+            <div class="col-sm-6">
+              <p class="checkbox">
+                <input type="checkbox" formControlName="isNRI" /><span>Yes</span>
+              </p>
+            </div>
+            <div class="col-sm-6" *ngIf="f.isNRI.value">
+              <label class="uppercase">Nationality of the Applicant </label>
+              <input type="text" formControlName="forginNationality" id="" />
+            </div>
+          
+          
+        </div> -->
+        <div class="col-sm-12">
+          <div  *ngIf="f.isNRI.value === 'true'">
             <label class="uppercase">Nationality of the Applicant </label>
             <input type="text" formControlName="forginNationality" id="" />
           </div>
         </div>
-
         <div class="clearfix"></div>
         <div class="col-sm-4">
           <label class="uppercase">Registration Form Filled by Parents?

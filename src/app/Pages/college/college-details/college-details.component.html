@@ -13,12 +13,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <img src="{{baseApiUrl}}{{gallery ? gallery[0]?.galleryFile:''}}" 
-                    class="resp-img course-preview">
+                <img src="{{baseApiUrl}}{{gallery ? gallery[0]?.galleryFile:''}}" class="resp-img course-preview">
                 <h3>{{instituteInfo?.name}}</h3>
                 <p class="class-details uppercase">
-                    <span class="lessons"><i
-                            class="zmdi zmdi-assignment"></i>{{instituteInfo?.name}}</span>
+                    <span class="lessons"><i class="zmdi zmdi-assignment"></i>{{instituteInfo?.name}}</span>
                     <span class="duration"><i class="zmdi zmdi-time"></i>{{instituteInfo?.code}}</span>
                     <span class="views"><i class="zmdi zmdi-eye"></i>HOSTEL:
                         {{instituteInfo?.haveBoysHostel||instituteInfo?.haveGirlsHostel?"YES":"NO"}}</span>
@@ -152,8 +150,7 @@
                                             {{item.InstituteCourses.Course_Sub_Categories4.title}} - {{item.InstituteCourses.Course_Sub_Categories5.title}}
                                         </span> -->
                                         <p>Course Code :{{item.item.courseCode}}</p>
-                                        <a class="probootstrap-location courseBtn"
-                                           (click)="applycourse(item)">APPLY</a>
+                                        <a class="probootstrap-location courseBtn" (click)="applycourse(item)">APPLY</a>
                                     </div>
                                 </div>
 
@@ -167,8 +164,9 @@
                         <div class="col-md-12 gallery">
                             <h3 style="margin-bottom: 50px;">Gallery</h3>
                             <div class="col-sm-4" *ngFor="let item of gallery">
-                                <img *ngIf="item.galleryFile" src="{{baseApiUrl}}{{item.galleryFile}}" style="max-width: 375px;"
-                                    data-darkbox="{{baseApiUrl}}{{item.galleryFile}}" data-darkbox-group="one"
+                                <img *ngIf="item.galleryFile" src="{{baseApiUrl}}{{item.galleryFile}}"
+                                    style="max-width: 375px;" data-darkbox="{{baseApiUrl}}{{item.galleryFile}}"
+                                    data-darkbox-group="one"
                                     data-darkbox-description="<b>{{item.galleryLabel}}</b><br>Lorem ipsum dolor sit amet">
 
                             </div>
@@ -180,34 +178,52 @@
 
 
                 <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
+                   
                     <div class="ratings col-md-12">
-                        <div class="col-sm-6">
-                            <h4>VIRTUAL VIDEO TOUR</h4>
-                            <button class="search-teachers btnBottom">Campus Overview</button>
+                        <h4>VIRTUAL VIDEO TOUR</h4>
+                        <div class="col-sm-12"  id="style-1" style="    display: flex;
+                        justify-content: space-between;
+                        overflow: auto;">
+                           
+                            <!-- <button class="search-teachers btnBottom">Campus Overview</button>
                             <button class="search-teachers btnBottom">Class Room Tour</button>
                             <button class="search-teachers btnBottom">Lab Tour</button>
                             <button class="search-teachers btnBottom">Librabry</button>
                             <button class="search-teachers btnBottom">Recreational Area</button>
-                            <button class="search-teachers btnBottom">Hostel Tour</button>
+                            <button class="search-teachers btnBottom">Hostel Tour</button> -->
+                            <iframe [src]="campusTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
+                            <iframe [src]="classRoomVideoLink" width="30%" height="199px" frameborder="0"></iframe>
+                            <iframe [src]="hostelTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
+                            <iframe [src]="labTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
+                            <iframe [src]="recreationAreaTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
+                            <iframe [src]="libraryTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
+
+                            <!-- <iframe width="1280" height="545" src="https://www.youtube.com/embed/{{campusTourVideoLink}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6" style="margin-top: 20px;">
                             <h4>SOCIAL MEDIA </h4>
                             <ul class="social" style="margin-top: 26px;">
-                                <li *ngIf="socialLinks?.facebook"><a target="_blank" href="{{socialLinks.facebook}}"><i class="zmdi zmdi-facebook"></i></a></li>
+                                <li *ngIf="socialLinks?.facebook"><a target="_blank" href="{{socialLinks.facebook}}"><i
+                                            class="zmdi zmdi-facebook"></i></a></li>
                                 <li *ngIf="socialLinks?.twitter">
-                                    <a target="_blank" href="{{socialLinks.twitter}}"><i class="zmdi zmdi-twitter"></i></a>
+                                    <a target="_blank" href="{{socialLinks.twitter}}"><i
+                                            class="zmdi zmdi-twitter"></i></a>
                                 </li>
                                 <li *ngIf="socialLinks?.linkedIn">
-                                    <a target="_blank" href="{{socialLinks.linkedIn}}"><i class="zmdi zmdi-linkedin"></i></a>
+                                    <a target="_blank" href="{{socialLinks.linkedIn}}"><i
+                                            class="zmdi zmdi-linkedin"></i></a>
                                 </li>
                                 <li *ngIf="socialLinks?.youtube">
-                                    <a target="_blank" href="{{socialLinks.youtube}}"><i class="zmdi zmdi-youtube"></i></a>
+                                    <a target="_blank" href="{{socialLinks.youtube}}"><i
+                                            class="zmdi zmdi-youtube"></i></a>
                                 </li>
                                 <li *ngIf="socialLinks?.instagram">
-                                    <a target="_blank" href="{{socialLinks.instagram}}"><i class="zmdi zmdi-instagram"></i></a>
+                                    <a target="_blank" href="{{socialLinks.instagram}}"><i
+                                            class="zmdi zmdi-instagram"></i></a>
                                 </li>
                                 <li *ngIf="socialLinks?.website">
-                                    <a target="_blank" href="{{socialLinks.website}}"><i class="zmdi zmdi-globe"></i></a>
+                                    <a target="_blank" href="{{socialLinks.website}}"><i
+                                            class="zmdi zmdi-globe"></i></a>
                                 </li>
                             </ul>
 

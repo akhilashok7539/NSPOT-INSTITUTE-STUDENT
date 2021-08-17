@@ -39,6 +39,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CoursesCompareComponent } from './Pages/courses-compare/courses-compare.component';
  import {ResponseService} from './services/response.service';
 import { ViewReceiptComponent } from './Pages/view-receipt/view-receipt.component';
+import {SafePipe} from './Pages/college/college-details/safe.pipe'
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +69,7 @@ import { ViewReceiptComponent } from './Pages/view-receipt/view-receipt.componen
     PaymentHistoryComponent,
     CoursesCompareComponent,
     ViewReceiptComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,
