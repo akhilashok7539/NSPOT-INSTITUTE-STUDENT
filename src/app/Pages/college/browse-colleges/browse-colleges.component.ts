@@ -264,4 +264,21 @@ export class BrowseCollegesComponent implements OnInit {
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
 }
+getaddmisonsnstartcount(item)
+{
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+  let s = mm + '/' + dd + '/' + yyyy;
+  var cuuretdate = new Date(mm + '/' + dd + '/' + yyyy)
+  console.log(cuuretdate.getTime());
+  var date1 = new Date(item['admissionStartDate']);
+  var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
+  var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+  console.log(Math.round(Difference_In_Days));
+  // this.addmisionstartdateCount2 = Math.round(Difference_In_Days);
+  // console.log("1th arrays",this.addmisionstartdateCount2);
+  return Math.round(Difference_In_Days);
+}
 }
