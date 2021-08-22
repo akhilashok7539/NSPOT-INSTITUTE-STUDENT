@@ -17,6 +17,8 @@ export class BrowseCollegesComponent implements OnInit {
   active_index = 2;
   paginationCount = 1;
   district = "";
+  currentdate;
+  addmisonstarts;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -232,18 +234,17 @@ export class BrowseCollegesComponent implements OnInit {
         this.toastr.error('Something went wrong!');
       });
   }
-  addtocompare(item)
-  {
+  addtocompare(item) {
     console.log(item);
     let req = {
-      "courseName":item.CourseName,
-      "studentId":this.studentId,
-      "instituteCourseId":item.item.id,
-      "instituteId":item.item.Institute.id
+      "courseName": item.CourseName,
+      "studentId": this.studentId,
+      "instituteCourseId": item.item.id,
+      "instituteId": item.item.Institute.id
     }
     console.log(req);
-    this.apiService.doPostRequest(`CourseCompare/create`,req).subscribe(
-      data =>{
+    this.apiService.doPostRequest(`CourseCompare/create`, req).subscribe(
+      data => {
         console.log(data);
         this.toastr.success("Course add to compare section")
       }
@@ -252,33 +253,95 @@ export class BrowseCollegesComponent implements OnInit {
   toggleAccordian(event, index) {
     var element = event.target;
     element.classList.toggle("active");
-    if(this.courses[index].isActive) {
+    if (this.courses[index].isActive) {
       this.courses[index].isActive = false;
     } else {
       this.courses[index].isActive = true;
-    }      
+    }
     var panel = element.nextElementSibling;
     if (panel.style.maxHeight) {
       panel.style.maxHeight = null;
     } else {
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
-}
-getaddmisonsnstartcount(item)
-{
-  var today = new Date();
-  var dd = String(today.getDate()).padStart(2, '0');
-  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  var yyyy = today.getFullYear();
-  let s = mm + '/' + dd + '/' + yyyy;
-  var cuuretdate = new Date(mm + '/' + dd + '/' + yyyy)
-  console.log(cuuretdate.getTime());
-  var date1 = new Date(item['admissionStartDate']);
-  var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
-  var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-  console.log(Math.round(Difference_In_Days));
-  // this.addmisionstartdateCount2 = Math.round(Difference_In_Days);
-  // console.log("1th arrays",this.addmisionstartdateCount2);
-  return Math.round(Difference_In_Days);
-}
+  }
+  getaddmisonsnstartcount(item) {
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    let s = mm + '/' + dd + '/' + yyyy;
+    this.currentdate = mm + '-' + dd + '-' + yyyy;
+    var cuuretdate = new Date(mm + '/' + dd + '/' + yyyy)
+    var date1 = new Date(item['admissionStartDate']);
+    var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+   
+    // this.addmisionstartdateCount2 = Math.round(Difference_In_Days);
+    // console.log("1th arrays",this.addmisionstartdateCount2);
+    // let d1 = item['admissionStartDate']
+    // console.log(new Date(d1));
+
+    // d1 = d1.split("T");
+    // d1 = d1[0];
+    // d1 = d1.split("-");
+  
+
+    // let d2 = item['admissionCloseDate']
+    // d2 = d2.split("T")
+    // console.log(d2);
+    // d2 = d2[0]
+    // d2 = d2.split("-");
+
+    // let c = this.currentdate.split("-");
+
+    // var from = new Date(d1[2], parseInt(d1[1]) - 1, d1[0]);  
+    // var to = new Date(d2[2], parseInt(d2[1]) - 1, d2[0]);
+    // var check = new Date(c[2], parseInt(c[1]) - 1, c[0]);
+    
+    let d1 = item['admissionStartDate']
+    d1 = new Date(d1);
+    let d2 = item['admissionCloseDate']
+    d2 = new Date(d2);
+    var check = new Date(this.currentdate);
+    console.log(d1);
+    console.log(d2);
+    console.log(check);
+    console.log( check.valueOf()- d1.valueOf());
+    let count = check.valueOf() - d1.valueOf();
+    var diffDays = Math.ceil(count / (1000 * 3600 * 24)); 
+    console.log(diffDays);
+
+    if(check > d1 && check < d2)
+    {
+      console.log("Addmission starts from "+d1 + "to"+d2 );
+      
+    }
+    else
+    {
+      console.log("Admission not started yet or admission closed" );
+
+    }
+  
+   
+
+    if (Math.round(Difference_In_Days) > 0) {
+      this.addmisonstarts = "Admission Starts " + Math.round(Difference_In_Days) + " Days"
+    }
+    else {
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+      let s = mm + '/' + dd + '/' + yyyy;
+      var cuuretdate = new Date(mm + '/' + dd + '/' + yyyy)
+      var date1 = new Date(item['admissionCloseDate']);
+      var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
+      var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+      
+      this.addmisonstarts = "Admission Close " + Math.round(Difference_In_Days) + " Days Left"
+    }
+    return this.addmisonstarts;
+  }
 }
