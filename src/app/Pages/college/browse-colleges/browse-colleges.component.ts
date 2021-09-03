@@ -311,25 +311,11 @@ export class BrowseCollegesComponent implements OnInit {
     console.log( check.valueOf()- d1.valueOf());
     let count = check.valueOf() - d1.valueOf();
     var diffDays = Math.ceil(count / (1000 * 3600 * 24)); 
-    console.log(diffDays);
+    // console.log(diffDays);
 
     if(check > d1 && check < d2)
     {
       console.log("Addmission starts from "+d1 + "to"+d2 );
-      
-    }
-    else
-    {
-      console.log("Admission not started yet or admission closed" );
-
-    }
-  
-   
-
-    if (Math.round(Difference_In_Days) > 0) {
-      this.addmisonstarts = "Admission Starts " + Math.round(Difference_In_Days) + " Days"
-    }
-    else {
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');
       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -339,9 +325,61 @@ export class BrowseCollegesComponent implements OnInit {
       var date1 = new Date(item['admissionCloseDate']);
       var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
       var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+      if(Difference_In_Days >0)
+      {
+        this.addmisonstarts = "Admission Close " + Math.round(Difference_In_Days) + " Days Left"
+      }
+      else
+      {
+        this.addmisonstarts = "Admission Close " + Math.round(Difference_In_Days) * -1 + " Days Left"
+      }
       
-      this.addmisonstarts = "Admission Close " + Math.round(Difference_In_Days) + " Days Left"
+
+      return this.addmisonstarts;
+
     }
-    return this.addmisonstarts;
+    else
+    {
+      console.log("Admission not started yet or admission closed" );
+      if(check<d1)
+      {
+        if(Difference_In_Days >0)
+        {
+        this.addmisonstarts = "Admission Starts within" + Math.round(Difference_In_Days) + " Days"
+        }
+        else
+        {
+        this.addmisonstarts = "Admission Starts within" + Math.round(Difference_In_Days) * -1 + " Days"
+        }
+       
+        return this.addmisonstarts;
+      }
+      else
+      {
+        console.log("addmison closed");
+        return this.addmisonstarts = "Admission Closed";
+        
+      } 
+    } 
+  
+   
+
+    // if (Math.round(Difference_In_Days) > 0) {
+    //   this.addmisonstarts = "Admission Starts " + Math.round(Difference_In_Days) + " Days"
+    // }
+    // else {
+    //   var today = new Date();
+    //   var dd = String(today.getDate()).padStart(2, '0');
+    //   var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    //   var yyyy = today.getFullYear();
+    //   let s = mm + '/' + dd + '/' + yyyy;
+    //   var cuuretdate = new Date(mm + '/' + dd + '/' + yyyy)
+    //   var date1 = new Date(item['admissionCloseDate']);
+    //   var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
+    //   var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+      
+    //   this.addmisonstarts = "Admission Close " + Math.round(Difference_In_Days) + " Days Left"
+    // }
+    // return this.addmisonstarts;
   }
 }

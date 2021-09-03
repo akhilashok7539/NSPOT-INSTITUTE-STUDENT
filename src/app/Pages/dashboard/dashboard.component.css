@@ -64,7 +64,7 @@ h5{
     width: 250px;
     height: 250px;
     object-fit: cover;
-    margin:20px 0 20px 55px;
+    /* margin:20px 0 20px 55px; */
 }
 .profilePicBtn{
   position: absolute;

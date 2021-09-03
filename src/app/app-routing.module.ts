@@ -46,7 +46,7 @@ const routes: Routes = [
   },
   {
     path: 'student',
-    canActivate: [AuthGuard, UserTypeGuard],
+    // canActivate: [AuthGuard, UserTypeGuard],
     component: InnerLayoutComponent,
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -59,8 +59,6 @@ const routes: Routes = [
       { path: 'payment-history', component: PaymentHistoryComponent },
       { path: 'compare-courses', component: CoursesCompareComponent },
       { path: 'view-receipt', component: ViewReceiptComponent },
-
-
       {
         path: 'course',
         children: [
