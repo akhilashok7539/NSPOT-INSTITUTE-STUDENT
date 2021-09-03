@@ -15,6 +15,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class CollegeDetailsComponent implements OnInit {
   classRoomVideoLink;
+  activeButton = 1;
   hostelTourVideoLink;
   labTourVideoLink;
   recreationAreaTourVideoLink;
@@ -59,7 +60,8 @@ export class CollegeDetailsComponent implements OnInit {
       this.toastr.error('Failed to fetch institute details')
     });
     this.currentUrl = window.location.origin + this.router.url;
-
+    console.log(this.currentUrl);
+    
 
     // fetching boardof council details
     this.apiService.doGetRequest(endPoints.Get_boardOfCouncil + this.instituteId).subscribe((returnData: any) => {
@@ -281,5 +283,9 @@ export class CollegeDetailsComponent implements OnInit {
         
       } 
     } 
+  }
+  selecttab(index)
+  {
+    this.activeButton = index;
   }
 }

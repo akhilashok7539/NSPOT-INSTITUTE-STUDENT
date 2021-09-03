@@ -39,7 +39,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { CoursesCompareComponent } from './Pages/courses-compare/courses-compare.component';
  import {ResponseService} from './services/response.service';
 import { ViewReceiptComponent } from './Pages/view-receipt/view-receipt.component';
-import {SafePipe} from './Pages/college/college-details/safe.pipe'
+import {SafePipe} from './Pages/college/college-details/safe.pipe';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import {DemoMaterialModule} from '../app/material-module';
+import {FilterPipe} from './guards/filterpipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +73,7 @@ import {SafePipe} from './Pages/college/college-details/safe.pipe'
     CoursesCompareComponent,
     ViewReceiptComponent,
     SafePipe,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -79,12 +83,13 @@ import {SafePipe} from './Pages/college/college-details/safe.pipe'
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
+    DemoMaterialModule,
     NgxSpinnerModule,
-
+    NgxMatSelectSearchModule,
     NgbModule
   ],
   providers: [
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    // {provide: LocationStrategy, useClass: HashLocationStrategy},
     { provide: HTTP_INTERCEPTORS, useClass: ResponseService, multi :true},
 
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },

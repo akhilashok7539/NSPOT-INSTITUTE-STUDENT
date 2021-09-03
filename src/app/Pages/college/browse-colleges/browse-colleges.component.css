@@ -95,7 +95,13 @@ a{
 .active, .accordion:hover {
   background-color: #ccc;
 }
-
+.col-sm-2{
+  /* border-bottom: 1px solid #949494; */
+}
+::ng-deep .mat-select{
+  margin-top: 9px;
+  border-bottom: 1px solid #949494;
+}
 .accordion:after {
   content: '\002B';
   color: #777;

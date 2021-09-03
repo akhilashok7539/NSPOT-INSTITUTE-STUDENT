@@ -7,6 +7,8 @@ import { endPoints } from '../../../config/endPoints';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { ReplaySubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-browse-colleges',
@@ -17,8 +19,15 @@ export class BrowseCollegesComponent implements OnInit {
   active_index = 2;
   paginationCount = 1;
   district = "";
+  searchText;
   currentdate;
   addmisonstarts;
+  accademicLevels1;
+  accademicLevels2;
+  accademicLevels3;
+  accademicLevels4;
+  accademicLevels5;
+  accademicLevels6;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -45,7 +54,8 @@ export class BrowseCollegesComponent implements OnInit {
   baseApiUrl = environment.baseApiUrl;
 
   districtList;
-  stateList;
+  stateList=[];
+  filteredList1;
   ngOnInit(): void {
     // fetching student details
     this.apiService.doGetRequest(endPoints.student + this.studentId).subscribe((returnData: any) => {
@@ -68,7 +78,7 @@ export class BrowseCollegesComponent implements OnInit {
       districtId: [''],
       stateId: ['']
     });
-
+    this.filteredList1 = this.stateList.slice();
     console.log(window.location.origin + this.router.url);
   }
 
@@ -97,7 +107,9 @@ export class BrowseCollegesComponent implements OnInit {
 
   loadAccademicLevelCourses(event): void {
 
-    const academicLevelId = event.target.value;
+    // const academicLevelId = event.target.value;
+    const academicLevelId = event;
+
     this.apiService.doGetRequest(`course-categories/subcategory/` + academicLevelId).subscribe((returnData: any) => {
       this.accademicLevelsCourses = returnData.data;
       console.log(this.accademicLevelsCourses);
@@ -113,28 +125,28 @@ export class BrowseCollegesComponent implements OnInit {
     });
   }
   loadAccademicLevelCoursessubcat(event): void {
-    const subcategoryId = event.target.value;
+    const subcategoryId = event;
     this.apiService.doGetRequest(`course-categories/subcategory2/` + subcategoryId).subscribe((returnData: any) => {
       this.courseStreams = returnData.data;
       console.log(this.accademicLevelsCourses);
     });
   }
   loadAccademicLevelCoursessubcat1(event): void {
-    const subcategoryId = event.target.value;
+    const subcategoryId = event;
     this.apiService.doGetRequest(`course-categories/subcategory3/` + subcategoryId).subscribe((returnData: any) => {
       this.courseStreamsSpecializations = returnData.data;
       console.log(this.accademicLevelsCourses);
     });
   }
   loadAccademicLevelCoursessubcat2(event): void {
-    const subcategoryId = event.target.value;
+    const subcategoryId = event;
     this.apiService.doGetRequest(`course-categories/subcategory4/` + subcategoryId).subscribe((returnData: any) => {
       this.courseStreamsSpecializations3 = returnData.data;
       console.log(this.accademicLevelsCourses);
     });
   }
   loadAccademicLevelCoursessubcat3(event): void {
-    const subcategoryId = event.target.value;
+    const subcategoryId = event;
     this.apiService.doGetRequest(`course-categories/subcategory5/` + subcategoryId).subscribe((returnData: any) => {
       this.courseStreamsSpecializations4 = returnData.data;
       console.log(this.accademicLevelsCourses);
@@ -205,9 +217,11 @@ export class BrowseCollegesComponent implements OnInit {
     }
   }
   loaddistricts(event) {
-    this.stateId = event.target.value;
-    console.log(event.target.value);
-    this.apiService.doGetRequest(`district/` + event.target.value).subscribe((returnData: any) => {
+    console.log(event);
+    
+    this.stateId = event;
+    // console.log(event.target.value);
+    this.apiService.doGetRequest(`district/` + event).subscribe((returnData: any) => {
       this.districtList = returnData.data;
       console.log(this.districtList);
     });
