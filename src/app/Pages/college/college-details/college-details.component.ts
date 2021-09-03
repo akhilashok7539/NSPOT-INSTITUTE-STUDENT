@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ApiService } from '../../../services/api.service';
@@ -7,6 +7,7 @@ import { endPoints } from '../../../config/endPoints';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ModalComponent } from 'src/app/components/modal/modal.component';
 
 @Component({
   selector: 'app-college-details',
@@ -14,6 +15,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./college-details.component.css']
 })
 export class CollegeDetailsComponent implements OnInit {
+  @ViewChild('modal', {static: false}) modal: ModalComponent;
   classRoomVideoLink;
   activeButton = 1;
   hostelTourVideoLink;
@@ -59,8 +61,11 @@ export class CollegeDetailsComponent implements OnInit {
       console.error(error);
       this.toastr.error('Failed to fetch institute details')
     });
-    this.currentUrl = window.location.origin + this.router.url;
+    // this.currentUrl = window.location.origin + this.router.url;
+    this.currentUrl = window.location.href;
+
     console.log(this.currentUrl);
+    console.log("current", window.location.href);
     
 
     // fetching boardof council details
@@ -181,7 +186,8 @@ export class CollegeDetailsComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
-    this.toastr.success("Link Copied")
+    // this.toastr.success("Link Copied")
+    this.modal.open();
   }
   getaddmisonsnstartcount(item)
   {
