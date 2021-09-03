@@ -7,9 +7,14 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
   @ViewChild('myModal', {static: false}) modal: ElementRef;
+  currentUrl;
   constructor() { }
 
   ngOnInit(): void {
+    this.currentUrl = window.location.href;
+
+    console.log(this.currentUrl);
+    console.log("current", window.location.href);
   }
   open() {
     this.modal.nativeElement.style.display = 'block';
