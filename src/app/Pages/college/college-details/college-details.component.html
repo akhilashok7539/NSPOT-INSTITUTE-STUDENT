@@ -39,8 +39,16 @@
                     color: orange;text-transform: uppercase;
                     font-weight: bold;"><i class="zmdi zmdi-share"></i>Share Course</button>
                 </p>
+                <!-- <share-buttons [theme]="'default'"
+            [include]="['facebook','messenger','whatsapp']"
+            [show]="4"
+            [size]="-1"
+            [url]=currentUrl
+            [autoSetMeta]="false"
+            [image]="'https://hit-game.com/assets/images/banner1.png'"
+        ></share-buttons> -->
 
-
+              <app-modal #modal></app-modal>
                 <div class="row" style="display: flex;
                 justify-content: center;margin-bottom: 22px;">
                     <div class="col-sm-2" [class.phase-active]="activeButton === 1" (click)="selecttab(1)">

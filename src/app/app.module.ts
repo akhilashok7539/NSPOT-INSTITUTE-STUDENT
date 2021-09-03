@@ -43,6 +43,10 @@ import {SafePipe} from './Pages/college/college-details/safe.pipe';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import {DemoMaterialModule} from '../app/material-module';
 import {FilterPipe} from './guards/filterpipe';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { ModalComponent } from './components/modal/modal.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +78,7 @@ import {FilterPipe} from './guards/filterpipe';
     ViewReceiptComponent,
     SafePipe,
     FilterPipe,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,6 +86,8 @@ import {FilterPipe} from './guards/filterpipe';
     FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    ShareButtonsModule,
+    ShareIconsModule,
     ReactiveFormsModule,
     HttpClientModule,
     DemoMaterialModule,
