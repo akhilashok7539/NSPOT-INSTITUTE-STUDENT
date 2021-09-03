@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
@@ -13,13 +13,14 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  redirectURL;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private apiService: ApiService,
     private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private activateroute:ActivatedRoute
   ) { }
 
   form: FormGroup;
@@ -31,6 +32,11 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
+    let params = this.activateroute.snapshot.queryParams;
+    console.log(params);
+    if (params['returnUrl']) {
+      this.redirectURL = params['returnUrl'];
+    }
   }
 
 
@@ -47,7 +53,17 @@ export class LoginComponent implements OnInit {
       if (returnData.status === true) {
         this.toastr.success('Login successfull');
         this.authService.setUser(returnData.data);
+        console.log(this.redirectURL);
+        
+        if (this.redirectURL) {        
+          this.router.navigateByUrl(this.redirectURL)
+             console.log("here");
+             
+      } else {
+        console.log("else");
+      
         this.router.navigate([`/student/profile`]);
+      }
       }
       else {
         this.toastr.error(returnData.error.message);

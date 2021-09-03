@@ -46,7 +46,7 @@ const routes: Routes = [
   },
   {
     path: 'student',
-    // canActivate: [AuthGuard, UserTypeGuard],
+    canActivate: [AuthGuard],
     component: InnerLayoutComponent,
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },

@@ -3,19 +3,30 @@
     <div class="page-heading text-center">
         <div class="container">
             <h2 class="uppercase">Institute Details</h2>
-            <!-- <button  [value]="currentUrl" >Copy this</button> -->
         </div>
     </div>
 
-    <!-- <pre>{{instituteInfo|json}}</pre> -->
-    <!-- <pre>{{gallery|json}}</pre> -->
+    <div class="columns the-header is-marginless">
+        <div class="column header-text is-6 is-offset-3 is-12-mobile">
+
+            <img class="header-background" src="https://unsplash.it/1000/1000/?random&pic=1" id="header-background-id"
+                alt="background-img">
+        </div>
+    </div>
+
+
+    <div class="column is-12 has-text-centered">
+        <img class="profile-picture" style="display: flex;margin-left: auto;margin-right: auto; " src="https://unsplash.it/300/300/?random&pic=1(14 kB)" alt="profile-picture">
+    </div>
+
 
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <img src="{{baseApiUrl}}{{gallery ? gallery[0]?.galleryFile:''}}" class="resp-img course-preview">
-                <h3>{{instituteInfo?.name}}</h3>
-                <p class="class-details uppercase">
+              
+                <h3 style="text-align: center;">{{instituteInfo?.name}}</h3>
+                <p class="class-details uppercase" style="display: flex;
+                justify-content: center;">
                     <span class="lessons"><i class="zmdi zmdi-assignment"></i>{{instituteInfo?.name}}</span>
                     <span class="duration"><i class="zmdi zmdi-time"></i>{{instituteInfo?.code}}</span>
                     <span class="views"><i class="zmdi zmdi-eye"></i>HOSTEL:
@@ -26,9 +37,30 @@
                     <button (click)="copyMessage(currentUrl)" style="    background: none;
                     border: none;
                     color: orange;text-transform: uppercase;
-                    font-weight: bold;">Share Course</button>
+                    font-weight: bold;"><i class="zmdi zmdi-share"></i>Share Course</button>
                 </p>
-                <div class="row">
+
+
+                <div class="row" style="display: flex;
+                justify-content: center;margin-bottom: 22px;">
+                    <div class="col-sm-2" [class.phase-active]="activeButton === 1" (click)="selecttab(1)">
+                        <p>ABOUT US</p>
+                    </div>
+                    <div class="col-sm-3" [class.phase-active]="activeButton === 2" (click)="selecttab(2)">
+                        <p>REGISTRATION DETAILS</p>
+                    </div>
+                    <div class="col-sm-2" [class.phase-active]="activeButton === 3" (click)="selecttab(3)">
+                        <p>COURSES OFFERED</p>
+                    </div>
+                    <div class="col-sm-2" [class.phase-active]="activeButton === 4" (click)="selecttab(4)">
+                        <p>GALLERY</p>
+                    </div>
+                    <div class="col-sm-2" [class.phase-active]="activeButton === 5" (click)="selecttab(5)">
+                        <p>VIRTUAL VIDEO TOUR</p>
+                    </div>
+                </div>
+
+                <div class="row" *ngIf="activeButton ===1">
                     <div class="col-md-12 order  pros">
                         <div class="col-md-6">
                             <h4>CONTACT ADDRESS</h4>
@@ -78,7 +110,7 @@
 
 
                 </div>
-                <div class="row" style="margin-top: 20px;">
+                <div class="row" style="margin-top: 20px;" *ngIf="activeButton ===2">
                     <div class="ratings col-md-12">
                         <div class="col-sm-4">
                             <h4>REGISTRATION DETAILS</h4>
@@ -97,8 +129,8 @@
 
                         </div>
                         <div class="col-sm-4">
-
-
+                            <h6 style="    margin-top: 57px;"></h6>
+                            <p></p>
                             <p>Village/Munciplaity </p>
                             <p>Town : {{instituteInfo?.town}}</p>
                             <p>Pin : {{instituteInfo?.pin}}</p>
@@ -107,17 +139,19 @@
                     </div>
                 </div>
 
-                <div class="row" style="margin-top: 20px;">
+                <div class="row" style="margin-top: 20px;" *ngIf="activeButton ===2">
                     <div class="ratings col-md-12">
+                        <h4>BOARD OF COUNCIL AWARDED</h4>
                         <div class="col-sm-4">
-                            <h4>BOARD OF COUNCIL AWARDED</h4>
+                            
                             <p>Unit Of : {{boardOfCouncilInfo?.unitOfLabel}}</p>
                             <p>Recognized : {{boardOfCouncilInfo?.recongnizedByLabel}}</p>
                             <p>Affliated To: {{boardOfCouncilInfo?.affiliatedToLabel}}</p>
                             <p>Recognized By : {{boardOfCouncilInfo?.recongnizedByLabel}}</p>
                         </div>
                         <div class="col-sm-4">
-
+                            
+                   
                             <p>Registered To: {{boardOfCouncilInfo?.registeredToLabel}}</p>
                             <p>Approved By: {{boardOfCouncilInfo?.approvedByLabel}}</p>
                             <p>Accredation By: {{boardOfCouncilInfo?.accreditedByLabel}}</p>
@@ -134,8 +168,8 @@
                     </div>
                 </div>
 
-                
-                <div class="container">
+
+                <div class="container" *ngIf="activeButton ===3">
                     <div class="row">
                         <div class="col-md-12">
                             <h3 style="margin-bottom: 50px;">Courses Offered</h3>
@@ -143,7 +177,7 @@
 
                             <div *ngFor="let item of coursesOffered"
                                 class="col-md-4 probootstrap-animate fadeInUp probootstrap-animated">
-                             
+
                                 <!-- <div class="probootstrap-featured-news-box">
                                     <div class="probootstrap-text">
                                         <h3 *ngIf="item.CourseName !=null">{{item.CourseName}}</h3>
@@ -152,33 +186,37 @@
                                         <a class="probootstrap-location courseBtn" (click)="applycourse(item)">APPLY</a>
                                     </div>
                                 </div> -->
-                                
-                                <div class="box" >
-                                    
-                                    <div class="ribbon ribbon-top-left" ><span>{{getaddmisonsnstartcount(item.item)}}</span></div>
-                               
+
+                                <div class="box">
+
+                                    <div class="ribbon ribbon-top-left">
+                                        <span>{{getaddmisonsnstartcount(item.item)}}</span>
+                                    </div>
+
 
                                     <div style="text-align: center;    margin-left: 70px;
 
                                     padding-top: 1px;">
                                         <h3 *ngIf="item.CourseName !=null">{{item.CourseName}}</h3>
                                         <p>Course Code :{{item.item.courseCode}}</p>
-                                        <a class="probootstrap-location courseBtn" (click)="applycourse(item)" *ngIf="getaddmisonsnstartcount(item.item) === 'Opened'">APPLY</a>
-                                   
+                                        <a class="probootstrap-location courseBtn" (click)="applycourse(item)"
+                                            *ngIf="getaddmisonsnstartcount(item.item) === 'Opened'">APPLY</a>
+
                                         <a class="probootstrap-location courseBtn" style="    background: darkgrey;
                                         color: white;
                                         border: none;
-                                        text-decoration: none;"  *ngIf="getaddmisonsnstartcount(item.item) === 'Not Started' || getaddmisonsnstartcount(item.item) === 'Closed'">APPLY</a>
+                                        text-decoration: none;"
+                                            *ngIf="getaddmisonsnstartcount(item.item) === 'Not Started' || getaddmisonsnstartcount(item.item) === 'Closed'">APPLY</a>
                                     </div>
-                                   
 
-                                  </div>
+
+                                </div>
                             </div>
 
                         </div>
                     </div>
                 </div>
-                <div class="container">
+                <div class="container" *ngIf="activeButton ===4">
                     <div class="row">
                         <div class="col-md-12 gallery">
                             <h3 style="margin-bottom: 50px;">Gallery</h3>
@@ -196,14 +234,14 @@
 
 
 
-                <div class="row" style="margin-top: 20px;margin-bottom: 20px;">
-                   
+                <div class="row" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="activeButton ===5">
+
                     <div class="ratings col-md-12">
                         <h4>VIRTUAL VIDEO TOUR</h4>
-                        <div class="col-sm-12"  id="style-1" style="    display: flex;
+                        <div class="col-sm-12" id="style-1" style="    display: flex;
                         justify-content: space-between;
                         overflow: auto;">
-                           
+
                             <!-- <button class="search-teachers btnBottom">Campus Overview</button>
                             <button class="search-teachers btnBottom">Class Room Tour</button>
                             <button class="search-teachers btnBottom">Lab Tour</button>
@@ -214,7 +252,8 @@
                             <iframe [src]="classRoomVideoLink" width="30%" height="199px" frameborder="0"></iframe>
                             <iframe [src]="hostelTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
                             <iframe [src]="labTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
-                            <iframe [src]="recreationAreaTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
+                            <iframe [src]="recreationAreaTourVideoLink" width="30%" height="199px"
+                                frameborder="0"></iframe>
                             <iframe [src]="libraryTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
 
                             <!-- <iframe width="1280" height="545" src="https://www.youtube.com/embed/{{campusTourVideoLink}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->

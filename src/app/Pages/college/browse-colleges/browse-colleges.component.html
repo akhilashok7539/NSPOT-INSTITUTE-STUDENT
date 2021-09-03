@@ -27,6 +27,9 @@
     </div>
   
 </div> -->
+
+
+
 <div class="container popular" *ngIf="active_index === 2">
     <form [formGroup]="form" (submit)="onSubmit()" class="contact">
         <div class="row" style="display: flex;
@@ -34,80 +37,149 @@
         margin-top: 48px;">
             <!-- STATE -->
             <div class="col-sm-2">
-                <select (change)="loaddistricts($event)" formControlName="stateId">
+                <!-- <select (change)="loaddistricts($event)" formControlName="stateId">
                     <option value="">Choose State</option>
                     <option *ngFor="let item of stateList" value="{{item.id}}">{{item.state}}</option>
-                </select>
+                </select> -->
+                <!-- <mat-form-field>
+                    <mat-select  placeholder="States" (change)="loaddistricts($event)" formControlName="stateId">
+                   
+                
+                      <mat-option *ngFor="let stateList of stateList " [value]="stateList.id">
+                        {{stateList.state}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+
+                    <mat-select  placeholder="States" formControlName="stateId" (selectionChange)="loaddistricts(this.form.value.stateId)">
+                        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search" [ngModelOptions]="{standalone: true}">
+                        <mat-option *ngFor="let stateList of stateList | filter: searchText" [value]="stateList.id">
+                            {{stateList.state}}
+                        </mat-option>
+                    </mat-select>
             </div>
 
             <!-- district -->
             <div class="col-sm-2">
-                <select [(ngModel)]="district" [ngModelOptions]="{standalone: true}" formControlName="districtId">
+                <!-- <select [(ngModel)]="district" [ngModelOptions]="{standalone: true}" formControlName="districtId">
                     <option value="" selected disabled>Choose District</option>
                     <option *ngFor="let item of districtList" value="{{item.id}}">{{item.district}}</option>
-                </select>
+                </select> -->
+                
+                <mat-select   placeholder="District" formControlName="districtId">
+                    <input type="text" class="form-control" [(ngModel)]="district" placeholder="Search" [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let district of districtList | filter: district" [value]="district.id">
+                        {{district.district}}   
+                    </mat-option>
+                </mat-select>
             </div>
         </div>
         <div class="row toolbar">
 
 
             <!-- Accademic level -->
-            <div class="col-md-2 col-sm-6 col-xs-12">
-                <select formControlName="CourseCategoryId" (change)="loadAccademicLevelCourses($event)">
+            <div class="col-md-2 col-sm-6 col-xs-12" >
+                <!-- <select formControlName="CourseCategoryId" (change)="loadAccademicLevelCourses($event)">
                     <option value="">Choose Academic Level</option>
                     <option *ngFor="let item of accademicLevels" value="{{item.id}}">{{item.title}}</option>
-                </select>
-                <app-control-messages [touched]="touched" [control]="f.CourseCategoryId"></app-control-messages>
+                </select> -->
+                <!-- <app-control-messages [touched]="touched" [control]="f.CourseCategoryId"></app-control-messages> -->
+                <mat-select   placeholder="Choose Academic Level" formControlName="CourseCategoryId"  (selectionChange)="loadAccademicLevelCourses(this.form.value.CourseCategoryId)">
+                    <input type="text" class="form-control" [(ngModel)]="accademicLevels1" placeholder="Search Academic Level" [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let item of accademicLevels | filter: accademicLevels1" [value]="item.id">
+                        {{item.title}}   
+                    </mat-option>
+                </mat-select>
+
+                
             </div>
 
             <!-- Courses -->
-            <div class="col-md-2 col-sm-6 col-xs-12">
-                <select formControlName="CourseSubCategoryId" (change)="loadAccademicLevelCoursessubcat($event)">
+            <div class="col-md-2 col-sm-6 col-xs-12" >
+                <!-- <select formControlName="CourseSubCategoryId" (change)="loadAccademicLevelCoursessubcat($event)">
                     <option value="">Choose Course</option>
                     <option *ngFor="let item of accademicLevelsCourses" value="{{item.id}}">{{item.title}}</option>
                 </select>
-                <app-control-messages [touched]="touched" [control]="f.CourseSubCategoryId"></app-control-messages>
+                <app-control-messages [touched]="touched" [control]="f.CourseSubCategoryId"></app-control-messages> -->
+
+                <mat-select   placeholder="Choose Course" formControlName="CourseSubCategoryId"  (selectionChange)="loadAccademicLevelCoursessubcat(this.form.value.CourseSubCategoryId)">
+                    <input type="text" class="form-control" [(ngModel)]="accademicLevels2" placeholder="Search Course" [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let item of accademicLevelsCourses | filter: accademicLevels2" [value]="item.id">
+                        {{item.title}}   
+                    </mat-option>
+                </mat-select>
             </div>
 
             <!-- Course streams -->
             <div class="col-md-2 col-sm-6 col-xs-12">
-                <select formControlName="CourseSubCategory2Id" (change)="loadAccademicLevelCoursessubcat1($event)">
+                <!-- <select formControlName="CourseSubCategory2Id" (change)="loadAccademicLevelCoursessubcat1($event)">
                     <option value="">Choose Course</option>
                     <option *ngFor="let item of courseStreams" value="{{item.id}}">{{item.title}}</option>
                 </select>
-                <app-control-messages [touched]="touched" [control]="f.CourseSubCategory2Id"></app-control-messages>
+                <app-control-messages [touched]="touched" [control]="f.CourseSubCategory2Id"></app-control-messages> -->
+
+                <mat-select   placeholder="Choose Course" formControlName="CourseSubCategory2Id"  (selectionChange)="loadAccademicLevelCoursessubcat1(this.form.value.CourseSubCategory2Id)">
+                    <input type="text" class="form-control" [(ngModel)]="accademicLevels3" placeholder="Search Course" [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let item of courseStreams | filter: accademicLevels3" [value]="item.id">
+                        {{item.title}}   
+                    </mat-option>
+                </mat-select>
+
             </div>
 
             <!-- Course stream specializations -->
             <div class="col-md-2 col-sm-6 col-xs-12">
-                <select formControlName="CourseSubCategory3Id" (change)="loadAccademicLevelCoursessubcat2($event)">
+                <!-- <select formControlName="CourseSubCategory3Id" (change)="loadAccademicLevelCoursessubcat2($event)">
                     <option value="">Choose Course</option>
                     <option *ngFor="let item of courseStreamsSpecializations" value="{{item.id}}">{{item.title}}
                     </option>
                 </select>
                 <app-control-messages [touched]="touched" [control]="f.CourseSubCategory3Id">
-                </app-control-messages>
+                </app-control-messages> -->
+
+                <mat-select   placeholder="Choose Course" formControlName="CourseSubCategory3Id"  (selectionChange)="loadAccademicLevelCoursessubcat2(this.form.value.CourseSubCategory3Id)">
+                    <input type="text" class="form-control" [(ngModel)]="accademicLevels4" placeholder="Search Course" [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let item of courseStreamsSpecializations | filter: accademicLevels4" [value]="item.id">
+                        {{item.title}}   
+                    </mat-option>
+                </mat-select>
+
             </div>
             <div class="col-md-2 col-sm-6 col-xs-12">
-                <select formControlName="CourseSubCategory4Id" (change)="loadAccademicLevelCoursessubcat3($event)">
+                <!-- <select formControlName="CourseSubCategory4Id" (change)="loadAccademicLevelCoursessubcat3($event)">
                     <option value="">Choose Course</option>
                     <option *ngFor="let item of courseStreamsSpecializations3" value="{{item.id}}">{{item.title}}
                     </option>
                 </select>
                 <app-control-messages [touched]="touched" [control]="f.CourseSubCategory4Id">
-                </app-control-messages>
+                </app-control-messages> -->
+
+                <mat-select  placeholder="Choose Course" formControlName="CourseSubCategory4Id"  (selectionChange)="loadAccademicLevelCoursessubcat3(this.form.value.CourseSubCategory4Id)">
+                    <input type="text" class="form-control" [(ngModel)]="accademicLevels5" placeholder="Search Course" [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let item of courseStreamsSpecializations3 | filter: accademicLevels5" [value]="item.id">
+                        {{item.title}}   
+                    </mat-option>
+                </mat-select>
+
             </div>
             <div class="col-md-2 col-sm-6 col-xs-12" style="">
-                <select formControlName="CourseSubCategory5Id">
+                <!-- <select formControlName="CourseSubCategory5Id">
                     <option value="">Choose Course</option>
                     <option *ngFor="let item of courseStreamsSpecializations4" value="{{item.id}}">{{item.title}}
                     </option>
                 </select>
                 <app-control-messages [touched]="touched" [control]="f.CourseSubCategory5Id">
-                </app-control-messages>
+                </app-control-messages> -->
                 <!-- <button type="submit" class="search-btn-system-view" style="    position: absolute;">
                     <img src="./assets/images/search.png" alt="">
                 </button> -->
+                <mat-select  placeholder="Choose Course" formControlName="CourseSubCategory5Id"  >
+                    <input type="text" class="form-control" [(ngModel)]="accademicLevels6" placeholder="Search Course" [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let item of courseStreamsSpecializations4 | filter: accademicLevels6" [value]="item.id">
+                        {{item.title}}   
+                    </mat-option>
+                </mat-select>
+
             </div>
 
 

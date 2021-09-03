@@ -25,9 +25,11 @@ export class UserTypeGuard implements CanActivate {
 
     // if the user not logedin at all going to the login page of the same portal
     if (!this.authService.userProfile) {
+      console.log("redirect url state",state);
+      
       this.toastr.error('Oops!', 'Please login.');
       this.authService.logoutUser();
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login'],{queryParams:{'redirectURL':state.url}});
       return false;
     }
 

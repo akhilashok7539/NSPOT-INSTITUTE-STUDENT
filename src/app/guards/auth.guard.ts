@@ -8,24 +8,45 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(
-    private toastr: ToastrService,
-    private router: Router
-  ) {
-  }
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  // constructor(
+  //   private toastr: ToastrService,
+  //   private router: Router
+  // ) {
+  // }
+  // canActivate(
+  //   next: ActivatedRouteSnapshot,
+  //   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
+  //   if (sessionStorage.getItem('userLogin')) {
+  //     // logged in so return true
+  //     return true;
+  //   }
+  //   console.log("redirect url state",state);
+
+  //   //  not logged in so redirect to login page
+  //   this.toastr.error('Oops!', 'Please login before redirecting.')
+  //   this.router.navigate(['/login'],{queryParams:{'redirectURL':state.url}});
+  //   return false;
+  // }
+  constructor(
+    private router: Router,private toastr: ToastrService,
+) {}
+
+canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+   
+    console.log("check",state);
+   
     if (sessionStorage.getItem('userLogin')) {
       // logged in so return true
       return true;
     }
+    
+    this.router.navigate(['/login'], 
+    { queryParams: { returnUrl: state.url }}
+    
+    );
 
-    //  not logged in so redirect to login page
-    this.toastr.error('Oops!', 'Please login before redirecting.')
-    this.router.navigate(['/login']);
+  
     return false;
-  }
-
+}
 }
