@@ -2,6 +2,70 @@
 {
 margin-bottom: 5px;
 }
+.box {
+    margin-top: 10px;
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    height: 151px;
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,.1);
+  }
+  
+  /* common */
+  .ribbon {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    position: absolute;
+  }
+  .ribbon::before,
+  .ribbon::after {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    display: block;
+    border: 5px solid #2980b9;
+  }
+  .ribbon span {
+    position: absolute;
+    display: block;
+    width: 159px;
+    padding: 15px 0;
+    background-color: #1b335f;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
+    color: #fff;
+    font: 707 11px/1 'Lato', sans-serif;
+    text-shadow: 0 1px 1px rgb(0 0 0 / 20%);
+    text-transform: uppercase;
+    text-align: center;
+  }
+  
+  /* top left*/
+  .ribbon-top-left {
+    /* top: -10px;
+    left: -10px; */
+  }
+  .ribbon-top-left::before,
+  .ribbon-top-left::after {
+    border-top-color: transparent;
+    border-left-color: transparent;
+  }
+  .ribbon-top-left::before {
+    top: 0;
+    right: 0;
+  }
+  .ribbon-top-left::after {
+    bottom: 0;
+    left: 0;
+  }
+  .ribbon-top-left span {
+    right: 37px;
+    top: 17px;
+    transform: rotate(-45deg);
+  }
+  
+  /* top 
 .gallery img{
 	margin-bottom: 10px;
 }
@@ -49,9 +113,15 @@ iframe{
 
 }
 .probootstrap-date, .probootstrap-location {
-    display: block;
+    /* display: block;
     color: #666;
-    margin-top: 19px;
+    margin-top: 19px; */
+    display: flex;
+    color: #666;
+    padding-top: 2px;
+    justify-content: center;
+    align-items: center;
+    margin: 16px auto;
 }
 .probootstrap-featured-news-box .probootstrap-text {
     position: relative;

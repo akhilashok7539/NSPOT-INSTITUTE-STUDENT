@@ -87,13 +87,13 @@ export class DashboardComponent implements OnInit {
     ).subscribe((returnData: any) => {
       this.allApplications = returnData.data;
       this.allApplications.map(element => {
-        if (element.applicationStatus == "pre-application-approved")
+        if (element.item.applicationStatus == "pre-application-approved")
           this.acceptedPreApplications.push(element)
-        if (element.applicationStatus == "payment-done")
+        if (element.item.applicationStatus == "payment-done")
           this.acceptedApplications.push(element)
-        if (element.applicationStatus == "rejected")
+        if (element.item.applicationStatus == "rejected")
           this.rejectedApplications.push(element)
-        if (element.applicationStatus == "pre-application-returned")
+        if (element.item.applicationStatus == "pre-application-returned")
           this.resubmitApplications.push(element)
       })
     }, error => {

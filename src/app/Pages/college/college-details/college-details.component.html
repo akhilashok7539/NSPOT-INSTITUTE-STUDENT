@@ -134,7 +134,7 @@
                     </div>
                 </div>
 
-
+                
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
@@ -143,17 +143,36 @@
 
                             <div *ngFor="let item of coursesOffered"
                                 class="col-md-4 probootstrap-animate fadeInUp probootstrap-animated">
-                                <div class="probootstrap-featured-news-box">
+                             
+                                <!-- <div class="probootstrap-featured-news-box">
                                     <div class="probootstrap-text">
                                         <h3 *ngIf="item.CourseName !=null">{{item.CourseName}}</h3>
-                                        <!-- <span class="probootstrap-date"><i class="icon-calendar"></i>
-                                            {{item.InstituteCourses.Course_Sub_Categories4.title}} - {{item.InstituteCourses.Course_Sub_Categories5.title}}
-                                        </span> -->
+                                       
                                         <p>Course Code :{{item.item.courseCode}}</p>
                                         <a class="probootstrap-location courseBtn" (click)="applycourse(item)">APPLY</a>
                                     </div>
-                                </div>
+                                </div> -->
+                                
+                                <div class="box" >
+                                    
+                                    <div class="ribbon ribbon-top-left" ><span>{{getaddmisonsnstartcount(item.item)}}</span></div>
+                               
 
+                                    <div style="text-align: center;    margin-left: 70px;
+
+                                    padding-top: 1px;">
+                                        <h3 *ngIf="item.CourseName !=null">{{item.CourseName}}</h3>
+                                        <p>Course Code :{{item.item.courseCode}}</p>
+                                        <a class="probootstrap-location courseBtn" (click)="applycourse(item)" *ngIf="getaddmisonsnstartcount(item.item) === 'Opened'">APPLY</a>
+                                   
+                                        <a class="probootstrap-location courseBtn" style="    background: darkgrey;
+                                        color: white;
+                                        border: none;
+                                        text-decoration: none;"  *ngIf="getaddmisonsnstartcount(item.item) === 'Not Started' || getaddmisonsnstartcount(item.item) === 'Closed'">APPLY</a>
+                                    </div>
+                                   
+
+                                  </div>
                             </div>
 
                         </div>

@@ -6,6 +6,6 @@ export const environment = {
   adminPortalUrl: '',
   institutePortalUrl: '',
   studentPortalUrl: '',
-
-  RAZORPAY_KEY_ID: "rzp_test_tmR2af2TNK0qLo",
+  RAZORPAY_KEY_ID: "rzp_test_DTV1VZOmDat0g8",
+  RAZORPAY_KEY_SECRET:"7ZWhKdZRPd4sRAe5arpVwNrv"
 };
