@@ -180,22 +180,41 @@ export class CourseCheckoutComponent implements OnInit {
   pay()
   {
     let totalfeeAmount = this.totalFees;
-   var options = {
-      "key": "rzp_test_g8vPt9nJiYuDMj",
-      "description": "Course fee for: " + this.courseFeeDetails.Institute_Course.AccademicLevel_Course.title,
-      "amount":parseInt(totalfeeAmount),
-      "name": "NSPOT",
-      "prefill": {
-        "name": this.studentDetails.firstName + " " + this.studentDetails.middleName + " " + this.studentDetails.lastName,
-        "email": this.studentDetails.email,
-        "contact": ""
-      },
-      "notes": {
-        "address": "NSPOT CONSULTANCY SERVICES PRIVATE LIMITED 39/2475-B1, Suite#118 LR Towers, SJRRA 104, S Janatha Rd, Palarivattom, Kochi, Kerala 682025"
-      },
-       "currency": "INR",
+  //  var options = {
+  //     "key": "rzp_test_g8vPt9nJiYuDMj",
+  //     "description": "Course fee for: " + this.courseFeeDetails.Institute_Course.AccademicLevel_Course.title,
+      
+  //     "amount":parseInt(totalfeeAmount),
+  //     "name": "NSPOT",
+  //     "prefill": {
+  //       "name": this.studentDetails.firstName + " " + this.studentDetails.middleName + " " + this.studentDetails.lastName,
+  //       "email": this.studentDetails.email,
+  //       "contact": ""
+  //     },
+  //     "notes": {
+  //       "address": "NSPOT CONSULTANCY SERVICES PRIVATE LIMITED 39/2475-B1, Suite#118 LR Towers, SJRRA 104, S Janatha Rd, Palarivattom, Kochi, Kerala 682025"
+  //     },
+  //      "currency": "INR",
      
-   };
+  //  };
+   var options = {
+    "key": "rzp_test_g8vPt9nJiYuDMj",
+    "description": "Course fee for:test ",
+    
+    "amount":"100",
+    "name": "NSPOT",
+    "prefill": {
+      "name": "asdsdfsd",
+      "email": "sdfsdfsdfs",
+      "contact": ""
+    },
+    "notes": {
+      "address": "NSPOT CONSULTANCY SERVICES PRIVATE LIMITED 39/2475-B1, Suite#118 LR Towers, SJRRA 104, S Janatha Rd, Palarivattom, Kochi, Kerala 682025"
+    },
+     "currency": "INR",
+   
+ };
+
    console.log(options);
    
     this.rzp1 = new window.Razorpay(options);

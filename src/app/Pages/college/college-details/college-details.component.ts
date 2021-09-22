@@ -66,7 +66,7 @@ export class CollegeDetailsComponent implements OnInit {
 
     console.log(this.currentUrl);
     console.log("current", window.location.href);
-    
+    this.modal.close();
 
     // fetching boardof council details
     this.apiService.doGetRequest(endPoints.Get_boardOfCouncil + this.instituteId).subscribe((returnData: any) => {
