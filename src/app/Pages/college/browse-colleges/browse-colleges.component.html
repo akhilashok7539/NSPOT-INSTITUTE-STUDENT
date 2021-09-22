@@ -51,12 +51,14 @@
                     </mat-select>
                   </mat-form-field> -->
 
-                    <mat-select  placeholder="States" formControlName="stateId" (selectionChange)="loaddistricts(this.form.value.stateId)">
-                        <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search" [ngModelOptions]="{standalone: true}">
-                        <mat-option *ngFor="let stateList of stateList | filter: searchText" [value]="stateList.id">
-                            {{stateList.state}}
-                        </mat-option>
-                    </mat-select>
+                <mat-select placeholder="States" formControlName="stateId"
+                    (selectionChange)="loaddistricts(this.form.value.stateId)">
+                    <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search"
+                        [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let stateList of stateList | filter: searchText" [value]="stateList.id">
+                        {{stateList.state}}
+                    </mat-option>
+                </mat-select>
             </div>
 
             <!-- district -->
@@ -65,11 +67,12 @@
                     <option value="" selected disabled>Choose District</option>
                     <option *ngFor="let item of districtList" value="{{item.id}}">{{item.district}}</option>
                 </select> -->
-                
-                <mat-select   placeholder="District" formControlName="districtId">
-                    <input type="text" class="form-control" [(ngModel)]="district" placeholder="Search" [ngModelOptions]="{standalone: true}">
+
+                <mat-select placeholder="District" formControlName="districtId">
+                    <input type="text" class="form-control" [(ngModel)]="district" placeholder="Search"
+                        [ngModelOptions]="{standalone: true}">
                     <mat-option *ngFor="let district of districtList | filter: district" [value]="district.id">
-                        {{district.district}}   
+                        {{district.district}}
                     </mat-option>
                 </mat-select>
             </div>
@@ -78,34 +81,39 @@
 
 
             <!-- Accademic level -->
-            <div class="col-md-2 col-sm-6 col-xs-12" >
+            <div class="col-md-2 col-sm-6 col-xs-12">
                 <!-- <select formControlName="CourseCategoryId" (change)="loadAccademicLevelCourses($event)">
                     <option value="">Choose Academic Level</option>
                     <option *ngFor="let item of accademicLevels" value="{{item.id}}">{{item.title}}</option>
                 </select> -->
                 <!-- <app-control-messages [touched]="touched" [control]="f.CourseCategoryId"></app-control-messages> -->
-                <mat-select   placeholder="Choose Academic Level" formControlName="CourseCategoryId"  (selectionChange)="loadAccademicLevelCourses(this.form.value.CourseCategoryId)">
-                    <input type="text" class="form-control" [(ngModel)]="accademicLevels1" placeholder="Search Academic Level" [ngModelOptions]="{standalone: true}">
+                <mat-select placeholder="Choose Academic Level" formControlName="CourseCategoryId"
+                    (selectionChange)="loadAccademicLevelCourses(this.form.value.CourseCategoryId)">
+                    <input type="text" class="form-control" [(ngModel)]="accademicLevels1"
+                        placeholder="Search Academic Level" [ngModelOptions]="{standalone: true}">
                     <mat-option *ngFor="let item of accademicLevels | filter: accademicLevels1" [value]="item.id">
-                        {{item.title}}   
+                        {{item.title}}
                     </mat-option>
                 </mat-select>
 
-                
+
             </div>
 
             <!-- Courses -->
-            <div class="col-md-2 col-sm-6 col-xs-12" >
+            <div class="col-md-2 col-sm-6 col-xs-12">
                 <!-- <select formControlName="CourseSubCategoryId" (change)="loadAccademicLevelCoursessubcat($event)">
                     <option value="">Choose Course</option>
                     <option *ngFor="let item of accademicLevelsCourses" value="{{item.id}}">{{item.title}}</option>
                 </select>
                 <app-control-messages [touched]="touched" [control]="f.CourseSubCategoryId"></app-control-messages> -->
 
-                <mat-select   placeholder="Choose Course" formControlName="CourseSubCategoryId"  (selectionChange)="loadAccademicLevelCoursessubcat(this.form.value.CourseSubCategoryId)">
-                    <input type="text" class="form-control" [(ngModel)]="accademicLevels2" placeholder="Search Course" [ngModelOptions]="{standalone: true}">
-                    <mat-option *ngFor="let item of accademicLevelsCourses | filter: accademicLevels2" [value]="item.id">
-                        {{item.title}}   
+                <mat-select placeholder="Choose Course" formControlName="CourseSubCategoryId"
+                    (selectionChange)="loadAccademicLevelCoursessubcat(this.form.value.CourseSubCategoryId)">
+                    <input type="text" class="form-control" [(ngModel)]="accademicLevels2" placeholder="Search Course"
+                        [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let item of accademicLevelsCourses | filter: accademicLevels2"
+                        [value]="item.id">
+                        {{item.title}}
                     </mat-option>
                 </mat-select>
             </div>
@@ -118,10 +126,12 @@
                 </select>
                 <app-control-messages [touched]="touched" [control]="f.CourseSubCategory2Id"></app-control-messages> -->
 
-                <mat-select   placeholder="Choose Course" formControlName="CourseSubCategory2Id"  (selectionChange)="loadAccademicLevelCoursessubcat1(this.form.value.CourseSubCategory2Id)">
-                    <input type="text" class="form-control" [(ngModel)]="accademicLevels3" placeholder="Search Course" [ngModelOptions]="{standalone: true}">
+                <mat-select placeholder="Choose Course" formControlName="CourseSubCategory2Id"
+                    (selectionChange)="loadAccademicLevelCoursessubcat1(this.form.value.CourseSubCategory2Id)">
+                    <input type="text" class="form-control" [(ngModel)]="accademicLevels3" placeholder="Search Course"
+                        [ngModelOptions]="{standalone: true}">
                     <mat-option *ngFor="let item of courseStreams | filter: accademicLevels3" [value]="item.id">
-                        {{item.title}}   
+                        {{item.title}}
                     </mat-option>
                 </mat-select>
 
@@ -137,10 +147,13 @@
                 <app-control-messages [touched]="touched" [control]="f.CourseSubCategory3Id">
                 </app-control-messages> -->
 
-                <mat-select   placeholder="Choose Course" formControlName="CourseSubCategory3Id"  (selectionChange)="loadAccademicLevelCoursessubcat2(this.form.value.CourseSubCategory3Id)">
-                    <input type="text" class="form-control" [(ngModel)]="accademicLevels4" placeholder="Search Course" [ngModelOptions]="{standalone: true}">
-                    <mat-option *ngFor="let item of courseStreamsSpecializations | filter: accademicLevels4" [value]="item.id">
-                        {{item.title}}   
+                <mat-select placeholder="Choose Course" formControlName="CourseSubCategory3Id"
+                    (selectionChange)="loadAccademicLevelCoursessubcat2(this.form.value.CourseSubCategory3Id)">
+                    <input type="text" class="form-control" [(ngModel)]="accademicLevels4" placeholder="Search Course"
+                        [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let item of courseStreamsSpecializations | filter: accademicLevels4"
+                        [value]="item.id">
+                        {{item.title}}
                     </mat-option>
                 </mat-select>
 
@@ -154,10 +167,13 @@
                 <app-control-messages [touched]="touched" [control]="f.CourseSubCategory4Id">
                 </app-control-messages> -->
 
-                <mat-select  placeholder="Choose Course" formControlName="CourseSubCategory4Id"  (selectionChange)="loadAccademicLevelCoursessubcat3(this.form.value.CourseSubCategory4Id)">
-                    <input type="text" class="form-control" [(ngModel)]="accademicLevels5" placeholder="Search Course" [ngModelOptions]="{standalone: true}">
-                    <mat-option *ngFor="let item of courseStreamsSpecializations3 | filter: accademicLevels5" [value]="item.id">
-                        {{item.title}}   
+                <mat-select placeholder="Choose Course" formControlName="CourseSubCategory4Id"
+                    (selectionChange)="loadAccademicLevelCoursessubcat3(this.form.value.CourseSubCategory4Id)">
+                    <input type="text" class="form-control" [(ngModel)]="accademicLevels5" placeholder="Search Course"
+                        [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let item of courseStreamsSpecializations3 | filter: accademicLevels5"
+                        [value]="item.id">
+                        {{item.title}}
                     </mat-option>
                 </mat-select>
 
@@ -173,10 +189,12 @@
                 <!-- <button type="submit" class="search-btn-system-view" style="    position: absolute;">
                     <img src="./assets/images/search.png" alt="">
                 </button> -->
-                <mat-select  placeholder="Choose Course" formControlName="CourseSubCategory5Id"  >
-                    <input type="text" class="form-control" [(ngModel)]="accademicLevels6" placeholder="Search Course" [ngModelOptions]="{standalone: true}">
-                    <mat-option *ngFor="let item of courseStreamsSpecializations4 | filter: accademicLevels6" [value]="item.id">
-                        {{item.title}}   
+                <mat-select placeholder="Choose Course" formControlName="CourseSubCategory5Id">
+                    <input type="text" class="form-control" [(ngModel)]="accademicLevels6" placeholder="Search Course"
+                        [ngModelOptions]="{standalone: true}">
+                    <mat-option *ngFor="let item of courseStreamsSpecializations4 | filter: accademicLevels6"
+                        [value]="item.id">
+                        {{item.title}}
                     </mat-option>
                 </mat-select>
 
@@ -267,13 +285,11 @@
         <div class="col-lg-12 text-center">
             <div class="alert alert-warning" *ngIf="courses?.length<=0" style="    width: 50%;
         margin: 0 auto;
-        margin-bottom: 13px;">No Institutes found</div>
+        margin-bottom: 13px;">No Courses found</div>
         </div>
 
-        <div class="col-md-6" *ngFor="let item of courses; let i=index" style="
-    margin-bottom: 16px;">
+        <!-- <div class="col-md-6" *ngFor="let item of courses; let i=index" style="margin-bottom: 16px;">
             <div class="tutorial">
-                <!-- <img src="assets/images/college1.png" class="tile-card-img" alt="Nspot college"> -->
                 <div class="tutorial-details">
                     <img src="https://img.icons8.com/color/48/000000/instagram-verification-badge.png" style="
                 float: right;
@@ -284,14 +300,12 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <p class="abs">{{item.item.Institute.name}}</p>
-                            <!-- <p>Address Details : {{item.item.Institute.addressLine1}},{{item.item.Institute.addressLine2}}</p> -->
                             <p><i class="zmdi zmdi-map" style="color: grey;"></i>{{item.item.District.district}}</p>
                             <p><i class="zmdi zmdi-money"></i>Total Fee :Rs. {{item?.courseFee?.otherFee}}/-</p>
                             <p><i class="zmdi zmdi-money"></i>Spot Fee :Rs. {{item?.courseFee?.spotfee}}/-</p>
                            
                         </div>
                         <div class="col-sm-6">
-                            <!-- src="./assets/images/college1.png"  -->
                             <img src="{{item.item?.Institute?.profilePicFile?baseApiUrl+item.item?.Institute?.profilePicFile:'./assets/images/inst.png'}}"
                                 alt="" style="width: 70px;
                         float: right;">
@@ -317,8 +331,7 @@
 
                                 <p *ngIf="item?.item.haveGirlsHostel === true">Girls Hostel : Yes </p>
                                 <p *ngIf="item?.item.haveGirlsHostel === false">Girls Hostel : No </p>
-                                  <!-- <a style="background: #f8ad25 !important;" class="greybutton" (click)="apply(item)">
-                                Apply</a> -->
+                             
                             </div>
                         </div>
 
@@ -330,51 +343,184 @@
                             border: 1px solid #f8ad25;
                             color: #f8ad25;
                             background: none !important;">View More</a>
-                             <!-- <a style="background: #f8ad25 !important;" class="greybutton" (click)="apply(item)">
-                                Apply</a> -->
+                  
                         <a style="background: #f8ad25 !important;" class="greybutton" (click)="addtocompare(item)">Add
                             to compare</a>
                            
-
+                        
                     </div>
-
+                    <div class="row"  style="display: flex;justify-content: space-between;">
+                        <a *ngIf="admionstatus(item.item) === 'Opened'" style="     width: 95%;    background: #09b952 !important;" class="greybutton" (click)="applycourse(item)">
+                            Apply Now</a>
+                    </div>
 
 
 
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <!-- 
-    <div class="col-md-4">
-        <div class="tutorial">
-            <img src="assets/images/college2.png" class="tile-card-img" alt="Nspot college">
-            <div class="tutorial-details">
-                <h6>Little Flower Girls High school</h6>
-                <p><span class="lessons"><i class="zmdi zmdi-assignment"></i>12 COURSES</span></p>
-                <p class="abs">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-                    no sea takimata sanctus est.</p>
-                <a routerLink="/student/institute-details/1" class="greybutton">DETAILS</a>
-            </div>
-        </div>
     </div>
+</div>
 
-    <div class="col-md-4">
-        <div class="tutorial">
-            <img src="assets/images/college1.png" class="tile-card-img" alt="Nspot college">
-            <div class="tutorial-details">
-                <h6>Little Flower Girls High school</h6>
-                <p><span class="lessons"><i class="zmdi zmdi-assignment"></i>12 COURSES</span></p>
-                <p class="abs">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
-                    no sea takimata sanctus est.</p>
-                <a routerLink="/student/institute-details/1" class="greybutton">DETAILS</a>
+<div class="contianer-wrap" *ngIf="courses?.length>0">
+    <p class="resultsfound"> {{courses?.length}} results found :</p>
+    <div class="row">
+        <div class="col-sm-3">
+
+            <div class="card search-card" >
+                <!-- <h6 class="coursename">Customize Search:</h6>
+                <p class="filterclear" *ngIf="selectedchipsvalues.length !=0" (click)="clear()"> <i class="zmdi zmdi-close-circle"></i> Clear Filters</p>
+                <div class="row">
+                    <div class="chip-selected" *ngFor="let s of selectedchipsvalues">
+                   
+                        <div class="chip-content" >{{s.name}}</div>
+                    </div>
+                </div>
+                <hr>
+                <p style="font-size: 20px;
+                letter-spacing: 1px;margin-bottom: 13px;
+                font-weight: 500;"> <i style="font-size: 23px;" class="zmdi zmdi-flag"></i> Classification</p>
+                <div class="row">
+                    <div class="chip" *ngFor="let s of classifications" (click)="selectedchips(s)">
+                   
+                        <div class="chip-content" (click)="selectedchips(s)" >{{s.name}}</div>
+                    </div>
+                </div>
+                <hr>
+
+                <p style="font-size: 20px;
+                letter-spacing: 1px;margin-bottom: 13px;margin-top: 13px;
+                font-weight: 500;"> <i style="font-size: 23px;" class="zmdi zmdi-book"></i> Facilities</p>
+                <div class="row">
+                    <div class="chipfacilit" *ngFor="let s of facilites">
+   
+                    <div class="chip-content"  >{{s}}</div>
+                    </div>
+                </div>
+                <hr> -->
+
+             <p style="font-size: 17px;
+                letter-spacing: 1px;margin-bottom: 13px;margin-top: 13px;
+                font-weight: 500;"> <i style="font-size: 23px;" class="zmdi zmdi-book"></i>Courses Avilable Institutes</p>
+                <div class="row" style="margin: 5px;
+                line-height: 33px; ">
+                    <div >
+                   
+                        <p class="chip-content" *ngFor="let s of instutesname" >
+                          {{s.name}}</p>
+                            
+                    </div>
+                </div>  
+
+                <!-- <button  class="download"> <i class="zmdi zmdi-filter-list"></i> Apply Filters</button> -->
             </div>
+
         </div>
-    </div> -->
+        <div class="col-sm-9">
 
+            <!-- <div class="row" > -->
+            <div class="card" *ngFor="let item of courses; let i=index" style="display: flex;border-radius: 20px;
+                flex-direction: row;
+            ">
+                <div class="col-sm-3">
+                    <img style="    display: block;
+                    margin: 0 auto;
+                    width: 236px;
+                    height: 86%;
+                    margin-bottom: 10px;" (error)="errorEvnt($event)"
+                        src="{{item.item?.Institute?.profilePicFile?baseApiUrl+item.item?.Institute?.profilePicFile:'./assets/images/inst.png'}}"
+                        alt="">
+                    <button class="download"> <i class="zmdi zmdi-download"></i> Download syllabus</button>
+                </div>
+                <div class="col-sm-6">
+                    <h6 class="coursename">{{item.CourseName}}</h6>
+                    <p><span class="lessons"><i class="zmdi zmdi-assignment"></i> Institute Name :
+                            {{item.item.Institute.name}}</span></p>
+                    <!-- <p class="abs">{{item.item.Institute.name}}</p> -->
+                    <p><i class="zmdi zmdi-map" ></i> District & State : {{item.item.District.district}} & {{item.item.State.state}}</p>
+                    <p><i class="zmdi zmdi-money-box"></i> Total Fee :Rs. {{item?.courseFee?.otherFee}}/-</p>
+                    <p><i class="zmdi zmdi-money-box"></i> Pay Only Rs. {{item?.courseFee?.spotfee}}/- (This amount is Spot admission Fee) and <br> join on {{item.item.classStartDate | date:'MMM d, y'}}</p>
 
+                    <p><i class="zmdi zmdi-book"></i> Establishment Year : {{item.item.Institute.year_of_establishment}}
+                    </p>
+                
+                    <p><i class="zmdi zmdi-eye"></i> Viewed by: 6</p>
+                    <p style="font-weight: bold; color: orange;"> {{getaddmisonsnstartcount(item.item)}} </p>
+                    <button class="accordion" (click)="toggleAccordian($event, i)"> View college Facilities
+                    </button>
+                    <div class="panel" hide="!item.isActive">
+                        <p *ngIf="item?.item.hasPlacementAssistant === true">Placement Assistant : Yes </p>
+                        <p *ngIf="item?.item.hasPlacementAssistant === false">Placement Assistant : No </p>
 
+                        <p *ngIf="item?.item.onlineClassAvailability === true">Online Class Availability : Yes </p>
+                        <p *ngIf="item?.item.onlineClassAvailability === false">Online Class Availability : No </p>
 
+                        <p>Eligibility : {{item?.item.eligibiliyInString}}</p>
+
+                        <p>Exam Conducted : {{item?.item.examConducted}}</p>
+
+                        <p *ngIf="item?.item.haveBoysHostel === true">Boys Hostel : Yes </p>
+                        <p *ngIf="item?.item.haveBoysHostel === false">Boys Hostel : No </p>
+
+                        <p *ngIf="item?.item.haveGirlsHostel === true">Girls Hostel : Yes </p>
+                        <p *ngIf="item?.item.haveGirlsHostel === false">Girls Hostel : No </p>
+
+                    </div>
+                    <button class="accordion" (click)="toggleAccordian($event, i)"> Course Details
+                    </button>
+                    <div class="panel" hide="!item.isActive">
+                        <p *ngIf="item?.item.maleAllowed === true">Male Allowed : Yes </p>
+                        <p *ngIf="item?.item.maleAllowed === false">Male Allowed : No </p>
+
+                        <p *ngIf="item?.item.femaleAllowed === true">Female Allowed : Yes </p>
+                        <p *ngIf="item?.item.femaleAllowed === false">Female Allowed : No </p>
+
+                        <p *ngIf="item?.item.otherGenderAllowed === true">Others : Yes </p>
+                        <p *ngIf="item?.item.otherGenderAllowed === false">Others : No </p>
+
+                       
+
+                    </div>
+                </div>
+                <div class="col-sm-3" >
+
+                    <i matTooltip="Disable Email Notifications" class="zmdi zmdi-notifications-none" style="float: right;color: #3461b3;
+                    font-size: 29px;" (click)="notificationOff()" *ngIf="notificationonstatus"></i>
+                    <i matTooltip="Enable Email Notifications" class="zmdi zmdi-notifications-off" style="float: right;color: #3461b3;
+                    font-size: 29px;" (click)="notificationon()" *ngIf="!notificationonstatus"></i>
+                    <div style="    display: flex;
+                    flex-direction: column;height: 83%;
+                    align-items: center;border-left: 1px solid #d9d9d9;
+                    justify-content: center;">
+
+                    <a routerLink="/student/institute-details/{{item.item.Institute.userId}}" class="greybutton" style="    width: 100%;
+                        border: 1px solid #f8ad25;
+                        color: #f8ad25;
+                        background: none !important;
+                        text-decoration: none;
+                        text-align: center;margin-left: 36px;
+                    ">View More</a>
+
+                    <a style="    background: #f8ad25 !important;
+                    width: 100%;
+                    margin-top: 13px;margin-left: 36px;
+                    text-decoration: none;
+                    color: white;margin-bottom: 13px;
+                    text-align: center;" class="greybutton" (click)="addtocompare(item)">Add
+                        to compare</a>
+                    <a *ngIf="admionstatus(item.item) === 'Opened'" style="    width: 100%;
+                        background: #09b952 !important;margin-left: 36px;
+                        text-align: center;text-decoration: none;
+                        color: white;" class="greybutton" (click)="applycourse(item)">
+                        Apply Now</a>
+                            
+</div>
+                </div>
+            </div>
+            <!-- </div> -->
+
+        </div>
 
     </div>
 </div>
