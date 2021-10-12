@@ -41,6 +41,11 @@ export class CourseCheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.applicationId = parseInt(this.route.snapshot.paramMap.get('applicationId'));
+    console.log(this.applicationId);
+    this.route.paramMap.subscribe(res =>{
+      console.log(res['params'].applicationId);
+      
+    })
     this.loadCourseFee();
     this.loadStudentDetails();
   }
@@ -49,7 +54,8 @@ export class CourseCheckoutComponent implements OnInit {
     this.apiService.doGetRequest(endPoints.Get_applicationForm + "?where[id]=" + this.applicationId).subscribe((returnData: any) => {
       console.log(returnData)
       this.applicationDetails = returnData.data[0]
-      this.courseId = this.applicationDetails.courseId
+      this.courseId = this.applicationDetails['courseFee'].id;
+
       switch (this.applicationDetails.applicationStatus) {
         case "payment-done":
           this.didPay = true;
@@ -99,13 +105,33 @@ export class CourseCheckoutComponent implements OnInit {
 
   loadStudentDetails() {
     this.apiService.doGetRequest(endPoints.student + this.studentId).subscribe((returnData: any) => {
-      console.log("student details", returnData)
+     
       this.studentDetails = returnData.data
+      console.log("student details", this.studentDetails)
+    this.createcoursefeeorder();
+
     }, error => {
       console.error(error);
     });
   }
-
+  createcoursefeeorder()
+  {
+  let req ={
+    
+    "applicationId":this.applicationId,
+    "courseId":this.courseId,
+    "studentId":this.studentDetails.id
+  }
+  this.apiService.doPostRequest('payment/courseFee/create',req).subscribe(
+    data =>{
+      console.log(data);
+      
+    },
+    error =>{
+      console.log(error);
+    }
+  )
+  }
 
   /**
  * Initializing the payment

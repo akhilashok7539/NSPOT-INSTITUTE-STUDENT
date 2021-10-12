@@ -600,4 +600,20 @@ getselected(s)
 {
   
 }
+getcourseduration(s)
+{
+  console.log("courseduration",s);
+  console.log(s.split('s'));
+  let char = s.split('s');
+  return char[0]+"\xa0"+char[1]+"\xa0"+char[2]+"\xa0"+char[3]
+  // if(char.length === 4)
+  // {
+   
+  // }
+  // else
+  // {
+  //   return char[0];
+  // }
+}
+    
 }
