@@ -56,6 +56,7 @@ export class Signup2TwoComponent implements OnInit {
       cast: ['', [Validators.required]],
       visibleMark1: [''],
       visibleMark2: [''],
+      citizenship:[''],
       isIndian: [false, [Validators.required]],
       isNRI: [false],
       isFilledByFather: [false],

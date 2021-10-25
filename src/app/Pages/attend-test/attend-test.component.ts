@@ -55,7 +55,9 @@ export class AttendTestComponent implements OnInit {
     this.getapptitudequestions();
 
     console.log(this.questions);
-    this.studentId = this.authService.userProfile.userType;
+    // this.studentId = this.authService.userProfile.userId;
+    this.studentId =  localStorage.getItem("USERID");
+
     
   }
   get f() { return this.form.controls; }

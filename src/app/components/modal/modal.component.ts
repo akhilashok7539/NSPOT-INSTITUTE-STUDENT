@@ -11,6 +11,7 @@ export class ModalComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.modal.nativeElement.style.display = 'none';
     this.currentUrl = window.location.href;
 
     console.log(this.currentUrl);

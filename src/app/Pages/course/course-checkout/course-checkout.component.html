@@ -1,58 +1,58 @@
 <main>
-  <div class="page-heading text-center">
-    <div class="container">
-      <h2 class="uppercase">Checkout</h2>
-    </div>
-  </div>
-  <button class="btn greybutton pull-right" (click)="pay()">Pay and Confirm your seat</button>
-
-  <!-- <pre>{{removedFields |json}}</pre> -->
-  <div class="container contact">
-    <div class="row contact">
-      <div class="col-md-1"></div>
-      <div class="col-md-10 col-sm-10">
-
-        <div *ngIf="canPay">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Course</th>
-                <th>Fee</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>{{courseFeeDetails?.Institute_Course.AccademicLevel_Course.title}}</td>
-                <td>Rs.{{totalFees}}</td>
-              </tr>
-              <tr>
-                <td></td>
-                <th>Total</th>
-                <th>{{totalFees}}</th>
-              </tr>
-              <tr>
-                <th></th>
-                <th></th>
-                <th><button class="btn greybutton pull-right" (click)="pay()">Pay and Confirm your seat</button>
-                </th>
-              </tr>
-            </tbody>
-          </table>
+    <div class="page-heading text-center">
+        <div class="container">
+            <h2 class="uppercase">Checkout</h2>
         </div>
-
-        <div *ngIf="!canPay">
-          <div *ngIf="didPay">
-            <div class="alert alert-success">{{cantPayReason}}</div>
-          </div>
-          <div *ngIf="!didPay">
-            <div class="alert alert-warning">{{cantPayReason}}</div>
-          </div>
-        </div>
-
-      </div>
     </div>
-  </div>
+    <!-- <button class="btn greybutton pull-right" (click)="pay()">Pay and Confirm your seat</button> -->
+
+    <!-- <pre>{{removedFields |json}}</pre> -->
+    <div class="container contact">
+        <div class="row contact">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 col-sm-10">
+
+                <div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Course</th>
+                                <th>Fee</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>{{coursename}}</td>
+                                <td>Rs.{{amounttopaied}}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <th>Total</th>
+                                <th>{{amounttopaied}}</th>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th><button class="btn greybutton pull-right" (click)="pay()">Pay and Confirm your seat</button>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div *ngIf="!canPay">
+                    <div *ngIf="didPay">
+                        <div class="alert alert-success">{{cantPayReason}}</div>
+                    </div>
+                    <div *ngIf="!didPay">
+                        <div class="alert alert-warning">{{cantPayReason}}</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </main>
