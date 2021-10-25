@@ -9,8 +9,7 @@
     <div class="columns the-header is-marginless">
         <div class="column header-text is-6 is-offset-3 is-12-mobile">
 
-            <img class="header-background" src="https://unsplash.it/1000/1000/?random&pic=1" id="header-background-id"
-                alt="background-img">
+            <img class="header-background" src="https://unsplash.it/1000/1000/?random&pic=1" id="header-background-id" alt="background-img">
         </div>
     </div>
 
@@ -23,11 +22,11 @@
     <div class="containers">
         <div class="row">
             <div class="col-md-12">
-              
+
                 <h3 style="text-align: center;">{{instituteInfo?.name}}</h3>
-                <p class="class-details uppercase" style="display: flex;
+                <p class="class-details uppercase" style="display: flex;    align-items: center;
                 justify-content: center;">
-                    <span class="lessons"><i class="zmdi zmdi-assignment"></i>{{instituteInfo?.name}}</span>
+                    <!-- <span class="lessons"><i class="zmdi zmdi-assignment"></i>{{instituteInfo?.name}}</span> -->
                     <span class="duration"><i class="zmdi zmdi-time"></i>{{instituteInfo?.code}}</span>
                     <span class="views"><i class="zmdi zmdi-eye"></i>HOSTEL:
                         {{instituteInfo?.haveBoysHostel||instituteInfo?.haveGirlsHostel?"YES":"NO"}}</span>
@@ -38,17 +37,17 @@
                     border: none;
                     color: orange;text-transform: uppercase;
                     font-weight: bold;"><i class="zmdi zmdi-share"></i>Share Course</button>
-                </p>
-                <!-- <share-buttons [theme]="'default'"
-            [include]="['facebook','messenger','whatsapp']"
-            [show]="4"
-            [size]="-1"
-            [url]=currentUrl
-            [autoSetMeta]="false"
-            [image]="'https://hit-game.com/assets/images/banner1.png'"
-        ></share-buttons> -->
+                    <button style="    background: none;
+                    border: none;
+                    color: rgb(104, 104, 104);text-transform: uppercase;
+                    font-weight: bold;" *ngIf="viewShare" (click)="close()">X</button>
 
-              <app-modal #modal></app-modal>
+                </p>
+                <!-- <share-buttons [theme]="'default'" [include]="['facebook','messenger','whatsapp']" [show]="4" [size]="-1" [url]=currentUrl [autoSetMeta]="false" [image]="'https://hit-game.com/assets/images/banner1.png'"></share-buttons> -->
+                <share-buttons *ngIf="viewShare" style="display: flex;
+                justify-content: center;
+                margin-bottom: 25px;" [theme]="'material-dark'" [include]="['facebook','messenger','whatsapp','copy']" [show]="4" [size]="-1" [url]=currentUrl [autoSetMeta]="false" [image]="'https://hit-game.com/assets/images/banner1.png'"></share-buttons>
+                <!-- <app-modal #modal></app-modal> -->
                 <div class="row" style="display: flex;
                 justify-content: center;margin-bottom: 22px;">
                     <div class="col-sm-2" [class.phase-active]="activeButton === 1" (click)="selecttab(1)">
@@ -65,6 +64,9 @@
                     </div>
                     <div class="col-sm-2" [class.phase-active]="activeButton === 5" (click)="selecttab(5)">
                         <p>VIRTUAL VIDEO TOUR</p>
+                    </div>
+                    <div class="col-sm-2" [class.phase-active]="activeButton === 6" (click)="selecttab(6)">
+                        <p>Documents</p>
                     </div>
                 </div>
 
@@ -113,6 +115,39 @@
 
 
                         </div>
+                        <div class="col-md-6" style="margin-top: 20px !important;">
+                            <h4>INFRASTRUCTURE-FACILITIES & EVENTS</h4>
+                            <p style="text-align: left;margin-top: 25px;">Area of Campus : {{instituteInfo?.licenseAuthorityName}} </p>
+                            <p style="text-align: left;margin-top: 25px;">No. of Classrooms : {{instituteInfo?.nameofTown}} </p>
+                            <p style="text-align: left;margin-top: 25px;"> Total Student Strength as on date :{{instituteInfo?.licenseNumber}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Student Teacher Ratio : {{instituteInfo?.licenseIssuedDate | date}}</p>
+                            <p style="text-align: left;margin-top: 25px;">Total no.of Teachers : {{instituteInfo?.licenseRenewalDate | date}}</p>
+                            <p style="text-align: left;margin-top: 25px;">Language of Instruction : {{instituteInfo?.licenseRenewalDate | date}}</p>
+                            <p style="text-align: left;margin-top: 25px;">Sports : {{instituteInfo?.licenseRenewalDate | date}}</p>
+                            <p style="text-align: left;margin-top: 25px;">Indoor Games : {{instituteInfo?.licenseRenewalDate | date}}</p>
+                            <p style="text-align: left;margin-top: 25px;">Outdoor Games : {{instituteInfo?.licenseRenewalDate | date}}</p>
+
+                        </div>
+                        <div class="col-md-6" style="margin-top: 20px !important;">
+                            <h4>HOSTEL & TRANSPORTATION</h4>
+                            <p style="text-align: left;margin-top: 25px;">Hostel for Boys : {{instituteInfo.haveBoysHostel?'Yes':'No'}}</p>
+                            <p style="text-align: left;margin-top: 25px;">
+                                Hostel for Girls : {{instituteInfo.haveGirlsHostel?'Yes':'No'}}
+                            </p>
+
+                            <p style="text-align: left;margin-top: 25px;">
+                                Is food available : {{instituteInfo.foodAvailableAtHostel?'Yes':'No'}}
+                            </p>
+
+                            <p style="text-align: left;margin-top: 25px;">
+                                Hostal Annual Fee : {{instituteInfo.hostalAnnualFee}}
+                            </p>
+
+                            <p style="text-align: left;margin-top: 25px;">
+                                Transportation info : {{instituteInfo.transportationInfo}}
+                            </p>
+
+                        </div>
 
                     </div>
 
@@ -151,15 +186,15 @@
                     <div class="ratings col-md-12">
                         <h4>BOARD OF COUNCIL AWARDED</h4>
                         <div class="col-sm-4">
-                            
+
                             <p>Unit Of : {{boardOfCouncilInfo?.unitOfLabel}}</p>
                             <p>Recognized : {{boardOfCouncilInfo?.recongnizedByLabel}}</p>
                             <p>Affliated To: {{boardOfCouncilInfo?.affiliatedToLabel}}</p>
                             <p>Recognized By : {{boardOfCouncilInfo?.recongnizedByLabel}}</p>
                         </div>
                         <div class="col-sm-4">
-                            
-                   
+
+
                             <p>Registered To: {{boardOfCouncilInfo?.registeredToLabel}}</p>
                             <p>Approved By: {{boardOfCouncilInfo?.approvedByLabel}}</p>
                             <p>Accredation By: {{boardOfCouncilInfo?.accreditedByLabel}}</p>
@@ -180,11 +215,10 @@
                 <div class="container" *ngIf="activeButton ===3">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 style="margin-bottom: 50px;">Courses Offered</h3>
+                            <!-- <h3 style="margin-bottom: 50px;">Courses Offered</h3> -->
 
 
-                            <div *ngFor="let item of coursesOffered"
-                                class="col-md-4 probootstrap-animate fadeInUp probootstrap-animated">
+                            <div *ngFor="let item of coursesOffered" class="col-md-4 probootstrap-animate fadeInUp probootstrap-animated">
 
                                 <!-- <div class="probootstrap-featured-news-box">
                                     <div class="probootstrap-text">
@@ -207,14 +241,12 @@
                                     padding-top: 1px;">
                                         <h3 *ngIf="item.CourseName !=null">{{item.CourseName}}</h3>
                                         <p>Course Code :{{item.item.courseCode}}</p>
-                                        <a class="probootstrap-location courseBtn" (click)="applycourse(item)"
-                                            *ngIf="getaddmisonsnstartcount(item.item) === 'Opened'">APPLY</a>
+                                        <a class="probootstrap-location courseBtn" (click)="applycourse(item)" *ngIf="getaddmisonsnstartcount(item.item) === 'Opened'">APPLY</a>
 
                                         <a class="probootstrap-location courseBtn" style="    background: darkgrey;
                                         color: white;
                                         border: none;
-                                        text-decoration: none;"
-                                            *ngIf="getaddmisonsnstartcount(item.item) === 'Not Started' || getaddmisonsnstartcount(item.item) === 'Closed'">APPLY</a>
+                                        text-decoration: none;" *ngIf="getaddmisonsnstartcount(item.item) === 'Not Started' || getaddmisonsnstartcount(item.item) === 'Closed'">APPLY</a>
                                     </div>
 
 
@@ -229,10 +261,7 @@
                         <div class="col-md-12 gallery">
                             <h3 style="margin-bottom: 50px;">Gallery</h3>
                             <div class="col-sm-4" *ngFor="let item of gallery">
-                                <img *ngIf="item.galleryFile" src="{{baseApiUrl}}{{item.galleryFile}}"
-                                    style="max-width: 375px;" data-darkbox="{{baseApiUrl}}{{item.galleryFile}}"
-                                    data-darkbox-group="one"
-                                    data-darkbox-description="<b>{{item.galleryLabel}}</b><br>Lorem ipsum dolor sit amet">
+                                <img *ngIf="item.galleryFile" src="{{baseApiUrl}}{{item.galleryFile}}" style="max-width: 375px;" data-darkbox="{{baseApiUrl}}{{item.galleryFile}}" data-darkbox-group="one" data-darkbox-description="<b>{{item.galleryLabel}}</b><br>Lorem ipsum dolor sit amet">
 
                             </div>
 
@@ -260,8 +289,7 @@
                             <iframe [src]="classRoomVideoLink" width="30%" height="199px" frameborder="0"></iframe>
                             <iframe [src]="hostelTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
                             <iframe [src]="labTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
-                            <iframe [src]="recreationAreaTourVideoLink" width="30%" height="199px"
-                                frameborder="0"></iframe>
+                            <iframe [src]="recreationAreaTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
                             <iframe [src]="libraryTourVideoLink" width="30%" height="199px" frameborder="0"></iframe>
 
                             <!-- <iframe width="1280" height="545" src="https://www.youtube.com/embed/{{campusTourVideoLink}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
@@ -297,7 +325,52 @@
 
                     </div>
                 </div>
+                <div class="row" style="margin-top: 20px;margin-bottom: 20px;" *ngIf="activeButton ===6">
+                    <div class="ratings col-md-12">
+                        <h4>Documents</h4>
+                        <div class="col-sm-12" id="style-1" style="    display: flex;
+                        justify-content: space-between;
+                        overflow: auto;">
+                        </div>
 
+                        <div class="card" style="box-shadow: 0 0 3px 0px rgb(0 0 0 / 13%);    display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;">
+                            <p class="para">Rules,Policies and Code of Conduct for Students</p>
+                            <i class="zmdi zmdi-download" style="font-size: 20px;" matTooltip="Download" (click)="downloadrules('rule')"></i>
+                        </div>
+                        <div class="card" style="box-shadow: 0 0 3px 0px rgb(0 0 0 / 13%);    display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;">
+                            <p class="para">UNIFORM/DRESS CODE</p>
+                            <i class="zmdi zmdi-download" style="font-size: 20px;" matTooltip="Download" (click)="downloadrules('uniform')"></i>
+                        </div>
+                        <div class="card" style="box-shadow: 0 0 3px 0px rgb(0 0 0 / 13%);    display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;">
+                            <p class="para">RECRUITMENT AND PLACEMENT INFO</p>
+                            <i class="zmdi zmdi-download" style="font-size: 20px;" matTooltip="Download" (click)="downloadrules('placement')"></i>
+                        </div>
+                        <div class="card" style="box-shadow: 0 0 3px 0px rgb(0 0 0 / 13%);    display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;">
+                            <p class="para">SCHOLARSHIP AND FINANCIAL AID INFO</p>
+                            <i class="zmdi zmdi-download" style="font-size: 20px;" matTooltip="Download" (click)="downloadrules('scholarship')"></i>
+                        </div>
+                        <div class="card" style="box-shadow: 0 0 3px 0px rgb(0 0 0 / 13%);    display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;">
+                            <p class="para">ADMISSION CANCELLATION POLICY & FEE REFUND POLICY</p>
+                            <i class="zmdi zmdi-download" style="font-size: 20px;" matTooltip="Download" (click)="downloadrules('refund')"></i>
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
         </div>

@@ -49,7 +49,10 @@ export class CollegeDetailsComponent implements OnInit {
   baseApiUrl = environment.baseApiUrl;
   currentUrl;
   campusTourVideoLink;
+  viewShare = false;
   ngOnInit(): void {
+
+
     // fetching institute details
     this.apiService.doGetRequest(endPoints.GetInstituteInfo + this.instituteId + "?filter[include]=LicenceIssueAuthority").subscribe((returnData: any) => {
       console.log("Institute Info", returnData)
@@ -57,6 +60,7 @@ export class CollegeDetailsComponent implements OnInit {
       console.log(this.instituteInfo);
       this.instIdForCourse = this.instituteInfo.id;
       this.loadGalleryandCourse(this.instIdForCourse)
+      this.loaddata();
     }, error => {
       console.error(error);
       this.toastr.error('Failed to fetch institute details')
@@ -66,10 +70,17 @@ export class CollegeDetailsComponent implements OnInit {
 
     console.log(this.currentUrl);
     console.log("current", window.location.href);
-    this.modal.close();
+ 
+
+  }
+  getSanitizedURL() {
+    return this.domsantizer.bypassSecurityTrustUrl(this.campusTourVideoLink);
+
+  }
+  loaddata(){
 
     // fetching boardof council details
-    this.apiService.doGetRequest(endPoints.Get_boardOfCouncil + this.instituteId).subscribe((returnData: any) => {
+    this.apiService.doGetRequest(endPoints.Get_boardOfCouncil + this.instIdForCourse).subscribe((returnData: any) => {
       this.boardOfCouncilInfo = returnData.data;
     }, error => {
       console.error(error);
@@ -77,7 +88,7 @@ export class CollegeDetailsComponent implements OnInit {
     });
 
     // fetching highlights
-    this.apiService.doGetRequest(endPoints.Get_highlights + this.instituteId).subscribe((returnData: any) => {
+    this.apiService.doGetRequest(endPoints.Get_highlights + this.instIdForCourse).subscribe((returnData: any) => {
       this.highlights = returnData.data;
       console.log("highligts", this.highlights)
     }, error => {
@@ -86,7 +97,7 @@ export class CollegeDetailsComponent implements OnInit {
     });
 
     // fetching social links
-    this.apiService.doGetRequest(endPoints.Get_socialMedia + this.instituteId).subscribe((returnData: any) => {
+    this.apiService.doGetRequest(endPoints.Get_socialMedia + this.instIdForCourse).subscribe((returnData: any) => {
       this.socialLinks = returnData.data;
     }, error => {
       console.error(error);
@@ -95,7 +106,7 @@ export class CollegeDetailsComponent implements OnInit {
 
     // virtualtour links
 
-    this.apiService.doGetRequest(`institute/virtual-tour/` + this.instituteId).subscribe((returnData: any) => {
+    this.apiService.doGetRequest(`institute/virtual-tour/` + this.instIdForCourse).subscribe((returnData: any) => {
       this.virtualtourlinks = returnData.data;
       //  campusTourVideoLink
       let data = this.virtualtourlinks['campusTourVideoLink'].split('/');
@@ -139,10 +150,6 @@ export class CollegeDetailsComponent implements OnInit {
       this.toastr.error('Failed to fetch institute details')
     });
   }
-  getSanitizedURL() {
-    return this.domsantizer.bypassSecurityTrustUrl(this.campusTourVideoLink);
-
-  }
 
   loadGalleryandCourse(instIdForCourse) {
     // fetching coureses offered by the college
@@ -174,7 +181,13 @@ export class CollegeDetailsComponent implements OnInit {
    
 
   }
+  close()
+  {
+    this.viewShare = false;
+
+  }
   copyMessage(val: string) {
+    this.viewShare = true;
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
@@ -293,5 +306,35 @@ export class CollegeDetailsComponent implements OnInit {
   selecttab(index)
   {
     this.activeButton = index;
+  }
+  downloadrules(data)
+  {
+    console.log(data);
+    
+    if(data === "rule")
+    {
+      window.open("https://nspot-server.herokuapp.com/"+this.highlights.rulesFile)
+
+    }
+    if(data === "uniform")
+    {
+      window.open("https://nspot-server.herokuapp.com/"+this.highlights.uniformFile)
+
+    }
+    if(data === "placement")
+    {
+      window.open("https://nspot-server.herokuapp.com/"+this.highlights.placementInfoFile)
+
+    }
+    if(data === "scholarship")
+    {
+      window.open("https://nspot-server.herokuapp.com/"+this.highlights.financialAidFile)
+
+    }
+    if(data === "refund")
+    {
+      window.open("https://nspot-server.herokuapp.com/"+this.highlights.specialFeaturesFile)
+
+    }
   }
 }

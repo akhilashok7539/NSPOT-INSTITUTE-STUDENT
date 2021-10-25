@@ -19,7 +19,7 @@ export class CoursesCompareComponent implements OnInit {
   addmisionstartdateCount3;
 
   constructor(private apiservice: ApiService, private authService: AuthService, private toaster: ToastrService) {
-    this.studentId = this.authService.userProfile.userId;
+    this.studentId = localStorage.getItem("USERID");;
 
   }
 

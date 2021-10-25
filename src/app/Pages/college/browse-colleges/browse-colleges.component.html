@@ -2,7 +2,7 @@
     <div class="container">
         <div class="pull-right">
         </div>
-        <h2 class="uppercase">Browse Colleges and courses</h2>
+        <h2 class="uppercase">BROWSE COURSES AND EDUCATIONAL INSTITUTES</h2>
     </div>
 </div>
 <!-- <div class="row">
@@ -84,7 +84,7 @@
                     <option *ngFor="let item of accademicLevels" value="{{item.id}}">{{item.title}}</option>
                 </select> -->
                 <!-- <app-control-messages [touched]="touched" [control]="f.CourseCategoryId"></app-control-messages> -->
-                <mat-select placeholder="Choose Academic Level" formControlName="CourseCategoryId" (selectionChange)="loadAccademicLevelCourses(this.form.value.CourseCategoryId)">
+                <mat-select placeholder="Select Admisssion Desk" formControlName="CourseCategoryId" (selectionChange)="loadAccademicLevelCourses(this.form.value.CourseCategoryId)">
                     <input type="text" class="form-control" [(ngModel)]="accademicLevels1" placeholder="Search Academic Level" [ngModelOptions]="{standalone: true}">
                     <mat-option *ngFor="let item of accademicLevels | filter: accademicLevels1" [value]="item.id">
                         {{item.title}}
@@ -102,7 +102,7 @@
                 </select>
                 <app-control-messages [touched]="touched" [control]="f.CourseSubCategoryId"></app-control-messages> -->
 
-                <mat-select placeholder="Choose Course" formControlName="CourseSubCategoryId" (selectionChange)="loadAccademicLevelCoursessubcat(this.form.value.CourseSubCategoryId)">
+                <mat-select placeholder="Select Level/Board/Stream" formControlName="CourseSubCategoryId" (selectionChange)="loadAccademicLevelCoursessubcat(this.form.value.CourseSubCategoryId)">
                     <input type="text" class="form-control" [(ngModel)]="accademicLevels2" placeholder="Search Course" [ngModelOptions]="{standalone: true}">
                     <mat-option *ngFor="let item of accademicLevelsCourses | filter: accademicLevels2" [value]="item.id">
                         {{item.title}}
@@ -406,15 +406,21 @@
                 flex-direction: row;
             ">
                 <div class="col-sm-3">
-                    <img style="    display: block;
+                    <img style="    display: block;border-radius:20px;
                     margin: 0 auto;
-                    width: 236px;
+                    width: 223px;
                     height: 86%;
                     margin-bottom: 10px;" (error)="errorEvnt($event)" src="{{item.item?.Institute?.profilePicFile?baseApiUrl+item.item?.Institute?.profilePicFile:'./assets/images/inst.png'}}" alt="">
                     <button class="download"> <i class="zmdi zmdi-download"></i> Download syllabus</button>
                 </div>
                 <div class="col-sm-6">
-                    <h6 class="coursename">{{item.CourseName}}</h6>
+                    <h6 class="coursename">{{item.CourseName}}
+
+                        <i matTooltip="Disable Email Notifications" class="zmdi zmdi-notifications-none" style="float: right;color: #3461b3;
+                        font-size: 29px;" (click)="notificationOff()" *ngIf="notificationonstatus"></i>
+                        <i matTooltip="Enable Email Notifications" class="zmdi zmdi-notifications-off" style="float: right;color: #3461b3;
+                        font-size: 29px;" (click)="notificationon()" *ngIf="!notificationonstatus"></i>
+                    </h6>
                     <p><span class="lessons"><i class="zmdi zmdi-assignment"></i> Course Type  : </span></p>
                     <p><span class="lessons"><i class="zmdi zmdi-assignment"></i> Institute Name :
                             {{item.item.Institute.name}}</span></p>
@@ -423,8 +429,8 @@
 
                     <!-- <p class="abs">{{item.item.Institute.name}}</p> -->
                     <p><i class="zmdi zmdi-map"></i> District & State : {{item.item.District.district}} & {{item.item.State.state}}</p>
-                    <p><i class="zmdi zmdi-money-box"></i> Total Fee :Rs. {{item?.courseFee?.otherFee}}/- <i class="zmdi zmdi-info" matTooltip="Fee includes : Rs.10000/- Fee excludes : Rs.10000/-"> </i></p>
-                    <p><i class="zmdi zmdi-money-box"></i> Pay Only Rs. {{item?.courseFee?.spotfee}}/- (This amount is Spot admission Fee) </p>
+                    <!-- <p><i class="zmdi zmdi-money-box"></i> Total Fee :Rs. {{item?.courseFee?.otherFee}}/- <i class="zmdi zmdi-info" matTooltip="Fee includes : Rs.10000/- Fee excludes : Rs.10000/-"> </i></p>
+                    <p><i class="zmdi zmdi-money-box"></i> Pay Only Rs. {{item?.courseFee?.spotfee}}/- </p> -->
                     <p><i class="zmdi zmdi-calendar-check"></i>join on : {{item.item.classStartDate | date:'MMM d, y'}}</p>
 
 
@@ -433,7 +439,7 @@
                     <p><i class="zmdi zmdi-time"></i> Course Duration : {{getcourseduration(item.item.courseDuration)}}</p>
                     <p><i class="zmdi zmdi-eye"></i> Viewed by: 6</p>
                     <p style="font-weight: bold; color: orange;"> {{getaddmisonsnstartcount(item.item)}} </p>
-                    <button class="accordion" (click)="toggleAccordian($event, i)"> View college Facilities
+                    <!-- <button class="accordion" (click)="toggleAccordian($event, i)"> View college Facilities
                     </button>
                     <div class="panel" hide="!item.isActive">
                         <p *ngIf="item?.item.hasPlacementAssistant === true">Placement Assistant : Yes </p>
@@ -452,8 +458,8 @@
                         <p *ngIf="item?.item.haveGirlsHostel === true">Girls Hostel : Yes </p>
                         <p *ngIf="item?.item.haveGirlsHostel === false">Girls Hostel : No </p>
 
-                    </div>
-                    <button class="accordion" (click)="toggleAccordian($event, i)"> Course Details
+                    </div> -->
+                    <button class="accordion" (click)="toggleAccordian($event, i)"> View Elgibility
                     </button>
                     <div class="panel" hide="!item.isActive">
                         <p *ngIf="item?.item.maleAllowed === true">Male Allowed : Yes </p>
@@ -472,14 +478,35 @@
                 </div>
                 <div class="col-sm-3">
 
-                    <i matTooltip="Disable Email Notifications" class="zmdi zmdi-notifications-none" style="float: right;color: #3461b3;
+                    <!-- <i matTooltip="Disable Email Notifications" class="zmdi zmdi-notifications-none" style="float: right;color: #3461b3;
                     font-size: 29px;" (click)="notificationOff()" *ngIf="notificationonstatus"></i>
                     <i matTooltip="Enable Email Notifications" class="zmdi zmdi-notifications-off" style="float: right;color: #3461b3;
-                    font-size: 29px;" (click)="notificationon()" *ngIf="!notificationonstatus"></i>
+                    font-size: 29px;" (click)="notificationon()" *ngIf="!notificationonstatus"></i> -->
+
+                    <!-- <p><i class="zmdi zmdi-money-box"></i> Total Fee :Rs. {{item?.courseFee?.otherFee}}/- <i class="zmdi zmdi-info" matTooltip="Fee includes : Rs.10000/- Fee excludes : Rs.10000/-"> </i></p>
+                <p><i class="zmdi zmdi-money-box"></i> Pay Only Rs. {{item?.courseFee?.spotfee}}/- </p> -->
                     <div style="    display: flex;
                     flex-direction: column;height: 83%;
-                    align-items: center;border-left: 1px solid #d9d9d9;
+                  border-left: 1px solid #d9d9d9;
                     justify-content: center;">
+
+                        <!-- align-items: center; -->
+                        <h6 style="    width: 100%;
+                        margin-top: 35px;
+                        font-size: 21px;
+                        color: #3461b3;
+                        background: none !important;
+                        text-decoration: none;
+                        text-align: center;margin-left: 36px;
+                    ">Total Fee <i class="zmdi zmdi-info" matTooltip="Fee includes : Rs.10000/- Fee excludes : Rs.10000/-" style="    margin: 0;
+    color: #abaeb2;"> </i><br> Rs. 100000/-</h6>
+                        <h6 style="    width: 100%;
+                      margin-bottom: 22px;margin-top: 16px;
+                        color: #3461b3;
+                        background: none !important;font-size: 17px;
+                        text-decoration: none;
+                        text-align: center;margin-left: 36px;
+                    ">Pay Only <br>Rs. 100000/-</h6>
 
                         <a routerLink="/student/institute-details/{{item.item.Institute.userId}}" class="greybutton" style="    width: 100%;
                         border: 1px solid #f8ad25;
@@ -487,7 +514,7 @@
                         background: none !important;
                         text-decoration: none;
                         text-align: center;margin-left: 36px;
-                    ">View More</a>
+                    ">View Institute</a>
 
                         <a style="    background: #f8ad25 !important;
                     width: 100%;
@@ -496,12 +523,16 @@
                     color: white;margin-bottom: 13px;
                     text-align: center;" class="greybutton" (click)="addtocompare(item)">Add
                         to compare</a>
-                        <a *ngIf="admionstatus(item.item) === 'Opened'" style="    width: 100%;
+                        <a style="    width: 100%;
                         background: #09b952 !important;margin-left: 36px;
                         text-align: center;text-decoration: none;
                         color: white;" class="greybutton" (click)="applycourse(item)">
-                        Apply Now</a>
-
+                       APPLY & PAY</a>
+                        <!-- <a *ngIf="admionstatus(item.item) === 'Opened'" style="    width: 100%;
+                        background: #09b952 !important;margin-left: 36px;
+                        text-align: center;text-decoration: none;
+                        color: white;" class="greybutton" (click)="applycourse(item)">
+                        Apply Now</a> -->
                     </div>
                 </div>
             </div>

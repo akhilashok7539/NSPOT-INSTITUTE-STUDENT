@@ -1,42 +1,43 @@
 <main id="contact">
-  <div class="page-heading text-center">
-    <div class="container">
-      <h2>Payment History</h2>
+    <div class="page-heading text-center">
+        <div class="container">
+            <h2>Payment History</h2>
+        </div>
     </div>
-  </div>
-  <div class="container">
-  <!-- <p>Note: Please wait 24 hours to get recpet from Institutes.After 24 Hours no response from Institutes contact NSPOT TEAM</p> -->
-  <marquee behavior="" direction="">Note: Please wait 24 hours to get recpet from Institutes.After 24 Hours no response from Institutes contact NSPOT TEAM</marquee>
-  <table id="customers">
-      <tr>
-        <th>Course Name</th>
-        <th>Transaction Id</th>
-        <th>Transaction Date</th>
-        <th>Transaction Time</th>
+    <div class="container">
+        <!-- <p>Note: Please wait 24 hours to get recpet from Institutes.After 24 Hours no response from Institutes contact NSPOT TEAM</p> -->
+        <marquee behavior="" direction="">Note: Please wait 24 hours to get recpet from Institutes.After 24 Hours no response from Institutes contact NSPOT TEAM</marquee>
+        <table id="customers">
+            <tr>
+                <th>Course Name</th>
+                <th>Transaction Id</th>
+                <th>Transaction Date</th>
+                <th>Transaction Time</th>
 
-        <th>Institute Name</th>
-        <th>Payment Status</th>
-        <th>Download</th>
-        <th>Contact Us</th>
-        <th>Confirmation Letter</th>
+                <th>Institute Name</th>
+                <th>Payment Status</th>
+                <th>Download</th>
+                <th>Contact Us</th>
+                <th>Confirmation Letter</th>
 
-      </tr>
-      <tr>
-        <td>Btech</td>
-        <td>s19i7319827128937</td>
-        <td>22 June 2029</td>
-        <td>10.30 Pm</td>
-        <td>KMEA</td>
-        <td>Payment Completed</td>
-        <td>
-          <button class="btn btn-danger">Download Recepit</button>
-        </td>
-        <td><button class="btn btn-success" routerLink="/student/contact-us">Contact Us</button></td>
-        <td><button class="btn btn-dark" routerLink="/student/view-receipt">View</button></td>
+            </tr>
+            <tr *ngFor="let paymenthistory of paymenthistory">
+                <td>Btech</td>
+                <td>s19i7319827128937</td>
+                <td>{{paymenthistory.item.updatedAt | date:'MMM d, y'}}</td>
+                <td>{{paymenthistory.item.updatedAt | date:'h:mm a' }}</td>
+                <td>KMEA</td>
+                <td>Payment Completed</td>
+                <td>
+                    <button class="btn btn-danger" (click)="download(paymenthistory.item.transactionRecipt)">Download Recepit</button>
 
-      </tr>
+                </td>
+                <td><button class="btn btn-success" routerLink="/student/contact-us">Contact Us</button></td>
+                <td><button class="btn btn-dark" routerLink="/student/view-receipt/{{paymenthistory.item.applicationId}}">View</button></td>
 
-    </table>
-    <button class="loadmore-btn">Load More</button>
-  </div>
+            </tr>
+
+        </table>
+        <button class="loadmore-btn">Load More</button>
+    </div>
 </main>

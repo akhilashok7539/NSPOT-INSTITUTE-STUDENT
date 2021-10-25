@@ -24,7 +24,8 @@ export class DashboardComponent implements OnInit {
     
   ) { }
 
-  studentId = this.authService.userProfile.userType;
+  studentId = this.authService.userProfile.userId;
+  NewUserID;
   username = this.authService.userProfile.username;
   studentDetails;
   educations;
@@ -47,13 +48,24 @@ export class DashboardComponent implements OnInit {
     this.apiService.doGetRequest(endPoints.student + this.studentId).subscribe((returnData: any) => {
       console.log(returnData)
       this.studentDetails = returnData.data;
+      localStorage.setItem("USERID",this.studentDetails.id)
+      this.NewUserID = this.studentDetails.id;
+  this.loadafterfirstapi()
+
     }, error => {
       console.error(error);
       this.toastr.error('Failed to fetch student details')
     });
 
+    
+  }
+
+
+  loadafterfirstapi()
+  {
+    
     // fetching education details of the student
-    this.apiService.doGetRequest(endPoints.Get_studentEducations + this.studentId).subscribe((returnData: any) => {
+    this.apiService.doGetRequest(endPoints.Get_studentEducations + this.NewUserID).subscribe((returnData: any) => {
       this.educations = returnData.data;
     }, error => {
       console.error(error);
@@ -61,7 +73,7 @@ export class DashboardComponent implements OnInit {
     });
 
     // fetching certificates
-    this.apiService.doGetRequest(endPoints.Get_studentCertificates + this.studentId).subscribe((returnData: any) => {
+    this.apiService.doGetRequest(endPoints.Get_studentCertificates + this.NewUserID).subscribe((returnData: any) => {
       this.certificates = returnData.data;
       console.log(this.certificates)
     }, error => {
@@ -70,7 +82,7 @@ export class DashboardComponent implements OnInit {
     });
 
     // fetching entrance exams
-    this.apiService.doGetRequest(endPoints.Get_studentEntranceExams + this.studentId).subscribe((returnData: any) => {
+    this.apiService.doGetRequest(endPoints.Get_studentEntranceExams + this.NewUserID).subscribe((returnData: any) => {
       this.entranceExams = returnData.data;
       console.log(this.entranceExams)
     }, error => {
@@ -80,7 +92,7 @@ export class DashboardComponent implements OnInit {
 
     // fetching submitted applications
     this.apiService.doGetRequest(endPoints.Get_applicationForm
-      + "?where[studentId]=" + this.studentId
+      + "?where[studentId]=" + this.NewUserID
       // + "&include[0]=Institute_Course"
       // + "&include[0][model]=Institute_Course"
       // + "&include[0][include][0]=AccademicLevel_Course"
@@ -100,9 +112,7 @@ export class DashboardComponent implements OnInit {
       console.error(error);
       this.toastr.error('Failed to fetch application details')
     });
-    
   }
-
   getStatusText(status) {
     switch (status) {
       case 'pre-application-applied':
@@ -188,5 +198,10 @@ export class DashboardComponent implements OnInit {
 }
   showPhase(event){
     this.activeButton = event;
+  }
+  getaddmisonletter(s)
+  {
+    console.log(s);
+    this.router.navigate(['/student/view-receipt/'+s])
   }
 }

@@ -56,8 +56,8 @@ export class ApplyCourseComponent implements OnInit {
     certificates:[]
   }
 
-  studentId = this.authService.userProfile.userType;
-  stuendtUserId = this.authService.userProfile.userId
+  studentId = localStorage.getItem("USERID");;
+  stuendtUserId = localStorage.getItem("USERID");
   courseId;
   educationListarray:any =[];
   entraceListArray:any=[];

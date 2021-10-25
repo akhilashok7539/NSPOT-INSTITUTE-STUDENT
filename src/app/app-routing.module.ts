@@ -58,7 +58,8 @@ const routes: Routes = [
       { path: 'attend-test/:id', component: AttendTestComponent },
       { path: 'payment-history', component: PaymentHistoryComponent },
       { path: 'compare-courses', component: CoursesCompareComponent },
-      { path: 'view-receipt', component: ViewReceiptComponent },
+      { path: 'view-receipt/:applicationId', component: ViewReceiptComponent },
+      
       {
         path: 'course',
         children: [

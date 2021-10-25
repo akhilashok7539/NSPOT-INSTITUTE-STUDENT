@@ -42,7 +42,7 @@ export class BrowseCollegesComponent implements OnInit {
   stateId;
   form: FormGroup;
   touched = false;
-  studentId = this.authService.userProfile.userId;
+  studentId = localStorage.getItem("USERID");;
   username = this.authService.userProfile.username;
   studentDetails;
   accademicLevels;
