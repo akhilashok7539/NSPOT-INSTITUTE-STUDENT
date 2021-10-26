@@ -51,5 +51,34 @@ export class PaymentHistoryComponent implements OnInit {
       this.toaster.error("Receipt Not uploaded")
     }
   }
-  
+  getcourseName(s)
+  {
+    console.log(s);
+    if(s.Course_Sub_Categories5 === null)
+    {
+      if(s.Course_Sub_Categories4 === null)
+      {
+        if(s.Course_Sub_Categories3 === null)
+        {
+          if(s.Course_Sub_Categories2 === null)
+          {
+
+          }
+          else{
+          return s.Course_Sub_Categories2['title']
+          }
+        }
+        else{
+          
+          return s.Course_Sub_Categories3['title']
+        }
+      }
+      else{
+        return s.Course_Sub_Categories4['title']
+      }
+    }
+    else{
+      return s.Course_Sub_Categories5['title']
+    }
+  }
 }
