@@ -81,4 +81,7 @@ export class PaymentHistoryComponent implements OnInit {
       return s.Course_Sub_Categories5['title']
     }
   }
+
+
+
 }
