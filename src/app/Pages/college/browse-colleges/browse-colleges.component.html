@@ -53,6 +53,7 @@
 
                 <mat-select placeholder="States" formControlName="stateId" (selectionChange)="loaddistricts(this.form.value.stateId)">
                     <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search" [ngModelOptions]="{standalone: true}">
+                   
                     <mat-option *ngFor="let stateList of stateList | filter: searchText" [value]="stateList.id">
                         {{stateList.state}}
                     </mat-option>
@@ -468,8 +469,8 @@
                         <p *ngIf="item?.item.femaleAllowed === true">Female Allowed : Yes </p>
                         <p *ngIf="item?.item.femaleAllowed === false">Female Allowed : No </p>
 
-                        <p *ngIf="item?.item.otherGenderAllowed === true">Others : Yes </p>
-                        <p *ngIf="item?.item.otherGenderAllowed === false">Others : No </p>
+                        <p *ngIf="item?.item.otherGenderAllowed === true">Other Gender : Yes </p>
+                        <p *ngIf="item?.item.otherGenderAllowed === false">Others Gender: No </p>
                         <p>No of seats available : 500 </p>
 
 
@@ -493,17 +494,17 @@
                         <!-- align-items: center; -->
                         <h6 style="    width: 100%;
                         margin-top: 35px;
-                        font-size: 21px;
-                        color: #3461b3;
+                        font-size: 15px;
+                        color: #676b69;
                         background: none !important;
                         text-decoration: none;
                         text-align: center;margin-left: 36px;
-                    ">Total Fee <i class="zmdi zmdi-info" matTooltip="Fee includes : Rs.10000/- Fee excludes : Rs.10000/-" style="    margin: 0;
+                    ">Total Fee <i class="zmdi zmdi-info" matTooltip="Hi Akhil pls go through, as you are familiar with the fields, hope no need of explanation from my side, make the changes so that i can see it tomorrow in meeting. ThanksHi Akhil pls go through, as you are familiar with the fields, hope no need of explanation from my side, make the changes so that i can see it tomorrow in meeting. Thanks" style="    margin: 0;
     color: #abaeb2;"> </i><br> Rs. 100000/-</h6>
                         <h6 style="    width: 100%;
                       margin-bottom: 22px;margin-top: 16px;
                         color: #3461b3;
-                        background: none !important;font-size: 17px;
+                        background: none !important;font-size: 24px;
                         text-decoration: none;
                         text-align: center;margin-left: 36px;
                     ">Pay Only <br>Rs. 100000/-</h6>

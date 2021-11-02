@@ -22,7 +22,7 @@ export class BrowseCollegesComponent implements OnInit {
   district = "";
   searchText;
   notificationonstatus = false;
-  selectedchipsvalues=[];
+  selectedchipsvalues = [];
   currentdate;
   addmisonstarts;
   accademicLevels1;
@@ -31,7 +31,7 @@ export class BrowseCollegesComponent implements OnInit {
   accademicLevels4;
   accademicLevels5;
   accademicLevels6;
-  instutesname: any=[];
+  instutesname: any = [];
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -57,23 +57,23 @@ export class BrowseCollegesComponent implements OnInit {
   // baseApiUrl = environment.baseApiUrl;
   baseApiUrl = environment.baseApiUrl;
   // classifications=['Co-Ed','Boys','Girls']
-  classifications=[{
-    "name":"Co-Edu",
-    "status":true
-  },{
-    "name":"Boys",
-    "status":true
+  classifications = [{
+    "name": "Co-Edu",
+    "status": true
+  }, {
+    "name": "Boys",
+    "status": true
   },
   {
-    "name":"Girls",
-    "status":true
-  
-  }
-]
-facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Outdoor Play Area']
+    "name": "Girls",
+    "status": true
 
-  districtList;
-  stateList=[];
+  }
+  ]
+  facilites = ['AC Classrooms', 'Swimming Pool', 'Day Boarding', 'Transportation', 'Outdoor Play Area']
+
+  districtList=[];
+  stateList = [];
   filteredList1;
   ngOnInit(): void {
     // fetching student details
@@ -120,6 +120,18 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
     });
     this.apiService.doGetRequest(`state/`).subscribe((returnData: any) => {
       this.stateList = returnData.data;
+      let req = {
+        createdAt: "2021-07-09T06:10:38.752Z",
+        id: 0,
+        state: "All",
+        updatedAt: "2021-07-09T06:10:38.752Z"
+      }
+      // this.stateList.push(req)
+      // var suits = ["hearts", "clubs", "Brooks Brothers", "diamonds", "spades"];
+
+      // this.stateList.splice(0, 0, req);
+      
+
       console.log(this.stateList);
     });
   }
@@ -206,15 +218,14 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
       if (returnData.status == true) {
         this.courses = returnData.result
         console.log(returnData)
-        for(let i=0;i<this.courses.length;i++)
-        {
+        for (let i = 0; i < this.courses.length; i++) {
           this.instutesname.push(this.courses[i]?.item.Institute)
-          
+
         }
         for (let list of this.instutesname) {
           map[Object.values(list).join('')] = list;
-      }
-       console.log('Using Map', Object.values(map));
+        }
+        console.log('Using Map', Object.values(map));
         this.instutesname = Object.values(map)
       }
       else {
@@ -247,14 +258,21 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
   }
   loaddistricts(event) {
     console.log(event);
-    
-    this.stateId = event;
-    // console.log(event.target.value);
-    this.apiService.doGetRequest(`district/` + event).subscribe((returnData: any) => {
-      this.districtList = returnData.data;
-      console.log(this.districtList);
-    });
 
+  this.stateId = event;
+  this.apiService.doGetRequest(`district/` + event).subscribe((returnData: any) => {
+    this.districtList = returnData.data;
+    let req = {
+      createdAt: "2021-07-09T06:10:38.752Z",
+      id: 0,
+      state: "All",
+      updatedAt: "2021-07-09T06:10:38.752Z"
+    }
+    this.districtList.push(req)
+    console.log(this.districtList);
+  });
+
+   
   }
   searchByLocation() {
     let req = {
@@ -320,7 +338,7 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
     var date1 = new Date(item['admissionStartDate']);
     var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-   
+
     // this.addmisionstartdateCount2 = Math.round(Difference_In_Days);
     // console.log("1th arrays",this.addmisionstartdateCount2);
     // let d1 = item['admissionStartDate']
@@ -329,7 +347,7 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
     // d1 = d1.split("T");
     // d1 = d1[0];
     // d1 = d1.split("-");
-  
+
 
     // let d2 = item['admissionCloseDate']
     // d2 = d2.split("T")
@@ -342,7 +360,7 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
     // var from = new Date(d1[2], parseInt(d1[1]) - 1, d1[0]);  
     // var to = new Date(d2[2], parseInt(d2[1]) - 1, d2[0]);
     // var check = new Date(c[2], parseInt(c[1]) - 1, c[0]);
-    
+
     let d1 = item['admissionStartDate']
     d1 = new Date(d1);
     let d2 = item['admissionCloseDate']
@@ -353,11 +371,10 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
     // console.log(check);
     // console.log( check.valueOf()- d1.valueOf());
     let count = check.valueOf() - d1.valueOf();
-    var diffDays = Math.ceil(count / (1000 * 3600 * 24)); 
+    var diffDays = Math.ceil(count / (1000 * 3600 * 24));
     // console.log(diffDays);
 
-    if(check > d1 && check < d2)
-    {
+    if (check > d1 && check < d2) {
       // console.log("Addmission starts from "+d1 + "to"+d2 );
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');
@@ -368,44 +385,37 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
       var date1 = new Date(item['admissionCloseDate']);
       var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
       var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-      if(Difference_In_Days >0)
-      {
+      if (Difference_In_Days > 0) {
         this.addmisonstarts = "Admission Close " + Math.round(Difference_In_Days) + " Days Left"
       }
-      else
-      {
+      else {
         this.addmisonstarts = "Admission Close " + Math.round(Difference_In_Days) * -1 + " Days Left"
       }
-      
+
 
       return this.addmisonstarts;
 
     }
-    else
-    {
+    else {
       // console.log("Admission not started yet or admission closed" );
-      if(check<d1)
-      {
-        if(Difference_In_Days >0)
-        {
-        this.addmisonstarts = "Admission Desk Opens in" + Math.round(Difference_In_Days) + " Days"
+      if (check < d1) {
+        if (Difference_In_Days > 0) {
+          this.addmisonstarts = "Admission Desk Opens in" + Math.round(Difference_In_Days) + " Days"
         }
-        else
-        {
-        this.addmisonstarts = "Admission Desk Opens in" + Math.round(Difference_In_Days) * -1 + " Days"
+        else {
+          this.addmisonstarts = "Admission Desk Opens in" + Math.round(Difference_In_Days) * -1 + " Days"
         }
-       
+
         return this.addmisonstarts;
       }
-      else
-      {
+      else {
         // console.log("addmison closed");
         return this.addmisonstarts = "Admission Closed";
-        
-      } 
-    } 
-  
-   
+
+      }
+    }
+
+
 
     // if (Math.round(Difference_In_Days) > 0) {
     //   this.addmisonstarts = "Admission Starts " + Math.round(Difference_In_Days) + " Days"
@@ -420,14 +430,13 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
     //   var date1 = new Date(item['admissionCloseDate']);
     //   var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
     //   var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-      
+
     //   this.addmisonstarts = "Admission Close " + Math.round(Difference_In_Days) + " Days Left"
     // }
     // return this.addmisonstarts;
   }
 
-  admionstatus(item)
-  {
+  admionstatus(item) {
     // console.log(item);
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -439,7 +448,7 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
     var date1 = new Date(item['admissionStartDate']);
     var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-   
+
     // this.addmisionstartdateCount2 = Math.round(Difference_In_Days);
     // console.log("1th arrays",this.addmisionstartdateCount2);
     // let d1 = item['admissionStartDate']
@@ -448,7 +457,7 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
     // d1 = d1.split("T");
     // d1 = d1[0];
     // d1 = d1.split("-");
-  
+
 
     // let d2 = item['admissionCloseDate']
     // d2 = d2.split("T")
@@ -461,7 +470,7 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
     // var from = new Date(d1[2], parseInt(d1[1]) - 1, d1[0]);  
     // var to = new Date(d2[2], parseInt(d2[1]) - 1, d2[0]);
     // var check = new Date(c[2], parseInt(c[1]) - 1, c[0]);
-    
+
     let d1 = item['admissionStartDate']
     d1 = new Date(d1);
     let d2 = item['admissionCloseDate']
@@ -472,12 +481,11 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
     // console.log(check);
     // console.log( check.valueOf()- d1.valueOf());
     let count = check.valueOf() - d1.valueOf();
-    var diffDays = Math.ceil(count / (1000 * 3600 * 24)); 
+    var diffDays = Math.ceil(count / (1000 * 3600 * 24));
     // console.log(diffDays);
 
-    if(check > d1 && check < d2)
-    {
-    
+    if (check > d1 && check < d2) {
+
       // console.log("Addmission starts from "+d1 + "to"+d2 );
       var today = new Date();
       var dd = String(today.getDate()).padStart(2, '0');
@@ -488,132 +496,117 @@ facilites =['AC Classrooms','Swimming Pool','Day Boarding','Transportation','Out
       var date1 = new Date(item['admissionCloseDate']);
       var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
       var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-      if(Difference_In_Days >0)
-      {
+      if (Difference_In_Days > 0) {
         this.addmisonstarts = "Opened"
       }
-      else
-      {
+      else {
         this.addmisonstarts = "Opened"
       }
-      
+
 
       return this.addmisonstarts;
 
     }
-    else
-    {
+    else {
       // console.log("Admission not started yet or admission closed" );
-      if(check<d1)
-      {
+      if (check < d1) {
 
-        if(Difference_In_Days >0)
-        {
-        this.addmisonstarts = "Not Started"
+        if (Difference_In_Days > 0) {
+          this.addmisonstarts = "Not Started"
         }
-        else
-        {
-        this.addmisonstarts = "Not Started"
+        else {
+          this.addmisonstarts = "Not Started"
         }
-       
+
         return this.addmisonstarts;
       }
-      else
-      {
+      else {
         // console.log("addmison closed");
-      
+
         return this.addmisonstarts = "Closed";
-        
-      } 
-    } 
+
+      }
+    }
   }
   applycourse(item) {
-   
+
 
     sessionStorage.setItem("coursename", JSON.stringify(item))
     this.router.navigate(['/student/course/apply/' + item.item.id])
 
- 
 
-}
-errorEvnt(event)
-{
-  event.target.src = "./assets/images/inst.png";
-}
-selectedchips(s)
-{
-  this.selectedchipsvalues.push(s)
-  var unique = this.selectedchipsvalues.filter(function(elem, index, self) {
-    console.log(elem);
-    return index === self.indexOf(elem);
-  })
-  console.log(unique);
-  let sorrteedarray = [];
-  this.selectedchipsvalues =unique;
-  // for(let i = 0 ;i<=this.selectedchipsvalues.length;i++)
-  // {
-  //   if(this.selectedchipsvalues[i].name === 'Boys')
-  //   {
-  //     for(let j =0; j<=this.courses.length;j++ )
-  //     {
-  //       if(this.courses[j]?.item?.maleAllowed === this.selectedchipsvalues[i].status){
-  //         sorrteedarray.push(this.courses[j])
-  //         console.log(sorrteedarray);
-  //       }
-  //     }
-  //   }
-  // }
 
- 
-}
-clear()
-{
-  this.selectedchipsvalues = [];
-}
-
-notificationOff()
-{
-  this.notificationonstatus = false;
-}
-notificationon()
-{
-  this.notificationonstatus = true;
-}
-selectinstitute(s)
-{
-  console.log(s);
-  let req = {
-    name:s.name
   }
-  this.selectedchipsvalues.push(req)
-  var unique = this.selectedchipsvalues.filter(function(elem, index, self) {
-    console.log(elem);
-    
-    return index === self.indexOf(elem);
-  })
-  console.log(unique);
-  this.selectedchipsvalues =unique;
+  errorEvnt(event) {
+    event.target.src = "./assets/images/inst.png";
+  }
+  selectedchips(s) {
+    this.selectedchipsvalues.push(s)
+    var unique = this.selectedchipsvalues.filter(function (elem, index, self) {
+      console.log(elem);
+      return index === self.indexOf(elem);
+    })
+    console.log(unique);
+    let sorrteedarray = [];
+    this.selectedchipsvalues = unique;
+    // for(let i = 0 ;i<=this.selectedchipsvalues.length;i++)
+    // {
+    //   if(this.selectedchipsvalues[i].name === 'Boys')
+    //   {
+    //     for(let j =0; j<=this.courses.length;j++ )
+    //     {
+    //       if(this.courses[j]?.item?.maleAllowed === this.selectedchipsvalues[i].status){
+    //         sorrteedarray.push(this.courses[j])
+    //         console.log(sorrteedarray);
+    //       }
+    //     }
+    //   }
+    // }
 
-  
-}
-getselected(s)
-{
-  
-}
-getcourseduration(s)
-{
-  console.log("courseduration",s);
-  console.log(s.split('s'));
-  let char = s.split('s');
-  return char[0]+"\xa0"+char[1]+"\xa0"+char[2]+"\xa0"+char[3]
-  // if(char.length === 4)
-  // {
-   
-  // }
-  // else
-  // {
-  //   return char[0];
-  // }
-}
-    
+
+  }
+  clear() {
+    this.selectedchipsvalues = [];
+  }
+
+  notificationOff() {
+    this.notificationonstatus = false;
+  }
+  notificationon() {
+    this.notificationonstatus = true;
+  }
+  selectinstitute(s) {
+    console.log(s);
+    let req = {
+      name: s.name
+    }
+    this.selectedchipsvalues.push(req)
+    var unique = this.selectedchipsvalues.filter(function (elem, index, self) {
+      console.log(elem);
+
+      return index === self.indexOf(elem);
+    })
+    console.log(unique);
+    this.selectedchipsvalues = unique;
+
+
+  }
+  getselected(s) {
+
+  }
+  getcourseduration(s) {
+    console.log("courseduration", s);
+    console.log(s.split('s'));
+    let char = s.split('s');
+    return char[0] + "\xa0" + char[1] + "\xa0" + char[2] + "\xa0" + char[3]
+    // if(char.length === 4)
+    // {
+
+    // }
+    // else
+    // {
+    //   return char[0];
+    // }
+  }
+
 }

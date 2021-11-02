@@ -5,6 +5,9 @@
 .logo {
   margin-top: 15px;
 }
+a{
+  font-weight: 500;
+}
 .notification-icon {
   color: white;
   font-size: 25px;
@@ -13,7 +16,9 @@
   margin-left: 5px;
 } */
 
-
+nav > ul > li > a{
+  font-size: 13px !important;
+}
 /* Submentu tweek */
 .submenu-notif.clearfix {
   width: 618px;
@@ -29,11 +34,14 @@
 .submenu-notif.submenu-list {
   padding: 0;
 }
-
+.top-bar {
+  background: #1b335f;
+  padding: 16px;
+}
 .submenu-notif,
 .cart-container {
   background-color: rgba(255, 255, 255, 0.9);
-  top: 70px;
+  top: 105px !important;
   position: absolute;
   z-index: -1;
   opacity: 0;
@@ -42,7 +50,8 @@
 }
 
 nav > ul > li > a:hover {
-  border-bottom: 2px solid #12c8fc;
+  color: #000000;
+  border-bottom: 2px solid #f8f8f8 !important;
 }
 
 nav > ul > li:hover .submenu-notif {
@@ -66,14 +75,14 @@ nav > ul > li:hover .submenu-notif {
   width: 100%;
 }
 .submenu-notif > li a {
-  color: #f8ad25;
+  color: #1a4d59;
 }
 
 .submenu-notif > li.new{
   background-color: #ffffff;
 }
 .submenu-notif > li.new a{
-  color: #f8ad25 !important;
+  color: #1a4d59 !important;
 }
 
 .submenu-notif > li > a h5{

@@ -9,7 +9,7 @@
         <form class="contact" [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-sm-12">
-                    <label class="req uppercase">Student Aadhaar Number </label>
+                    <label class="req uppercase">Student Aadhaar Number/ Passport (If International Student) </label>
                     <input type="text" formControlName="adharNumber" placeholder="enter Aadhaar Number" />
                     <app-control-messages [touched]="touched" [control]="f.adharNumber"></app-control-messages>
                 </div>
@@ -280,7 +280,7 @@
 
                 <div class="col-sm-12">
                     <div *ngIf="f.isIndian.value === 'false'">
-                        <label class="uppercase">Enter your Citizen </label>
+                        <label class="uppercase">Enter your Citizenship </label>
                         <input type="text" formControlName="citizenship" id="" />
                     </div>
                 </div>

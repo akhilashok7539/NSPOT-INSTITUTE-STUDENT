@@ -27,6 +27,7 @@ export class CollegeDetailsComponent implements OnInit {
   admmisonclosed =false;
   admisionstarts = false;
   admisionnotstarts=false;
+  travelinformations;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -104,6 +105,15 @@ export class CollegeDetailsComponent implements OnInit {
       this.toastr.error('Failed to fetch institute details')
     });
 
+    this.apiService.doGetRequest('instituteTravelInfo/byInstituteId/' + this.instIdForCourse).subscribe(returnData => {
+      console.log(returnData);
+      
+      this.travelinformations = returnData['data'][0];
+    }, error => {
+      console.error(error);
+      this.toastr.error('Failed to fetch institute details')
+    });
+
     // virtualtour links
 
     this.apiService.doGetRequest(`institute/virtual-tour/` + this.instIdForCourse).subscribe((returnData: any) => {
@@ -149,6 +159,8 @@ export class CollegeDetailsComponent implements OnInit {
       console.error(error);
       this.toastr.error('Failed to fetch institute details')
     });
+
+
   }
 
   loadGalleryandCourse(instIdForCourse) {
