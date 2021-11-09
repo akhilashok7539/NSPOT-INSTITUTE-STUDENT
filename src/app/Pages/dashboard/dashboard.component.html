@@ -264,16 +264,16 @@
                         <div class="col-xs-1">
                             <img src="../../../../assets/images/exam-icon.png" class="icon-3" alt="">
                         </div>
-                        <div class="col-xs-10">
+                        <div class="col-xs-7">
                             <h4>{{item.CourseName}} </h4>
 
                             <p>Status : {{getStatusText(item.item.applicationStatus)}}</p>
                         </div>
-                        <div class="col-xs-1">
-                            <img matTooltip="Download Confirmation Letter" src="./assets/images/download.png" style="width: 70px; 
+                        <div class="col-xs-4">
+                            <!-- <img matTooltip="Download Confirmation Letter" src="./assets/images/download.png" style="width: 70px; 
                                 background: #30bfbf;
-                                border-radius: 13px;" (click)="getaddmisonletter(item.item.id)">
-
+                                border-radius: 13px;" (click)="getaddmisonletter(item.item.id)"> -->
+                          <button class="btn btn-dark" (click)="getaddmisonletter(item.item.id)">Download Confirmation Letter</button>
                         </div>
                     </div>
                     <div *ngIf="acceptedApplications.length==0" class="col-xs-12 col-sm-6 list-with-icon text-center p-3">

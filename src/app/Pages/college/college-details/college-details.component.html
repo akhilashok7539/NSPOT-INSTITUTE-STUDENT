@@ -34,7 +34,7 @@
                     <span class="views"><i class="zmdi zmdi-assignment"></i><a>Website Link : http://........</a></span>
                             <span class="views"><i class="zmdi zmdi-download"></i><a
                                 href="{{baseApiUrl}}{{highlights?.brochuresFile}}">Download Brochure</a></span>
-                    <span>  Location On Map : <a href="https://maps.google.com/?q={{travelinformations.currentLatitude}},{{travelinformations.currentLongitude}}" target="_blank"> {{travelinformations.currentLatitude}} , {{travelinformations.currentLongitude}}</a></span>
+                    <span>  Location On Map : <a href="https://maps.google.com/?q={{travelinformations?.currentLatitude}},{{travelinformations?.currentLongitude}}" target="_blank"> {{travelinformations?.currentLatitude}} , {{travelinformations?.currentLongitude}}</a></span>
                     <button (click)="copyMessage(currentUrl)" style="    background: none;
                     border: none;
                     color: orange;text-transform: uppercase;
@@ -134,32 +134,32 @@
                             <h4>HOSTEL & TRANSPORTATION</h4>
                             <p style="text-align: left;margin-top: 25px;">Hostel for Boys : {{instituteInfo?.haveBoysHostel?'Yes':'No'}}</p>
                             <p style="text-align: left;margin-top: 25px;">
-                                Hostel for Girls : {{instituteInfo.haveGirlsHostel?'Yes':'No'}}
+                                Hostel for Girls : {{instituteInfo?.haveGirlsHostel?'Yes':'No'}}
                             </p>
 
                             <p style="text-align: left;margin-top: 25px;">
-                                Is food available : {{instituteInfo.foodAvailableAtHostel?'Yes':'No'}}
+                                Is food available : {{instituteInfo?.foodAvailableAtHostel?'Yes':'No'}}
                             </p>
 
                             <p style="text-align: left;margin-top: 25px;">
-                                Hostal Annual Fee : {{instituteInfo.hostalAnnualFee}}
+                                Hostal Annual Fee : {{instituteInfo?.hostalAnnualFee}}
                             </p>
 
                             <p style="text-align: left;margin-top: 25px;">
-                                Transportation info : {{instituteInfo.transportationInfo}}
+                                Transportation info : {{instituteInfo?.transportationInfo}}
                             </p>
 
                         </div>
                         <div class="col-md-12" style="margin-top: 20px !important;">
                             <h4>TRAVEL INFORMATION</h4>
                             <p style="text-align: left;margin-top: 25px;">
-                                Nearest Railway Station : {{travelinformations.nearestAirPort}}</p>
+                                Nearest Railway Station : {{travelinformations?.nearestAirPort}}</p>
                             <p style="text-align: left;margin-top: 25px;">
-                                Nearest Airport : {{travelinformations.nearestRailWayStation}}
+                                Nearest Airport : {{travelinformations?.nearestRailWayStation}}
                             </p>
 
                             <p style="text-align: left;margin-top: 25px;">
-                                Nearest Bus Station : {{travelinformations.nearestBusStation}}
+                                Nearest Bus Station : {{travelinformations?.nearestBusStation}}
                             </p>
 
                             <p style="text-align: left;margin-top: 25px;">

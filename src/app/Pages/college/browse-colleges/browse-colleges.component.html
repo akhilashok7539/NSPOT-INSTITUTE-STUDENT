@@ -412,7 +412,7 @@
                     width: 223px;
                     height: 86%;
                     margin-bottom: 10px;" (error)="errorEvnt($event)" src="{{item.item?.Institute?.profilePicFile?baseApiUrl+item.item?.Institute?.profilePicFile:'./assets/images/inst.png'}}" alt="">
-                    <button class="download"> <i class="zmdi zmdi-download"></i> Download syllabus</button>
+                    <!-- <button class="download"> <i class="zmdi zmdi-download"></i> Download syllabus</button> -->
                 </div>
                 <div class="col-sm-6">
                     <h6 class="coursename">{{item.CourseName}}
@@ -432,13 +432,13 @@
                     <p><i class="zmdi zmdi-map"></i> District & State : {{item.item.District.district}} & {{item.item.State.state}}</p>
                     <!-- <p><i class="zmdi zmdi-money-box"></i> Total Fee :Rs. {{item?.courseFee?.otherFee}}/- <i class="zmdi zmdi-info" matTooltip="Fee includes : Rs.10000/- Fee excludes : Rs.10000/-"> </i></p>
                     <p><i class="zmdi zmdi-money-box"></i> Pay Only Rs. {{item?.courseFee?.spotfee}}/- </p> -->
-                    <p><i class="zmdi zmdi-calendar-check"></i>join on : {{item.item.classStartDate | date:'MMM d, y'}}</p>
+                    <!-- <p><i class="zmdi zmdi-calendar-check"></i>join on : {{item.item.classStartDate | date:'MMM d, y'}}</p> -->
 
 
-                    <p><i class="zmdi zmdi-book"></i> Establishment Year : {{item.item.Institute.year_of_establishment}}
-                    </p>
+                    <!-- <p><i class="zmdi zmdi-book"></i> Establishment Year : {{item.item.Institute.year_of_establishment}}
+                    </p> -->
                     <p><i class="zmdi zmdi-time"></i> Course Duration : {{getcourseduration(item.item.courseDuration)}}</p>
-                    <p><i class="zmdi zmdi-eye"></i> Viewed by: 6</p>
+                    <!-- <p><i class="zmdi zmdi-eye"></i> Viewed by: 6</p> -->
                     <p style="font-weight: bold; color: orange;"> {{getaddmisonsnstartcount(item.item)}} </p>
                     <!-- <button class="accordion" (click)="toggleAccordian($event, i)"> View college Facilities
                     </button>
@@ -492,7 +492,7 @@
                     justify-content: center;">
 
                         <!-- align-items: center; -->
-                        <h6 style="    width: 100%;
+                        <h6 style="   
                         margin-top: 35px;
                         font-size: 15px;
                         color: #676b69;
@@ -501,7 +501,7 @@
                         text-align: center;margin-left: 36px;
                     ">Total Fee <i class="zmdi zmdi-info" matTooltip="Hi Akhil pls go through, as you are familiar with the fields, hope no need of explanation from my side, make the changes so that i can see it tomorrow in meeting. ThanksHi Akhil pls go through, as you are familiar with the fields, hope no need of explanation from my side, make the changes so that i can see it tomorrow in meeting. Thanks" style="    margin: 0;
     color: #abaeb2;"> </i><br> Rs. 100000/-</h6>
-                        <h6 style="    width: 100%;
+                        <h6 style="   
                       margin-bottom: 22px;margin-top: 16px;
                         color: #3461b3;
                         background: none !important;font-size: 24px;
@@ -509,22 +509,34 @@
                         text-align: center;margin-left: 36px;
                     ">Pay Only <br>Rs. 100000/-</h6>
 
+                    <div style="    display: flex;
+                    margin-left: 37px;">
                         <a routerLink="/student/institute-details/{{item.item.Institute.userId}}" class="greybutton" style="    width: 100%;
                         border: 1px solid #f8ad25;
-                        color: #f8ad25;
+                        color: #f8ad25;    font-size: 13px;
                         background: none !important;
                         text-decoration: none;
-                        text-align: center;margin-left: 36px;
+                        text-align: center;
                     ">View Institute</a>
-
+                    &nbsp;
+  <a style=" width: 100%;
+  font-size: 13px;
+  border: 1px solid #09b952;
+  text-align: center;
+  text-decoration: none;
+  color: #09b952;
+  background-color: white !important;" class="greybutton" (click)="viewCourse(item)">
+ View Course</a>
+                    </div>
+                        
                         <a style="    background: #f8ad25 !important;
-                    width: 100%;
+                   
                     margin-top: 13px;margin-left: 36px;
                     text-decoration: none;
                     color: white;margin-bottom: 13px;
                     text-align: center;" class="greybutton" (click)="addtocompare(item)">Add
                         to compare</a>
-                        <a style="    width: 100%;
+                        <a style="   
                         background: #09b952 !important;margin-left: 36px;
                         text-align: center;text-decoration: none;
                         color: white;" class="greybutton" (click)="applycourse(item)">

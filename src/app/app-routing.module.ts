@@ -22,6 +22,7 @@ import { AttendTestComponent } from './Pages/attend-test/attend-test.component';
 import { PaymentHistoryComponent } from './Pages/payment-history/payment-history.component';
 import { CoursesCompareComponent } from './Pages/courses-compare/courses-compare.component';
 import { ViewReceiptComponent } from './Pages/view-receipt/view-receipt.component';
+import { ViewCourseDetailsComponent } from './Pages/view-course-details/view-course-details.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,8 @@ const routes: Routes = [
       { path: 'attend-test/:id', component: AttendTestComponent },
       { path: 'payment-history', component: PaymentHistoryComponent },
       { path: 'compare-courses', component: CoursesCompareComponent },
+      { path: 'view-courses', component: ViewCourseDetailsComponent },
+
       { path: 'view-receipt/:applicationId', component: ViewReceiptComponent },
       
       {

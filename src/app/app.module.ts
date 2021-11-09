@@ -46,6 +46,7 @@ import {FilterPipe} from './guards/filterpipe';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { ModalComponent } from './components/modal/modal.component';
+import { ViewCourseDetailsComponent } from './Pages/view-course-details/view-course-details.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { ModalComponent } from './components/modal/modal.component';
     SafePipe,
     FilterPipe,
     ModalComponent,
+    ViewCourseDetailsComponent,
   ],
   imports: [
     BrowserModule,

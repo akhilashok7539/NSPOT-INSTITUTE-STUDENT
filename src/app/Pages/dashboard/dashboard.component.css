@@ -14,6 +14,18 @@
 .btn-success{
   margin-top: 17px;
 }
+.btn-dark{
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-content: center;
+    margin-top: 19px;
+
+}
+.btn-dark:hover{
+  color: white;
+}
 .btn-info{
   border-radius: 100px;
   color: black;

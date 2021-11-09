@@ -1,0 +1,73 @@
+<div class="page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <h6>Course Name : {{courseinfo.CourseName}}</h6>
+          <hr>
+          <div class="row">
+            <div class="col-sm-6">
+              <P>Admission Desk :  {{courseinfo?.item?.CourseCategory?.title}}</P>
+              <P>Institute Name :  {{courseinfo?.item?.Institute?.name}}</P>
+              <p>District & State :  {{courseinfo?.item?.District?.district}} {{courseinfo?.item?.State?.state}}</p>
+              <P>University :  {{courseinfo?.item?.University?.university}}</P>
+              <P>Admission Start Date :  {{courseinfo?.item?.admissionStartDate | date:'MMM d, y'}}</P>
+              <P>Admission End Date  :  {{courseinfo?.item?.admissionCloseDate | date:'MMM d, y'}}</P>
+              <P>Class Start Date  :  {{courseinfo?.item?.classStartDate | date:'MMM d, y'}}</P>
+
+            </div>
+            <div class="col-sm-6">
+              <P>Admission Type :  {{courseinfo?.item?.admissionType}}</P>
+              <p>Exam Conducted : {{courseinfo?.item?.examConducted}}</p>
+              <p>Course Duration : {{courseinfo?.item?.courseDuration}}</p>
+              <p>Academic Year  & Month : {{courseinfo?.item?.accademicYear}} & {{courseinfo?.item?.accademicYearMonth}}</p>
+
+              <P *ngIf="courseinfo?.item.aptituteTestRequired === true">Aptitude Test :  Yes</P>
+           
+              <P *ngIf="courseinfo?.item.aptituteTestRequired === false">Aptitude Test :  No</P>
+              <p *ngIf="courseinfo?.item.hasPlacementAssistant === true">Placement Assistant : Yes </p>
+              <p *ngIf="courseinfo?.item.hasPlacementAssistant === false">Placement Assistant : No </p>
+
+              <p *ngIf="courseinfo?.item.onlineClassAvailability === true">Online Class Availability : Yes </p>
+              <p *ngIf="courseinfo?.item.onlineClassAvailability === false">Online Class Availability : No </p>
+            </div>
+            <hr>
+            <div class="col-sm-6">
+              <h6 style="text-align: left;
+              margin-top: 21px;">Eligibility</h6>
+              <div class="underline"></div>
+              <p>{{courseinfo?.item?.eligibiliyInString}} </p>
+
+              <h6 style="text-align: left;
+              margin-top: 21px;">Job Areas</h6>
+              <div class="underline"></div>
+              <p>Job Areas : {{courseinfo?.item?.jobAreas}} </p>
+              <p>Job Position : {{courseinfo?.item?.jobPositions}} </p>
+              <p>Salary Range : {{courseinfo?.item?.salaryRange}} </p>
+              <h6 style="text-align: left;
+              margin-top: 21px;">Fees Info for Indian Students</h6>
+              <div class="underline"></div>
+
+              <p>Spot Fee : {{courseinfo?.courseFee?.spotfee}}</p>
+              <p> Fee Includes : {{courseinfo?.courseFee?.otherIncludes}}</p>
+              <p> Fee Excludes: {{courseinfo?.courseFee?.otherFee}}</p>
+
+              <h6 style="text-align: left;
+              margin-top: 21px;">Fees Info for NRI Students</h6>
+              <div class="underline"></div>
+              <p>Spot Fee : {{courseinfo?.courseFee?.nriSpotfee}}</p>
+              <p> Fee Includes : {{courseinfo?.courseFee?.nriOtherIncludes}}</p>
+              <p> Fee Excludes: {{courseinfo?.courseFee?.otherFee}}</p>
+
+
+            </div>
+            <div class="col-sm-6"></div>
+            <button> <a href="https://nspot-server.herokuapp.com/{{courseinfo?.item?.courseSyllabusFile}}" style="text-decoration: none;color: white;" target="_blank">Download syllabus</a> </button>
+
+            <button (click)="apply()">Apply Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

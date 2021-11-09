@@ -1,0 +1,24 @@
+.card{
+  box-shadow: 0 0 3px 1px rgb(0 0 0 / 9%);
+  text-align: center;
+  margin-top: 20px;
+}
+p{
+  text-align: left;
+  line-height: 35px;
+}
+.underline{
+  
+  border: 1px solid #1b335f;
+      margin-top: 8px;
+      width: 89px;
+}
+button{
+  display: block;
+    margin: 0 auto;
+    width: 41%;
+    background: #1b335f;
+    color: white;
+    padding: 10px;
+    border-radius: 13px;
+}

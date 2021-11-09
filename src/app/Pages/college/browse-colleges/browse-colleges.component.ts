@@ -608,5 +608,9 @@ export class BrowseCollegesComponent implements OnInit {
     //   return char[0];
     // }
   }
-
+  viewCourse(s)
+  {
+    sessionStorage.setItem("courseinfo",JSON.stringify(s))
+    this.router.navigate(['/student/view-courses'])
+  }
 }
