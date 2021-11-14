@@ -50,6 +50,14 @@ export class DashboardComponent implements OnInit {
       this.studentDetails = returnData.data;
       localStorage.setItem("USERID",this.studentDetails.id)
       this.NewUserID = this.studentDetails.id;
+    
+      localStorage.setItem("isNri",this.studentDetails.isNRI);
+      
+      localStorage.setItem("isFilledByFather",this.studentDetails.isFilledByFather);
+      localStorage.setItem("isFilledByGaurdian",this.studentDetails.isFilledByGaurdian);
+      localStorage.setItem("isFilledByMyself",this.studentDetails.isFilledByMyself);
+
+
   this.loadafterfirstapi()
 
     }, error => {

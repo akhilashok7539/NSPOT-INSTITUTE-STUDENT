@@ -301,7 +301,7 @@
                     <span>Am the Guardian of a minor under the age of 18 with legal authority to sign this form</span>
                     <div class="col-sm-6">
                         <p class="checkbox">
-                            <input type="checkbox" /><span>Yes</span>
+                            <input type="checkbox" formControlName="isFilledByGaurdian"/><span>Yes</span>
                         </p>
                     </div>
                 </div>
@@ -316,7 +316,7 @@
 
                     <div class="col-sm-6">
                         <p class="checkbox">
-                            <input type="checkbox" /><span>Yes</span>
+                            <input type="checkbox" formControlName="isFilledByMyself" /><span>Yes</span>
                         </p>
                     </div>
                 </div>
@@ -335,4 +335,5 @@
             <pre>{{f.disabilityCertificateFile.validator}}</pre>
         </form>
     </div>
+    <pre>{{form.value | json}}</pre>
 </main>

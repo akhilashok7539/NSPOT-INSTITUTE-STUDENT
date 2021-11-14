@@ -439,7 +439,9 @@
                     </p> -->
                     <p><i class="zmdi zmdi-time"></i> Course Duration : {{getcourseduration(item.item.courseDuration)}}</p>
                     <!-- <p><i class="zmdi zmdi-eye"></i> Viewed by: 6</p> -->
-                    <p style="font-weight: bold; color: orange;"> {{getaddmisonsnstartcount(item.item)}} </p>
+                    <p style="font-weight: bold; color: red;" *ngIf="getaddmisonsnstartcount(item.item) === 'Admission Closed'"> <i class="zmdi zmdi-alert-circle"></i> {{getaddmisonsnstartcount(item.item)}} </p>
+                    <p style="font-weight: bold; color: #09b952 ;" *ngIf="getaddmisonsnstartcount(item.item) != 'Admission Closed'"> <i class="zmdi zmdi-alert-circle"></i> {{getaddmisonsnstartcount(item.item)}} </p>
+                    
                     <!-- <button class="accordion" (click)="toggleAccordian($event, i)"> View college Facilities
                     </button>
                     <div class="panel" hide="!item.isActive">

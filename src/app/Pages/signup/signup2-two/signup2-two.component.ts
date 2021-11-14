@@ -54,14 +54,17 @@ export class Signup2TwoComponent implements OnInit {
       isDifferentlyAbled: [''],
       religion: ['', [Validators.required]],
       cast: ['', [Validators.required]],
-      visibleMark1: [''],
-      visibleMark2: [''],
+      // visibleMark1: [''],
+      // visibleMark2: [''],
       citizenship:[''],
       isIndian: [false, [Validators.required]],
       isNRI: [false],
       isFilledByFather: [false],
       disabilityCertificateFile: [''],
       forginNationality: [''],
+      isFilledByMyself:[false],
+      isFilledByGaurdian:[false]
+
     });
     console.log(this.f.disabilityCertificateFile.validator)
 
