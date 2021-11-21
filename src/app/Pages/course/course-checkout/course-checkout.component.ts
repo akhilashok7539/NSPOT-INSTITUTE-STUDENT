@@ -265,7 +265,7 @@ export class CourseCheckoutComponent implements OnInit {
     "key": "rzp_test_J7wOs0sSPhfvXU",
     "description": "Course fee for: "+this.coursename,
     
-    "amount":this.amounttopaied,
+    "amount":this.amounttopaied * 100,
     "order_id": this.razxorpayorderid,
     "name": "NSPOT",
     "handler": function (response) {

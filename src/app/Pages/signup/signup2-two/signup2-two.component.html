@@ -289,9 +289,10 @@
                     <label class="uppercase">Registration Form Filled by Parents?
           </label>
                     <span>Am the Guardian of a minor under the age of 18 with legal authority to sign this form</span>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" *ngIf="f.isFilledByGaurdian.value === false && f.isFilledByMyself.value === false">
                         <p class="checkbox">
                             <input type="checkbox" formControlName="isFilledByFather" /><span>Yes</span>
+
                         </p>
                     </div>
                 </div>
@@ -299,11 +300,13 @@
                     <label class="uppercase">Registration Form Filled by Guardian?
           </label>
                     <span>Am the Guardian of a minor under the age of 18 with legal authority to sign this form</span>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" *ngIf="f.isFilledByMyself.value === false && f.isFilledByFather.value === false">
                         <p class="checkbox">
                             <input type="checkbox" formControlName="isFilledByGaurdian"/><span>Yes</span>
                         </p>
                     </div>
+                 
+
                 </div>
                 <div class="col-sm-4">
                     <label class="uppercase">Registration Form Filled by Myself?
@@ -314,9 +317,9 @@
           </span>
 
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" *ngIf="f.isFilledByGaurdian.value === false && f.isFilledByFather.value === false">
                         <p class="checkbox">
-                            <input type="checkbox" formControlName="isFilledByMyself" /><span>Yes</span>
+                            <input type="checkbox"  formControlName="isFilledByMyself" /><span>Yes</span>
                         </p>
                     </div>
                 </div>

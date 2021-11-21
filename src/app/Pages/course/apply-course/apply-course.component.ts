@@ -601,7 +601,14 @@ export class ApplyCourseComponent implements OnInit {
       if (returnData.status == true) {
         let applciaitonId = returnData['data'].id;
         this.multerForm.append("formId",applciaitonId);
-        this.getfilesUpdate();
+        if(applciaitonId)
+        {
+          this.getfilesUpdate();
+        }
+        else{
+          this.toastr.error('Application already submited');
+        }
+     
       
       }
       else {
@@ -660,7 +667,7 @@ export class ApplyCourseComponent implements OnInit {
     const file=  event.target.files[0];
     // console.log(file.name);
     
-    this.multerForm.append(formcontrol, file.name);
+    this.multerForm.append(formcontrol, file);
     
   
     

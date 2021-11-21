@@ -54,8 +54,8 @@ export class Signup2TwoComponent implements OnInit {
       isDifferentlyAbled: [''],
       religion: ['', [Validators.required]],
       cast: ['', [Validators.required]],
-      // visibleMark1: [''],
-      // visibleMark2: [''],
+      visibleMark1: ['null'],
+      visibleMark2: ['null'],
       citizenship:[''],
       isIndian: [false, [Validators.required]],
       isNRI: [false],
@@ -135,11 +135,31 @@ export class Signup2TwoComponent implements OnInit {
       }
       else {
         this.toastr.error('Form submission failed.');
+        // this.toastr.error(returnData.error.errors[0].message);
+        if(returnData.error.errors[0].message === "email must be unique")
+        {
+        this.toastr.error('Email Id already Exists!.please try another EmailId');
+
+        }
+        else{
+        this.toastr.error(returnData.error.errors[0].message);
+
+        }
       }
     },
       error => {
         console.error(error);
-        this.toastr.error(error.error[0].message);
+        // this.toastr.error(error.error.errors[0].message);
+        if(error.error.errors[0].message)
+        {
+        this.toastr.error('Email Id already Exists!.please try another EmailId');
+
+        }
+        else
+        {
+        this.toastr.error(error.error.errors[0].message);
+
+        }
         (document.querySelector('#submit-btn') as HTMLInputElement).removeAttribute('disabled');
       });
   }
