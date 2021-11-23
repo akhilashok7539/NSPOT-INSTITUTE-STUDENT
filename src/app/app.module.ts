@@ -47,6 +47,8 @@ import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { ModalComponent } from './components/modal/modal.component';
 import { ViewCourseDetailsComponent } from './Pages/view-course-details/view-course-details.component';
+import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
+import { ApplyCourseCertificatesComponent } from './Pages/course/apply-course-certificates/apply-course-certificates.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,8 @@ import { ViewCourseDetailsComponent } from './Pages/view-course-details/view-cou
     FilterPipe,
     ModalComponent,
     ViewCourseDetailsComponent,
+    ResetPasswordComponent,
+    ApplyCourseCertificatesComponent,
   ],
   imports: [
     BrowserModule,

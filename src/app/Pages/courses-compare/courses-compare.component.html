@@ -3,7 +3,7 @@
     <div class="row">
       <!-- ***************** instite 1 ************  -->
 
-
+      <marquee behavior="" direction="">You can compare only 3 courses at a time</marquee>
 
 
       <div class="col-lg-4" *ngFor="let comparelist of comparelist;let i = index;">
@@ -30,13 +30,13 @@
             <div class="card">
 
            
-            <h6>Institue Name : {{comparelist.item.Institute.name}}</h6>
-            <h6>University/Board Name : {{comparelist.instituteCourse.universityName}}</h6>
+            <h6>Institue Name : {{comparelist?.item?.Institute.name}}</h6>
+            <h6>University/Board Name : {{comparelist?.instituteCourse?.universityName}}</h6>
 
-            <h6>Location Details : {{comparelist.item.Institute.addressLine1}} ,
-              {{comparelist.item.Institute.addressLine2}},
-              {{comparelist.item.Institute.addressLine3}}</h6>
-            <h6>Year of Establishment : {{comparelist.item.Institute.year_of_establishment}}</h6>
+            <h6>Location Details : {{comparelist.item?.Institute?.addressLine1}} ,
+              {{comparelist?.item?.Institute?.addressLine2}},
+              {{comparelist?.item?.Institute?.addressLine3}}</h6>
+            <h6>Year of Establishment : {{comparelist?.item?.Institute?.year_of_establishment}}</h6>
 
          
             <h6>Boys Hostel Avilablity : <span *ngIf="comparelist.item.Institute.haveBoysHostel === true"> Yes</span>
@@ -55,15 +55,15 @@
             <hr>
             <div class="card">
 
-            <h6>Course Name : {{comparelist.item.courseName}}</h6>
-            <h6>Course Duration : {{comparelist.item.courseDuration}}</h6>
-            <h6>Full Course Fee : {{comparelist.courseFee.otherFee}}</h6>
+            <h6>Course Name : {{comparelist?.item?.courseName}}</h6>
+            <h6>Course Duration : {{comparelist?.item?.courseDuration}}</h6>
+            <h6>Full Course Fee : {{comparelist?.courseFee?.otherFee}}</h6>
             <h6>Scholarship Available :
-              <span *ngIf="comparelist.courseFee.hasScolarship === true"> Yes</span>
-              <span *ngIf="comparelist.courseFee.hasScolarship === false"></span>
+              <span *ngIf="comparelist.courseFee?.hasScolarship === true"> Yes</span>
+              <span *ngIf="comparelist.courseFee?.hasScolarship === false"></span>
             </h6>
-            <h6>Payment Tenture : {{getpaymentTenture(comparelist.courseFee.paymentTenureId).title}}</h6>
-            <h6>Spot Fee : {{comparelist.courseFee.otherFee}}</h6>
+            <h6>Payment Tenture : {{getpaymentTenture(comparelist?.courseFee?.paymentTenureId)?.title}}</h6>
+            <h6>Spot Fee : {{comparelist?.courseFee?.otherFee}}</h6>
 
             <!-- <h6>NSPOT Service Charges : {{comparelist.courseFee.nspotServiceCharge}}</h6>
             <h6>NSPOT Tax Charges : {{comparelist.courseFee.nspotTax}}</h6> -->
@@ -72,29 +72,29 @@
             <hr>
             <div class="card">
 
-            <h6>Addmission Start Date : {{comparelist.instituteCourse.admissionStartDate | date:'MMM d, y'}}</h6>
-            <h6>Addmission End Date : {{comparelist.instituteCourse.admissionCloseDate | date:'MMM d, y'}}</h6>
-            <h6>Class Start Date : {{comparelist.instituteCourse.classStartDate | date:'MMM d, y'}}</h6>
+            <h6>Addmission Start Date : {{comparelist?.instituteCourse?.admissionStartDate | date:'MMM d, y'}}</h6>
+            <h6>Addmission End Date : {{comparelist?.instituteCourse?.admissionCloseDate | date:'MMM d, y'}}</h6>
+            <h6>Class Start Date : {{comparelist?.instituteCourse?.classStartDate | date:'MMM d, y'}}</h6>
 
-            <h6>Apptitue Test : <span *ngIf="comparelist.instituteCourse.aptituteTestRequired === true"> Yes</span>
-              <span *ngIf="comparelist.instituteCourse.aptituteTestRequired === false"> No
+            <h6>Apptitue Test : <span *ngIf="comparelist?.instituteCourse?.aptituteTestRequired === true"> Yes</span>
+              <span *ngIf="comparelist?.instituteCourse?.aptituteTestRequired === false"> No
               </span>
             </h6>
-            <h6>Available Seats : {{comparelist.instituteCourse.availableSeats}}</h6>
+            <h6>Available Seats : {{comparelist?.instituteCourse?.availableSeats}}</h6>
             </div>
             <hr>
             <div class="card">
 
-            <h6>Eligiblity :{{comparelist.instituteCourse.eligibiliyInString}}</h6>
-            <h6>Exam Conducted :{{comparelist.instituteCourse.examConducted}}</h6>
-            <h6>Placement Assistance : <span *ngIf="comparelist.instituteCourse.hasPlacementAssistant === true">
+            <h6>Eligiblity :{{comparelist?.instituteCourse?.eligibiliyInString}}</h6>
+            <h6>Exam Conducted :{{comparelist?.instituteCourse?.examConducted}}</h6>
+            <h6>Placement Assistance : <span *ngIf="comparelist.instituteCourse?.hasPlacementAssistant === true">
                 Yes</span>
-              <span *ngIf="comparelist.instituteCourse.hasPlacementAssistant === false"> No
+              <span *ngIf="comparelist.instituteCourse?.hasPlacementAssistant === false"> No
               </span>
             </h6>
-            <h6>Job Areas :{{comparelist.instituteCourse.jobAreas}}</h6>
-            <h6>Job Positions :{{comparelist.instituteCourse.jobPositions}}</h6>
-            <h6>Salary Range :{{comparelist.instituteCourse.salaryRange}}</h6>
+            <h6>Job Areas :{{comparelist.instituteCourse?.jobAreas}}</h6>
+            <h6>Job Positions :{{comparelist.instituteCourse?.jobPositions}}</h6>
+            <h6>Salary Range :{{comparelist.instituteCourse?.salaryRange}}</h6>
 
             
             <h6>Male Allowed : <span *ngIf="comparelist.instituteCourse.maleAllowed === true">
@@ -127,8 +127,8 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4" *ngIf="comparelist?.length != 3" routerLink="/student/explore-courses">
-        <div class="card" *ngIf="comparelist?.length !=0" style="border:5px dotted #f8ad25;;margin-top: 0px;justify-content: center;
+      <div class="col-lg-4" *ngIf="comparelist.length <3"  routerLink="/student/explore-courses">
+        <div class="card"  style="border:5px dotted #f8ad25;;margin-top: 0px;justify-content: center;
         text-align: center; height: 100%;    box-shadow: 0 0 0px 0px rgb(0 0 0 / 13%);">
 
           <p>Add New Course to compare</p>

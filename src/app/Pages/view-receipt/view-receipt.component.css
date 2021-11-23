@@ -3,5 +3,14 @@
 } */
 
 p{
-  line-height: 56px;
+  line-height: 16px !important;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.header{
+    background: orange;
+  
+    padding: 9px;
 }

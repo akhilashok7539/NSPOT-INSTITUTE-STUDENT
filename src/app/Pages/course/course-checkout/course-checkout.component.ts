@@ -259,13 +259,14 @@ export class CourseCheckoutComponent implements OnInit {
   //      "currency": "INR",
      
   //  };
-  
+    console.log(this.amounttopaied * 100);
+    let amountcalculated = this.amounttopaied * 100;
       const that = this;
    var options = {
     "key": "rzp_test_J7wOs0sSPhfvXU",
     "description": "Course fee for: "+this.coursename,
     
-    "amount":this.amounttopaied * 100,
+    "amount":amountcalculated,
     "order_id": this.razxorpayorderid,
     "name": "NSPOT",
     "handler": function (response) {

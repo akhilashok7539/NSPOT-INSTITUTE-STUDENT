@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
       localStorage.setItem("isFilledByFather",this.studentDetails.isFilledByFather);
       localStorage.setItem("isFilledByGaurdian",this.studentDetails.isFilledByGaurdian);
       localStorage.setItem("isFilledByMyself",this.studentDetails.isFilledByMyself);
-
+      sessionStorage.removeItem("formfields")
 
   this.loadafterfirstapi()
 
@@ -111,11 +111,14 @@ export class DashboardComponent implements OnInit {
           this.acceptedPreApplications.push(element)
         if (element.item.applicationStatus == "payment-done")
           this.acceptedApplications.push(element)
+         
+          
         if (element.item.applicationStatus == "rejected")
           this.rejectedApplications.push(element)
         if (element.item.applicationStatus == "pre-application-returned")
           this.resubmitApplications.push(element)
       })
+      console.log("completed applciatants:",this.acceptedApplications);
     }, error => {
       console.error(error);
       this.toastr.error('Failed to fetch application details')

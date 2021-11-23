@@ -18,9 +18,13 @@ export class ViewReceiptComponent implements OnInit {
   courseFeelist:any=[];
   admissionOfficerList:any=[];
   institutelist:any=[];
+  institutetype:any = [];
+  courseInfo:any=[];
+  isNri = false;
   constructor(private activaterouterparams:ActivatedRoute,private apiservice:ApiService) { }
 
   ngOnInit(): void {
+    this.isNri = JSON.parse(localStorage.getItem("isNri"))
     this.activaterouterparams.paramMap.subscribe(
       data =>{
         console.log(data['params'].applicationId);
@@ -28,6 +32,24 @@ export class ViewReceiptComponent implements OnInit {
         this.getstudnetdetails();
       }
     )
+    this.loaddata();
+  }
+  loaddata()
+  {
+    this.apiservice.doGetRequest("/institute-types").subscribe(
+      data =>{
+        console.log(data);
+        this.institutetype =data;
+      },
+      error =>{
+        console.log(error);
+
+      }
+    )
+  }
+  gettype(s)
+  {
+    return this.institutetype.filter(el => el.id === s)
   }
   getstudnetdetails()
   {
@@ -39,6 +61,7 @@ export class ViewReceiptComponent implements OnInit {
         this.courseFeelist = data['courseFee'];
         this.admissionOfficerList = data['admissionOfficer'];
         this.institutelist= data['institute'];
+        this.courseInfo = data['data'].Institute_Course;
         console.log(this.studentDetails);
         this.getcourseName();
 
@@ -50,7 +73,7 @@ export class ViewReceiptComponent implements OnInit {
   } 
   download()
   {
-    const doc = new jsPDF();
+    const doc = new jsPDF('p', 'mm', 'a4');
 
     const pdfTable = this.pdfTable.nativeElement;
 
@@ -58,7 +81,7 @@ export class ViewReceiptComponent implements OnInit {
       callback: function (doc) {
         doc.save('ApplicationForm.pdf');
       },
-      margin: [80,80, 80,80],
+      margin: [20,20, 20,20],
       html2canvas: { scale: .18 },
     });
 
@@ -89,4 +112,7 @@ export class ViewReceiptComponent implements OnInit {
       }
     )
   }
+  onImgError(event) { 
+    event.target.src = 'https://stockpictures.io/wp-content/uploads/2020/01/image-not-found-big-768x432.png';
+}
 }

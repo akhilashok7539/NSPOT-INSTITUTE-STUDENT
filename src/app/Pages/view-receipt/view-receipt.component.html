@@ -1,60 +1,182 @@
-<div class="container" id="pdfTable" #pdfTable style="background: white;">
-    <div class="row">
-        <div class="col-sm-12">
-            <img src="./assets/images/logo.jpg" alt="" style="width: 200px;
+<div style="background: rgb(182 181 181 / 21%);">
+
+    <div class="container" id="pdfTable" #pdfTable style="background: white;">
+        <div class="row">
+            <div class="col-sm-12">
+                <img src="https://nspot-server.herokuapp.com/{{institutelist?.profilePicFile}}" (error) ="onImgError($event)" alt="" style="width: 200px;
         margin: 0 auto;
         display: block;">
-            <p style="float: right; ">Date : {{responselist?.updatedAt | date:'MMM d, y'}}</p>
-            <p>Nspot Ref : {{responselist?.nSpotReferenceId}}</p>
+                <p style="float: right; color: black; ">Date : {{responselist?.updatedAt | date:'MMM d, y'}}</p>
+                <p style="color: black;">Nspot Ref : {{responselist?.nSpotReferenceId}}</p>
+                <p style="color: black; margin-top: 10px;" *ngIf="responselist?.admissionId">Admission ID : {{responselist?.admissionId}}</p>
+
+                
 
 
 
-
-
-        </div>
-        <!-- <div class="col-sm-6">
+            </div>
+            <!-- <div class="col-sm-6">
             <p style="float: left; ">Auto Institute Ref : Nspot/addmission/54655</p>
         </div>
         <div class="col-sm-6">
             <p style="float: right; ">Auto Admission Application No : Nspot/addmission/54655</p>
         </div> -->
-        <div class="col-sm-12">
-            <h6 style="text-align: center;
-      font-size: 16px;
-      line-height: 80px;">Sub: Confirmation of Admission cum Fee Receipt
-            </h6>
-        </div>
-        <div class="col-sm-12">
-            <h6 style="line-height: 58px;">Congratulations!! <em style="    color: red;
+            <div class="col-sm-12">
+                <h6 style="text-align: center;
+      font-size: 16px;font-weight: bold;
+      line-height: 80px;"> Confirmation of Admission cum Fee Receipt
+                </h6>
+            </div>
+            <div class="col-sm-12">
+                <h6 style="line-height: 58px;">Congratulations!! <em style="    color: red;
         font-style: inherit;"> {{studentDetails?.personalInfo?.fullName}}</em>
-            </h6>
-        </div>
+                </h6>
+            </div>
 
-        <br>
-        <div class="col-sm-12">
-            <h6 style="line-height: 58px;">We are glad to inform you that your Admission for the course/Programme <em style="color: red; ">{{courseName}}</em> commencing from {{responselist?.Institute_Course?.classStartDate | date:'MMM d, y'}} session has been confirmed.</h6>
-        </div>
-
-
-        <div class="col-sm-12">
-
-
-            <h5 style="font-size: 19px;
-      text-decoration: underline;
-      font-weight: bold;">Important Credentials</h5>
             <br>
+            <div class="col-sm-12">
+                <h6 style="line-height: 29px;">We are glad to inform you that your Admission for the course/Programme
+                    <em style="color: red; ">{{courseName}}</em>&nbsp; &nbsp;commencing from
+                    {{responselist?.Institute_Course?.classStartDate | date:'MMM d, y'}} session has been confirmed.
+                </h6>
+            </div>
 
-            <h6>Student Applicant Name :<em style="color: red; ">{{studentDetails?.personalInfo?.fullName}}</em> </h6>
-            <br>
 
+            <div class="col-sm-12">
+
+
+                <!-- <h5 style="font-size: 19px;
+              text-decoration: underline;
+             font-weight: bold;">Important Credentials</h5> -->
+                <br>
+
+                <div class="header">
+                    <p style="line-height: 16px !important; color: white;">Institute Info</p>
+                </div>
+                <br>
+                <h6> Institute Name : {{institutelist?.name}}</h6>
+                <br>
+                <h6> Institute Type : {{gettype(institutelist.typeId)[0]?.title}}</h6>
+                <br>
+                <h6> Institute Category : {{institutelist?.institute_category}}</h6>
+                <br>
+                <h6> Institute Address :
+                    {{institutelist?.addressLine1}},{{institutelist?.addressLine2}},{{institutelist?.addressLine3}},{{institutelist?.mobile1}}
+                </h6>
+                <br>
+
+                <h6>Institute Aid Status : {{institutelist?.institute_aid_status}}</h6>
+
+                <br>
+                <div class="header">
+                    <p style="line-height: 16px !important; color: white;">Course/Program Applied</p>
+                </div>
+                <br>
+                <h6>Course/Programme Name : <em style="color: red; "> {{courseName}}</em></h6>
+                <br>
+                <h6>Course Duration : {{courseInfo?.courseDuration}}</h6>
+                <br>
+                <h6>Date of Application Received : <em style="color: red; "> {{responselist.createdAt | date}}</em></h6>
+                <br>
+                <h6>Institute Course Code : {{courseInfo?.courseCode}}</h6>
+                <br>
+                <h6>Institute Program Code : {{courseInfo?.programCode}}</h6>
+                <br>
+                <h6>Gender Allowance : Male : {{courseInfo?.maleAllowed}} | Female : {{courseInfo?.femaleAllowed}} |
+                    Other : {{courseInfo?.otherGenderAllowed}}</h6>
+                <br>
+                <h6>Age Bar : {{courseInfo?.agebar}}</h6>
+                <br>
+                <h6>Age Limit : {{courseInfo?.ageLimit}}</h6>
+                <br>
+                <h6>Academic Year & Month : {{courseInfo?.accademicYear}} & {{courseInfo?.accademicYearMonth}}</h6>
+                <br>
+
+                <h6>Class Start Date : {{courseInfo?.classStartDate | date}}</h6>
+                <br>
+
+                <div *ngIf="!isNri">
+
+
+                    <div class="header">
+                        <p style="line-height: 16px !important; color: white;">Fee Info </p>
+                    </div>
+                    <br>
+                    <h6>Full Course Fee : <em style="color: red; "> {{courseFeelist?.otherFee}}</em> </h6>
+                    <br>
+                    <h6>Fee Includes : <em style="color: red; "> {{courseFeelist?.otherIncludes}}</em> </h6>
+                    <br>
+                    <h6>Fee Excludes : <em style="color: red; "> {{courseFeelist?.otherexcludes}}</em> </h6>
+
+
+                    <br>
+                </div>
+                <div *ngIf="isNri">
+
+                    <div class="header">
+                        <p style="line-height: 16px !important; color: white;">Fee Info </p>
+                    </div>
+                    <br>
+                    <h6>Full Course Fee : <em style="color: red; "> {{courseFeelist?.nriotherFee}}</em> </h6>
+                    <br>
+                    <h6>Fee Includes : <em style="color: red; "> {{courseFeelist?.nriOtherIncludes}}</em> </h6>
+                    <br>
+                    <h6>Fee Excludes : <em style="color: red; "> {{courseFeelist?.feeexcludesNri}}</em> </h6>
+
+                    <br>
+                </div>
+
+                <div *ngIf="!isNri">
+
+                    <div class="header">
+                        <p style="line-height: 16px !important; color: white;">Fee Payment Details </p>
+                    </div>
+                    <br>
+                    <h6 >Initital Fee Paid Amount : {{courseFeelist?.spotfee}}</h6>
+                    <br>
+                    <h6>Admission Cancellation Policy & Fee Refund Policy : {{courseFeelist?.refundPolicy}} </h6>
+
+
+                    <br>
+                </div>
+                <div *ngIf="isNri">
+
+                    <div class="header">
+                        <p style="line-height: 16px !important; color: white;">Fee Payment Details </p>
+                    </div>
+                    <br>
+                    <h6>INITIAL FEE PAID AMOUNT : {{courseFeelist?.nriSpotfee}}</h6>
+                    <br>
+                    <h6>ADMISSION CANCELLATION POLICY & FEE REFUND POLICY : {{courseFeelist?.nrirefundPolicy}} </h6>
+
+
+                    <br>
+                </div>
+                <div class="header">
+                    <p style="line-height: 16px !important; color: white;">Important Note: </p>
+                </div>
+
+                <br>
+
+                <h6> Student Report to Admission Officer Name : {{admissionOfficerList?.name}}
+                </h6>
+                <br>
+                <h6> Admission Officer Name Email : {{admissionOfficerList?.email}}
+                </h6>
+                <br>
+                <h6> Admission Officer Name Phone 1 : {{admissionOfficerList?.phone1}}
+                </h6> <br>
+                <h6> Admission Officer Name Phone 2 : {{admissionOfficerList?.phone2}}
+                </h6>
+
+                <!-- 
             <h6>Enrollment Number : .....................................................................................................................................................................</h6>
             <br>
 
             <h6>Other Reference Code/No:.....................................................................................................................................................................</h6>
-            <br>
+            <br> -->
 
-            <!-- <h6>Applicant KYC Details</h6> -->
-            <br>
+                <!-- <br>
 
             <h6>Address :
 
@@ -67,66 +189,42 @@
 
                 <br> {{responselist?.Student?.permanentAddressLine1}}, <br> {{responselist?.Student?.permanentAddressLine2}}, {{responselist?.Student?.permanentDistrict}}, <br> {{responselist?.Student?.permanentMobile}}
                 <br> {{responselist?.Student?.permanentPin}},{{responselist?.Student?.permanentState}}</h6>
-            <br>
+            <br> -->
 
 
-            <h6>Course/Programme Name : <em style="color: red; "> {{courseName}}</em></h6>
-            <br>
 
-            <h6>Full Course Fee : <em style="color: red; "> {{courseFeelist?.otherFee}}</em> </h6>
-            <br>
 
-            <h6>Spot Admission Fee Payment Received : <em style="color: red; ">{{courseFeelist?.spotfee}}</em> </h6>
-            <br>
+                <br>
 
-            <!-- <h6>Online Receipt Info - </h6> -->
+                <br>
 
-            <!-- <h6>Institutes Spot Admission Fee Refund Policy
+                <!-- <h6>Online Receipt Info - </h6> -->
+
+                <!-- <h6>Institutes Spot Admission Fee Refund Policy
             </h6> -->
 
 
 
 
-            <h6>Institute Name <em style="color: red; ">{{institutelist?.name}}</em>
-            </h6>
-            <br>
-            <h6>Institute Address :
 
 
-            </h6>
-            <h6 style="line-height: 26px;
-            margin-left: 43px;color: red;
-            margin-top: 14px;">
-                {{institutelist?.addressLine1}} , <br> {{institutelist?.addressLine2}}
 
-                <br> {{institutelist?.block}}, <br>{{institutelist?.state}},<br> {{responselist?.country}}
-            </h6>
-            <br>
-            <h6> Student Report to Admission Officer Name : <em style="color: red; ">{{admissionOfficerList?.name}}</em>
-            </h6>
-            <br>
-            <h6> Admission Officer Name Email : <em style="color: red; ">{{admissionOfficerList?.email}}</em>
-            </h6>
-            <br>
-            <h6> Admission Officer Name Phone 1 : <em style="color: red; ">{{admissionOfficerList?.phone1}}</em>
-            </h6> <br>
-            <h6> Admission Officer Name Phone 2 : <em style="color: red; ">{{admissionOfficerList?.phone2}}</em>
-            </h6>
+                <br>
+                <p>Note: If we find your certificates produced are fraudulent etc </p>
 
-            <br>
-            <p>Note: If we find your certificates produced are fraudulent etc </p>
+            </div>
+
 
         </div>
-
-
     </div>
+
 </div>
-<!-- <button class="btn btn-dark" (click)="download()" style="    position: fixed;
+<button class="btn btn-dark" (click)="download()" style="    position: fixed;
 right: 45px;
 bottom: 45px;
-width: 70px;
+width: 74px;
 height: 70px;
 border-radius: 50%;
 background-color: #1A4D59;
 border-color: #1A4D59;
-color: #FFF;"><img src="./assets/images/download.png" style="    width: 48px;"/></button> -->
+color: #FFF;"><img src="./assets/images/download.png" style="    width: 48px;" /></button>

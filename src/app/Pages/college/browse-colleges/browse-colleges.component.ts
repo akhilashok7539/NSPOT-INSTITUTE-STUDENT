@@ -40,7 +40,9 @@ export class BrowseCollegesComponent implements OnInit {
     private toastr: ToastrService
   ) { }
   stateId;
+  selectedvalueradio;
   form: FormGroup;
+  instituteform:FormGroup;
   touched = false;
   studentId = localStorage.getItem("USERID");;
   username = this.authService.userProfile.username;
@@ -51,9 +53,11 @@ export class BrowseCollegesComponent implements OnInit {
   courseStreamsSpecializations;
   courseTypes;
   universityTypes;
-  courses
+  courses;
+  isNri = false;
   courseStreamsSpecializations3;
   courseStreamsSpecializations4;
+  formvaluessession;
   // baseApiUrl = environment.baseApiUrl;
   baseApiUrl = environment.baseApiUrl;
   // classifications=['Co-Ed','Boys','Girls']
@@ -77,6 +81,8 @@ export class BrowseCollegesComponent implements OnInit {
   filteredList1;
   ngOnInit(): void {
     // fetching student details
+
+
     this.apiService.doGetRequest(endPoints.student + this.studentId).subscribe((returnData: any) => {
       console.log(returnData)
       this.studentDetails = returnData.data;
@@ -85,7 +91,9 @@ export class BrowseCollegesComponent implements OnInit {
       this.toastr.error('Failed to fetch student details')
     });
     this.loadData();
-
+    this.isNri = JSON.parse(localStorage.getItem("isNri"));
+    console.log(this.isNri);
+    
     this.form = this.formBuilder.group({
       CourseCategoryId: [''],
       CourseSubCategoryId: [''],
@@ -95,10 +103,22 @@ export class BrowseCollegesComponent implements OnInit {
       CourseSubCategory4Id: [''],
       CourseSubCategory5Id: [''],
       districtId: [''],
-      stateId: ['']
+      stateId: [''],
+      instituteId:['']
     });
+
+
+    this.instituteform = this.formBuilder.group({
+      instituteName:['']
+    })
     this.filteredList1 = this.stateList.slice();
     console.log(window.location.origin + this.router.url);
+    console.log(sessionStorage.getItem("formfields"));
+    this.formvaluessession = JSON.parse(sessionStorage.getItem("formfields"))
+    if(this.formvaluessession != null)
+    {
+      this.reloadOnbackClicked(this.formvaluessession)
+    }
   }
 
   loadData(): void {
@@ -192,6 +212,46 @@ export class BrowseCollegesComponent implements OnInit {
     }
     return urlParams;
   }
+  reloadOnbackClicked(formvaluessession)
+  {
+    const formData = formvaluessession;
+    console.log(formData);
+    for (var key in formData) {
+      if (formData[key] === "") {
+        delete formData[key];
+      } else {
+        // formData[Map[key]] = formData[key];
+        // delete formData[key];
+      }
+    }
+
+    console.log(formData);
+
+    this.apiService.doPostRequest(
+      endPoints.Get_course_filter, formData
+    ).subscribe((returnData: any) => {
+      if (returnData.status == true) {
+        this.courses = returnData.result
+        console.log(returnData)
+        for (let i = 0; i < this.courses.length; i++) {
+          this.instutesname.push(this.courses[i]?.item.Institute)
+
+        }
+        for (let list of this.instutesname) {
+          map[Object.values(list).join('')] = list;
+        }
+        console.log('Using Map', Object.values(map));
+        this.instutesname = Object.values(map)
+      }
+      else {
+        this.toastr.error('Something went wrong!');
+      }
+    },
+      error => {
+        console.error(error);
+        this.toastr.error('Something went wrong!');
+      });
+  }
   onSubmit() {
     this.touched = true;
     console.log(document.getElementsByClassName('ng-invalid'))
@@ -211,7 +271,7 @@ export class BrowseCollegesComponent implements OnInit {
     }
 
     console.log(formData);
-
+    sessionStorage.setItem("formfields",JSON.stringify(this.form.value))
     this.apiService.doPostRequest(
       endPoints.Get_course_filter, formData
     ).subscribe((returnData: any) => {
@@ -530,12 +590,25 @@ export class BrowseCollegesComponent implements OnInit {
   }
   applycourse(item) {
 
+    // sessionStorage.setItem("buttonclicked",JSON.stringify(true))
+    sessionStorage.setItem("formfields",JSON.stringify(this.form.value))
 
     sessionStorage.setItem("coursename", JSON.stringify(item))
     this.router.navigate(['/student/course/apply/' + item.item.id])
 
 
 
+  }
+  viewInstitute()
+  {
+    // sessionStorage.setItem("buttonclicked",JSON.stringify(true))
+    sessionStorage.setItem("formfields",JSON.stringify(this.form.value))
+  }
+  viewCourse(s)
+  {
+    sessionStorage.setItem("formfields",JSON.stringify(this.form.value))
+    sessionStorage.setItem("courseinfo",JSON.stringify(s))
+    this.router.navigate(['/student/view-courses'])
   }
   errorEvnt(event) {
     event.target.src = "./assets/images/inst.png";
@@ -595,22 +668,29 @@ export class BrowseCollegesComponent implements OnInit {
 
   }
   getcourseduration(s) {
-    console.log("courseduration", s);
-    console.log(s.split('s'));
+    // console.log("courseduration", s);
+    // console.log(s.split('s'));
     let char = s.split('s');
-    return char[0] + "\xa0" + char[1] + "\xa0" + char[2] + "\xa0" + char[3]
+    return char[0] + "\xa0" + char[1] + "\xa0" + char[2] + "\xa0"
     // if(char.length === 4)
     // {
-
+      // + char[3]
     // }
     // else
     // {
     //   return char[0];
     // }
   }
-  viewCourse(s)
-  {
-    sessionStorage.setItem("courseinfo",JSON.stringify(s))
-    this.router.navigate(['/student/view-courses'])
-  }
+changedevent(event)
+{
+  console.log(event.target.value);
+  console.log(this.instituteform.value);
+  this.form.controls['instituteId'].setValue(this.instituteform.value['instituteName'])
+  
+  // this.selectedvalueradio = event.target.value;
+  // console.log(this.selectedvalueradio);
+  
+  // this.form.controls['instituteId'].setValue(event.target.value)
+  this.reloadOnbackClicked(this.form.value)
+}
 }

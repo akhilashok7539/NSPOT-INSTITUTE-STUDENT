@@ -10,11 +10,12 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
-  selector: 'app-apply-course',
-  templateUrl: './apply-course.component.html',
-  styleUrls: ['./apply-course.component.css']
+  selector: 'app-apply-course-certificates',
+  templateUrl: './apply-course-certificates.component.html',
+  styleUrls: ['./apply-course-certificates.component.css']
 })
-export class ApplyCourseComponent implements OnInit {
+export class ApplyCourseCertificatesComponent implements OnInit {
+
   form: FormGroup;
   // additionalPersonal: FormGroup;
   // additionalEducation: FormGroup;
@@ -64,6 +65,7 @@ export class ApplyCourseComponent implements OnInit {
   addclick = false;
   addEntranceClick= false;
   courseName;
+  applicationId;
   constructor(
     // private applicationFormService: ApplicationFormService,
     private router: Router,
@@ -71,10 +73,20 @@ export class ApplyCourseComponent implements OnInit {
     private apiService: ApiService,
     private authService: AuthService,
     private toastr: ToastrService,
-    private route: ActivatedRoute
+    private activatedRoute: ActivatedRoute
   ) { }
   async ngOnInit() {
-    this.courseId = parseInt(this.route.snapshot.paramMap.get('courseId'));
+    // this.courseId = parseInt(this.route.snapshot.paramMap.get('courseId'));
+    this.activatedRoute.paramMap.subscribe(data =>{
+      console.log(data['params']);
+      console.log(data['params']['courseId']);
+      console.log(data['params']['applicationId']);
+
+      this.courseId = data['params']['courseId'];
+      this.applicationId =  data['params']['applicationId'];
+    })
+    console.log(this.courseId);
+    
     this.form = this.formBuilder.group({
       studentId: [this.studentId],
       courseId: [this.courseId],
@@ -152,83 +164,85 @@ export class ApplyCourseComponent implements OnInit {
 
       // ]),
       certificates: this.formBuilder.group({
-        // adharCardFile: [],
-        // birthCertificateFile: [],
-        // communityCertificateFile: [],
-        // differentlyAbledCertificateFile: [],
-        // characterCertificateFile: [],
-        // conductCertificateFile: [],
-        // entranceExamFile: [],
-        // sslcFile: [],
-        // plusTwoCertificateFile: [],
-        // experienceCertificateFile: [],
-        // incomeCertificateFile: [],
-        // migrationCertificateFile: [],
-        // nativityCertificateFile: [],
-        // panCardFile: [],
-        // passportSizePhotoFile: [],
-        // scolarshipFile: [],
-        // signatureFile: [],
-        // tcFile: [],
-        // thumbImpressionFile: [],
-        // drivingLicenseFile: [],
-        // fathersSignatureFile: [],
-        // mothersSignatureFile: [],
-        // guardiansSignatureFile: [],
+        adharCardFile: [],
+        birthCertificateFile: [],
+        communityCertificateFile: [],
+        differentlyAbledCertificateFile: [],
+        characterCertificateFile: [],
+        conductCertificateFile: [],
+        entranceExamFile: [],
+        sslcFile: [],
+        plusTwoCertificateFile: [],
+        experienceCertificateFile: [],
+        incomeCertificateFile: [],
+        migrationCertificateFile: [],
+        nativityCertificateFile: [],
+        panCardFile: [],
+        passportSizePhotoFile: [],
+        scolarshipFile: [],
+        signatureFile: [],
+        tcFile: [],
+        thumbImpressionFile: [],
+        drivingLicenseFile: [],
+        fathersSignatureFile: [],
+        mothersSignatureFile: [],
+        guardiansSignatureFile: [],
 
-        // adharCardFileattested:[],
-        // addressProof:[],
-        // admissionApplciationLetterFile:[],
-        // sslcFileattested: [],
-        // sslcmarksheetfile:[],
-        // plusTwoCertificateFileattested: [],
-        // plusTwoCertificateFileprofessional: [],
-        // plusTwoCertificateFileprofessionalattested: [],
-        // degreeCertificateFile:[],
-        // degreeCertificateFileattested:[],
-        // professionaldegreeCertificateFile:[],
-        // professionaldegreeCertificateFileattested:[],
-        // diplomaCertificateFile:[],
-        // diplomaCertificateFileattested:[],
-        // pgMasterCertificateFile:[],
-        // pgMasterCertificateFileattested:[],
-        // phdCertificateFile:[],
-        // phdCertificateFileatteseted:[],
-        // courseCompletionCertificateFile:[],
-        // consolidateMarkListFile:[],
+        // new key
 
-        // originalGradecardFile:[],
-        // apptitudeTestFile:[],
-        // typingSkillTestFile:[],
-        // allotmentLetterFile:[],
-        // proofOfEnglishProficiencyFile:[],
-        // aadharcardParentatteseted:[],
-        // aadharcardParent:[],
+        adharCardFileattested:[],
+        addressProof:[],
+        admissionApplciationLetterFile:[],
+        sslcFileattested: [],
+        sslcmarksheetfile:[],
+        plusTwoCertificateFileattested: [],
+        plusTwoCertificateFileprofessional: [],
+        plusTwoCertificateFileprofessionalattested: [],
+        degreeCertificateFile:[],
+        degreeCertificateFileattested:[],
+        professionaldegreeCertificateFile:[],
+        professionaldegreeCertificateFileattested:[],
+        diplomaCertificateFile:[],
+        diplomaCertificateFileattested:[],
+        pgMasterCertificateFile:[],
+        pgMasterCertificateFileattested:[],
+        phdCertificateFile:[],
+        phdCertificateFileatteseted:[],
+        courseCompletionCertificateFile:[],
+        consolidateMarkListFile:[],
 
-        // passportorvisa:[],
-        // hallticketFile:[],
-        // previousschoolCollageAttendedCertificateFile:[],
-        // sportsCertificateFile:[],
-        // nocCertificateFile:[],
-        // scCertificate:[],
-        // ewsCertificate:[],
+        originalGradecardFile:[],
+        apptitudeTestFile:[],
+        typingSkillTestFile:[],
+        allotmentLetterFile:[],
+        proofOfEnglishProficiencyFile:[],
+        aadharcardParentatteseted:[],
+        aadharcardParent:[],
 
-        // educationConsessionCertificate:[],
-        // relivingCertificate:[],
-        // offerletterCertificate:[],
-        // medicalCertificate:[],
-        // affidavitFile:[],
-        // gapCertificate:[],
-        // selfDeclarationCertificate:[],
-        // recommendationCertificate:[],
-        // dischargeCertificate:[],
-        // additionalCertificateFile:[],
+        passportorvisa:[],
+        hallticketFile:[],
+        previousschoolCollageAttendedCertificateFile:[],
+        sportsCertificateFile:[],
+        nocCertificateFile:[],
+        scCertificate:[],
+        ewsCertificate:[],
+
+        educationConsessionCertificate:[],
+        relivingCertificate:[],
+        offerletterCertificate:[],
+        medicalCertificate:[],
+        affidavitFile:[],
+        gapCertificate:[],
+        selfDeclarationCertificate:[],
+        recommendationCertificate:[],
+        dischargeCertificate:[],
+        additionalCertificateFile:[],
 
 
 
-        // additionalFields: this.formBuilder.group({
+        additionalFields: this.formBuilder.group({
 
-        // }),
+        }),
       }),
 
 
@@ -244,14 +258,14 @@ export class ApplyCourseComponent implements OnInit {
     // this.form.controls['code'].setValue(this.instituteDetails['code']);
     // console.log( );
     
-    this.apiService.doGetRequest('institute/course/courseName/'+this.courseId).subscribe(
-      data =>{
-        this.courseName = data['CourseName']
-        const group = this.form.controls["personalInfo"] as FormGroup;
+    // this.apiService.doGetRequest('institute/course/courseName/'+this.courseId).subscribe(
+    //   data =>{
+    //     this.courseName = data['CourseName']
+    //     const group = this.form.controls["personalInfo"] as FormGroup;
 
-        group.controls['courseName'].setValue( this.courseName)
-      }
-    )
+    //     group.controls['courseName'].setValue( this.courseName)
+    //   }
+    // )
     
   }
 
@@ -292,15 +306,15 @@ export class ApplyCourseComponent implements OnInit {
             obj.remove();
             group.removeControl(element.fieldName);
           }
-          // if(element.formSection === "certificates")
-          // {
-          //   const group = this.form.controls[element.formSection] as FormGroup;
-          //   // (document.getElementById(element.fieldName) as HTMLInputElement).remove;
-          //   var obj = document.getElementById(element.fieldName);
-          //   obj.remove();
-          //   group.removeControl(element.fieldName);
+          if(element.formSection === "certificates")
+          {
+            const group = this.form.controls[element.formSection] as FormGroup;
+            // (document.getElementById(element.fieldName) as HTMLInputElement).remove;
+            var obj = document.getElementById(element.fieldName);
+            obj.remove();
+            group.removeControl(element.fieldName);
             
-          // }
+          }
           else {
             if (element.formSection == "education")
               this.eduAndEntrnceRemovedFields.education.push(element.fieldName)
@@ -634,60 +648,57 @@ export class ApplyCourseComponent implements OnInit {
   /**
     * Submits the form if the form is valid
     */
-  onSubmit(): void {
-    this.touched = true;
-    delete this.form.value["certificates"]
+  // onSubmit(): void {
+  //   this.touched = true;
+  //   delete this.form.value["certificates"]
 
-    console.log(document.getElementsByClassName('ng-invalid'))
-    if (this.form.invalid) {
-      return;
-    } else {
-      // (document.querySelector('#submit-btn') as HTMLInputElement).setAttribute('disabled', '');
-    }
-    const formData = this.form.value;
-    if(this.addclick === true)
-    {
-      formData.education = this.educationListarray;
+  //   console.log(document.getElementsByClassName('ng-invalid'))
+  //   if (this.form.invalid) {
+  //     return;
+  //   } else {
+  //   }
+  //   const formData = this.form.value;
+  //   if(this.addclick === true)
+  //   {
+  //     formData.education = this.educationListarray;
 
-    }
-    if(this.addEntranceClick === true)
-    {
-      formData.entrance = this.entraceListArray;
+  //   }
+  //   if(this.addEntranceClick === true)
+  //   {
+  //     formData.entrance = this.entraceListArray;
 
-    }
-    console.log(formData);
-    console.log(this.multerForm);
+  //   }
+  //   console.log(formData);
+  //   console.log(this.multerForm);
     
-    // this.form.removeControl('certificates');
-    console.log(this.form.get('certificates').value);
+  //  console.log(this.form.get('certificates').value);
      
-    console.log(formData);
+  //   console.log(formData);
 
-    this.apiService.doPostRequest(endPoints.Submit_applicationForm, formData).subscribe((returnData: any) => {
-      if (returnData.status == true) {
-        let applciaitonId = returnData['data'].id;
-        // this.multerForm.append("formId",applciaitonId);
-        if(applciaitonId)
-        {
-          // this.getfilesUpdate();
-          this.router.navigate(['/student/course/certificates/'+this.courseId+"/"+applciaitonId])
-        }
-        else{
-          this.toastr.error('Application already submited');
-        }
+  //   this.apiService.doPostRequest(endPoints.Submit_applicationForm, formData).subscribe((returnData: any) => {
+  //     if (returnData.status == true) {
+  //       let applciaitonId = returnData['data'].id;
+  //       this.multerForm.append("formId",applciaitonId);
+  //       if(applciaitonId)
+  //       {
+  //         this.getfilesUpdate();
+  //       }
+  //       else{
+  //         this.toastr.error('Application already submited');
+  //       }
      
-      }
-      else {
-        this.toastr.error('Form submission failed.');
-      }
-    },
-      error => {
-        console.error(error);
-        this.toastr.error(error.error[0].message);
+  //     }
+  //     else {
+  //       this.toastr.error('Form submission failed.');
+  //     }
+  //   },
+  //     error => {
+  //       console.error(error);
+  //       this.toastr.error(error.error[0].message);
 
-      });
+  //     });
 
-  }
+  // }
   addnewEducation()
   {
     this.addclick = true;
@@ -738,6 +749,8 @@ export class ApplyCourseComponent implements OnInit {
   }
   getfilesUpdate()
   {
+    this.multerForm.append("formId",this.applicationId);
+
     this.apiService.doPostRequest_upload(`applicationForm/submit/formfiles`,this.multerForm).subscribe(
       data =>{
         this.toastr.success('Application Submitted Successfully');

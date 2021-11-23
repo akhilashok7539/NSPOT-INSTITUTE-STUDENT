@@ -23,6 +23,8 @@ import { PaymentHistoryComponent } from './Pages/payment-history/payment-history
 import { CoursesCompareComponent } from './Pages/courses-compare/courses-compare.component';
 import { ViewReceiptComponent } from './Pages/view-receipt/view-receipt.component';
 import { ViewCourseDetailsComponent } from './Pages/view-course-details/view-course-details.component';
+import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
+import { ApplyCourseCertificatesComponent } from './Pages/course/apply-course-certificates/apply-course-certificates.component';
 
 const routes: Routes = [
   {
@@ -62,13 +64,16 @@ const routes: Routes = [
       { path: 'view-courses', component: ViewCourseDetailsComponent },
 
       { path: 'view-receipt/:applicationId', component: ViewReceiptComponent },
+      { path: 'reset-password', component: ResetPasswordComponent },
       
       {
         path: 'course',
         children: [
           { path: '', pathMatch: 'full', redirectTo: '/student/profile' },
           { path: 'apply/:courseId', component: ApplyCourseComponent },
+          { path: 'certificates/:courseId/:applicationId', component: ApplyCourseCertificatesComponent },
           { path: 'checkout/:applicationId', component: CourseCheckoutComponent },
+
         ],
       },
     ],

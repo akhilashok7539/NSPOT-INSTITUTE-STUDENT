@@ -32,6 +32,7 @@ export class AttendTestComponent implements OnInit {
   durationdetails:any=[];
   testduration:number;
   testname;
+  aptitudetestreposne;
   constructor(private toaster: ToastrService, private authService: AuthService,
     private activaterouter:ActivatedRoute,private apiservice:ApiService,
     private router: Router, private fb: FormBuilder) {
@@ -202,8 +203,11 @@ export class AttendTestComponent implements OnInit {
    }
    this.apiservice.doPostRequest(`institute/aptitude-tests/answers`,req).subscribe(
      data =>{
+      this.aptitudetestreposne = data['data'];
+      this.mapIdtoapplicationFor(this.aptitudetestreposne['id'])
       this.toaster.success("Thanks for attending the Test.We will contact you shortly😀")
       this.router.navigate(['/student/profile']);
+      
      },
      error=>{
        console.log(error);
@@ -211,6 +215,20 @@ export class AttendTestComponent implements OnInit {
        
      }
    )
+  }
+  mapIdtoapplicationFor(id)
+  {
+    let req = {
+      aptituteMarkId:id
+    }
+    this.apiservice.doPostRequest("applicationForm/applications/update",req).subscribe(
+      data =>{
+        
+      },
+      error =>{
+
+      }
+    )
   }
   getfailureapicalls()
   {
@@ -222,6 +240,8 @@ export class AttendTestComponent implements OnInit {
    }
    this.apiservice.doPostRequest(`institute/aptitude-tests/answers`,req).subscribe(
     data =>{
+      this.aptitudetestreposne = data['data'];
+      this.mapIdtoapplicationFor(this.aptitudetestreposne['id'])
       this.toaster.success("Thanks for attending the Test.We will contact you shortly😀")
       this.router.navigate(['/student/profile']);
     },
