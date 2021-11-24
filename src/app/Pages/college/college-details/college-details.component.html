@@ -31,7 +31,7 @@
                     <span class="views"><i class="zmdi zmdi-eye"></i>HOSTEL:
                         {{instituteInfo?.haveBoysHostel||instituteInfo?.haveGirlsHostel?"YES":"NO"}}</span>
                     <span class="views"><i class="zmdi zmdi-assignment"></i><a>RELIGIOUS MINORITY INSTITUTE : YES</a></span>
-                    <span class="views"><i class="zmdi zmdi-assignment"></i><a>Website Link : http://........</a></span>
+                    <span class="views"><i class="zmdi zmdi-assignment"></i><a href="{{instituteInfo?.websitelink}}" target="_blank">Website Link : {{instituteInfo?.websitelink}}</a></span>
                             <span class="views"><i class="zmdi zmdi-download"></i><a
                                 href="{{baseApiUrl}}{{highlights?.brochuresFile}}">Download Brochure</a></span>
                     <span>  Location On Map : <a href="https://maps.google.com/?q={{travelinformations?.currentLatitude}},{{travelinformations?.currentLongitude}}" target="_blank"> {{travelinformations?.currentLatitude}} , {{travelinformations?.currentLongitude}}</a></span>

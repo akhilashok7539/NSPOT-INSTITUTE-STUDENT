@@ -175,9 +175,9 @@
                          <form [formGroup]="instituteform" >
 
                         <p class="chip-content" *ngFor="let s of instutesname">
-                         {{s.name}}</p>
+                            <!-- <input type="checkbox" formControlName="instituteName" [value]="s.id" (change)="changedevent($event)" >   -->
+                            {{s.name}}</p>
                         </form>
-                        <!-- <input type="radio" formControlName="instituteName" [value]="s.id" (change)="changedevent($event)" >   -->
                     </div>
                 </div>
 
@@ -286,17 +286,17 @@
                             </div>
                         <div style="display: flex; margin-left: 37px;">
                             <a  (click)="viewInstitute()" routerLink="/student/institute-details/{{item.item.Institute.userId}}" class="greybutton"
-                                style="    width: 100%;
-                        border: 1px solid #f8ad25;
+                                style="   
+                        border: 1px solid #f8ad25; line-height: 16px !important;
                         color: #f8ad25;    font-size: 13px;
                         background: none !important;
                         text-decoration: none;
                         text-align: center; ">View Institute</a>
                             &nbsp;
-                            <a style=" width: 100%;
+                            <a style=" 
   font-size: 13px;
   border: 1px solid #09b952;
-  text-align: center;
+  text-align: center;line-height: 16px !important;
   text-decoration: none;
   color: #09b952;
   background-color: white !important;" class="greybutton" (click)="viewCourse(item)">
