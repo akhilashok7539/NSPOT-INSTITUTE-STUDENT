@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class Signup3ThreeComponent implements OnInit {
   studentId;
+  multerform=new FormData();
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -49,6 +50,7 @@ export class Signup3ThreeComponent implements OnInit {
       communicationTelephoneSTDCode: ['', [Validators.required]],
       communicationTelephone: ['', [Validators.required]],
       communicationMobile: ['', [Validators.required]],
+      profilePicture:['']
     });
   }
 
@@ -64,7 +66,33 @@ export class Signup3ThreeComponent implements OnInit {
       (document.querySelector('#submit-btn') as HTMLInputElement).setAttribute('disabled', '');
     }
     const formData = this.form.value;
-    this.apiService.doPostRequest(endPoints.student + endPoints.update, formData).subscribe((returnData: any) => {
+    this.multerform.append("permanentAddressLine1",this.form.value['permanentAddressLine1'])
+    this.multerform.append("permanentAddressLine2",this.form.value['permanentAddressLine2'])
+    this.multerform.append("permanentAddressLine3",this.form.value['permanentAddressLine3'])
+    this.multerform.append("permanentCountry",this.form.value['permanentCountry'])
+    this.multerform.append("permanentState",this.form.value['permanentState'])
+    this.multerform.append("permanentDistrict",this.form.value['permanentDistrict'])
+    this.multerform.append("permanentPin",this.form.value['permanentPin'])
+    this.multerform.append("permanentTelephoneSTDCode",this.form.value['permanentTelephoneSTDCode'])
+    this.multerform.append("permanentTelephone",this.form.value['permanentTelephone'])
+    
+    this.multerform.append("permanentMobile",this.form.value['permanentMobile'])
+
+    this.multerform.append("profilePicture","")
+    this.multerform.append("communicationAddressLine1",this.form.value['communicationAddressLine1'])
+    this.multerform.append("communicationAddressLine2",this.form.value['communicationAddressLine2'])
+    this.multerform.append("communicationAddressLine3",this.form.value['communicationAddressLine3'])
+    this.multerform.append("communicationCountry",this.form.value['communicationCountry'])
+    this.multerform.append("communicationState",this.form.value['communicationState'])
+    this.multerform.append("communicationDistrict",this.form.value['communicationDistrict'])
+    this.multerform.append("communicationPin",this.form.value['communicationPin'])
+    this.multerform.append("communicationTelephoneSTDCode",this.form.value['communicationTelephoneSTDCode'])
+    this.multerform.append("communicationTelephone",this.form.value['communicationTelephone'])
+    this.multerform.append("communicationMobile",this.form.value['communicationMobile'])
+    this.multerform.append("id",this.studentId)
+    console.log(this.multerform);
+    
+    this.apiService.doPostRequest_upload(endPoints.student + endPoints.update, this.multerform).subscribe((returnData: any) => {
       if (returnData.status == true) {
         this.toastr.success('Form submission successfull');
         console.log(returnData)
@@ -84,4 +112,22 @@ export class Signup3ThreeComponent implements OnInit {
   }
 
   get f() { return this.form.controls; }
+  checkedEvent(event)
+  {
+    console.log(event.target.checked);
+    if(event.target.checked === true)
+    {
+      this.form.controls["communicationAddressLine1"].setValue(this.form.value["permanentAddressLine1"])
+      this.form.controls["communicationAddressLine2"].setValue(this.form.value["permanentAddressLine2"])
+      this.form.controls["communicationAddressLine3"].setValue(this.form.value["permanentAddressLine3"])
+      this.form.controls["communicationMobile"].setValue(this.form.value["permanentMobile"])
+      this.form.controls["communicationTelephone"].setValue(this.form.value["permanentTelephone"])
+      this.form.controls["communicationTelephoneSTDCode"].setValue(this.form.value["permanentTelephoneSTDCode"])
+      this.form.controls["communicationPin"].setValue(this.form.value["permanentPin"])
+      this.form.controls["communicationDistrict"].setValue(this.form.value["permanentDistrict"])
+      this.form.controls["communicationState"].setValue(this.form.value["permanentState"])
+      this.form.controls["communicationCountry"].setValue(this.form.value["permanentCountry"])
+
+    }
+  }
 }

@@ -26,12 +26,12 @@
                             <tr>
                                 <td>1</td>
                                 <td>{{coursename}}</td>
-                                <td>Rs.{{amounttopaied }}</td>
+                                <td>Rs.{{amounttopaied / 100 }}</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <th>Total</th>
-                                <th>{{amounttopaied | currency:"INR":"symbol"}}</th>
+                                <th>{{amounttopaied / 100  | currency:"INR":"symbol"}}</th>
                             </tr>
                             <tr>
                                 <th></th>
@@ -43,14 +43,14 @@
                     </table>
                 </div>
 
-                <div *ngIf="!canPay">
+                <!-- <div *ngIf="!canPay">
                     <div *ngIf="didPay">
                         <div class="alert alert-success">{{cantPayReason}}</div>
                     </div>
                     <div *ngIf="!didPay">
                         <div class="alert alert-warning">{{cantPayReason}}</div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>

@@ -284,9 +284,14 @@ export class ApplyCourseCertificatesComponent implements OnInit {
             const group = this.form.controls[element.formSection] as FormGroup;
             // (document.getElementById(element.fieldName) as HTMLInputElement).remove;
             var obj = document.getElementById(element.fieldName);
+            if(obj === null)
+            {
+
+            }
+            else{
             obj.remove();
             group.removeControl(element.fieldName);
-
+            }
           }
 
           if (element.formSection ==='permanentAddress' ) {
@@ -294,25 +299,44 @@ export class ApplyCourseCertificatesComponent implements OnInit {
             const group = this.form.controls[element.formSection] as FormGroup;
             // (document.getElementById(element.fieldName) as HTMLInputElement).remove;
             var obj = document.getElementById(element.fieldName);
+            if(obj === null)
+            {
+
+            }
+            else{
             obj.remove();
             group.removeControl(element.fieldName);
-
+            }
           }
           if(element.formSection === "communicationAddress" )
           {
             const group = this.form.controls[element.formSection] as FormGroup;
             // (document.getElementById(element.fieldName) as HTMLInputElement).remove;
             var obj = document.getElementById(element.fieldName);
+            if(obj === null)
+            {
+
+            }
+            else{
             obj.remove();
             group.removeControl(element.fieldName);
+            }
           }
           if(element.formSection === "certificates")
           {
             const group = this.form.controls[element.formSection] as FormGroup;
             // (document.getElementById(element.fieldName) as HTMLInputElement).remove;
             var obj = document.getElementById(element.fieldName);
-            obj.remove();
-            group.removeControl(element.fieldName);
+            console.log(obj);
+            if(obj === null)
+            {
+
+            }
+            else{
+              obj.remove();
+              group.removeControl(element.fieldName);
+            }
+         
             
           }
           else {
