@@ -325,27 +325,27 @@ export class CollegeDetailsComponent implements OnInit {
     
     if(data === "rule")
     {
-      window.open("https://nspot-server.herokuapp.com/"+this.highlights.rulesFile)
+      window.open("https://nspot-qa.herokuapp.com/"+this.highlights.rulesFile)
 
     }
     if(data === "uniform")
     {
-      window.open("https://nspot-server.herokuapp.com/"+this.highlights.uniformFile)
+      window.open("https://nspot-qa.herokuapp.com/"+this.highlights.uniformFile)
 
     }
     if(data === "placement")
     {
-      window.open("https://nspot-server.herokuapp.com/"+this.highlights.placementInfoFile)
+      window.open("https://nspot-qa.herokuapp.com/"+this.highlights.placementInfoFile)
 
     }
     if(data === "scholarship")
     {
-      window.open("https://nspot-server.herokuapp.com/"+this.highlights.financialAidFile)
+      window.open("https://nspot-qa.herokuapp.com/"+this.highlights.financialAidFile)
 
     }
     if(data === "refund")
     {
-      window.open("https://nspot-server.herokuapp.com/"+this.highlights.specialFeaturesFile)
+      window.open("https://nspot-qa.herokuapp.com/"+this.highlights.specialFeaturesFile)
 
     }
   }
