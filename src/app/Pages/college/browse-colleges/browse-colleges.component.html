@@ -201,10 +201,10 @@
                 <div class="col-sm-6">
                     <h6 class="coursename">{{item.CourseName}}
 
-                        <i matTooltip="Disable Email Notifications" class="zmdi zmdi-notifications-none" style="float: right;color: #3461b3;
-                        font-size: 29px;" (click)="notificationOff()" *ngIf="notificationonstatus"></i>
-                        <i matTooltip="Enable Email Notifications" class="zmdi zmdi-notifications-off" style="float: right;color: #3461b3;
-                        font-size: 29px;" (click)="notificationon()" *ngIf="!notificationonstatus"></i>
+                        <i *ngIf="item?.notificationenabled === true" matTooltip="Disable Email Notifications" class="zmdi zmdi-notifications-none" style="float: right;color: #3461b3;
+                        font-size: 29px;" (click)="notificationOff(item)" ></i>
+                        <i *ngIf="item?.notificationenabled === false" matTooltip="Enable Email Notifications" class="zmdi zmdi-notifications-off" style="float: right;color: #3461b3;
+                        font-size: 29px;" (click)="notificationon(item)" ></i>
                     </h6>
                     <p><span class="lessons"><i class="zmdi zmdi-assignment"></i> Course Type : </span></p>
                     <p><span class="lessons"><i class="zmdi zmdi-assignment"></i> Institute Name :

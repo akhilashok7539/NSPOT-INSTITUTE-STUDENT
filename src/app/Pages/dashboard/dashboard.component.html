@@ -260,12 +260,12 @@
           <marquee behavior="" direction="">You may receive the receipt and confirmation letter any time within 24 hrs. If you didint receive your receipt you may contact us immediately in contact us form.</marquee>
             <div class="row">
                 <div class="col-sm-12">
-                    <div *ngFor="let item of acceptedApplications; let i=index" class="col-xs-12 list-with-icon">
+                    <div *ngFor="let item of acceptedApplicationData; let i=index" class="col-xs-12 list-with-icon">
                         <div class="col-xs-1">
                             <img src="../../../../assets/images/exam-icon.png" class="icon-3" alt="">
                         </div>
                         <div class="col-xs-6">
-                            <h4>{{item.CourseName}} </h4>
+                            <h4>{{getcourseName(item.course)}} </h4>
 
                             <p>Status : {{getStatusText(item.item.applicationStatus)}}</p>
                         </div>
@@ -275,7 +275,7 @@
                                 background: #30bfbf;
                                 border-radius: 13px;" (click)="getaddmisonletter(item.item.id)"> -->
                           <button class="btn btn-success" (click)="getaddmisonletter(item.item.id)">Download Confirmation Letter</button>
-                          <button class="btn btn-warning" >Download Receipt</button>
+                          <button class="btn btn-warning" (click)="download(item.item.transactionRecipt)">Download Receipt</button>
 
                         </div>
                     </div>

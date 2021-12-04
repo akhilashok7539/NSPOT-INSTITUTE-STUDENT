@@ -43,6 +43,7 @@ export class DashboardComponent implements OnInit {
     "amount": "2000",
     "name": "Akhil",
  };
+ acceptedApplicationData:any=[];
   ngOnInit(): void {
     // fetching student details
     this.apiService.doGetRequest(endPoints.student + this.studentId).subscribe((returnData: any) => {
@@ -209,10 +210,64 @@ export class DashboardComponent implements OnInit {
 }
   showPhase(event){
     this.activeButton = event;
+    if(this.activeButton === 5)
+    {
+      this.apiService.doGetRequest("payment/courseFee/student/"+this.NewUserID).subscribe(
+        data =>{
+          this.acceptedApplicationData = data['result'];
+          console.log(this.acceptedApplicationData);
+          
+        },
+        error =>{
+
+        }
+      )
+    }
   }
   getaddmisonletter(s)
   {
     console.log(s);
     this.router.navigate(['/student/view-receipt/'+s])
+  }
+  getcourseName(s)
+  {
+    console.log(s);
+    if(s.Course_Sub_Categories5 === null)
+    {
+      if(s.Course_Sub_Categories4 === null)
+      {
+        if(s.Course_Sub_Categories3 === null)
+        {
+          if(s.Course_Sub_Categories2 === null)
+          {
+
+          }
+          else{
+          return s.Course_Sub_Categories2['title']
+          }
+        }
+        else{
+          
+          return s.Course_Sub_Categories3['title']
+        }
+      }
+      else{
+        return s.Course_Sub_Categories4['title']
+      }
+    }
+    else{
+      return s.Course_Sub_Categories5['title']
+    }
+  }
+  download(s)
+  {
+    if(s != null)
+    {
+      window.open("https://nspot-qa.herokuapp.com/"+s,"_blank")
+
+    }
+    else{
+      this.toastr.error("Receipt Not uploaded")
+    }
   }
 }

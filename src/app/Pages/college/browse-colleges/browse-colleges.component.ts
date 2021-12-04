@@ -40,6 +40,7 @@ export class BrowseCollegesComponent implements OnInit {
     private toastr: ToastrService
   ) { }
   stateId;
+  studentIDforMap;
   selectedvalueradio;
   form: FormGroup;
   instituteform:FormGroup;
@@ -82,7 +83,7 @@ export class BrowseCollegesComponent implements OnInit {
   ngOnInit(): void {
     // fetching student details
 
-
+    this.studentIDforMap = JSON.parse(localStorage.getItem("USERID"));
     this.apiService.doGetRequest(endPoints.student + this.studentId).subscribe((returnData: any) => {
       console.log(returnData)
       this.studentDetails = returnData.data;
@@ -242,6 +243,29 @@ export class BrowseCollegesComponent implements OnInit {
         }
         console.log('Using Map', Object.values(map));
         this.instutesname = Object.values(map)
+        this.courses.map(x =>{
+          let notificationdata = [];
+          notificationdata = x.notificationData;
+          if(notificationdata.length === 0)
+          {
+            x.notificationenabled = false;
+          }
+          else{
+            for(let i=0;i<notificationdata.length;i++)
+            {
+              if(notificationdata[i].studentId === this.studentIDforMap)
+              {
+                x.notificationenabled = true;
+              }
+              else{
+                x.notificationenabled = false;
+    
+              }
+            }
+          }
+          
+        })
+  console.log(this.courses);
       }
       else {
         this.toastr.error('Something went wrong!');
@@ -291,6 +315,32 @@ export class BrowseCollegesComponent implements OnInit {
       else {
         this.toastr.error('Something went wrong!');
       }
+
+      this.courses.map(x =>{
+        let notificationdata = [];
+        notificationdata = x.notificationData;
+        if(notificationdata.length === 0)
+        {
+          x.notificationenabled = false;
+        }
+        else{
+          for(let i=0;i<notificationdata.length;i++)
+          {
+            if(notificationdata[i].studentId === this.studentIDforMap)
+            {
+              x.notificationenabled = true;
+            }
+            else{
+              x.notificationenabled = false;
+  
+            }
+          }
+        }
+        
+      })
+console.log(this.courses);
+
+
     },
       error => {
         console.error(error);
@@ -642,11 +692,100 @@ export class BrowseCollegesComponent implements OnInit {
     this.selectedchipsvalues = [];
   }
 
-  notificationOff() {
-    this.notificationonstatus = false;
+  notificationOff(item) {
+    // this.notificationonstatus = false;
+    console.log(item);
+    // let req = {
+    //   instituteCourseId:item?.item?.id,
+    //   studentId:this.studentIDforMap
+
+    // }
+    let courseId= item?.item?.id
+
+    this.apiService.doDeleteRequest("institute/course/notification/subscription/delete/"+courseId+'/'+this.studentIDforMap).subscribe(
+      data =>{
+        this.getfilterdatabasedonFormvalues();
+      },
+      error =>{
+
+      }
+    )
+
+
   }
-  notificationon() {
-    this.notificationonstatus = true;
+
+
+  getfilterdatabasedonFormvalues()
+  {
+    this.apiService.doPostRequest(
+      endPoints.Get_course_filter, this.form.value
+    ).subscribe((returnData: any) => {
+      if (returnData.status == true) {
+        this.courses = returnData.result
+        console.log(returnData)
+        for (let i = 0; i < this.courses.length; i++) {
+          this.instutesname.push(this.courses[i]?.item.Institute)
+
+        }
+        for (let list of this.instutesname) {
+          map[Object.values(list).join('')] = list;
+        }
+        console.log('Using Map', Object.values(map));
+        this.instutesname = Object.values(map)
+      }
+      else {
+        this.toastr.error('Something went wrong!');
+      }
+
+      this.courses.map(x =>{
+        let notificationdata = [];
+        notificationdata = x.notificationData;
+        if(notificationdata.length === 0)
+        {
+          x.notificationenabled = false;
+        }
+        else{
+          for(let i=0;i<notificationdata.length;i++)
+          {
+            if(notificationdata[i].studentId === this.studentIDforMap)
+            {
+              x.notificationenabled = true;
+            }
+            else{
+              x.notificationenabled = false;
+  
+            }
+          }
+        }
+        
+      })
+console.log(this.courses);
+
+
+    },
+      error => {
+        console.error(error);
+        this.toastr.error('Something went wrong!');
+      });
+  }
+
+  notificationon(item) {
+    console.log(item);
+    
+    // this.notificationonstatus = true;
+    let req = {
+      instituteCourseId:item?.item?.id,
+      studentId:this.studentIDforMap
+    }
+    this.apiService.doPostRequest("institute/course/notification/subscription",req).subscribe(
+      data =>{
+        this.getfilterdatabasedonFormvalues();
+
+      },
+      error =>{
+
+      }
+    )
   }
   selectinstitute(s) {
     console.log(s);
@@ -673,6 +812,7 @@ export class BrowseCollegesComponent implements OnInit {
     let char = s.split('s');
     return char[0] + "\xa0" + char[1] + "\xa0" + char[2] + "\xa0"
     // if(char.length === 4)
+
     // {
       // + char[3]
     // }
@@ -693,4 +833,5 @@ changedevent(event)
   // this.form.controls['instituteId'].setValue(event.target.value)
   this.reloadOnbackClicked(this.form.value)
 }
+
 }
