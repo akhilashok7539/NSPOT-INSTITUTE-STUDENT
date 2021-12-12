@@ -158,16 +158,38 @@
 
                 <br>
 
-                <h6> Student Report to Admission Officer Name : {{admissionOfficerList?.name}}
-                </h6>
-                <br>
-                <h6> Admission Officer Name Email : {{admissionOfficerList?.email}}
-                </h6>
-                <br>
-                <h6> Admission Officer Name Phone 1 : {{admissionOfficerList?.phone1}}
-                </h6> <br>
-                <h6> Admission Officer Name Phone 2 : {{admissionOfficerList?.phone2}}
-                </h6>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h6>Date of Reporting : {{responselist?.dateOfReporting | date:'MMM d, y'}}</h6>
+                        <br>
+        
+                        <h6> Student Report to Admission Officer Name : {{admissionOfficerList?.name}}
+                        </h6>
+                        <br>
+                        <h6> Admission Officer Name Email : {{admissionOfficerList?.email}}
+                        </h6>
+                        <br>
+                        <h6> Admission Officer Name Phone 1 : {{admissionOfficerList?.phone1}}
+                        </h6> <br>
+                        <h6> Admission Officer Name Phone 2 : {{admissionOfficerList?.phone2}}
+                        </h6>
+                    </div>
+                    <div class="col-sm-6">
+                        
+                        <h6>Address Line 1 : {{studentDetails?.permanentAddress?.permanentAddressLine1 }}</h6><br>
+                        <h6>Address Line 2 : {{studentDetails?.permanentAddress?.permanentAddressLine2 }}</h6><br>
+                        <h6>Address Line 3 : {{studentDetails?.permanentAddress?.permanentAddressLine3 }}</h6><br>
+                        <!-- <h6>District & Country: {{studentDetails?.permanentAddress?.permanentDistrict }} & {{studentDetails?.permanentAddress?.permanentCountry }}</h6><br> -->
+                        <h6>Mobile Number : {{studentDetails?.permanentAddress?.permanentMobile }}</h6><br>
+                        <!-- <h6>Pincode : {{studentDetails?.permanentAddress?.permanentPin }}</h6><br> -->
+                        <h6>Telephone : {{studentDetails?.permanentAddress?.permanentTelephoneSTDCode }} - {{studentDetails?.permanentAddress?.permanentTelephone }}</h6>
+                     
+
+
+
+                    </div>
+                </div>
+                
 
                 <!-- 
             <h6>Enrollment Number : .....................................................................................................................................................................</h6>
@@ -227,4 +249,4 @@ height: 70px;
 border-radius: 50%;
 background-color: #1A4D59;
 border-color: #1A4D59;
-color: #FFF;"><img src="./assets/images/download.png" style="    width: 48px;" /></button>
+color: #FFF;" matTooltip="Download Confrimation Letter"><img src="./assets/images/download.png" style="    width: 48px;" /></button>

@@ -80,6 +80,8 @@ export class BrowseCollegesComponent implements OnInit {
   districtList=[];
   stateList = [];
   filteredList1;
+  currLat:any;
+  currLng:any;
   ngOnInit(): void {
     // fetching student details
 
@@ -120,6 +122,34 @@ export class BrowseCollegesComponent implements OnInit {
     {
       this.reloadOnbackClicked(this.formvaluessession)
     }
+
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(position => {
+
+    //     this.currLat = position.coords.latitude;
+    //     this.currLng = position.coords.longitude;
+    //     console.log(this.currLat);
+    //     console.log(this.currLng);
+
+
+    //   });
+    // }
+    // else {
+    //   alert("Geolocation is not supported by this browser.");
+    // }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.currLat = position.coords.latitude;
+        this.currLng = position.coords.longitude;
+        console.log("Current latitute and logitude",this.currLat,this.currLng);
+        
+      });
+    } else {
+      alert('Geolocation is not supported by this browser.');
+    }
+
+
   }
 
   loadData(): void {
@@ -265,7 +295,9 @@ export class BrowseCollegesComponent implements OnInit {
           }
           
         })
-  console.log(this.courses);
+        this.courses.map(x=> x.currentLocation = this.getFucntionCorordr(x))
+        console.log('Using locationcord',this.courses);
+
       }
       else {
         this.toastr.error('Something went wrong!');
@@ -311,6 +343,10 @@ export class BrowseCollegesComponent implements OnInit {
         }
         console.log('Using Map', Object.values(map));
         this.instutesname = Object.values(map)
+
+        this.courses.map(x=> x.currentLocation = this.getFucntionCorordr(x))
+        console.log('Using locationcord',this.courses);
+        
       }
       else {
         this.toastr.error('Something went wrong!');
@@ -347,7 +383,26 @@ console.log(this.courses);
         this.toastr.error('Something went wrong!');
       });
   }
-
+  getFucntionCorordr(data)
+  {
+    // return "rest"
+    var R = 6371;
+    var lat2: any = data?.item?.Institute?.gmapLatitude;
+    var lon3: any = data?.item?.Institute?.gmapLongitude;
+    var p = 0.017453292519943295;
+    var c = Math.cos;
+    var a =
+      0.5 -
+      c((lat2 - this.currLat) * p) / 2 +
+      (c(this.currLat * p) *
+        c(lat2 * p) *
+        (1 - c((lon3 - this.currLng) * p))) /
+        2;
+        
+        let finalcount = Math.round(12742 * Math.asin(Math.sqrt(a)))
+        return finalcount + " Km"
+    // console.log(12742 * Math.asin(Math.sqrt(a)), 'Km')
+  }
   get f() { return this.form.controls; }
   Onselected(s) {
     this.active_index = s;
@@ -496,10 +551,10 @@ console.log(this.courses);
       var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
       var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
       if (Difference_In_Days > 0) {
-        this.addmisonstarts = "Admission Close " + Math.round(Difference_In_Days) + " Days Left"
+        this.addmisonstarts = "Admission Closes in " + Math.round(Difference_In_Days) + " Days Left"
       }
       else {
-        this.addmisonstarts = "Admission Close " + Math.round(Difference_In_Days) * -1 + " Days Left"
+        this.addmisonstarts = "Admission Closes in " + Math.round(Difference_In_Days) * -1 + " Days Left"
       }
 
 
@@ -835,3 +890,29 @@ changedevent(event)
 }
 
 }
+
+
+// if (navigator.geolocation) {
+//   navigator.geolocation.getCurrentPosition((position) => {
+//     this.currLat = "53.32055555555556";
+//     this.currLng = "-1.7297222222222221";
+//     console.log(this.currLat);
+//     console.log(this.currLng);
+
+//     var R = 6371;
+//     var lat2: any = '53.31861111111111';
+//     var lon3: any = '-1.6997222222222223';
+//     var p = 0.017453292519943295;
+//     var c = Math.cos;
+//     var a =
+//       0.5 -
+//       c((lat2 - this.currLat) * p) / 2 +
+//       (c(this.currLat * p) *
+//         c(lat2 * p) *
+//         (1 - c((lon3 - this.currLng) * p))) /
+//         2;
+//     console.log(12742 * Math.asin(Math.sqrt(a)), 'Km');
+//   });
+// } else {
+//   alert('Geolocation is not supported by this browser.');
+// }

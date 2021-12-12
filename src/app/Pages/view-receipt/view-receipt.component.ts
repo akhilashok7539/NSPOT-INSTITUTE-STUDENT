@@ -73,7 +73,7 @@ export class ViewReceiptComponent implements OnInit {
   } 
   download()
   {
-    const doc = new jsPDF('p', 'mm', 'a4');
+    const doc = new jsPDF();
 
     const pdfTable = this.pdfTable.nativeElement;
 

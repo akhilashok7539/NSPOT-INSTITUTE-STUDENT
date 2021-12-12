@@ -44,7 +44,8 @@
 
                 <div class="col-sm-6">
                     <label class="req uppercase">Date of Birth </label>
-                    <input type="date" formControlName="dob" placeholder="dd/mm/yyyy" (change)="calculateAge($event.target.value)" />
+                    <input type="date" formControlName="dob" placeholder="dd/mm/yyyy"
+                        (change)="calculateAge($event.target.value)" />
                     <app-control-messages [touched]="touched" [control]="f.dob"></app-control-messages>
                 </div>
                 <div class="col-sm-6">
@@ -80,21 +81,26 @@
                         <label class="req uppercase">Mother's Name </label>
                         <div class="col-lg-4">
                             <input type="text" formControlName="mothersFirstName" placeholder="enter first name" />
-                            <app-control-messages [touched]="touched" [control]="f.mothersFirstName"></app-control-messages>
+                            <app-control-messages [touched]="touched" [control]="f.mothersFirstName">
+                            </app-control-messages>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" formControlName="mothersMiddleName" placeholder="enter middle name" />
-                            <app-control-messages [touched]="touched" [control]="f.mothersMiddleName"></app-control-messages>
+                            <app-control-messages [touched]="touched" [control]="f.mothersMiddleName">
+                            </app-control-messages>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" formControlName="mothersLastName" placeholder="enter last name" />
-                            <app-control-messages [touched]="touched" [control]="f.mothersLastName"></app-control-messages>
+                            <app-control-messages [touched]="touched" [control]="f.mothersLastName">
+                            </app-control-messages>
                         </div>
                     </div>
                     <div class="col-sm-6 ">
                         <label class="req uppercase">Mother's Occupation </label>
-                        <input type="text" formControlName="mothersOccupation" placeholder="enter mother's occupation" />
-                        <app-control-messages [touched]="touched" [control]="f.mothersOccupation"></app-control-messages>
+                        <input type="text" formControlName="mothersOccupation"
+                            placeholder="enter mother's occupation" />
+                        <app-control-messages [touched]="touched" [control]="f.mothersOccupation">
+                        </app-control-messages>
                     </div>
                     <div class="col-sm-6 ">
                         <label class="req uppercase">Mother's Email Id </label>
@@ -106,7 +112,8 @@
                         <div class="input-group">
                             <span class="input-group-addon">+91</span>
                             <input type="text" formControlName="mothersPhoneNumber" placeholder="Mobile number" />
-                            <app-control-messages [touched]="touched" [control]="f.mothersPhoneNumber"></app-control-messages>
+                            <app-control-messages [touched]="touched" [control]="f.mothersPhoneNumber">
+                            </app-control-messages>
                         </div>
                     </div>
                 </div>
@@ -117,21 +124,25 @@
                         <label class="req uppercase">father's Name </label>
                         <div class="col-lg-4">
                             <input type="text" formControlName="fathersFirstName" placeholder="enter first name" />
-                            <app-control-messages [touched]="touched" [control]="f.fathersFirstName"></app-control-messages>
+                            <app-control-messages [touched]="touched" [control]="f.fathersFirstName">
+                            </app-control-messages>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" formControlName="fathersMiddleName" placeholder="enter middle name" />
-                            <app-control-messages [touched]="touched" [control]="f.fathersMiddleName"></app-control-messages>
+                            <app-control-messages [touched]="touched" [control]="f.fathersMiddleName">
+                            </app-control-messages>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" formControlName="fathersLastName" placeholder="enter last name" />
-                            <app-control-messages [touched]="touched" [control]="f.fathersLastName"></app-control-messages>
+                            <app-control-messages [touched]="touched" [control]="f.fathersLastName">
+                            </app-control-messages>
                         </div>
                     </div>
                     <div class="col-sm-6 ">
                         <label class="req uppercase">father's Occupation </label>
                         <input type="text" formControlName="fathersOccupation" placeholder="enter father's name" />
-                        <app-control-messages [touched]="touched" [control]="f.fathersOccupation"></app-control-messages>
+                        <app-control-messages [touched]="touched" [control]="f.fathersOccupation">
+                        </app-control-messages>
                     </div>
                     <div class="col-sm-6 ">
                         <label class="req uppercase">father's Email Id </label>
@@ -143,7 +154,8 @@
                         <div class="input-group">
                             <span class="input-group-addon">+91</span>
                             <input type="text" formControlName="fathersPhoneNumber" placeholder="Mobile number" />
-                            <app-control-messages [touched]="touched" [control]="f.fathersPhoneNumber"></app-control-messages>
+                            <app-control-messages [touched]="touched" [control]="f.fathersPhoneNumber">
+                            </app-control-messages>
                         </div>
                     </div>
                 </div>
@@ -155,15 +167,18 @@
                         <label class="req uppercase">Gaurdian's Name </label>
                         <div class="col-lg-4">
                             <input type="text" formControlName="gaurdiansFirstName" placeholder="enter first name" />
-                            <app-control-messages [touched]="touched" [control]="f.gaurdiansFirstName"></app-control-messages>
+                            <app-control-messages [touched]="touched" [control]="f.gaurdiansFirstName">
+                            </app-control-messages>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" formControlName="gaurdiansMiddleName" placeholder="enter middle name" />
-                            <app-control-messages [touched]="touched" [control]="f.gaurdiansMiddleName"></app-control-messages>
+                            <app-control-messages [touched]="touched" [control]="f.gaurdiansMiddleName">
+                            </app-control-messages>
                         </div>
                         <div class="col-lg-4">
                             <input type="text" formControlName="gaurdiansLastName" placeholder="enter last name" />
-                            <app-control-messages [touched]="touched" [control]="f.gaurdiansLastName"></app-control-messages>
+                            <app-control-messages [touched]="touched" [control]="f.gaurdiansLastName">
+                            </app-control-messages>
                         </div>
                     </div>
 
@@ -182,9 +197,13 @@
                         <div class="input-group">
                             <span class="input-group-addon">+91</span>
                             <input type="text" formControlName="gaurdiansPhoneNumber" placeholder="Mobile number" />
-                            <app-control-messages [touched]="touched" [control]="f.gaurdiansPhoneNumber"></app-control-messages>
+                            <app-control-messages [touched]="touched" [control]="f.gaurdiansPhoneNumber">
+                            </app-control-messages>
                         </div>
                     </div>
+
+
+
                 </div>
 
                 <div class="clearfix"></div>
@@ -215,16 +234,25 @@
                     <input type="text" formControlName="cast" placeholder="subject" />
                     <app-control-messages [touched]="touched" [control]="f.cast"></app-control-messages>
                 </div>
-                <!-- <div class="col-sm-12">
-          <label class="req uppercase">Visible Marks on the Body </label>
-          <input type="text" formControlName="visibleMark1" placeholder="1)" />
-          <app-control-messages [touched]="touched" [control]="f.visibleMark1"></app-control-messages>
-          <input type="text" formControlName="visibleMark2" placeholder="2)" />
-          <app-control-messages [touched]="touched" [control]="f.visibleMark2"></app-control-messages>
-        </div> -->
-                <div class="col-sm-6">
-                </div>
 
+                <div class="col-sm-6">
+
+                
+                </div>
+                <!-- <div class="col-sm-12">
+                    <label class="uppercase">Active Email For Student </label>
+                    <input type="text"  placeholder="Enter Active Email for Student"
+                        formControlName="activeEmailStudent">
+
+
+                
+
+                </div> -->
+                <div class="col-sm-12">
+                    <label class="uppercase">Active Phone Number For Student</label>
+                    <input type="text"  placeholder="Enter Active Phone Number for Student"
+                        formControlName="activePhoneStudent">
+                </div>
                 <div class="col-sm-6">
                     <label class="uppercase">Are you a Citizen of India? </label>
                     <div class="col-sm-6">
@@ -256,21 +284,7 @@
                     <app-control-messages [touched]="touched" [control]="f.isNRI"></app-control-messages>
                 </div>
 
-                <!-- <div class="col-sm-6">
-          
-            <label class="uppercase">NRI </label>
-            <div class="col-sm-6">
-              <p class="checkbox">
-                <input type="checkbox" formControlName="isNRI" /><span>Yes</span>
-              </p>
-            </div>
-            <div class="col-sm-6" *ngIf="f.isNRI.value">
-              <label class="uppercase">Nationality of the Applicant </label>
-              <input type="text" formControlName="forginNationality" id="" />
-            </div>
-          
-          
-        </div> -->
+
                 <div class="col-sm-12">
                     <div *ngIf="f.isNRI.value === 'true'">
                         <label class="uppercase">Nationality of the Applicant </label>
@@ -287,39 +301,44 @@
                 <div class="clearfix"></div>
                 <div class="col-sm-4">
                     <label class="uppercase">Registration Form Filled by Parents?
-          </label>
+                    </label>
                     <span>Am the Guardian of a minor under the age of 18 with legal authority to sign this form</span>
-                    <div class="col-sm-6" *ngIf="f.isFilledByGaurdian.value === false && f.isFilledByMyself.value === false">
+                    <div class="col-sm-6"
+                        *ngIf="f.isFilledByGaurdian.value === false && f.isFilledByMyself.value === false">
                         <p class="checkbox">
                             <input type="checkbox" formControlName="isFilledByFather" /><span>Yes</span>
 
                         </p>
                     </div>
                 </div>
+
+
                 <div class="col-sm-4">
                     <label class="uppercase">Registration Form Filled by Guardian?
-          </label>
+                    </label>
                     <span>Am the Guardian of a minor under the age of 18 with legal authority to sign this form</span>
-                    <div class="col-sm-6" *ngIf="f.isFilledByMyself.value === false && f.isFilledByFather.value === false">
+                    <div class="col-sm-6"
+                        *ngIf="f.isFilledByMyself.value === false && f.isFilledByFather.value === false">
                         <p class="checkbox">
-                            <input type="checkbox" formControlName="isFilledByGaurdian"/><span>Yes</span>
+                            <input type="checkbox" formControlName="isFilledByGaurdian" /><span>Yes</span>
                         </p>
                     </div>
-                 
+
 
                 </div>
                 <div class="col-sm-4">
                     <label class="uppercase">Registration Form Filled by Myself?
-          </label>
+                    </label>
                     <!-- <span>I am above 18 years of age to register with NSpot Admissions</span> -->
-                    <span>I am above 18 years of age to register with NSpot Admissions                                      
-            <br>
-          </span>
+                    <span>I am above 18 years of age to register with NSpot Admissions
+                        <br>
+                    </span>
 
 
-                    <div class="col-sm-6" *ngIf="f.isFilledByGaurdian.value === false && f.isFilledByFather.value === false">
+                    <div class="col-sm-6"
+                        *ngIf="f.isFilledByGaurdian.value === false && f.isFilledByFather.value === false">
                         <p class="checkbox">
-                            <input type="checkbox"  formControlName="isFilledByMyself" /><span>Yes</span>
+                            <input type="checkbox" formControlName="isFilledByMyself" /><span>Yes</span>
                         </p>
                     </div>
                 </div>
@@ -330,8 +349,8 @@
                 <div class="col-sm-12">
                     <div class="pull-right">
                         <button id="submit-btn" (click)="submit()" class="btn btn-info mt-3">
-              Save and Continue
-            </button>
+                            Save and Continue
+                        </button>
                     </div>
                 </div>
             </div>

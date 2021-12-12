@@ -197,6 +197,7 @@
                     margin-bottom: 10px;" (error)="errorEvnt($event)"
                         src="{{item.item?.Institute?.profilePicFile?baseApiUrl+item.item?.Institute?.profilePicFile:'./assets/images/inst.png'}}"
                         alt="">
+                        <p class="mapicons"><i class="zmdi zmdi-pin"></i>{{item.currentLocation}} </p>
                 </div>
                 <div class="col-sm-6">
                     <h6 class="coursename">{{item.CourseName}}
@@ -217,6 +218,8 @@
                    
                     <p><i class="zmdi zmdi-time"></i> Course Duration : {{getcourseduration(item.item.courseDuration)}}
                     </p>
+                    <p><i class="zmdi zmdi-eye"></i> Viewed By : {{item?.item?.viewCount}}</p>
+                  
                     <p style="font-weight: bold; color: red;"
                         *ngIf="getaddmisonsnstartcount(item.item) === 'Admission Closed'"> <i
                             class="zmdi zmdi-alert-circle"></i> {{getaddmisonsnstartcount(item.item)}} </p>
@@ -244,7 +247,7 @@
                         <p *ngIf="item?.item.haveGirlsHostel === false">Girls Hostel : No </p>
 
                     </div> -->
-                    <button class="accordion" (click)="toggleAccordian($event, i)"> View Elgibility
+                    <button class="accordion" (click)="toggleAccordian($event, i)"> View Eligibility
                     </button>
                     <div class="panel" hide="!item.isActive">
                         <p *ngIf="item?.item.maleAllowed === true">Male Allowed : Yes </p>
@@ -274,32 +277,25 @@
 
                         <div *ngIf="!isNri">
                         <h6 class="totalfee" >Total Fee <i class="zmdi zmdi-info"
-                                matTooltip=" Initial fee payment instructed by the institute for Spot admission'" style="    margin: 0;
+                                matTooltip=" Initial fee payment instructed by the institute for Spot admission" style="    margin: 0;
                              color: #abaeb2;"> </i><br> Rs. {{item?.courseFee?.otherFee}}/-</h6>
-                        <h6 class="payonly">Pay Only <br>Rs. {{item?.courseFee?.spotfee}}/-</h6>
+                        <h6 class="payonly">Pay Only <i class="zmdi zmdi-info"
+                            matTooltip=" This is a partial or an advance of full fees to be paid for confirming your admission." style="    margin: 0;
+                         color: #abaeb2;"> </i><br>Rs. {{item?.courseFee?.spotfee}}/-</h6>
                         </div>
                         <div *ngIf="isNri">
                             <h6 class="totalfee" >Total Fee <i class="zmdi zmdi-info"
-                                    matTooltip=" Initial fee payment instructed by the institute for Spot admission'" style="    margin: 0;
+                                    matTooltip=" Complete or approximate fees while you fully complete the course." style="    margin: 0;
                                  color: #abaeb2;"> </i><br> Rs. {{item?.courseFee?.nriotherFee}}/-</h6>
-                            <h6 class="payonly">Pay Only <br>Rs. {{item?.courseFee?.nriSpotfee}}/-</h6>
-                            </div>
-                        <div style="display: flex; margin-left: 37px;">
-                            <a  (click)="viewInstitute()" routerLink="/student/institute-details/{{item.item.Institute.userId}}" class="greybutton"
-                                style="   
-                        border: 1px solid #f8ad25; line-height: 16px !important;
-                        color: #f8ad25;    font-size: 13px;
-                        background: none !important;
-                        text-decoration: none;
-                        text-align: center; ">View Institute</a>
+                            <h6 class="payonly">Pay Only <i class="zmdi zmdi-info"
+                                matTooltip=" This is a partial or an advance of full fees to be paid for confirming your admission." style="    margin: 0;
+                             color: #abaeb2;"> </i><br>Rs. {{item?.courseFee?.nriSpotfee}}/-</h6>
+                        </div>
+                        <div style="display: flex; margin-left: 37px;flex-direction: column;">
+                            <a  (click)="viewInstitute()" routerLink="/student/institute-details/{{item.item.Institute.userId}}" class="viewinsitute"
+                               >View Institute</a>
                             &nbsp;
-                            <a style=" 
-  font-size: 13px;
-  border: 1px solid #09b952;
-  text-align: center;line-height: 16px !important;
-  text-decoration: none;
-  color: #09b952;
-  background-color: white !important;" class="greybutton" (click)="viewCourse(item)">
+                            <a  class="viewcourse" (click)="viewCourse(item)">
                                 View Course</a>
                         </div>
 

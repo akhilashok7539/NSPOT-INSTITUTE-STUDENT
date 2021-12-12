@@ -31,7 +31,14 @@
     width: 150px;
     margin-top: -75px;
 }
+.phase-activecolo{
+   color: green !important;
 
+}
+.phase-activeclosed{
+   color: red !important;
+
+}
 .box {
     margin-top: 10px;
     position: relative;

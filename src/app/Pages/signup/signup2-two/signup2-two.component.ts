@@ -63,7 +63,9 @@ export class Signup2TwoComponent implements OnInit {
       disabilityCertificateFile: [''],
       forginNationality: [''],
       isFilledByMyself:[false],
-      isFilledByGaurdian:[false]
+      isFilledByGaurdian:[false],
+      activeEmailStudent:['',],
+      activePhoneStudent:['',Validators.required]
 
     });
     console.log(this.f.disabilityCertificateFile.validator)
@@ -125,7 +127,7 @@ export class Signup2TwoComponent implements OnInit {
         this.touched = true;
     console.log(this.form.invalid)
     console.log(document.getElementsByClassName('ng-invalid'))
-  
+    this.form.value['activeEmailStudent'] = this.form.value['email']
     const formData = this.form.value;
     this.apiService.doPostRequest(endPoints.student + endPoints.create, formData).subscribe((returnData: any) => {
       if (returnData.status == true) {

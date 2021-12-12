@@ -255,10 +255,12 @@
 
                                 <div class="box">
 
-                                    <div class="ribbon ribbon-top-left">
-                                        <span>{{getaddmisonsnstartcount(item.item)}}</span>
+                                    <div *ngIf="getaddmisonsnstartcount(item.item) === 'Opened'" class="ribbon ribbon-top-left" >
+                                        <span [class.phase-activecolo]="getaddmisonsnstartcount(item.item)==='Opened'">{{getaddmisonsnstartcount(item.item)}}</span>
                                     </div>
-
+                                    <div *ngIf="getaddmisonsnstartcount(item.item) === 'Closed'" class="ribbon ribbon-top-left" >
+                                        <span [class.phase-activeclosed]="getaddmisonsnstartcount(item.item)==='Closed'">{{getaddmisonsnstartcount(item.item)}}</span>
+                                    </div>
 
                                     <div style="text-align: center;    margin-left: 70px;
 

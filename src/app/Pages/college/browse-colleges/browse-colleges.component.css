@@ -21,7 +21,8 @@
 }
 .divsection{
     display: flex;
-    flex-direction: column;height: 83%;
+    flex-direction: column;
+    /* height: 83%; */
     border-left: 1px solid #d9d9d9;
     justify-content: center;
 }
@@ -85,6 +86,35 @@
 .greybutton {
     line-height: 38px !important;
     border-radius: 10px !important;
+}
+.viewinsitute{
+    border: 1px solid #f8ad25;
+    /* line-height: 16px !important; */
+    border-radius: 10px !important;
+
+    color: #f8ad25;
+    font-size: 13px;
+    background: none !important;
+    text-decoration: none;
+    text-align: center;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.viewcourse{
+    font-size: 13px;
+    border-radius: 10px !important;
+
+    border: 1px solid #09b952;
+    text-align: center;line-height: 16px !important;
+    text-decoration: none;
+    color: #09b952;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white !important;
 }
 
 .pagination {
@@ -167,9 +197,18 @@ a {
 .coursename {
     font-size: 26px;
     color: #3461b3;
-    line-height: 53px;
+    line-height: 28px;
 }
+.mapicons{
+    position: absolute;
+    top: 0;
+    background: #8d8b8b;
+    /* bottom: 0; */
+    color: white;
+    padding: 8px;
+    border-radius: 27px;
 
+}
 .instname {
     font-size: 14px;
     line-height: 34px;
