@@ -20,6 +20,15 @@
     left: 0;
     right: 0;
 }
+@media screen and (max-width: 992px) {
+    .containers{
+     margin-left:0px !important; 
+    margin-right: 0px !important;
+    }
+    .class-details {
+        overflow: auto !important;
+    }
+}
 .courseBtn {
     width: 34%;
     padding: 6px;

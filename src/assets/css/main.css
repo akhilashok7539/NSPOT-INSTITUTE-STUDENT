@@ -190,7 +190,7 @@ nav > ul > li > a {
 }
 
 .navbar-toggle {
-  color: #fff;
+  color: rgb(0, 0, 0);
   line-height: 1;
   margin: 0;
   position: absolute;
