@@ -400,7 +400,7 @@ console.log(this.courses);
         2;
         
         let finalcount = Math.round(12742 * Math.asin(Math.sqrt(a)))
-        return finalcount + " Km"
+        return finalcount 
     // console.log(12742 * Math.asin(Math.sqrt(a)), 'Km')
   }
   get f() { return this.form.controls; }
@@ -888,7 +888,22 @@ changedevent(event)
   // this.form.controls['instituteId'].setValue(event.target.value)
   this.reloadOnbackClicked(this.form.value)
 }
+filter()
+{
+  this.courses.sort((n1, n2) => {
+    if (parseInt(n1.currentLocation) > parseInt(n2.currentLocation)) {
+      return 1;
+    }
 
+    if (parseInt(n1.currentLocation) < parseInt(n2.currentLocation)) {
+      return -1;
+    }
+
+    return 0;
+  }); 
+  console.log("soretedrrray",this.courses);
+  
+}
 }
 
 
