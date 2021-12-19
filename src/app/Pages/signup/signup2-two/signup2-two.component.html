@@ -35,7 +35,7 @@
                     <label class="req uppercase">Email </label>
                     <div class="row">
                         <div class="col-lg-12">
-                            <input type="text" formControlName="email" placeholder="enter first name" />
+                            <input type="text" formControlName="email" placeholder="enter Email Id" />
                             <app-control-messages [touched]="touched" [control]="f.email"></app-control-messages>
                         </div>
 
@@ -354,7 +354,7 @@
                     </div>
                 </div>
             </div>
-            <pre>{{f.disabilityCertificateFile.validator}}</pre>
+            <!-- <pre>{{f.disabilityCertificateFile.validator}}</pre> -->
         </form>
     </div>
     <pre>{{form.value | json}}</pre>
