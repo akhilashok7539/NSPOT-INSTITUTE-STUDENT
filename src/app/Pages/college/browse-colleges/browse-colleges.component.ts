@@ -544,10 +544,10 @@ export class BrowseCollegesComponent implements OnInit {
       var Difference_In_Time = cuuretdate.getTime() - date1.getTime();
       var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
       if (Difference_In_Days > 0) {
-        this.addmisonstarts = "Admission Closes in " + Math.round(Difference_In_Days) + " Days Left"
+        this.addmisonstarts = "Admission Closes in " + Math.round(Difference_In_Days) + " Days "
       }
       else {
-        this.addmisonstarts = "Admission Closes in " + Math.round(Difference_In_Days) * -1 + " Days Left"
+        this.addmisonstarts = "Admission Closes in " + Math.round(Difference_In_Days) * -1 + " Days "
       }
 
 
