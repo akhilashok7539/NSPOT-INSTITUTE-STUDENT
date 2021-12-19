@@ -43,7 +43,7 @@ export class BrowseCollegesComponent implements OnInit {
   studentIDforMap;
   selectedvalueradio;
   form: FormGroup;
-  instituteform:FormGroup;
+  instituteform: FormGroup;
   touched = false;
   studentId = localStorage.getItem("USERID");;
   username = this.authService.userProfile.username;
@@ -77,11 +77,11 @@ export class BrowseCollegesComponent implements OnInit {
   ]
   facilites = ['AC Classrooms', 'Swimming Pool', 'Day Boarding', 'Transportation', 'Outdoor Play Area']
 
-  districtList=[];
+  districtList = [];
   stateList = [];
   filteredList1;
-  currLat:any;
-  currLng:any;
+  currLat: any;
+  currLng: any;
   ngOnInit(): void {
     // fetching student details
 
@@ -96,7 +96,7 @@ export class BrowseCollegesComponent implements OnInit {
     this.loadData();
     this.isNri = JSON.parse(localStorage.getItem("isNri"));
     console.log(this.isNri);
-    
+
     this.form = this.formBuilder.group({
       CourseCategoryId: [''],
       CourseSubCategoryId: [''],
@@ -107,19 +107,18 @@ export class BrowseCollegesComponent implements OnInit {
       CourseSubCategory5Id: [''],
       districtId: [''],
       stateId: [''],
-      instituteId:['']
+      instituteId: ['']
     });
 
 
     this.instituteform = this.formBuilder.group({
-      instituteName:['']
+      instituteName: ['']
     })
     this.filteredList1 = this.stateList.slice();
     console.log(window.location.origin + this.router.url);
     console.log(sessionStorage.getItem("formfields"));
     this.formvaluessession = JSON.parse(sessionStorage.getItem("formfields"))
-    if(this.formvaluessession != null)
-    {
+    if (this.formvaluessession != null) {
       this.reloadOnbackClicked(this.formvaluessession)
     }
 
@@ -142,8 +141,8 @@ export class BrowseCollegesComponent implements OnInit {
       navigator.geolocation.getCurrentPosition((position) => {
         this.currLat = position.coords.latitude;
         this.currLng = position.coords.longitude;
-        console.log("Current latitute and logitude",this.currLat,this.currLng);
-        
+        console.log("Current latitute and logitude", this.currLat, this.currLng);
+
       });
     } else {
       alert('Geolocation is not supported by this browser.');
@@ -170,6 +169,7 @@ export class BrowseCollegesComponent implements OnInit {
       console.log("courseStreams ", this.courseStreams);
     });
     this.apiService.doGetRequest(`state/`).subscribe((returnData: any) => {
+      // this.stateList.push(returnData.data)
       this.stateList = returnData.data;
       let req = {
         createdAt: "2021-07-09T06:10:38.752Z",
@@ -180,8 +180,8 @@ export class BrowseCollegesComponent implements OnInit {
       // this.stateList.push(req)
       // var suits = ["hearts", "clubs", "Brooks Brothers", "diamonds", "spades"];
 
-      // this.stateList.splice(0, 0, req);
-      
+      this.stateList.splice(0, 0, req);
+
 
       console.log(this.stateList);
     });
@@ -243,8 +243,7 @@ export class BrowseCollegesComponent implements OnInit {
     }
     return urlParams;
   }
-  reloadOnbackClicked(formvaluessession)
-  {
+  reloadOnbackClicked(formvaluessession) {
     const formData = formvaluessession;
     console.log(formData);
     for (var key in formData) {
@@ -273,30 +272,27 @@ export class BrowseCollegesComponent implements OnInit {
         }
         console.log('Using Map', Object.values(map));
         this.instutesname = Object.values(map)
-        this.courses.map(x =>{
+        this.courses.map(x => {
           let notificationdata = [];
           notificationdata = x.notificationData;
-          if(notificationdata.length === 0)
-          {
+          if (notificationdata.length === 0) {
             x.notificationenabled = false;
           }
-          else{
-            for(let i=0;i<notificationdata.length;i++)
-            {
-              if(notificationdata[i].studentId === this.studentIDforMap)
-              {
+          else {
+            for (let i = 0; i < notificationdata.length; i++) {
+              if (notificationdata[i].studentId === this.studentIDforMap) {
                 x.notificationenabled = true;
               }
-              else{
+              else {
                 x.notificationenabled = false;
-    
+
               }
             }
           }
-          
+
         })
-        this.courses.map(x=> x.currentLocation = this.getFucntionCorordr(x))
-        console.log('Using locationcord',this.courses);
+        this.courses.map(x => x.currentLocation = this.getFucntionCorordr(x))
+        console.log('Using locationcord', this.courses);
 
       }
       else {
@@ -327,7 +323,7 @@ export class BrowseCollegesComponent implements OnInit {
     }
 
     console.log(formData);
-    sessionStorage.setItem("formfields",JSON.stringify(this.form.value))
+    sessionStorage.setItem("formfields", JSON.stringify(this.form.value))
     this.apiService.doPostRequest(
       endPoints.Get_course_filter, formData
     ).subscribe((returnData: any) => {
@@ -344,37 +340,34 @@ export class BrowseCollegesComponent implements OnInit {
         console.log('Using Map', Object.values(map));
         this.instutesname = Object.values(map)
 
-        this.courses.map(x=> x.currentLocation = this.getFucntionCorordr(x))
-        console.log('Using locationcord',this.courses);
-        
+        this.courses.map(x => x.currentLocation = this.getFucntionCorordr(x))
+        console.log('Using locationcord', this.courses);
+
       }
       else {
         this.toastr.error('Something went wrong!');
       }
 
-      this.courses.map(x =>{
+      this.courses.map(x => {
         let notificationdata = [];
         notificationdata = x.notificationData;
-        if(notificationdata.length === 0)
-        {
+        if (notificationdata.length === 0) {
           x.notificationenabled = false;
         }
-        else{
-          for(let i=0;i<notificationdata.length;i++)
-          {
-            if(notificationdata[i].studentId === this.studentIDforMap)
-            {
+        else {
+          for (let i = 0; i < notificationdata.length; i++) {
+            if (notificationdata[i].studentId === this.studentIDforMap) {
               x.notificationenabled = true;
             }
-            else{
+            else {
               x.notificationenabled = false;
-  
+
             }
           }
         }
-        
+
       })
-console.log(this.courses);
+      console.log(this.courses);
 
 
     },
@@ -383,8 +376,7 @@ console.log(this.courses);
         this.toastr.error('Something went wrong!');
       });
   }
-  getFucntionCorordr(data)
-  {
+  getFucntionCorordr(data) {
     // return "rest"
     var R = 6371;
     var lat2: any = data?.item?.Institute?.gmapLatitude;
@@ -397,10 +389,10 @@ console.log(this.courses);
       (c(this.currLat * p) *
         c(lat2 * p) *
         (1 - c((lon3 - this.currLng) * p))) /
-        2;
-        
-        let finalcount = Math.round(12742 * Math.asin(Math.sqrt(a)))
-        return finalcount 
+      2;
+
+    let finalcount = Math.round(12742 * Math.asin(Math.sqrt(a)))
+    return finalcount
     // console.log(12742 * Math.asin(Math.sqrt(a)), 'Km')
   }
   get f() { return this.form.controls; }
@@ -424,20 +416,21 @@ console.log(this.courses);
   loaddistricts(event) {
     console.log(event);
 
-  this.stateId = event;
-  this.apiService.doGetRequest(`district/` + event).subscribe((returnData: any) => {
-    this.districtList = returnData.data;
-    let req = {
-      createdAt: "2021-07-09T06:10:38.752Z",
-      id: 0,
-      state: "All",
-      updatedAt: "2021-07-09T06:10:38.752Z"
-    }
-    this.districtList.push(req)
-    console.log(this.districtList);
-  });
+    this.stateId = event;
+    this.apiService.doGetRequest(`district/` + event).subscribe((returnData: any) => {
+      this.districtList = returnData.data;
+      let req = {
+        createdAt: "2021-07-09T06:10:38.752Z",
+        id: 0,
+        district: "All",
+        updatedAt: "2021-07-09T06:10:38.752Z"
+      }
+      // this.districtList.push(req)
+      this.districtList.splice(0, 0, req);
+      console.log(this.districtList);
+    });
 
-   
+
   }
   searchByLocation() {
     let req = {
@@ -696,7 +689,7 @@ console.log(this.courses);
   applycourse(item) {
 
     // sessionStorage.setItem("buttonclicked",JSON.stringify(true))
-    sessionStorage.setItem("formfields",JSON.stringify(this.form.value))
+    sessionStorage.setItem("formfields", JSON.stringify(this.form.value))
 
     sessionStorage.setItem("coursename", JSON.stringify(item))
     this.router.navigate(['/student/course/apply/' + item.item.id])
@@ -704,15 +697,13 @@ console.log(this.courses);
 
 
   }
-  viewInstitute()
-  {
+  viewInstitute() {
     // sessionStorage.setItem("buttonclicked",JSON.stringify(true))
-    sessionStorage.setItem("formfields",JSON.stringify(this.form.value))
+    sessionStorage.setItem("formfields", JSON.stringify(this.form.value))
   }
-  viewCourse(s)
-  {
-    sessionStorage.setItem("formfields",JSON.stringify(this.form.value))
-    sessionStorage.setItem("courseinfo",JSON.stringify(s))
+  viewCourse(s) {
+    sessionStorage.setItem("formfields", JSON.stringify(this.form.value))
+    sessionStorage.setItem("courseinfo", JSON.stringify(s))
     this.router.navigate(['/student/view-courses'])
   }
   errorEvnt(event) {
@@ -755,13 +746,13 @@ console.log(this.courses);
     //   studentId:this.studentIDforMap
 
     // }
-    let courseId= item?.item?.id
+    let courseId = item?.item?.id
 
-    this.apiService.doDeleteRequest("institute/course/notification/subscription/delete/"+courseId+'/'+this.studentIDforMap).subscribe(
-      data =>{
+    this.apiService.doDeleteRequest("institute/course/notification/subscription/delete/" + courseId + '/' + this.studentIDforMap).subscribe(
+      data => {
         this.getfilterdatabasedonFormvalues();
       },
-      error =>{
+      error => {
 
       }
     )
@@ -770,8 +761,7 @@ console.log(this.courses);
   }
 
 
-  getfilterdatabasedonFormvalues()
-  {
+  getfilterdatabasedonFormvalues() {
     this.apiService.doPostRequest(
       endPoints.Get_course_filter, this.form.value
     ).subscribe((returnData: any) => {
@@ -792,29 +782,26 @@ console.log(this.courses);
         this.toastr.error('Something went wrong!');
       }
 
-      this.courses.map(x =>{
+      this.courses.map(x => {
         let notificationdata = [];
         notificationdata = x.notificationData;
-        if(notificationdata.length === 0)
-        {
+        if (notificationdata.length === 0) {
           x.notificationenabled = false;
         }
-        else{
-          for(let i=0;i<notificationdata.length;i++)
-          {
-            if(notificationdata[i].studentId === this.studentIDforMap)
-            {
+        else {
+          for (let i = 0; i < notificationdata.length; i++) {
+            if (notificationdata[i].studentId === this.studentIDforMap) {
               x.notificationenabled = true;
             }
-            else{
+            else {
               x.notificationenabled = false;
-  
+
             }
           }
         }
-        
+
       })
-console.log(this.courses);
+      console.log(this.courses);
 
 
     },
@@ -826,18 +813,18 @@ console.log(this.courses);
 
   notificationon(item) {
     console.log(item);
-    
+
     // this.notificationonstatus = true;
     let req = {
-      instituteCourseId:item?.item?.id,
-      studentId:this.studentIDforMap
+      instituteCourseId: item?.item?.id,
+      studentId: this.studentIDforMap
     }
-    this.apiService.doPostRequest("institute/course/notification/subscription",req).subscribe(
-      data =>{
+    this.apiService.doPostRequest("institute/course/notification/subscription", req).subscribe(
+      data => {
         this.getfilterdatabasedonFormvalues();
 
       },
-      error =>{
+      error => {
 
       }
     )
@@ -869,41 +856,39 @@ console.log(this.courses);
     // if(char.length === 4)
 
     // {
-      // + char[3]
+    // + char[3]
     // }
     // else
     // {
     //   return char[0];
     // }
   }
-changedevent(event)
-{
-  console.log(event.target.value);
-  console.log(this.instituteform.value);
-  this.form.controls['instituteId'].setValue(this.instituteform.value['instituteName'])
-  
-  // this.selectedvalueradio = event.target.value;
-  // console.log(this.selectedvalueradio);
-  
-  // this.form.controls['instituteId'].setValue(event.target.value)
-  this.reloadOnbackClicked(this.form.value)
-}
-filter()
-{
-  this.courses.sort((n1, n2) => {
-    if (parseInt(n1.currentLocation) > parseInt(n2.currentLocation)) {
-      return 1;
-    }
+  changedevent(event) {
+    console.log(event.target.value);
+    console.log(this.instituteform.value);
+    this.form.controls['instituteId'].setValue(this.instituteform.value['instituteName'])
 
-    if (parseInt(n1.currentLocation) < parseInt(n2.currentLocation)) {
-      return -1;
-    }
+    // this.selectedvalueradio = event.target.value;
+    // console.log(this.selectedvalueradio);
 
-    return 0;
-  }); 
-  console.log("soretedrrray",this.courses);
-  
-}
+    // this.form.controls['instituteId'].setValue(event.target.value)
+    this.reloadOnbackClicked(this.form.value)
+  }
+  filter() {
+    this.courses.sort((n1, n2) => {
+      if (parseInt(n1.currentLocation) > parseInt(n2.currentLocation)) {
+        return 1;
+      }
+
+      if (parseInt(n1.currentLocation) < parseInt(n2.currentLocation)) {
+        return -1;
+      }
+
+      return 0;
+    });
+    console.log("soretedrrray", this.courses);
+
+  }
 }
 
 

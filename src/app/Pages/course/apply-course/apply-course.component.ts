@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 // import { ApplicationFormService } from '../../../services/application-form.service'
 import { AuthService } from 'src/app/services/auth.service';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { scrollnotes } from 'src/app/config/constants';
 @Component({
   selector: 'app-apply-course',
   templateUrl: './apply-course.component.html',
@@ -20,6 +21,7 @@ export class ApplyCourseComponent implements OnInit {
   // additionalEducation: FormGroup;
   // additionalExam: FormGroup;
   // additionalCertificate: FormGroup;
+  scrollnotes = scrollnotes;
   multerForm = new FormData();
   certificateList = [
     {

@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { endPoints } from '../../config/endPoints';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
+import { scrollnotes } from 'src/app/config/constants';
 declare var  Razorpay:any;
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,8 @@ declare var  Razorpay:any;
 export class DashboardComponent implements OnInit {
   rzp1:any;
   activeButton = 7;
+  scrollnotes = scrollnotes;
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,

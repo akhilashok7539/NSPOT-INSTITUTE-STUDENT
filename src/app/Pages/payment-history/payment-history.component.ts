@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { scrollnotes } from 'src/app/config/constants';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -12,6 +13,7 @@ export class PaymentHistoryComponent implements OnInit {
   studentId;
   listpayments= [];
   paymenthistory=[];
+  scrollNotes = scrollnotes;
   constructor(private apiservice:ApiService,private authService:AuthService,private toaster:ToastrService) { }
 
   ngOnInit(): void {

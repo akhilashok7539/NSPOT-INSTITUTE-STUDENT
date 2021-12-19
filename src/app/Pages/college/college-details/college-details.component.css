@@ -48,6 +48,7 @@
    color: red !important;
 
 }
+
 .box {
     margin-top: 10px;
     position: relative;
@@ -82,7 +83,7 @@
     display: block;
     width: 159px;
     padding: 15px 0;
-    background-color: #1b335f;
+    background-color: #1b335f14;
     box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
     color: #fff;
     font: 707 11px/1 'Lato', sans-serif;

@@ -175,7 +175,7 @@
     </div>
     <div *ngIf="activeButton === 3">
         <div class="container mb-5">
-          <marquee behavior="" direction="">As soon as you receive a pre approval from the institute you applied immediately make the payment within 24hrs or else you may lose the seat</marquee>
+          <marquee behavior="" direction="">{{scrollnotes.APPLIED_COURSES}}</marquee>
             <div class="row">
                 <div class="col-sm-12" *ngFor="let item of allApplications; let i=index">
                     <div class=" list-with-icon" style="margin-left: 0px; margin-right: 20px;
@@ -222,7 +222,8 @@
     </div>
     <div *ngIf="activeButton === 4">
         <div class="container mb-5">
-            <marquee behavior="" direction="">iMPORTANT NOTE: 24hrs is allowed to make the fee payment.or else your application will be rejected automatically.</marquee>
+          <marquee behavior="" direction="">{{scrollnotes.APPROVED_PRE_APPLICATIONS}}</marquee>
+
             <div class="row">
                 <div class="col-sm-12">
                     <div *ngFor="let item of acceptedPreApplications; let i=index" class="col-xs-12 list-with-icon">
@@ -257,7 +258,8 @@
     </div>
     <div *ngIf="activeButton === 5">
         <div class="container mb-5">
-          <marquee behavior="" direction="">You may receive the receipt and confirmation letter any time within 24 hrs. If you didint receive your receipt you may contact us immediately in contact us form.</marquee>
+          <marquee behavior="" direction="">{{scrollnotes.ACCEPTED_APPLICATION}}</marquee>
+        
             <div class="row">
                 <div class="col-sm-12">
                     <div *ngFor="let item of acceptedApplicationData; let i=index" class="col-xs-12 list-with-icon">
