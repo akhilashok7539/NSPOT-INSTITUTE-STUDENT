@@ -189,6 +189,8 @@
 
                             <p style="    color: green;font-weight: bold;">Status : {{getStatusText(item.item.applicationStatus)}}</p>
                             <p>Institute Name : {{getinstituteName(item)}}</p>
+                            <p>Institute Address : {{item?.item?.Institute_Course?.Institute?.addressLine1}},{{item?.item?.Institute_Course?.Institute?.addressLine2}},{{item?.item?.Institute_Course?.Institute?.addressLine3}}</p>
+
                             <p *ngIf="item.item.remarks !=null">Remarks:{{item.item.remarks}}</p>
                             <p *ngIf="item.item.dateOfInterview !=null">Date of Interview:{{item.item.dateOfInterview | date:'dd MMM y'}}</p>
                             <p *ngIf="item.item.dateOfReporting !=null">Date of Reporting:{{item.item.dateOfReporting | date:'dd MMM y'}}</p>
@@ -235,7 +237,7 @@
 
                             <p>Status : {{getStatusText(item.item.applicationStatus)}}</p>
                             <p>Institute Name : {{item?.item?.Institute_Course?.Institute?.name}}</p>
-
+                            <p>Institute Address : {{item?.item?.Institute_Course?.Institute?.addressLine1}},{{item?.item?.Institute_Course?.Institute?.addressLine2}},{{item?.item?.Institute_Course?.Institute?.addressLine3}}</p>
                             <p *ngIf="item.item.remarks !=null">Remarks:{{item.item.remarks}}</p>
                             <p *ngIf="item.item.dateOfInterview !=null">Date of Interview:{{item.item.dateOfInterview | date:'dd MMM y'}}</p>
                             <p *ngIf="item.item.dateOfReporting !=null">Date of Reporting:{{item.item.dateOfReporting | date:'dd MMM y'}}</p>
