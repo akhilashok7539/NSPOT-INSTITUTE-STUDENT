@@ -88,6 +88,7 @@
 
             </div>
             <div class="col-md-2 col-sm-6 col-xs-12" >
+                <span class="filter" *ngIf="form.valid" (click)="clearFilter()">Clear Filter<i class="zmdi zmdi-close-circle" ></i> </span>
                 <mat-select placeholder="Choose Course" formControlName="CourseSubCategory5Id">
                     <input type="text" class="form-control" [(ngModel)]="accademicLevels6" placeholder="Search Course"
                         [ngModelOptions]="{standalone: true}">
@@ -159,7 +160,7 @@
 </div>
 
 <div class="contianer-wrap" *ngIf="courses?.length>0">
-
+    <marquee behavior="" direction=""> Location might be in accurate while using Laptop or desktop</marquee>
     <div class="row">
        <div class="col-sm-4">
         <p class="resultsfound"> {{courses?.length}} results found :</p>

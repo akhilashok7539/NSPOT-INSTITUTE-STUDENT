@@ -26,7 +26,7 @@
             <div class="col-sm-12 text-center profilePicDiv" *ngIf="certificates&&certificates.length>0">
                 <input type="file" style="visibility: hidden;" id="profPicUploader" (change)="onProfileChange($event,instituteInfo?.id)">
 
-                <img src="{{baseApiUrl}}{{certificates[0]?.passportSizePhotoFile}}" alt="Avatar" class="teacher-avatar" (error)="onImgError($event)">
+                <img src="{{baseApiUrl}}{{studentDetails?.profilePicture}}" alt="Avatar" class="teacher-avatar" (error)="onImgError($event)">
                 <label for="profPicUploader" class="profilePicBtn">
             <i class="zmdi zmdi-edit zmdi-hc-2x"></i>
           </label>
@@ -187,8 +187,8 @@
                         <div class="col-xs-11">
                             <h4>{{item.CourseName}} </h4>
 
-                            <p style="    color: green;
-            font-weight: bold;">Status : {{getStatusText(item.item.applicationStatus)}}</p>
+                            <p style="    color: green;font-weight: bold;">Status : {{getStatusText(item.item.applicationStatus)}}</p>
+                            <p>Institute Name : {{getinstituteName(item)}}</p>
                             <p *ngIf="item.item.remarks !=null">Remarks:{{item.item.remarks}}</p>
                             <p *ngIf="item.item.dateOfInterview !=null">Date of Interview:{{item.item.dateOfInterview | date:'dd MMM y'}}</p>
                             <p *ngIf="item.item.dateOfReporting !=null">Date of Reporting:{{item.item.dateOfReporting | date:'dd MMM y'}}</p>
@@ -234,6 +234,7 @@
                             <h4>{{item.CourseName}} </h4>
 
                             <p>Status : {{getStatusText(item.item.applicationStatus)}}</p>
+                            <p>Institute Name : {{item?.item?.Institute_Course?.Institute?.name}}</p>
 
                             <p *ngIf="item.item.remarks !=null">Remarks:{{item.item.remarks}}</p>
                             <p *ngIf="item.item.dateOfInterview !=null">Date of Interview:{{item.item.dateOfInterview | date:'dd MMM y'}}</p>

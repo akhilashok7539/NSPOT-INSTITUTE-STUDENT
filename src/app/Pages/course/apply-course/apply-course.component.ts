@@ -66,6 +66,7 @@ export class ApplyCourseComponent implements OnInit {
   addclick = false;
   addEntranceClick= false;
   courseName;
+  institutedetailslist:any=[];
   constructor(
     // private applicationFormService: ApplicationFormService,
     private router: Router,
@@ -77,6 +78,7 @@ export class ApplyCourseComponent implements OnInit {
   ) { }
   async ngOnInit() {
     this.courseId = parseInt(this.route.snapshot.paramMap.get('courseId'));
+    this.institutedetailslist = JSON.parse(sessionStorage.getItem("coursename"))
     this.form = this.formBuilder.group({
       studentId: [this.studentId],
       courseId: [this.courseId],

@@ -25,6 +25,8 @@ import { ViewReceiptComponent } from './Pages/view-receipt/view-receipt.componen
 import { ViewCourseDetailsComponent } from './Pages/view-course-details/view-course-details.component';
 import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
 import { ApplyCourseCertificatesComponent } from './Pages/course/apply-course-certificates/apply-course-certificates.component';
+import { FaqComponent } from './Pages/faq/faq.component';
+import { ForgotPasswordComponent } from './Pages/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -34,6 +36,8 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'login' },
       { path: 'login', component: LoginComponent },
       { path: 'contact-us', component: ContactUsComponent },
+      { path: 'forgot-password', component: ForgotPasswordComponent },
+
     ],
   },
   {
@@ -54,6 +58,7 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
       { path: 'profile', component: DashboardComponent },
+      { path: 'faq', component: FaqComponent },
       { path: 'explore-courses', component: BrowseCollegesComponent },
       { path: 'institute-details/:instituteId', component: CollegeDetailsComponent },
       { path: 'course-details/:courseId', component: CourseDetailsComponent },
@@ -65,7 +70,7 @@ const routes: Routes = [
 
       { path: 'view-receipt/:applicationId', component: ViewReceiptComponent },
       { path: 'reset-password', component: ResetPasswordComponent },
-      
+     
       {
         path: 'course',
         children: [

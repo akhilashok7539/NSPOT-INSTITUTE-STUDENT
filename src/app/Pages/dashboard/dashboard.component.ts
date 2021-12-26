@@ -71,8 +71,28 @@ export class DashboardComponent implements OnInit {
 
     
   }
+  getinstituteName(s)
+  {
+  //  console.log(s.item.Institute_Course.Institute.name);
+   return s.item.Institute_Course.Institute.name
+  }
+  onProfileChange(event)
+  {
+    let multiForm: FormData = new FormData();
 
+    const file = event.target.files[0];
+    multiForm.append("id",this.studentDetails.id)
+    multiForm.append("profilePicture",file)
+    this.apiService.doPostRequest_upload("student/update",multiForm).subscribe(
+      data =>{
+        this.ngOnInit()
+      },
+      error =>{
+        
+      }
+    )
 
+  }
   loadafterfirstapi()
   {
     

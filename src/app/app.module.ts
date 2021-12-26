@@ -49,6 +49,8 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ViewCourseDetailsComponent } from './Pages/view-course-details/view-course-details.component';
 import { ResetPasswordComponent } from './Pages/reset-password/reset-password.component';
 import { ApplyCourseCertificatesComponent } from './Pages/course/apply-course-certificates/apply-course-certificates.component';
+import { FaqComponent } from './Pages/faq/faq.component';
+import { ForgotPasswordComponent } from './Pages/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +87,8 @@ import { ApplyCourseCertificatesComponent } from './Pages/course/apply-course-ce
     ViewCourseDetailsComponent,
     ResetPasswordComponent,
     ApplyCourseCertificatesComponent,
+    FaqComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,

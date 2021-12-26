@@ -106,7 +106,7 @@ export class BrowseCollegesComponent implements OnInit {
       CourseSubCategory4Id: [''],
       CourseSubCategory5Id: [''],
       districtId: [''],
-      stateId: [''],
+      stateId: ['',Validators.required],
       instituteId: ['']
     });
 
@@ -303,6 +303,10 @@ export class BrowseCollegesComponent implements OnInit {
         console.error(error);
         this.toastr.error('Something went wrong!');
       });
+  }
+  clearFilter()
+  {
+    this.form.reset();
   }
   onSubmit() {
     this.touched = true;

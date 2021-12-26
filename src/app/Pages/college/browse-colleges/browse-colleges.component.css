@@ -201,7 +201,18 @@ a {
     padding-right: 139px;
     background: #fafafac2;
 }
+.filter{
+    cursor: pointer;
+    position: absolute;
+    top: -28px;
+    right: 23px;
+    color: orange;
+    font-weight: 900;
+}
+.zmdi-close-circle{
+    color: orange !important;
 
+}
 .card {
     box-shadow: 0 0 1px 4px rgb(0 0 0 / 2%) !important;
     margin-bottom: 10px;
@@ -302,10 +313,10 @@ i {
     align-items: center;
     cursor: pointer;
 }
-
+/* 
 .zmdi-close-circle {
     color: #3461b3;
-}
+} */
 
 .chipfacilit {
     display: flex;
