@@ -21,6 +21,7 @@ export class ViewReceiptComponent implements OnInit {
   institutetype:any = [];
   courseInfo:any=[];
   isNri = false;
+  downloadclick = false;
   constructor(private activaterouterparams:ActivatedRoute,private apiservice:ApiService) { }
 
   ngOnInit(): void {
@@ -113,6 +114,6 @@ export class ViewReceiptComponent implements OnInit {
     )
   }
   onImgError(event) { 
-    event.target.src = 'https://stockpictures.io/wp-content/uploads/2020/01/image-not-found-big-768x432.png';
+    event.target.src = './assets/images/logo.jpg';
 }
 }

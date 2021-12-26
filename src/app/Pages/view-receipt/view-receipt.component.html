@@ -154,9 +154,26 @@
                     <br>
                 </div>
                 <div class="header">
+                    <p style="line-height: 16px !important; color: white;">Student Address Information</p>
+                </div>
+                <br>
+
+
+             
+                <h6>Address Line 1 : {{studentDetails?.permanentAddress?.permanentAddressLine1 }}</h6><br>
+                <h6>Address Line 2 : {{studentDetails?.permanentAddress?.permanentAddressLine2 }}</h6><br>
+                <h6>Address Line 3 : {{studentDetails?.permanentAddress?.permanentAddressLine3 }}</h6><br>
+                <!-- <h6>District & Country: {{studentDetails?.permanentAddress?.permanentDistrict }} & {{studentDetails?.permanentAddress?.permanentCountry }}</h6><br> -->
+                <h6>Mobile Number : {{studentDetails?.permanentAddress?.permanentMobile }}</h6><br>
+                <!-- <h6>Pincode : {{studentDetails?.permanentAddress?.permanentPin }}</h6><br> -->
+                <h6>Telephone : {{studentDetails?.permanentAddress?.permanentTelephoneSTDCode }} - {{studentDetails?.permanentAddress?.permanentTelephone }}</h6>
+                <br>
+              
+                    <br>  <br>  <br> 
+              
+                <div class="header">
                     <p style="line-height: 16px !important; color: white;">Important Note: </p>
                 </div>
-
                 <br>
 
                 <div class="row">
@@ -177,23 +194,15 @@
                     </div>
                     <div class="col-sm-6">
                         
-                        <h6>Address Line 1 : {{studentDetails?.permanentAddress?.permanentAddressLine1 }}</h6><br>
-                        <h6>Address Line 2 : {{studentDetails?.permanentAddress?.permanentAddressLine2 }}</h6><br>
-                        <h6>Address Line 3 : {{studentDetails?.permanentAddress?.permanentAddressLine3 }}</h6><br>
-                        <!-- <h6>District & Country: {{studentDetails?.permanentAddress?.permanentDistrict }} & {{studentDetails?.permanentAddress?.permanentCountry }}</h6><br> -->
-                        <h6>Mobile Number : {{studentDetails?.permanentAddress?.permanentMobile }}</h6><br>
-                        <!-- <h6>Pincode : {{studentDetails?.permanentAddress?.permanentPin }}</h6><br> -->
-                        <h6>Telephone : {{studentDetails?.permanentAddress?.permanentTelephoneSTDCode }} - {{studentDetails?.permanentAddress?.permanentTelephone }}</h6>
-                     
-
+                      
 
 
                     </div>
              
 
                 </div>
-                
-                <p style="color: black !important;">NB: If we find your certificates produced are fraudulent etc </p>
+                <br>  <br> 
+                <p style="color: black !important;">NB: Any misinformation / incorrect information/violation of admission rule(s)/or If not fulfill any of the rules and regulations of the University /College/Educational Institution regarding admission to this course/program will lead to the cancellation of the application/admission. </p>
 
                 <!-- 
             <h6>Enrollment Number : .....................................................................................................................................................................</h6>
