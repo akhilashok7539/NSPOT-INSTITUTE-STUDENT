@@ -46,7 +46,7 @@ export class PaymentHistoryComponent implements OnInit {
   {
     if(s != null)
     {
-      window.open("https://nspot-qa.herokuapp.com/"+s,"_blank")
+      window.open("https://www.api.nspotadmissions.com/"+s,"_blank")
 
     }
     else{

@@ -3,7 +3,7 @@
     <div class="container" id="pdfTable" #pdfTable style="background: white;">
         <div class="row">
             <div class="col-sm-12">
-                <img src="https://nspot-qa.herokuapp.com/{{institutelist?.profilePicFile}}" (error) ="onImgError($event)" alt="" style="width: 200px;
+                <img src="https://www.api.nspotadmissions.com/{{institutelist?.profilePicFile}}" (error) ="onImgError($event)" alt="" style="width: 200px;
         margin: 0 auto;
         display: block;">
                 <p style="float: right; color: black; ">Date : {{responselist?.updatedAt | date:'MMM d, y'}}</p>
