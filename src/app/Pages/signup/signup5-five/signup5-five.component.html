@@ -9,7 +9,7 @@
     <form class="contact" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-sm-6">
-          <label class="uppercase">Aadhar Certificate </label>
+          <label class="req uppercase">Aadhar Certificate </label>
           <input type="file" formControlName="adharCardFile" (change)="onchangeFile('adharCardFile',$event)" />
           <app-control-messages [touched]="touched" [control]="f.adharCardFile"></app-control-messages>
         </div>
@@ -96,7 +96,7 @@
           <app-control-messages [touched]="touched" [control]="f.panCardFile"></app-control-messages>
         </div>
         <div class="col-sm-6">
-          <label class="uppercase">Passport size Photo </label>
+          <label class="req uppercase">Passport size Photo </label>
           <input type="file" formControlName="passportSizePhotoFile"
             (change)="onchangeFile('passportSizePhotoFile',$event)" />
           <app-control-messages [touched]="touched" [control]="f.passportSizePhotoFile"></app-control-messages>
@@ -107,7 +107,7 @@
           <app-control-messages [touched]="touched" [control]="f.scolarshipFile"></app-control-messages>
         </div>
         <div class="col-sm-6">
-          <label class="uppercase">Signature </label>
+          <label class="req uppercase">Signature </label>
           <input type="file" formControlName="signatureFile" (change)="onchangeFile('signatureFile',$event)" />
           <app-control-messages [touched]="touched" [control]="f.signatureFile"></app-control-messages>
         </div>

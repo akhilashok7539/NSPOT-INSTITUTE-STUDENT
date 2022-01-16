@@ -27,7 +27,7 @@ export class Signup5FiveComponent implements OnInit {
   ngOnInit(): void {
     this.studentId = parseInt(this.route.snapshot.paramMap.get('studentId'));
     this.form = this.formBuilder.group({
-      adharCardFile: ['', [Validators.required]],
+      adharCardFile: ['',[Validators.required]],
       birthCertificateFile: [''],
       communityCertificateFile: [''],
       differentlyAbledCertificateFile: [''],
@@ -41,15 +41,15 @@ export class Signup5FiveComponent implements OnInit {
       migrationCertificateFile: [''],
       nativityCertificateFile: [''],
       panCardFile: [''],
-      passportSizePhotoFile: ['', [Validators.required]],
+      passportSizePhotoFile: ['',[Validators.required]],
       scolarshipFile: [''],
-      signatureFile: ['', [Validators.required]],
+      signatureFile: ['',[Validators.required]],
       tcFile: [''],
       thumbImpressionFile: [''],
       drivingLicenseFile: [''],
-      fathersSignatureFile: ['', [Validators.required]],
-      mothersSignatureFile: ['', [Validators.required]],
-      guardiansSignatureFile: ['', [Validators.required]],
+      fathersSignatureFile: ['',],
+      mothersSignatureFile: ['',],
+      guardiansSignatureFile: ['',],
 
 
 
@@ -60,9 +60,12 @@ export class Signup5FiveComponent implements OnInit {
   }
   // Handling the file change events to append the file with the submitting object
   onchangeFile(controlname, event): void {
-
+    console.log(event);
+    
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      console.log(file);
+
       this.multiForm.delete(controlname)
       this.multiForm.append(controlname, file, file.name);
       // console.log(file)
@@ -75,14 +78,31 @@ export class Signup5FiveComponent implements OnInit {
     if (this.form.invalid) {
       return;
     } else {
-      (document.querySelector('#submit-btn') as HTMLInputElement).setAttribute('disabled', '');
+      // (document.querySelector('#submit-btn') as HTMLInputElement).setAttribute('disabled', '');
     }
+
+    // if (this.form.value['signatureFile'] === "") {
+    //   this.form.controls["signatureFile"].setValue("admisonooficeemail@gmail.com")
+    //   this.multiForm.append("signatureFile", "signatureFile ");
+    // }
+    // if (this.form.value['passportSizePhotoFile'] === "") {
+    //   this.form.controls["passportSizePhotoFile"].setValue("passportSizePhotoFile")
+    //   this.multiForm.append("passportSizePhotoFile", "passportSizePhotoFile ");
+    // }
+    // if (this.form.value['adharCardFile'] === "") {
+    //   this.form.controls["adharCardFile"].setValue("adharCardFile")
+    //   this.multiForm.append("adharCardFile", "adharCardFile");
+    // }
+
     const formData = this.form.value;
     this.multiForm.forEach((value, key) => {
-      console.log(key);
-      console.log(value);
+      console.log("value",key);
+      console.log("value",value);
     })
 
+    
+
+    
     this.apiService.doPostRequest_upload(endPoints.Get_studentCertificates + endPoints.create + this.studentId, this.multiForm)
       .subscribe((returnData: any) => {
         console.log(returnData);
