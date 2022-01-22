@@ -13,7 +13,17 @@
           <input type="file" formControlName="adharCardFile" (change)="onchangeFile('adharCardFile',$event)" />
           <app-control-messages [touched]="touched" [control]="f.adharCardFile"></app-control-messages>
         </div>
-
+        <div class="col-sm-6">
+          <label class="req uppercase">Passport size Photo </label>
+          <input type="file" formControlName="passportSizePhotoFile"
+            (change)="onchangeFile('passportSizePhotoFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.passportSizePhotoFile"></app-control-messages>
+        </div>
+        <div class="col-sm-6">
+          <label class="req uppercase">Signature </label>
+          <input type="file" formControlName="signatureFile" (change)="onchangeFile('signatureFile',$event)" />
+          <app-control-messages [touched]="touched" [control]="f.signatureFile"></app-control-messages>
+        </div>
         <div class="col-sm-6">
           <label class="uppercase">Birth Certificate </label>
           <input type="file" formControlName="birthCertificateFile"
@@ -95,22 +105,13 @@
           <input type="file" formControlName="panCardFile" (change)="onchangeFile('panCardFile',$event)" />
           <app-control-messages [touched]="touched" [control]="f.panCardFile"></app-control-messages>
         </div>
-        <div class="col-sm-6">
-          <label class="req uppercase">Passport size Photo </label>
-          <input type="file" formControlName="passportSizePhotoFile"
-            (change)="onchangeFile('passportSizePhotoFile',$event)" />
-          <app-control-messages [touched]="touched" [control]="f.passportSizePhotoFile"></app-control-messages>
-        </div>
+      
         <div class="col-sm-6">
           <label class="uppercase">Scholarship </label>
           <input type="file" formControlName="scolarshipFile" (change)="onchangeFile('scolarshipFile',$event)" />
           <app-control-messages [touched]="touched" [control]="f.scolarshipFile"></app-control-messages>
         </div>
-        <div class="col-sm-6">
-          <label class="req uppercase">Signature </label>
-          <input type="file" formControlName="signatureFile" (change)="onchangeFile('signatureFile',$event)" />
-          <app-control-messages [touched]="touched" [control]="f.signatureFile"></app-control-messages>
-        </div>
+      
         <div class="col-sm-6">
           <label class="uppercase">TC </label>
           <input type="file" formControlName="tcFile" (change)="onchangeFile('tcFile',$event)" />

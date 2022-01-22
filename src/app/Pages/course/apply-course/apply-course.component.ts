@@ -25,16 +25,16 @@ export class ApplyCourseComponent implements OnInit {
   multerForm = new FormData();
   certificateList = [
     {
-      "adharCardFile":"a",
-      "birthCertificateFile":"a",
-      "communityCertificateFile":"a",
-      "differentlyAbledCertificateFile":"a"
+      "adharCardFile": "a",
+      "birthCertificateFile": "a",
+      "communityCertificateFile": "a",
+      "differentlyAbledCertificateFile": "a"
     },
     {
-      "adharCardFile":"a",
-      "birthCertificateFile":"a",
-      "communityCertificateFile":"a",
-      "differentlyAbledCertificateFile":"a"
+      "adharCardFile": "a",
+      "birthCertificateFile": "a",
+      "communityCertificateFile": "a",
+      "differentlyAbledCertificateFile": "a"
     }
   ]
   studentDetails
@@ -55,18 +55,18 @@ export class ApplyCourseComponent implements OnInit {
     personalInfo: [],
     education: [],
     entrance: [],
-    certificates:[]
+    certificates: []
   }
 
   studentId = localStorage.getItem("USERID");;
   stuendtUserId = localStorage.getItem("USERID");
   courseId;
-  educationListarray:any =[];
-  entraceListArray:any=[];
+  educationListarray: any = [];
+  entraceListArray: any = [];
   addclick = false;
-  addEntranceClick= false;
+  addEntranceClick = false;
   courseName;
-  institutedetailslist:any=[];
+  institutedetailslist: any = [];
   constructor(
     // private applicationFormService: ApplicationFormService,
     private router: Router,
@@ -247,30 +247,30 @@ export class ApplyCourseComponent implements OnInit {
 
     // this.form.controls['code'].setValue(this.instituteDetails['code']);
     // console.log( );
-    
-    this.apiService.doGetRequest('institute/course/courseName/'+this.courseId).subscribe(
-      data =>{
+
+    this.apiService.doGetRequest('institute/course/courseName/' + this.courseId).subscribe(
+      data => {
         this.courseName = data['CourseName']
         const group = this.form.controls["personalInfo"] as FormGroup;
 
-        group.controls['courseName'].setValue( this.courseName)
+        group.controls['courseName'].setValue(this.courseName)
       }
     )
-    
+
   }
 
   loadRemovedFields() {
     // fetching removed fields
     return new Promise(resolve => {
       this.apiService.doGetRequest(endPoints.Get_removedField + this.courseDetails.instituteId).subscribe((returnData: any) => {
-       
-        console.log("REMOVED FIELDS"+returnData.data);
-        
+
+        console.log("REMOVED FIELDS" + returnData.data);
+
         returnData.data.map(element => {
           console.log(element.formSection);
-          
-          if (element.formSection ==='personalInfo' ) {
-           
+
+          if (element.formSection === 'personalInfo') {
+
             const group = this.form.controls[element.formSection] as FormGroup;
             // (document.getElementById(element.fieldName) as HTMLInputElement).remove;
             var obj = document.getElementById(element.fieldName);
@@ -279,8 +279,8 @@ export class ApplyCourseComponent implements OnInit {
 
           }
 
-          if (element.formSection ==='permanentAddress' ) {
-           
+          if (element.formSection === 'permanentAddress') {
+
             const group = this.form.controls[element.formSection] as FormGroup;
             // (document.getElementById(element.fieldName) as HTMLInputElement).remove;
             var obj = document.getElementById(element.fieldName);
@@ -288,8 +288,7 @@ export class ApplyCourseComponent implements OnInit {
             group.removeControl(element.fieldName);
 
           }
-          if(element.formSection === "communicationAddress" )
-          {
+          if (element.formSection === "communicationAddress") {
             const group = this.form.controls[element.formSection] as FormGroup;
             // (document.getElementById(element.fieldName) as HTMLInputElement).remove;
             var obj = document.getElementById(element.fieldName);
@@ -303,15 +302,15 @@ export class ApplyCourseComponent implements OnInit {
           //   var obj = document.getElementById(element.fieldName);
           //   obj.remove();
           //   group.removeControl(element.fieldName);
-            
+
           // }
           else {
             if (element.formSection == "education")
               this.eduAndEntrnceRemovedFields.education.push(element.fieldName)
             if (element.formSection == "entrance")
               this.eduAndEntrnceRemovedFields.entrance.push(element.fieldName)
-              // if (element.formSection == "certificates")
-              // this.eduAndEntrnceRemovedFields.certificate.push(element.fieldName)  
+            // if (element.formSection == "certificates")
+            // this.eduAndEntrnceRemovedFields.certificate.push(element.fieldName)  
           }
         })
         resolve(true)
@@ -338,7 +337,7 @@ export class ApplyCourseComponent implements OnInit {
             this.additionalField.certificates.push(element)
           }
           if (element.formSection == "education") {
-            
+
             this.additionalField.education.push(element)
           }
           if (element.formSection == "entrance") {
@@ -350,7 +349,7 @@ export class ApplyCourseComponent implements OnInit {
             const control = this.formBuilder.control("");
             group.addControl(element.fieldName, control);
             console.log(element.fieldName);
-            
+
           }
 
         })
@@ -363,9 +362,9 @@ export class ApplyCourseComponent implements OnInit {
   }
 
   loadStudentDetails() {
-  
+
     // this.apiService.doGetRequest(endPoints.student + this.studentId).subscribe((returnData: any) => {
-      
+
     //   const groupPersonalInfo = this.form.controls['personalInfo'] as FormGroup;
     //   const groupPermanentAddr = this.form.controls['permanentAddress'] as FormGroup;
     //   const groupCommunicationAddr = this.form.controls['communicationAddress'] as FormGroup;
@@ -396,7 +395,26 @@ export class ApplyCourseComponent implements OnInit {
     // Get education details
     this.apiService.doGetRequest(endPoints.Get_studentEducations + this.studentId).subscribe((returnData: any) => {
       this.educationDetails = returnData.data
-      console.log("EDUCATION DETAILS FROM BACKEND",this.educationDetails);
+      console.log("EDUCATION DETAILS FROM BACKEND", this.educationDetails);
+      if (this.educationDetails.length === 0) {
+        let arr = {
+          AccademicLevel: {},
+          accademicLevelId: "",
+          certificateFile: "",
+          cgpa: "",
+          createdAt: "",
+          endDate: "",
+          id: "",
+          qualificationStatus: "",
+          schoolName: "",
+          specialization: "",
+          startDate: "",
+          studentId: "",
+          updatedAt: "",
+          yearOfStudy: "",
+        }
+        this.educationDetails.push(arr)
+      }
       // this.educationDetails = [];
       // iterating through all added educations
       this.educationDetails.map((element, i) => {
@@ -463,7 +481,7 @@ export class ApplyCourseComponent implements OnInit {
               group.removeControl(removedItem)
             }
           })
-         
+
 
 
         }, 3000);
@@ -477,7 +495,7 @@ export class ApplyCourseComponent implements OnInit {
         //   })
         // }, 3000);
 
-        
+
 
       })
     }, error => {
@@ -489,9 +507,23 @@ export class ApplyCourseComponent implements OnInit {
     this.apiService.doGetRequest(endPoints.Get_studentEntranceExams + this.studentId).subscribe((returnData: any) => {
       this.educationDetails = returnData.data
       // console.log("ENTRANCE DETIALS FROM BACKEDN:",this.educationDetails);
-      
+      if (this.educationDetails.length === 0) {
+        let arr = {
+          cgpa: "",
+          createdAt: "",
+          id: 1,
+          qualifiedEntrance: "",
+          rank: "",
+          rollNumber: "",
+          studentId: "",
+          updatedAt: "",
+          validUpto: "",
+          yearOfQualification: "",
+        }
+        this.educationDetails.push(arr)
+      }
       this.educationDetails.map((element, i) => {
-      console.log("ENTRANCE DETIALS FROM BACKEDN:",element,i);
+        console.log("ENTRANCE DETIALS FROM BACKEDN:", element, i);
         const group = this.formBuilder.group({
           qualifiedEntrance: [true],
           rollNumber: [true],
@@ -505,10 +537,10 @@ export class ApplyCourseComponent implements OnInit {
         });
 
         for (let key in element) {
-          
+
           if (group.controls[key]) {
             let value = element[key]
-         
+
 
             group.controls[key].setValue(value)
           }
@@ -522,8 +554,8 @@ export class ApplyCourseComponent implements OnInit {
           groupEd.addControl(element.fieldName, control);
         })
         this.entranceExams.push(group);
-       
-        
+
+
         // setting a timeout to let the form array load the newly added dom elements
         setTimeout(() => {
           // iterating through the removed entrance exam fields to remove from both html and formgroup
@@ -535,7 +567,7 @@ export class ApplyCourseComponent implements OnInit {
           })
         }, 2000);
       })
-      
+
     }, error => {
       console.error(error);
     });
@@ -545,8 +577,8 @@ export class ApplyCourseComponent implements OnInit {
       // const group = this.form.controls['certificates'] as FormGroup;
       // this.certificateDetails = returnData.data[0]
       // console.log("CERTIFICATE LIST"+JSON.stringify(this.certificateList));
-      
-      
+
+
       // this.certificateDetails = [];
       // this.certificateDetails = JSON.stringify(this.certificateList[0]);
       // this.certificateDetails.map((element, i) => {
@@ -587,8 +619,8 @@ export class ApplyCourseComponent implements OnInit {
 
       //   console.log(this.getCertificates.value);
       //   this.getCertificates.push(group);
-        
-        
+
+
       //   setTimeout(() => {
       //     this.eduAndEntrnceRemovedFields.certificates.map(removedItem => {
       //       if (document.querySelector('#' + removedItem + "-cer" + i)) {
@@ -608,12 +640,12 @@ export class ApplyCourseComponent implements OnInit {
 
       // }
 
-      
+
 
 
       // const formData = this.form.value;
       // console.log("formgroup"+JSON.stringify(formData));
-      
+
     }, error => {
       console.error(error);
     });
@@ -626,7 +658,7 @@ export class ApplyCourseComponent implements OnInit {
         // console.log(returnData)
         this.courseDetails = returnData.data
         // console.log("course details"+JSON.stringify(this.courseDetails));
-        
+
         resolve(true);
       }, error => {
         console.error(error);
@@ -649,37 +681,34 @@ export class ApplyCourseComponent implements OnInit {
       // (document.querySelector('#submit-btn') as HTMLInputElement).setAttribute('disabled', '');
     }
     const formData = this.form.value;
-    if(this.addclick === true)
-    {
+    if (this.addclick === true) {
       formData.education = this.educationListarray;
 
     }
-    if(this.addEntranceClick === true)
-    {
+    if (this.addEntranceClick === true) {
       formData.entrance = this.entraceListArray;
 
     }
     console.log(formData);
     console.log(this.multerForm);
-    
+
     // this.form.removeControl('certificates');
     console.log(this.form.get('certificates').value);
-     
+
     console.log(formData);
 
     this.apiService.doPostRequest(endPoints.Submit_applicationForm, formData).subscribe((returnData: any) => {
       if (returnData.status == true) {
         let applciaitonId = returnData['data'].id;
         // this.multerForm.append("formId",applciaitonId);
-        if(applciaitonId)
-        {
+        if (applciaitonId) {
           // this.getfilesUpdate();
-          this.router.navigate(['/student/course/certificates/'+this.courseId+"/"+applciaitonId])
+          this.router.navigate(['/student/course/certificates/' + this.courseId + "/" + applciaitonId])
         }
-        else{
+        else {
           this.toastr.error('Application already submited');
         }
-     
+
       }
       else {
         this.toastr.error('Form submission failed.');
@@ -692,29 +721,25 @@ export class ApplyCourseComponent implements OnInit {
       });
 
   }
-  addnewEducation()
-  {
+  addnewEducation() {
     this.addclick = true;
     console.log(this.form.get('education').value);
-    
+
     this.educationListarray.push(this.form.get('education').value[0])
     console.log(this.educationListarray);
     this.form.get('education').reset();
   }
-  addnewEntrance()
-  {
+  addnewEntrance() {
     this.addEntranceClick = true;
     this.entraceListArray.push(this.form.get('entrance').value[0])
     console.log(this.entraceListArray);
     this.form.get('entrance').reset();
 
   }
-  delete(i)
-  {
+  delete(i) {
     this.educationListarray.splice(i)
   }
-  deleteentraceListArray(i)
-  {
+  deleteentraceListArray(i) {
     this.entraceListArray.splice(i)
 
   }
@@ -728,31 +753,28 @@ export class ApplyCourseComponent implements OnInit {
   get getCertificates() {
     return this.form.get('certificates') as FormArray
   }
-  updatefile(event,formcontrol)
-  {
+  updatefile(event, formcontrol) {
     console.log(event);
-    
-    const file=  event.target.files[0];
+
+    const file = event.target.files[0];
     // console.log(file.name);
-    
+
     this.multerForm.append(formcontrol, file);
-    
-  
-    
+
+
+
   }
-  getfilesUpdate()
-  {
-    this.apiService.doPostRequest_upload(`applicationForm/submit/formfiles`,this.multerForm).subscribe(
-      data =>{
+  getfilesUpdate() {
+    this.apiService.doPostRequest_upload(`applicationForm/submit/formfiles`, this.multerForm).subscribe(
+      data => {
         this.toastr.success('Application Submitted Successfully');
         console.log(data)
         this.router.navigate([`/student/profile`]);
       }
-      
+
     )
   }
-  viewExperence(experienceCertificateFile)
-  {
+  viewExperence(experienceCertificateFile) {
     return (
       this.hiddenFiles.find((el) => el.fieldName.toString() === (experienceCertificateFile || "").toString()) || {
         Hidename: 'true',

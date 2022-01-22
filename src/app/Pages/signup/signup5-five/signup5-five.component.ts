@@ -106,7 +106,7 @@ export class Signup5FiveComponent implements OnInit {
     this.apiService.doPostRequest_upload(endPoints.Get_studentCertificates + endPoints.create + this.studentId, this.multiForm)
       .subscribe((returnData: any) => {
         console.log(returnData);
-        this.toastr.success('Registration Successful');
+        this.toastr.success('Registration Successful!..Login Credentials Sent to your Email ID');
         this.router.navigate(['/login']);
       },
         error => {
