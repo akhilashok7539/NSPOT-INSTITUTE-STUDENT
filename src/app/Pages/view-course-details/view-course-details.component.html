@@ -64,7 +64,7 @@
             <div class="col-sm-6"></div>
             <button> <a href="https://www.api.nspotadmissions.com/{{courseinfo?.item?.courseSyllabusFile}}" style="text-decoration: none;color: white;" target="_blank">Download syllabus</a> </button>
 
-            <button (click)="apply()">Apply Now</button>
+            <button (click)="apply()" *ngIf="admionstatus(courseinfo?.item) === 'Opened'">Apply Now</button>
           </div>
         </div>
       </div>
