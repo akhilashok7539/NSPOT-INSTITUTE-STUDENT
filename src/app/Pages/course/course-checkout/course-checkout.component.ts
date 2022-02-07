@@ -131,7 +131,8 @@ export class CourseCheckoutComponent implements OnInit {
     
     "applicationId":this.applicationId,
     "courseId":this.courseId,
-    "studentId":JSON.parse(localStorage.getItem("USERID"))
+    "studentId":JSON.parse(localStorage.getItem("USERID")),
+    "isNri":JSON.parse(localStorage.getItem("isNri"))
   }
   this.apiService.doPostRequest('payment/courseFee/create',req).subscribe(
     data =>{
