@@ -5,10 +5,11 @@
 export const environment = {
   production: false,
 
-  apiUrl: 'https://www.api.nspotadmissions.com/api/',
-  baseApiUrl: 'https://www.api.nspotadmissions.com/',
-  // apiUrl: 'https://nspot-qa.herokuapp.com/api/',
-  // baseApiUrl: 'https://nspot-qa.herokuapp.com/',
+  // apiUrl: 'https://www.api.nspotadmissions.com/api/',
+  // baseApiUrl: 'https://www.api.nspotadmissions.com/',
+  apiUrl: 'https://nspot-qa.herokuapp.com/api/',
+  baseApiUrl: 'https://nspot-qa.herokuapp.com/',
+  
   adminPortalUrl: '',
   institutePortalUrl: '',
   studentPortalUrl: '',

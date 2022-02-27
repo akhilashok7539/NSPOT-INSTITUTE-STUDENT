@@ -32,7 +32,7 @@ export class Signup3ThreeComponent implements OnInit {
       id: [this.studentId],
       permanentAddressLine1: ['', [Validators.required]],
       permanentAddressLine2: ['', [Validators.required]],
-      permanentAddressLine3: ['', [Validators.required]],
+      permanentAddressLine3: [''],
       permanentCountry: ['', [Validators.required]],
       permanentState: ['', [Validators.required]],
       permanentDistrict: ['', [Validators.required]],
@@ -42,7 +42,7 @@ export class Signup3ThreeComponent implements OnInit {
       permanentMobile: ['', [Validators.required]],
       communicationAddressLine1: ['', [Validators.required]],
       communicationAddressLine2: ['', [Validators.required]],
-      communicationAddressLine3: ['', [Validators.required]],
+      communicationAddressLine3: [''],
       communicationCountry: ['', [Validators.required]],
       communicationState: ['', [Validators.required]],
       communicationDistrict: ['', [Validators.required]],
@@ -128,6 +128,19 @@ export class Signup3ThreeComponent implements OnInit {
       this.form.controls["communicationState"].setValue(this.form.value["permanentState"])
       this.form.controls["communicationCountry"].setValue(this.form.value["permanentCountry"])
 
+    }
+    if(event.target.checked === false)
+    {
+      this.form.controls["communicationAddressLine1"].setValue(this.form.value[""])
+      this.form.controls["communicationAddressLine2"].setValue(this.form.value[""])
+      this.form.controls["communicationAddressLine3"].setValue(this.form.value[""])
+      this.form.controls["communicationMobile"].setValue(this.form.value[""])
+      this.form.controls["communicationTelephone"].setValue(this.form.value[""])
+      this.form.controls["communicationTelephoneSTDCode"].setValue(this.form.value[""])
+      this.form.controls["communicationPin"].setValue(this.form.value[""])
+      this.form.controls["communicationDistrict"].setValue(this.form.value[""])
+      this.form.controls["communicationState"].setValue(this.form.value[""])
+      this.form.controls["communicationCountry"].setValue(this.form.value[""])
     }
   }
 }

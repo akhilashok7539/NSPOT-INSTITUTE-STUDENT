@@ -207,7 +207,7 @@
               color: white;
               width: 117px;
               margin-left: 5px;
-              border-radius: 6px;" routerLink="/student/attend-test/{{item.item.aptitudeTestId}}" *ngIf="getStatusText(item.item.applicationStatus) === 'Course-Applied'">Attend Test</button></a>
+              border-radius: 6px;" (click)="attendtestroute(item.item.aptitudeTestId)" routerLink="/student/attend-test/{{item.item.aptitudeTestId}}" *ngIf="getStatusText(item.item.applicationStatus) === 'Course-Applied'">Attend Test</button></a>
                                 <a routerLink="/student/course/checkout/{{item.item.id}}">
                                     <button class="btn btn-success greybutton pull-right" style="border: none;
                 padding-top: 6px;

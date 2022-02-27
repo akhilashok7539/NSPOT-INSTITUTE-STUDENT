@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-sm-12">
           <label class="req uppercase">Address Line 1</label>
-          <input type="text" formControlName="permanentAddressLine1" placeholder="Address Line 2" required />
+          <input type="text" formControlName="permanentAddressLine1" placeholder="Address Line 1" required />
           <app-control-messages [touched]="touched" [control]="f.permanentAddressLine1"></app-control-messages>
         </div>
         <div class="col-sm-12">
@@ -19,9 +19,9 @@
           <app-control-messages [touched]="touched" [control]="f.permanentAddressLine2"></app-control-messages>
         </div>
         <div class="col-sm-12">
-          <label class="req uppercase">Address Line 3</label>
-          <input type="text" formControlName="permanentAddressLine3" placeholder="Address Line 3" required />
-          <app-control-messages [touched]="touched" [control]="f.permanentAddressLine3"></app-control-messages>
+          <label class=" uppercase">Address Line 3</label>
+          <input type="text" formControlName="permanentAddressLine3" placeholder="Address Line 3"  />
+          <!-- <app-control-messages [touched]="touched" [control]="f.permanentAddressLine3"></app-control-messages> -->
         </div>
         <div class="col-sm-4">
           <label class="req uppercase">Country</label>
@@ -73,7 +73,7 @@
         <input type="checkbox" (change)="checkedEvent($event)"> Same as above
         <div class="col-sm-12">
           <label class="req uppercase">Address Line 1</label>
-          <input type="text" formControlName="communicationAddressLine1" placeholder="Address Line 2" required />
+          <input type="text" formControlName="communicationAddressLine1" placeholder="Address Line 1" required />
           <app-control-messages [touched]="touched" [control]="f.communicationAddressLine1"></app-control-messages>
         </div>
         <div class="col-sm-12">
@@ -82,9 +82,9 @@
           <app-control-messages [touched]="touched" [control]="f.communicationAddressLine2"></app-control-messages>
         </div>
         <div class="col-sm-12">
-          <label class="req uppercase">Address Line 3</label>
-          <input type="text" formControlName="communicationAddressLine3" placeholder="Address Line 3" required />
-          <app-control-messages [touched]="touched" [control]="f.communicationAddressLine3"></app-control-messages>
+          <label class=" uppercase">Address Line 3</label>
+          <input type="text" formControlName="communicationAddressLine3" placeholder="Address Line 3"  />
+          <!-- <app-control-messages [touched]="touched" [control]="f.communicationAddressLine3"></app-control-messages> -->
         </div>
         <div class="col-sm-4">
           <label class="req uppercase">Country</label>

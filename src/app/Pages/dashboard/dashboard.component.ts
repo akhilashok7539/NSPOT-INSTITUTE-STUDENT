@@ -293,4 +293,9 @@ export class DashboardComponent implements OnInit {
       this.toastr.error("Receipt Not uploaded")
     }
   }
+  attendtestroute(s)
+  {
+    console.log(s);
+    
+  }
 }
