@@ -106,7 +106,7 @@ import { ForgotPasswordComponent } from './Pages/forgot-password/forgot-password
     NgbModule
   ],
   providers: [
-    // {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {provide: LocationStrategy, useClass: HashLocationStrategy},
     { provide: HTTP_INTERCEPTORS, useClass: ResponseService, multi :true},
 
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },

@@ -86,6 +86,7 @@ export class DashboardComponent implements OnInit {
     this.apiService.doPostRequest_upload("student/update",multiForm).subscribe(
       data =>{
         this.ngOnInit()
+        window.location.reload()
       },
       error =>{
         

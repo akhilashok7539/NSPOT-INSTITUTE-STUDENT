@@ -228,7 +228,7 @@ export class CourseCheckoutComponent implements OnInit {
     }
     console.log(orderObj);
     this.apiService.doPostRequest(endPoints.Confirm_courseFeeOrder, orderObj).subscribe((returnData: any) => {
-      this.router.navigate(['/student/explore-courses']);
+      this.router.navigateByUrl('/student/explore-courses');
     })
   }
   paymentFailed(failedRespose) {
