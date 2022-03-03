@@ -59,7 +59,8 @@
               </li> -->
 
                             <li class="uppercase">
-                                <a routerLink="/institute/contact-us"><img src="assets/images/avatar.png" alt="" /></a>
+                                <a routerLink="/institute/contact-us"><img style="width: 56px;
+                                  border-radius: 41px;" (error)="onImageError($event)" src="{{apiUrl}}{{userDetails.profilePicture}}" alt="" /></a>
                                 <ul class="submenu submenu-list">
                                     <!-- <li class="uppercase">
                     <a routerLink="/student/pricing">Upgrade</a>

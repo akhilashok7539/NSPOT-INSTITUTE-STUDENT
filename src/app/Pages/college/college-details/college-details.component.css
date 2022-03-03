@@ -31,7 +31,7 @@
 }
 .courseBtn {
     width: 34%;
-    padding: 6px;
+    /* padding: 6px; */
     text-decoration: none;
 }
 .profile-picture {
@@ -54,7 +54,7 @@
     position: relative;
     /* max-width: 600px; */
     width: 100%;
-    height: 151px;
+    height: 181px;
     background: #fff;
     box-shadow: 0 0 15px rgba(0, 0, 0, .1);
 }

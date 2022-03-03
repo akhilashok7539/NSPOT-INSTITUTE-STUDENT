@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { endPoints } from 'src/app/config/endPoints';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-inner-header',
@@ -12,6 +13,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class InnerHeaderComponent implements OnInit {
   userId = this.authService.userProfile.userId;
   notifications;
+  userDetails:any = [];
+  apiUrl = environment.baseApiUrl;
   constructor(
     private authService: AuthService,
     private apiService: ApiService,
@@ -25,9 +28,19 @@ export class InnerHeaderComponent implements OnInit {
     //   that.checkForNotification();
 
     // }, 10000)
+    this.apiService.doGetRequest('/student/'+this.userId).subscribe(
+      data =>{
+        this.userDetails = data['data']
+      },
+      error =>{
+
+      }
+    )
   
   }
-
+  onImageError(event){
+    event.target.src = "assets/images/avatar.png"
+  }
   checkForNotification() {
     this.apiService.doGetRequest(
       endPoints.Get_notifications + "?where[userId]=" + this.userId + "&order[0][0]=createdAt"

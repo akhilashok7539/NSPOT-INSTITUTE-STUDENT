@@ -15,7 +15,7 @@
 
 
     <div class="column is-12 has-text-centered">
-        <img class="profile-picture" style="display: flex;margin-left: auto;margin-right: auto; " src="https://unsplash.it/300/300/?random&pic=1(14 kB)" alt="profile-picture">
+        <img class="profile-picture" style="display: flex;margin-left: auto;margin-right: auto; " src="{{baseurl}}{{instituteInfo?.profilePicFile}}" (error)="onImageError($event)"  alt="profile-picture">
     </div>
 
 
@@ -33,7 +33,7 @@
                     <span class="views"><i class="zmdi zmdi-assignment"></i><a>RELIGIOUS MINORITY INSTITUTE : YES</a></span>
                     <span class="views"><i class="zmdi zmdi-assignment"></i><a href="{{instituteInfo?.websitelink}}" target="_blank">Website Link : {{instituteInfo?.websitelink}}</a></span>
                             <span class="views"><i class="zmdi zmdi-download"></i><a
-                                href="{{baseApiUrl}}{{highlights?.brochuresFile}}">Download Brochure</a></span>
+                                href="{{baseApiUrl}}{{highlights?.brochuresFile}}" target="_blank">Download Brochure</a></span>
                     <span>  Location On Map : <a href="https://maps.google.com/?q={{travelinformations?.currentLatitude}},{{travelinformations?.currentLongitude}}" target="_blank"> {{travelinformations?.currentLatitude}} , {{travelinformations?.currentLongitude}}</a></span>
                     <button (click)="copyMessage(currentUrl)" style="    background: none;
                     border: none;
@@ -74,7 +74,7 @@
 
                 <div class="row" *ngIf="activeButton ===1">
                     <div class="col-md-12 order  pros">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <h4>CONTACT ADDRESS</h4>
                             <div class="text-center">
                                 <p>{{instituteInfo?.addressLine1}},{{instituteInfo?.addressLine2}},{{instituteInfo?.addressLine3}}
@@ -96,27 +96,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-
-                            <h4>CORPORATE OFFICE</h4>
-                            <div class="text-center">
-                                <p>Nila Gardens, Pampady, Thiruvilwamala, Thrissur, Kerala, India – 680 588</p>
-                                <p class="order-or"><span><i class="zmdi zmdi-phone"></i></span></p>
-
-                                <p>04884-284000 (100 lines)</p>
-                                <p>04884-282070</p>
-                                <p class="order-or"><span><i class="zmdi zmdi-smartphone-android"></i></span></p>
-                                <p>+91 9656000005</p>
-                                <p>+91 7902660777</p>
-
-
-                                <p class="order-or"><span><i class="zmdi zmdi-email"></i></span></p>
-                                <p>Office@ncerc.ac.in</p>
-                                <p>admissions@ncerc.ac.in</p>
-                            </div>
-
-
-                        </div>
+                     
                         <div class="col-sm-12">
                             <h4>ABOUT US</h4>
                             <p style="    text-align: left;
@@ -124,15 +104,33 @@
                         </div>
                         <div class="col-md-6" style="margin-top: 20px !important;">
                             <h4>INFRASTRUCTURE-FACILITIES & EVENTS</h4>
-                            <p style="text-align: left;margin-top: 25px;">Area of Campus : {{instituteInfo?.licenseAuthorityName}} </p>
-                            <p style="text-align: left;margin-top: 25px;">No. of Classrooms : {{instituteInfo?.nameofTown}} </p>
-                            <p style="text-align: left;margin-top: 25px;"> Total Student Strength as on date :{{instituteInfo?.licenseNumber}} </p>
-                            <p style="text-align: left;margin-top: 25px;">Student Teacher Ratio : {{instituteInfo?.licenseIssuedDate | date}}</p>
-                            <p style="text-align: left;margin-top: 25px;">Total no.of Teachers : {{instituteInfo?.licenseRenewalDate | date}}</p>
-                            <p style="text-align: left;margin-top: 25px;">Language of Instruction : {{instituteInfo?.licenseRenewalDate | date}}</p>
-                            <p style="text-align: left;margin-top: 25px;">Sports : {{instituteInfo?.licenseRenewalDate | date}}</p>
-                            <p style="text-align: left;margin-top: 25px;">Indoor Games : {{instituteInfo?.licenseRenewalDate | date}}</p>
-                            <p style="text-align: left;margin-top: 25px;">Outdoor Games : {{instituteInfo?.licenseRenewalDate | date}}</p>
+                    
+                            <p style="text-align: left;margin-top: 25px;">Ac ClassRoom : {{infrascutreData?.acClassRom ?'Yes': 'No'}}</p>
+                            <p style="text-align: left;margin-top: 25px;">Auditorium : {{infrascutreData?.auditorium ?'Yes': 'No'}}</p>
+                            <p style="text-align: left;margin-top: 25px;">Area of Campus : {{infrascutreData?.areaOfCampus}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Campus Events: {{infrascutreData?.campusEvents}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Campus Recuritment: {{infrascutreData?.campusRecruitment ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Campus Security: {{infrascutreData?.campusSecurity ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Canteen: {{infrascutreData?.canteen ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">CCTV: {{infrascutreData?.cctv ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Community Service: {{infrascutreData?.communityService ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Digital Classroom: {{infrascutreData?.digitalClassRoom ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">GYM: {{infrascutreData?.gym ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">LAB: {{infrascutreData?.lab ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Library: {{infrascutreData?.library ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Loan Assistance: {{infrascutreData?.loanAssistance ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Medical Aid: {{infrascutreData?.medicalAid ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Playground: {{infrascutreData?.playGround ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Pool: {{infrascutreData?.pool ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Playground: {{infrascutreData?.playGround ?'Yes': 'No'}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Indoor Games : {{infrascutreData?.indoorGames }}</p>
+                            <p style="text-align: left;margin-top: 25px;">Outdoor Games : {{infrascutreData?.outdoorGames }}</p>
+                            <p style="text-align: left;margin-top: 25px;">Sports : {{infrascutreData?.sports}}</p>
+                            <p style="text-align: left;margin-top: 25px;">Language of Instruction : {{infrascutreData?.instructionLanguage}}</p>
+                            <p style="text-align: left;margin-top: 25px;">Total no.of Teachers : {{infrascutreData?.noOfTeachers }}</p>
+                            <p style="text-align: left;margin-top: 25px;"> Total Student Strength as on date :{{infrascutreData?.totalStudentStrength}} </p>
+                            <p style="text-align: left;margin-top: 25px;">Student Teacher Ratio : {{infrascutreData?.studentTeacherRatio}}</p>
+                            <p style="text-align: left;margin-top: 25px;">Virtual Arts : {{infrascutreData?.visualArts}}</p>
 
                         </div>
                         <div class="col-md-6" style="margin-top: 20px !important;">
@@ -153,7 +151,12 @@
                             <p style="text-align: left;margin-top: 25px;">
                                 Transportation info : {{instituteInfo?.transportationInfo}}
                             </p>
-
+                            <p style="text-align: left;margin-top: 25px;">
+                                Bus Facility : {{instituteInfo?.busAvailablity?'Yes':'No'}}
+                            </p>
+                            <p style="text-align: left;margin-top: 25px;">
+                                Van Facility : {{instituteInfo?.vanavailablity?'Yes':'No'}}
+                            </p>
                         </div>
                         <div class="col-md-12" style="margin-top: 20px !important;">
                             <h4>TRAVEL INFORMATION</h4>
@@ -168,7 +171,7 @@
                             </p>
 
                             <p style="text-align: left;margin-top: 25px;">
-                                Location On Map : <a href="https://maps.google.com/?q={{travelinformations.currentLatitude}},{{travelinformations.currentLongitude}}" target="_blank"> {{travelinformations.currentLatitude}} , {{travelinformations.currentLongitude}}</a>
+                                Location On Map : <a href="https://maps.google.com/?q={{travelinformations?.currentLatitude}},{{travelinformations?.currentLongitude}}" target="_blank"> {{travelinformations?.currentLatitude}} , {{travelinformations?.currentLongitude}}</a>
                             </p>
 
 
@@ -253,7 +256,7 @@
                                     </div>
                                 </div> -->
 
-                                <div class="box">
+                                <div class="box" style="    overflow: auto;">
 
                                     <div *ngIf="getaddmisonsnstartcount(item.item) === 'Opened'" class="ribbon ribbon-top-left" >
                                         <span [class.phase-activecolo]="getaddmisonsnstartcount(item.item)==='Opened'">{{getaddmisonsnstartcount(item.item)}}</span>
@@ -267,14 +270,18 @@
                                     padding-top: 1px;">
                                         <h3 *ngIf="item.CourseName !=null">{{item.CourseName}}</h3>
                                         <p>Course Code :{{item.item.courseCode}}</p>
-                                        <a class="probootstrap-location courseBtn" (click)="applycourse(item)" *ngIf="getaddmisonsnstartcount(item.item) === 'Opened'">APPLY</a>
+                                        <span class="views"><i class="zmdi zmdi-download"></i> <a
+                                            href="{{baseApiUrl}}{{item?.item?.courseSyllabusFile}}" target="_blank"> Download Syllbus</a></span>
+                                        <a class="probootstrap-location courseBtn" (click)="applycourse(item)" *ngIf="getaddmisonsnstartcount(item.item) === 'Opened'" style="    background: green;
+                                        color: white;">APPLY</a>
 
                                         <a class="probootstrap-location courseBtn" style="    background: darkgrey;
                                         color: white;
                                         border: none;
                                         text-decoration: none;" *ngIf="getaddmisonsnstartcount(item.item) === 'Not Started' || getaddmisonsnstartcount(item.item) === 'Closed'">APPLY</a>
-                                    </div>
-
+                             
+                            </div>
+                                   
 
                                 </div>
                             </div>

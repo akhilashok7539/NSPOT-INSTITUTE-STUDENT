@@ -28,6 +28,8 @@ export class CollegeDetailsComponent implements OnInit {
   admisionstarts = false;
   admisionnotstarts=false;
   travelinformations;
+  baseurl= environment.baseApiUrl;
+  infrascutreData :any =[];
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -62,6 +64,7 @@ export class CollegeDetailsComponent implements OnInit {
       this.instIdForCourse = this.instituteInfo.id;
       this.loadGalleryandCourse(this.instIdForCourse)
       this.loaddata();
+      this.getinfrastucturedata(this.instituteInfo['id'])
     }, error => {
       console.error(error);
       this.toastr.error('Failed to fetch institute details')
@@ -73,6 +76,10 @@ export class CollegeDetailsComponent implements OnInit {
     console.log("current", window.location.href);
  
 
+  }
+  onImageError(event)
+  {
+event.target.src = "https://unsplash.it/300/300/?random&pic=1(14 kB)";
   }
   getSanitizedURL() {
     return this.domsantizer.bypassSecurityTrustUrl(this.campusTourVideoLink);
@@ -348,5 +355,17 @@ export class CollegeDetailsComponent implements OnInit {
       window.open("https://www.api.nspotadmissions.com/"+this.highlights.specialFeaturesFile)
 
     }
+  }
+  getinfrastucturedata(id)
+  {
+    this.apiService.doGetRequest(`instituteInfraStructure/byInstituteId/`+id).subscribe(
+      data =>{
+        console.log("infracscturedata",data);
+        this.infrascutreData = data['data'][0]
+      },
+      error =>{
+
+      }
+    )
   }
 }

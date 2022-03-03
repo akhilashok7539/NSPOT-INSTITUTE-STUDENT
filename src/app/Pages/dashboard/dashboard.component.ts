@@ -297,6 +297,13 @@ export class DashboardComponent implements OnInit {
   attendtestroute(s)
   {
     console.log(s);
-    
+    // routerLink="/student/attend-test/{{item.item.aptitudeTestId}}"
+    if(s === null)
+    {
+      this.toastr.error("No Apptitude Test is linked")
+    }
+    else{
+      this.router.navigate(['/student/attend-test/'+s])
+    }
   }
 }
