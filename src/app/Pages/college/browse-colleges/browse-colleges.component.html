@@ -266,7 +266,7 @@
                         <p *ngIf="item?.item.haveGirlsHostel === false">Girls Hostel : No </p>
 
                     </div> -->
-                    <button class="accordion" (click)="toggleAccordian($event, i)"> View Eligibility
+                    <button class="accordion" (click)="toggleAccordian($event, i)"> Who Can Apply?
                     </button>
                     <div class="panel" hide="!item.isActive">
                         <p *ngIf="item?.item.maleAllowed === true">Male Allowed : Yes </p>
@@ -316,7 +316,7 @@
                                >View Institute</a>
                             &nbsp;
                             <a  class="viewcourse" (click)="viewCourse(item)">
-                                View Course</a>
+                                View Course / Eligibility</a>
                         </div>
 
                         <a style="    background: #f8ad25 !important;

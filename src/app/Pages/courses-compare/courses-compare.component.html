@@ -30,7 +30,7 @@
             <div class="card">
 
            
-            <h6>Institue Name : {{comparelist?.item?.Institute.name}}</h6>
+            <h6>Institute Name : {{comparelist?.item?.Institute.name}}</h6>
             <h6>University/Board Name : {{comparelist?.instituteCourse?.universityName}}</h6>
 
             <h6>Location Details : {{comparelist.item?.Institute?.addressLine1}} ,
@@ -39,13 +39,13 @@
             <h6>Year of Establishment : {{comparelist?.item?.Institute?.year_of_establishment}}</h6>
 
          
-            <h6>Boys Hostel Avilablity : <span *ngIf="comparelist.item.Institute.haveBoysHostel === true"> Yes</span>
+            <h6>Boys Hostel Availability : <span *ngIf="comparelist.item.Institute.haveBoysHostel === true"> Yes</span>
               <span *ngIf="comparelist.item.Institute.haveBoysHostel === false"> No</span>
             </h6>
-            <h6>Girls Hostel Avilablity : <span *ngIf="comparelist.item.Institute.haveGirlsHostel === true"> Yes</span>
+            <h6>Girls Hostel Availability : <span *ngIf="comparelist.item.Institute.haveGirlsHostel === true"> Yes</span>
               <span *ngIf="comparelist.item.Institute.haveGirlsHostel === false"> No</span>
             </h6>
-            <h6>Hostel Annuval Fee : {{comparelist.item.Institute.hostalAnnualFee}}</h6>
+            <h6>Hostel Annual Fee : {{comparelist.item.Institute.hostalAnnualFee}}</h6>
             <!-- <h6>Food Avilablity : <span *ngIf="comparelist.item.Institute.foodAvailableAtHostel === true"> Yes</span>
               <span *ngIf="comparelist.item.Institute.foodAvailableAtHostel === false"> No</span>
             </h6> -->
@@ -63,7 +63,7 @@
               <span *ngIf="comparelist.courseFee?.hasScolarship === false"></span>
             </h6>
             <h6>Payment Tenture : {{getpaymentTenture(comparelist?.courseFee?.paymentTenureId)?.title}}</h6>
-            <h6>Spot Fee : {{comparelist?.courseFee?.otherFee}}</h6>
+            <h6>Spot Admission Fee : {{comparelist?.courseFee?.otherFee}}</h6>
 
             <!-- <h6>NSPOT Service Charges : {{comparelist.courseFee.nspotServiceCharge}}</h6>
             <h6>NSPOT Tax Charges : {{comparelist.courseFee.nspotTax}}</h6> -->
@@ -76,7 +76,7 @@
             <h6>Admission End Date : {{comparelist?.instituteCourse?.admissionCloseDate | date:'MMM d, y'}}</h6>
             <h6>Class Start Date : {{comparelist?.instituteCourse?.classStartDate | date:'MMM d, y'}}</h6>
 
-            <h6>Apptitue Test : <span *ngIf="comparelist?.instituteCourse?.aptituteTestRequired === true"> Yes</span>
+            <h6>Aptitude Test : <span *ngIf="comparelist?.instituteCourse?.aptituteTestRequired === true"> Yes</span>
               <span *ngIf="comparelist?.instituteCourse?.aptituteTestRequired === false"> No
               </span>
             </h6>
